@@ -1,0 +1,81 @@
+/* TinyMCE日本語対応 - 完全版CSS */
+
+/* TinyMCEエディタの基本設定 */
+.tox-edit-area iframe,
+.tox-edit-area__iframe,
+.mce-content-body {
+    ime-mode: active !important;
+    -webkit-ime-mode: active !important;
+    -moz-ime-mode: active !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", "Meiryo UI", sans-serif !important;
+    line-height: 1.6 !important;
+    word-wrap: break-word !important;
+    font-size: 14px !important;
+    direction: ltr !important;
+    text-align: left !important;
+    unicode-bidi: normal !important;
+}
+
+/* iframeの中身も左揃えに */
+.tox-edit-area iframe body,
+.tox-edit-area__iframe body {
+    direction: ltr !important;
+    text-align: left !important;
+    unicode-bidi: normal !important;
+}
+
+/* 全要素の左揃え強制 */
+.mce-content-body *,
+.tox-edit-area iframe *,
+.tox-edit-area__iframe * {
+    text-align: left !important;
+    direction: ltr !important;
+}
+
+/* TinyMCEコンテンツ内の要素 */
+.mce-content-body p,
+.mce-content-body div,
+.mce-content-body h1,
+.mce-content-body h2,
+.mce-content-body h3,
+.mce-content-body h4,
+.mce-content-body h5,
+.mce-content-body h6 {
+    text-align: left !important;
+    direction: ltr !important;
+}
+
+/* TinyMCEエディタのフレーム */
+.tox-edit-area {
+    direction: ltr !important;
+}
+
+/* TinyMCEツールバー */
+.tox-toolbar {
+    direction: ltr !important;
+}
+
+/* IME変換中の視覚的フィードバック */
+.mce-content-body[data-ime-composing="true"] {
+    outline: 1px solid #3b82f6 !important;
+    outline-offset: -1px;
+    background-color: rgba(59, 130, 246, 0.01) !important;
+}
+
+/* 日本語入力中のコンポジションテキスト */
+.mce-content-body .composition,
+.mce-content-body [data-composition] {
+    text-decoration: underline;
+    text-decoration-color: #3b82f6;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 1px;
+    background-color: rgba(59, 130, 246, 0.03);
+}
+
+/* レスポンシブ設定 */
+@media (max-width: 768px) {
+    .tox-edit-area iframe,
+    .mce-content-body {
+        font-size: 16px !important; /* iOS Safariのズーム防止 */
+    }
+}

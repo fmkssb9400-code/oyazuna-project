@@ -1,0 +1,424 @@
+/* Article Content Styles for Frontend */
+.article-content {
+    @apply text-gray-900 leading-relaxed;
+}
+
+/* === Legacy HTML Support (従来のHTMLタグに対応) === */
+/* これらのスタイルは既存記事のHTMLでも適用される */
+.article-content > p,
+.article-content p:not([class]) {
+    @apply mb-4 last:mb-0 leading-relaxed;
+}
+
+.article-content > h1,
+.article-content h1:not([class]) {
+    @apply text-3xl font-bold mb-6 mt-10 first:mt-0 text-gray-900 border-b border-gray-200 pb-3;
+}
+
+.article-content > h2,
+.article-content h2:not([class]) {
+    @apply text-2xl font-bold mb-4 mt-8 first:mt-0 text-gray-900 border-b border-gray-200 pb-2;
+}
+
+.article-content > h3,
+.article-content h3:not([class]) {
+    @apply text-xl font-bold mb-3 mt-6 first:mt-0 text-gray-900;
+}
+
+.article-content > h4,
+.article-content h4:not([class]) {
+    @apply text-lg font-bold mb-2 mt-4 first:mt-0 text-gray-900;
+}
+
+.article-content > ul,
+.article-content ul:not([class]) {
+    @apply list-disc pl-6 mb-4 space-y-2;
+}
+
+.article-content > ol,
+.article-content ol:not([class]) {
+    @apply list-decimal pl-6 mb-4 space-y-2;
+}
+
+.article-content > li,
+.article-content li:not([class]) {
+    @apply leading-relaxed;
+}
+
+.article-content > blockquote,
+.article-content blockquote:not([class]) {
+    @apply border-l-4 border-blue-500 pl-4 py-2 mb-4 italic text-gray-700 bg-blue-50 rounded-r;
+}
+
+.article-content > hr,
+.article-content hr:not([class]) {
+    @apply my-8 border-0 h-px bg-gray-300;
+}
+
+.article-content > a,
+.article-content a:not([class]) {
+    @apply text-blue-600 hover:text-blue-800 underline transition-colors;
+}
+
+.article-content > strong,
+.article-content strong:not([class]) {
+    @apply font-bold;
+}
+
+.article-content > em,
+.article-content em:not([class]) {
+    @apply italic;
+}
+
+.article-content > img,
+.article-content img:not([class]) {
+    @apply block mx-auto max-w-full h-auto rounded-lg shadow-sm mb-4;
+}
+
+/* WordPress風画像サイズクラス（フロントエンド用） */
+.article-content img.img-sm {
+    @apply block rounded-lg shadow-sm;
+    max-width: 320px !important;
+    width: 320px !important;
+    height: auto !important;
+    margin: 16px 0 !important;
+}
+
+.article-content img.img-md {
+    @apply block rounded-lg shadow-sm;
+    max-width: 600px !important;
+    width: 600px !important;
+    height: auto !important;
+    margin: 16px 0 !important;
+}
+
+.article-content img.img-lg {
+    @apply block rounded-lg shadow-sm;
+    max-width: 900px !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 16px 0 !important;
+}
+
+/* デフォルトサイズ（data-size属性がない場合は中サイズ） */
+.article-content img:not(.img-sm):not(.img-md):not(.img-lg) {
+    @apply block mx-auto rounded-lg shadow-sm;
+    max-width: 600px !important;
+    width: 600px !important;
+    height: auto !important;
+}
+
+/* 旧サイズクラス（後方互換性） */
+.article-content img.image-small {
+    @apply block mx-auto rounded-lg shadow-sm;
+    max-width: 320px !important;
+    width: 320px !important;
+    height: auto !important;
+}
+
+.article-content img.image-medium {
+    @apply block mx-auto rounded-lg shadow-sm;
+    max-width: 600px !important;
+    width: 600px !important;
+    height: auto !important;
+}
+
+.article-content img.image-large {
+    @apply block mx-auto rounded-lg shadow-sm;
+    max-width: 900px !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* === Trix / Filament RichEditor 専用スタイル === */
+/* Trixの構造: <figure class="attachment"><a><img></a><figcaption></figcaption></figure> */
+
+/* 基本のfigure/img構造 */
+.article-content figure {
+    @apply mb-6 text-left;
+}
+
+.article-content figure img {
+    @apply block max-w-full h-auto rounded-lg shadow-sm;
+    margin: 0 !important;
+}
+
+/* Trix attachment 構造用の特別ルール */
+.article-content figure.attachment {
+    @apply mb-6 text-left;
+    max-width: 100% !important;
+}
+
+.article-content figure.attachment a {
+    @apply block;
+}
+
+.article-content figure.attachment a img {
+    @apply block max-w-full h-auto rounded-lg shadow-sm;
+    margin: 0 !important;
+}
+
+.article-content figure figcaption,
+.article-content figure .attachment__caption {
+    @apply mt-2 text-sm text-gray-600 text-center italic;
+}
+
+/* Figure要素に適用されるサイズクラス（Trix対応） */
+.article-content figure.img-sm,
+.article-content figure.img-sm img,
+.article-content figure.attachment.img-sm,
+.article-content figure.attachment.img-sm a img,
+.article-content figure.attachment a img.img-sm {
+    max-width: 320px !important;
+    width: 320px !important;
+    height: auto !important;
+    display: block !important;
+    margin: 16px 0 !important;
+}
+
+.article-content figure.img-md,
+.article-content figure.img-md img,
+.article-content figure.attachment.img-md,
+.article-content figure.attachment.img-md a img,
+.article-content figure.attachment a img.img-md {
+    max-width: 600px !important;
+    width: 600px !important;
+    height: auto !important;
+    display: block !important;
+    margin: 16px 0 !important;
+}
+
+.article-content figure.img-lg,
+.article-content figure.img-lg img,
+.article-content figure.attachment.img-lg,
+.article-content figure.attachment.img-lg a img,
+.article-content figure.attachment a img.img-lg {
+    max-width: 900px !important;
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 16px 0 !important;
+}
+
+/* data-size属性による制御（推奨） */
+.article-content img[data-size="sm"],
+.article-content figure[data-size="sm"],
+.article-content figure.attachment a img[data-size="sm"] {
+    max-width: 320px !important;
+    width: 320px !important;
+    height: auto !important;
+    display: block !important;
+    margin: 16px 0 !important;
+}
+
+.article-content img[data-size="md"],
+.article-content figure[data-size="md"],
+.article-content figure.attachment a img[data-size="md"] {
+    max-width: 600px !important;
+    width: 600px !important;
+    height: auto !important;
+    display: block !important;
+    margin: 16px 0 !important;
+}
+
+.article-content img[data-size="lg"],
+.article-content figure[data-size="lg"],
+.article-content figure.attachment a img[data-size="lg"] {
+    max-width: 900px !important;
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 16px 0 !important;
+}
+
+/* data-trix-attributes に imageSize が含まれる場合のスタイル（バックアップ） */
+.article-content figure[data-trix-attributes*='"imageSize":"sm"'] img,
+.article-content figure.attachment[data-trix-attributes*='"imageSize":"sm"'] a img {
+    max-width: 320px !important;
+    width: 320px !important;
+    height: auto !important;
+}
+
+.article-content figure[data-trix-attributes*='"imageSize":"md"'] img,
+.article-content figure.attachment[data-trix-attributes*='"imageSize":"md"'] a img {
+    max-width: 600px !important;
+    width: 600px !important;
+    height: auto !important;
+}
+
+.article-content figure[data-trix-attributes*='"imageSize":"lg"'] img,
+.article-content figure.attachment[data-trix-attributes*='"imageSize":"lg"'] a img {
+    max-width: 900px !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* === 追加の強力ルール（Trixの構造を確実にサポート） === */
+/* あらゆるTrix attachment構造に対して確実にサイズクラスを適用 */
+
+/* 小サイズ: 320px */
+.article-content figure.attachment.img-sm,
+.article-content figure.attachment.img-sm img,
+.article-content figure.attachment.img-sm a,
+.article-content figure.attachment.img-sm a img,
+.article-content figure.attachment img.img-sm,
+.article-content figure.attachment a img.img-sm {
+    max-width: 320px !important;
+    width: 320px !important;
+    height: auto !important;
+    display: block !important;
+    margin: 16px 0 !important;
+    text-align: left !important;
+}
+
+/* 中サイズ: 600px */
+.article-content figure.attachment.img-md,
+.article-content figure.attachment.img-md img,
+.article-content figure.attachment.img-md a,
+.article-content figure.attachment.img-md a img,
+.article-content figure.attachment img.img-md,
+.article-content figure.attachment a img.img-md {
+    max-width: 600px !important;
+    width: 600px !important;
+    height: auto !important;
+    display: block !important;
+    margin: 16px 0 !important;
+    text-align: left !important;
+}
+
+/* 大サイズ: 900px/100% */
+.article-content figure.attachment.img-lg,
+.article-content figure.attachment.img-lg img,
+.article-content figure.attachment.img-lg a,
+.article-content figure.attachment.img-lg a img,
+.article-content figure.attachment img.img-lg,
+.article-content figure.attachment a img.img-lg {
+    max-width: 900px !important;
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 16px 0 !important;
+    text-align: left !important;
+}
+
+/* figure.attachment 自体の配置設定 */
+.article-content figure.attachment.img-sm,
+.article-content figure.attachment.img-md,
+.article-content figure.attachment.img-lg {
+    display: block !important;
+    width: auto !important;
+    text-align: left !important;
+    margin: 16px 0 !important;
+}
+
+/* === 新ブロックエディタ専用のスタイル === */
+
+/* Image Block Styles for Frontend */
+.article-content .block-image {
+    @apply mb-6;
+}
+
+.article-content .block-image img {
+    @apply block max-w-full h-auto rounded-lg shadow-sm;
+}
+
+.article-content .block-image.align-left {
+    @apply text-left;
+}
+
+.article-content .block-image.align-left img {
+    @apply ml-0;
+}
+
+.article-content .block-image.align-center {
+    @apply text-center;
+}
+
+.article-content .block-image.align-center img {
+    @apply mx-auto;
+}
+
+.article-content .block-image.align-right {
+    @apply text-right;
+}
+
+.article-content .block-image.align-right img {
+    @apply mr-0 ml-auto;
+}
+
+.article-content .block-image.width-normal img {
+    @apply max-w-2xl;
+}
+
+.article-content .block-image.width-wide img {
+    @apply max-w-4xl;
+}
+
+.article-content .block-image.width-full img {
+    @apply max-w-none w-full;
+}
+
+.article-content .block-image figcaption {
+    @apply mt-2 text-sm text-gray-600 text-center italic;
+}
+
+/* === Table Styles === */
+.article-content table {
+    @apply w-full border-collapse border border-gray-300 mb-6 bg-white;
+}
+
+.article-content table th {
+    @apply px-4 py-3 text-left font-semibold text-gray-900 border border-gray-300 bg-gray-100;
+}
+
+.article-content table td {
+    @apply px-4 py-3 text-gray-700 border border-gray-300 bg-white;
+}
+
+.article-content table tr:nth-child(even) td {
+    @apply bg-white;
+}
+
+.article-content table tr:nth-child(odd) td {
+    @apply bg-white;
+}
+
+/* Ensure first row (header) is always gray */
+.article-content table tr:first-child th,
+.article-content table tr:first-child td {
+    @apply bg-gray-100 font-semibold text-gray-900;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .article-content .block-image.width-normal img,
+    .article-content .block-image.width-wide img {
+        @apply max-w-full;
+    }
+    
+    /* 小さい画面では画像サイズクラスもレスポンシブに */
+    .article-content img.img-sm,
+    .article-content img.img-md,
+    .article-content img.img-lg,
+    .article-content img.image-small,
+    .article-content img.image-medium,
+    .article-content img.image-large,
+    .article-content img[data-size="sm"],
+    .article-content img[data-size="md"],
+    .article-content img[data-size="lg"],
+    .article-content figure.img-sm img,
+    .article-content figure.img-md img,
+    .article-content figure.img-lg img,
+    .article-content figure[data-trix-attributes*='"imageSize"'] img {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    
+    .article-content h2 {
+        @apply text-xl;
+    }
+    
+    .article-content h3 {
+        @apply text-lg;
+    }
+}

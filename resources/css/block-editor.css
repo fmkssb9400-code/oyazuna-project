@@ -1,0 +1,288 @@
+/* Full Block Editor Styles */
+.full-block-editor-wrapper {
+    @apply border border-gray-300 rounded-lg overflow-hidden bg-white;
+}
+
+.full-block-editor-wrapper .toolbar {
+    @apply bg-gray-50 border-b border-gray-300;
+}
+
+.full-block-editor-wrapper .toolbar button {
+    @apply transition-all duration-200;
+}
+
+.full-block-editor-wrapper .toolbar button:hover {
+    @apply transform scale-105;
+}
+
+.full-block-editor-wrapper .editor-content {
+    @apply bg-white;
+}
+
+.full-block-editor-wrapper .editor-content [contenteditable] {
+    @apply outline-none;
+}
+
+.full-block-editor-wrapper .editor-content [contenteditable]:focus {
+    @apply ring-2 ring-blue-500/50 rounded;
+}
+
+.full-block-editor-wrapper .editor-content h1,
+.full-block-editor-wrapper .editor-content h2,
+.full-block-editor-wrapper .editor-content h3,
+.full-block-editor-wrapper .editor-content h4,
+.full-block-editor-wrapper .editor-content h5,
+.full-block-editor-wrapper .editor-content h6 {
+    @apply font-bold text-gray-900 mt-6 mb-3 first:mt-0;
+}
+
+.full-block-editor-wrapper .editor-content h1 { @apply text-3xl; }
+.full-block-editor-wrapper .editor-content h2 { @apply text-2xl; }
+.full-block-editor-wrapper .editor-content h3 { @apply text-xl; }
+.full-block-editor-wrapper .editor-content h4 { @apply text-lg; }
+
+.full-block-editor-wrapper .editor-content p {
+    @apply mb-4 last:mb-0 leading-relaxed text-gray-900;
+}
+
+.full-block-editor-wrapper .editor-content ul,
+.full-block-editor-wrapper .editor-content ol {
+    @apply mb-4 pl-6;
+}
+
+.full-block-editor-wrapper .editor-content ul {
+    @apply list-disc;
+}
+
+.full-block-editor-wrapper .editor-content ol {
+    @apply list-decimal;
+}
+
+.full-block-editor-wrapper .editor-content li {
+    @apply mb-2 leading-relaxed;
+}
+
+.full-block-editor-wrapper .editor-content blockquote {
+    @apply border-l-4 border-blue-500 pl-4 py-2 my-4 italic text-gray-700 bg-blue-50 rounded-r;
+}
+
+.full-block-editor-wrapper .editor-content hr {
+    @apply my-8 border-0 h-px bg-gray-300;
+}
+
+.full-block-editor-wrapper .editor-content a {
+    @apply text-blue-600 hover:text-blue-800 underline;
+}
+
+.full-block-editor-wrapper .editor-content img {
+    @apply max-w-full h-auto rounded-lg shadow-sm my-4 mx-auto block;
+}
+
+.full-block-editor-wrapper .editor-content strong {
+    @apply font-bold;
+}
+
+.full-block-editor-wrapper .editor-content em {
+    @apply italic;
+}
+
+/* プレースホルダースタイル */
+.full-block-editor-wrapper .editor-content [contenteditable]:empty::before {
+    content: '記事の本文を入力してください...';
+    @apply text-gray-400 pointer-events-none;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 640px) {
+    .full-block-editor-wrapper .toolbar {
+        @apply p-2;
+    }
+    
+    .full-block-editor-wrapper .toolbar > div {
+        @apply flex-wrap gap-1;
+    }
+    
+    .full-block-editor-wrapper .toolbar button {
+        @apply text-xs px-1.5 py-1;
+    }
+    
+    .full-block-editor-wrapper .editor-content {
+        @apply p-4;
+    }
+}
+
+/* Block Editor Styles (旧版との互換性) */
+.block-editor-wrapper {
+    @apply border border-gray-300 rounded-lg overflow-hidden bg-white;
+}
+
+.block-editor-toolbar {
+    @apply flex flex-wrap items-center gap-1 p-3 bg-gray-50 border-b border-gray-300;
+}
+
+.toolbar-group {
+    @apply flex items-center gap-1 pr-3 border-r border-gray-300 last:border-r-0 last:pr-0;
+}
+
+.toolbar-btn {
+    @apply px-2 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition-colors;
+}
+
+.toolbar-btn.active {
+    @apply bg-blue-600 text-white border-blue-600 hover:bg-blue-700;
+}
+
+.block-editor {
+    @apply min-h-[400px];
+}
+
+.ProseMirror {
+    @apply p-6 focus:outline-none;
+}
+
+.ProseMirror p {
+    @apply mb-4 last:mb-0 leading-relaxed;
+}
+
+.ProseMirror h2 {
+    @apply text-2xl font-bold mb-4 mt-8 first:mt-0 text-gray-900;
+}
+
+.ProseMirror h3 {
+    @apply text-xl font-bold mb-3 mt-6 first:mt-0 text-gray-900;
+}
+
+.ProseMirror ul {
+    @apply list-disc pl-6 mb-4 space-y-2;
+}
+
+.ProseMirror ol {
+    @apply list-decimal pl-6 mb-4 space-y-2;
+}
+
+.ProseMirror li {
+    @apply leading-relaxed;
+}
+
+.ProseMirror blockquote {
+    @apply border-l-4 border-gray-300 pl-4 py-2 mb-4 italic text-gray-700 bg-gray-50;
+}
+
+.ProseMirror hr {
+    @apply my-8 border-0 h-px bg-gray-300;
+}
+
+.ProseMirror a {
+    @apply text-blue-600 hover:text-blue-800 underline;
+}
+
+/* Image Block Styles */
+.image-block-wrapper {
+    @apply relative mb-4;
+}
+
+.block-image {
+    @apply relative;
+}
+
+.block-image img {
+    @apply block mx-auto max-w-full h-auto rounded-lg shadow-sm;
+}
+
+.block-image.align-left {
+    @apply text-left;
+}
+
+.block-image.align-left img {
+    @apply ml-0;
+}
+
+.block-image.align-center {
+    @apply text-center;
+}
+
+.block-image.align-right {
+    @apply text-right;
+}
+
+.block-image.align-right img {
+    @apply mr-0;
+}
+
+.block-image.width-normal img {
+    @apply max-w-2xl;
+}
+
+.block-image.width-wide img {
+    @apply max-w-4xl;
+}
+
+.block-image.width-full img {
+    @apply max-w-none w-full;
+}
+
+.image-caption {
+    @apply mt-2 text-sm text-gray-600 text-center italic;
+    min-height: 1.5rem;
+}
+
+.image-caption:empty:before {
+    content: 'キャプションを入力...';
+    @apply text-gray-400;
+}
+
+.image-controls {
+    @apply absolute top-2 right-2 opacity-0 hover:opacity-100 transition-opacity duration-200;
+}
+
+.image-control-buttons {
+    @apply flex items-center gap-1 bg-white rounded-lg shadow-lg border border-gray-200 p-1;
+}
+
+.image-control-buttons button {
+    @apply p-1.5 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded transition-colors;
+}
+
+.image-control-buttons .width-controls {
+    @apply border-l border-gray-300 pl-2 ml-1;
+}
+
+.width-select {
+    @apply text-xs border-none bg-transparent focus:outline-none cursor-pointer;
+}
+
+/* Placeholder styles */
+.ProseMirror p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    @apply float-left h-0 text-gray-400 pointer-events-none;
+}
+
+/* Focus styles */
+.ProseMirror:focus {
+    @apply outline-none;
+}
+
+.ProseMirror-focused {
+    @apply outline-none;
+}
+
+/* Selection styles */
+.ProseMirror-selectednode {
+    @apply outline-2 outline-blue-500 outline-dashed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .toolbar-group {
+        @apply flex-wrap;
+    }
+    
+    .block-image.width-normal img,
+    .block-image.width-wide img {
+        @apply max-w-full;
+    }
+    
+    .image-controls {
+        @apply opacity-100;
+    }
+}

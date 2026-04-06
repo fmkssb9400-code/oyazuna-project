@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クリモバ - 高所窓ガラス清掃業者比較・一括見積もり</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="http://[::1]:5173/@vite/client" data-navigate-track="reload"></script><link rel="stylesheet" href="http://[::1]:5173/resources/css/app.css" data-navigate-track="reload" /><script type="module" src="http://[::1]:5173/resources/js/app.js" data-navigate-track="reload"></script>    <meta name="csrf-token" content="zkQLw9OUpBcuvqQxhXQxAjmVSEm0rhjxTnQyArsb">
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-sm border-b overflow-visible">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
+            <div class="flex justify-between items-center h-20 gap-4 overflow-visible">
+                <div class="flex items-center overflow-visible">
+                                        
+                    <a href="http://127.0.0.1:8000" class="flex items-center gap-2 px-2">
+                                              <img
+                          src="http://127.0.0.1:8000/storage/logos/01KHWWJ7V0RK8RENP0R3DFVYED.png"
+                          alt="クリモバ"
+                          class="h-12 w-auto max-w-[220px] object-contain shrink-0 block"
+                        />
+                                          </a>
+                </div>
+                <div class="flex items-center space-x-4 flex-shrink-0">
+                    <a href="http://127.0.0.1:8000/companies" class="text-gray-700 hover:text-blue-600">業者一覧</a>
+                    <a href="http://127.0.0.1:8000/compare" class="text-gray-700 hover:text-blue-600">
+                        比較 (<span id="compare-count">0</span>)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="relative bg-blue-400 text-white py-20 overflow-hidden">
+            <div class="absolute inset-0">
+            <img src="http://127.0.0.1:8000/storage/site-settings/01KHWVX7BP0691A1R0C7N4NJZD.png" alt="ヒーロー画像" class="w-full h-full object-cover opacity-30">
+        </div>
+        <div class="absolute inset-0 bg-blue-400 opacity-60"></div>
+        <div class="relative max-w-4xl mx-auto px-4 text-center">
+        <h1 class="text-4xl font-bold mb-4">高所窓ガラス清掃業者を</h1>
+        <h2 class="text-3xl font-bold mb-6">まとめて比較・一括見積もり</h2>
+        <p class="text-xl mb-8">ロープアクセス対応業者がすぐ見つかる！</p>
+    </div>
+</div>
+
+<div class="max-w-4xl mx-auto px-4 py-12">
+    <div class="bg-white rounded-lg shadow-lg p-8">
+        <h3 class="text-2xl font-bold text-center mb-8">まずは条件を入力してください</h3>
+        
+        <form action="http://127.0.0.1:8000/companies" method="GET" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="prefecture_id" class="block text-sm font-medium text-gray-700 mb-2">都道府県 <span class="text-red-500">*</span></label>
+                    <select name="prefecture_id" id="prefecture_id" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">選択してください</option>
+                                                    <option value="1">北海道</option>
+                                                    <option value="2">青森県</option>
+                                                    <option value="3">岩手県</option>
+                                                    <option value="4">宮城県</option>
+                                                    <option value="5">秋田県</option>
+                                                    <option value="6">山形県</option>
+                                                    <option value="7">福島県</option>
+                                                    <option value="8">茨城県</option>
+                                                    <option value="9">栃木県</option>
+                                                    <option value="10">群馬県</option>
+                                                    <option value="11">埼玉県</option>
+                                                    <option value="12">千葉県</option>
+                                                    <option value="13">東京都</option>
+                                                    <option value="14">神奈川県</option>
+                                                    <option value="15">新潟県</option>
+                                                    <option value="16">富山県</option>
+                                                    <option value="17">石川県</option>
+                                                    <option value="18">福井県</option>
+                                                    <option value="19">山梨県</option>
+                                                    <option value="20">長野県</option>
+                                                    <option value="21">岐阜県</option>
+                                                    <option value="22">静岡県</option>
+                                                    <option value="23">愛知県</option>
+                                                    <option value="24">三重県</option>
+                                                    <option value="25">滋賀県</option>
+                                                    <option value="26">京都府</option>
+                                                    <option value="27">大阪府</option>
+                                                    <option value="28">兵庫県</option>
+                                                    <option value="29">奈良県</option>
+                                                    <option value="30">和歌山県</option>
+                                                    <option value="31">鳥取県</option>
+                                                    <option value="32">島根県</option>
+                                                    <option value="33">岡山県</option>
+                                                    <option value="34">広島県</option>
+                                                    <option value="35">山口県</option>
+                                                    <option value="36">徳島県</option>
+                                                    <option value="37">香川県</option>
+                                                    <option value="38">愛媛県</option>
+                                                    <option value="39">高知県</option>
+                                                    <option value="40">福岡県</option>
+                                                    <option value="41">佐賀県</option>
+                                                    <option value="42">長崎県</option>
+                                                    <option value="43">熊本県</option>
+                                                    <option value="44">大分県</option>
+                                                    <option value="45">宮崎県</option>
+                                                    <option value="46">鹿児島県</option>
+                                                    <option value="47">沖縄県</option>
+                                            </select>
+                </div>
+                
+                <div>
+                    <label for="floors" class="block text-sm font-medium text-gray-700 mb-2">階数 <span class="text-red-500">*</span></label>
+                    <input type="number" name="floors" id="floors" min="1" required 
+                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           placeholder="例：10">
+                </div>
+                
+                <div>
+                    <label for="building_type_id" class="block text-sm font-medium text-gray-700 mb-2">建物種別</label>
+                    <select name="building_type_id" id="building_type_id" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">指定しない</option>
+                                                    <option value="1">オフィスビル</option>
+                                                    <option value="2">マンション</option>
+                                                    <option value="3">店舗</option>
+                                                    <option value="4">工場</option>
+                                                    <option value="5">その他</option>
+                                            </select>
+                </div>
+                
+                <div>
+                    <label for="service_category_id" class="block text-sm font-medium text-gray-700 mb-2">依頼内容</label>
+                    <select name="service_category_id" id="service_category_id" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">指定しない</option>
+                                                    <option value="1">窓ガラス清掃</option>
+                                                    <option value="2">外壁清掃</option>
+                                                    <option value="3">看板清掃</option>
+                                                    <option value="4">その他</option>
+                                            </select>
+                </div>
+                
+                <div>
+                    <label for="preferred_service_method_id" class="block text-sm font-medium text-gray-700 mb-2">希望工法</label>
+                    <select name="preferred_service_method_id" id="preferred_service_method_id" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">指定しない</option>
+                                                    <option value="1">ロープアクセス</option>
+                                                    <option value="2">ゴンドラ</option>
+                                                    <option value="3">高所作業車</option>
+                                                    <option value="4">足場</option>
+                                            </select>
+                </div>
+                
+                <div class="flex items-center">
+                    <input type="checkbox" name="emergency" id="emergency" value="1" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                    <label for="emergency" class="ml-2 block text-sm text-gray-700">緊急対応希望</label>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button type="submit" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    条件に合う業者を検索
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="mt-16 text-center">
+        <h3 class="text-2xl font-bold mb-8">人気エリア</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <a href="http://127.0.0.1:8000/companies?prefecture_id=13" class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">東京都</a>
+            <a href="http://127.0.0.1:8000/companies?prefecture_id=27" class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">大阪府</a>
+            <a href="http://127.0.0.1:8000/companies?prefecture_id=14" class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">神奈川県</a>
+            <a href="http://127.0.0.1:8000/companies?prefecture_id=23" class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">愛知県</a>
+        </div>
+    </div>
+</div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-20">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="text-center">
+                <p>&copy; 2026 クリモバ. All rights reserved.</p>
+                <div class="mt-4 space-x-4">
+                    <a href="#" class="text-gray-300 hover:text-white">プライバシーポリシー</a>
+                    <a href="#" class="text-gray-300 hover:text-white">利用規約</a>
+                    <a href="#" class="text-gray-300 hover:text-white">免責事項</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </body>
+</html>

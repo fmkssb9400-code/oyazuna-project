@@ -1,0 +1,190 @@
+/* ============================================
+   Filament TinyMCE レイアウト修正CSS
+   ============================================ */
+
+/* TinyMCEコンテナ全体のレイアウト修正 */
+.tox-tinymce {
+    direction: ltr !important;
+    text-align: left !important;
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* TinyMCE編集エリア */
+.tox-edit-area {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+.tox-edit-area iframe {
+    direction: ltr !important;
+}
+
+/* Filament RichEditor コンテナ */
+.fi-fo-rich-editor {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+.fi-fo-rich-editor .tox-tinymce {
+    direction: ltr !important;
+    text-align: left !important;
+    max-width: none !important;
+}
+
+.fi-fo-rich-editor .tox-edit-area {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* TinyMCE内のすべての要素を強制的にLTR */
+.tox-tinymce *,
+.tox-tinymce *::before,
+.tox-tinymce *::after {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* ツールバー */
+.tox-toolbar {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+.tox-tbtn {
+    direction: ltr !important;
+}
+
+/* メニューバー */
+.tox-menubar {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* ダイアログ */
+.tox-dialog {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+.tox-dialog__body {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* フォーム要素 */
+.tox-textfield,
+.tox-textarea,
+.tox-selectfield select {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* 画像アップロード関連 */
+.tox-dialog__body-content {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+.tox-form__group {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* Tailwind/Filamentとの競合解決 */
+.fi-main .tox-tinymce {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+.fi-section-content .tox-tinymce {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .tox-tinymce {
+        direction: ltr !important;
+        text-align: left !important;
+        max-width: none !important;
+        width: 100% !important;
+    }
+}
+
+/* 既存のFilament RichEditorの画像関連スタイルは維持 */
+.fi-fo-rich-editor .ProseMirror img {
+    display: block !important;
+    margin: 16px auto !important;
+    height: auto !important;
+    border-radius: 4px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+.fi-fo-rich-editor .ProseMirror img.img-sm {
+    max-width: 320px !important;
+    width: 320px !important;
+}
+
+.fi-fo-rich-editor .ProseMirror img.img-md,
+.fi-fo-rich-editor .ProseMirror img:not(.img-sm):not(.img-lg) {
+    max-width: 600px !important;
+    width: 600px !important;
+}
+
+.fi-fo-rich-editor .ProseMirror img.img-lg {
+    max-width: 900px !important;
+    width: 100% !important;
+}
+
+/* ============================================
+   TinyMCE Toolbar Wrap + Overflow Fix for Filament
+   ============================================ */
+
+/* TinyMCE z-index and overflow fixes */
+.tox.tox-tinymce,
+.tox.tox-tinymce-aux {
+    z-index: 9999 !important;
+}
+
+.tox .tox-editor-container,
+.tox .tox-sidebar-wrap,
+.tox .tox-toolbar-overlord,
+.tox .tox-toolbar__primary {
+    overflow: visible !important;
+}
+
+/* Toolbar wrap and height fixes */
+.tox .tox-toolbar__primary {
+    flex-wrap: wrap !important;
+    height: auto !important;
+    min-height: 44px !important;
+}
+
+.tox .tox-toolbar__group {
+    flex-wrap: wrap !important;
+}
+
+.tox .tox-toolbar__overflow {
+    max-height: none !important;
+}
+
+/* Filament親要素のoverflow対策 */
+.fi-fo-rich-editor,
+.fi-fo-rich-editor > div,
+[data-field-wrapper] {
+    overflow: visible !important;
+}
+
+/* blocks button が確実に表示されるようにする */
+.tox .tox-tbtn[aria-label*="lock"],
+.tox .tox-split-button[aria-label*="lock"],
+.tox .tox-selectfield select,
+.tox .tox-toolbar__group:first-child .tox-selectfield,
+.tox .tox-toolbar__group:first-child .tox-split-button {
+    visibility: visible !important;
+    display: inline-flex !important;
+    opacity: 1 !important;
+}

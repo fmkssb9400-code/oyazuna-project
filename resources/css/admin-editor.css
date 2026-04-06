@@ -1,0 +1,734 @@
+/* Filament Admin Editor Custom Styles */
+/* CTAボタンとテーブルのプレビューを管理画面でも表示 */
+
+/* マーカー機能のスタイル */
+.fi-fo-rich-editor .trix-content mark,
+.fi-fo-rich-editor .trix-content .marker {
+    background-color: #fef08a !important;
+    color: #1f2937 !important;
+    padding: 2px 0 !important;
+    border-radius: 2px !important;
+}
+
+/* Rich Editor内でのCTAボタンプレビュー */
+.fi-fo-rich-editor .trix-content .km-cta,
+.trix-content .km-cta,
+a.km-cta {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    padding: 20px 24px !important;
+    margin: 16px auto !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.fi-fo-rich-editor .trix-content .km-cta--orange,
+.trix-content .km-cta--orange,
+a.km-cta--orange {
+    background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%) !important;
+    color: white !important;
+}
+
+.fi-fo-rich-editor .trix-content .km-cta--orange:hover,
+.trix-content .km-cta--orange:hover,
+a.km-cta--orange:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(234, 88, 12, 0.4) !important;
+}
+
+.fi-fo-rich-editor .trix-content .km-cta--blue,
+.trix-content .km-cta--blue,
+a.km-cta--blue {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+    color: white !important;
+}
+
+.fi-fo-rich-editor .trix-content .km-cta--blue:hover,
+.trix-content .km-cta--blue:hover,
+a.km-cta--blue:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* Rich Editor内での比較表プレビュー */
+.fi-fo-rich-editor .trix-content .km-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 20px 0 !important;
+    background: white !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+.fi-fo-rich-editor .trix-content .km-table th {
+    background-color: #3b82f6 !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 16px !important;
+    text-align: left !important;
+    border: 1px solid #2563eb !important;
+}
+
+.fi-fo-rich-editor .trix-content .km-table td {
+    padding: 16px !important;
+    border: 1px solid #e5e7eb !important;
+    background: white !important;
+    vertical-align: top !important;
+}
+
+.fi-fo-rich-editor .trix-content .km-table td:first-child {
+    background-color: #f8fafc !important;
+    font-weight: 600 !important;
+    color: #1f2937 !important;
+}
+
+.fi-fo-rich-editor .trix-content .km-table tbody tr:hover {
+    background-color: transparent !important;
+}
+
+.fi-fo-rich-editor .trix-content .km-table tbody tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+.fi-fo-rich-editor .trix-content .km-table tbody tr:hover td:first-child {
+    background-color: #e2e8f0 !important;
+}
+
+/* Rich Editor全体のスタイル調整 */
+.fi-fo-rich-editor .trix-content {
+    min-height: 300px;
+    padding: 1rem;
+}
+
+/* Trixエディタ内のテーブル強制表示 - 最優先 */
+.fi-fo-rich-editor .trix-content table,
+.fi-fo-rich-editor trix-editor table,
+trix-editor table,
+.fi-fo-rich-editor table,
+trix-editor table {
+    display: table !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border: 2px solid #d1d5db !important;
+    margin: 20px 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 14px !important;
+    table-layout: auto !important;
+    background-color: white !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* テーブルのすべての子要素を強制表示 */
+.fi-fo-rich-editor .trix-content thead,
+.fi-fo-rich-editor trix-editor thead,
+trix-editor thead {
+    display: table-header-group !important;
+}
+
+.fi-fo-rich-editor .trix-content tbody,
+.fi-fo-rich-editor trix-editor tbody,
+trix-editor tbody {
+    display: table-row-group !important;
+}
+
+.fi-fo-rich-editor .trix-content tr,
+.fi-fo-rich-editor trix-editor tr,
+trix-editor tr {
+    display: table-row !important;
+}
+
+.fi-fo-rich-editor .trix-content th,
+.fi-fo-rich-editor .trix-content td,
+.fi-fo-rich-editor trix-editor th,
+.fi-fo-rich-editor trix-editor td,
+trix-editor th,
+trix-editor td {
+    display: table-cell !important;
+    border: 1px solid #9ca3af !important;
+    padding: 12px !important;
+    text-align: left !important;
+    vertical-align: top !important;
+    cursor: text !important;
+    min-width: 120px !important;
+    word-wrap: break-word !important;
+    background-color: white !important;
+}
+
+.fi-fo-rich-editor .trix-content table th,
+.fi-fo-rich-editor trix-editor th,
+trix-editor th {
+    background-color: #f3f4f6 !important;
+    font-weight: bold !important;
+    color: #374151 !important;
+}
+
+.fi-fo-rich-editor .trix-content table thead {
+    display: table-header-group !important;
+}
+
+.fi-fo-rich-editor .trix-content table tbody {
+    display: table-row-group !important;
+}
+
+.fi-fo-rich-editor .trix-content table tr {
+    display: table-row !important;
+}
+
+.fi-fo-rich-editor .trix-content table th:focus,
+.fi-fo-rich-editor .trix-content table td:focus {
+    outline: 2px solid #3b82f6 !important;
+    outline-offset: -2px !important;
+    background-color: #eff6ff !important;
+}
+
+/* 新しいTailwindベーステーブルのスタイル（管理画面用） */
+.fi-fo-rich-editor .trix-content div.overflow-x-auto,
+.fi-fo-rich-editor trix-editor div.overflow-x-auto {
+    overflow-x: auto !important;
+    margin: 2rem 0 !important;
+}
+
+.fi-fo-rich-editor .trix-content table.w-full {
+    width: 100% !important;
+    min-width: 640px !important;
+    border-collapse: collapse !important;
+    border: 1px solid #e5e7eb !important;
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+}
+
+.fi-fo-rich-editor .trix-content tr.bg-gray-100 {
+    background-color: #f3f4f6 !important;
+}
+
+.fi-fo-rich-editor .trix-content tr.bg-gray-100 th {
+    background-color: #f3f4f6 !important;
+}
+
+.fi-fo-rich-editor .trix-content th.bg-gray-50 {
+    background-color: #f9fafb !important;
+}
+
+.fi-fo-rich-editor .trix-content .border-gray-200 {
+    border: 1px solid #e5e7eb !important;
+}
+
+.fi-fo-rich-editor .trix-content .px-4 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+.fi-fo-rich-editor .trix-content .py-3 {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+}
+
+.fi-fo-rich-editor .trix-content .font-bold {
+    font-weight: 700 !important;
+}
+
+.fi-fo-rich-editor .trix-content .text-sm {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+}
+
+.fi-fo-rich-editor .trix-content .text-left {
+    text-align: left !important;
+}
+
+.fi-fo-rich-editor .trix-content table.w-full td,
+.fi-fo-rich-editor .trix-content table.w-full th {
+    padding: 0.75rem 1rem !important;
+    border: 1px solid #e5e7eb !important;
+    text-align: left !important;
+}
+
+/* テーブル編集の改善 */
+.fi-fo-rich-editor .trix-content table td,
+.fi-fo-rich-editor .trix-content table th {
+    cursor: text !important;
+    position: relative !important;
+    min-height: 40px !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+}
+
+/* エディタ内でのテーブル選択改善 */
+.fi-fo-rich-editor .trix-content table td:focus,
+.fi-fo-rich-editor .trix-content table th:focus {
+    outline: 2px solid #3b82f6 !important;
+    outline-offset: -2px !important;
+    background-color: #eff6ff !important;
+}
+
+.fi-fo-rich-editor .trix-content table td:hover,
+.fi-fo-rich-editor .trix-content table th:hover {
+    background-color: #f8fafc !important;
+}
+
+/* テーブル全体の視認性向上 */
+.fi-fo-rich-editor .trix-content table {
+    margin: 1.5rem 0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    display: table !important;
+}
+
+/* インラインスタイル付きテーブルの強制表示 */
+.fi-fo-rich-editor .trix-content table[border] {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 20px 0 !important;
+    display: table !important;
+    table-layout: auto !important;
+}
+
+.fi-fo-rich-editor .trix-content table[border] td,
+.fi-fo-rich-editor .trix-content table[border] th {
+    border: 1px solid #e5e7eb !important;
+    padding: 12px !important;
+    cursor: text !important;
+    vertical-align: top !important;
+    display: table-cell !important;
+}
+
+.fi-fo-rich-editor .trix-content table[border] thead {
+    display: table-header-group !important;
+}
+
+.fi-fo-rich-editor .trix-content table[border] tbody {
+    display: table-row-group !important;
+}
+
+.fi-fo-rich-editor .trix-content table[border] tr {
+    display: table-row !important;
+}
+
+/* 旧km-tableとの互換性も保持 */
+.fi-fo-rich-editor .trix-content .km-table td,
+.fi-fo-rich-editor .trix-content .km-table th {
+    min-width: 120px !important;
+    cursor: text !important;
+    position: relative !important;
+}
+
+.fi-fo-rich-editor .trix-content .km-table {
+    table-layout: fixed !important;
+}
+
+.fi-fo-rich-editor .trix-content .km-table td:focus,
+.fi-fo-rich-editor .trix-content .km-table th:focus {
+    outline: 2px solid #3b82f6 !important;
+    outline-offset: -2px !important;
+}
+
+/* モバイル対応 */
+@media (max-width: 767px) {
+    .fi-fo-rich-editor .trix-content .km-cta {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .fi-fo-rich-editor .trix-content .km-table {
+        font-size: 14px;
+    }
+
+    .fi-fo-rich-editor .trix-content .km-table th,
+    .fi-fo-rich-editor .trix-content .km-table td {
+        padding: 12px 8px;
+    }
+
+    .fi-fo-rich-editor .trix-content .km-table td:first-child {
+        width: 30%;
+    }
+}
+
+/* Enhanced Table Interactivity and Focus Management */
+.fi-fo-rich-editor trix-editor table th,
+.fi-fo-rich-editor trix-editor table td {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+    position: relative !important;
+}
+
+/* Improved focus and editing indicators */
+.fi-fo-rich-editor trix-editor table th:focus,
+.fi-fo-rich-editor trix-editor table td:focus {
+    outline: 2px solid #3b82f6 !important;
+    box-shadow: 0 0 0 1px #3b82f6 !important;
+    background-color: #eff6ff !important;
+}
+
+/* Better hover states for table cells */
+.fi-fo-rich-editor trix-editor table th:hover:not(:focus),
+.fi-fo-rich-editor trix-editor table td:hover:not(:focus) {
+    background-color: #f1f5f9 !important;
+    transition: background-color 0.2s ease !important;
+}
+
+/* Placeholder text for empty cells */
+.fi-fo-rich-editor trix-editor table th:empty::before,
+.fi-fo-rich-editor trix-editor table td:empty::before {
+    content: "クリックして入力";
+    color: #9ca3af !important;
+    font-style: italic !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    left: 12px !important;
+    top: 12px !important;
+}
+
+/* Ensure contenteditable works properly in all browsers */
+.fi-fo-rich-editor trix-editor table [contenteditable="true"],
+.fi-fo-rich-editor trix-editor table th,
+.fi-fo-rich-editor trix-editor table td {
+    outline: none !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+}
+
+/* Force table elements to be visible even if they have inline styles */
+.fi-fo-rich-editor trix-editor table,
+.fi-fo-rich-editor trix-editor table *:not(script):not(style) {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: revert !important;
+}
+
+/* Specific override for table structure */
+.fi-fo-rich-editor trix-editor table {
+    display: table !important;
+}
+
+.fi-fo-rich-editor trix-editor table thead {
+    display: table-header-group !important;
+}
+
+.fi-fo-rich-editor trix-editor table tbody {
+    display: table-row-group !important;
+}
+
+.fi-fo-rich-editor trix-editor table tr {
+    display: table-row !important;
+}
+
+.fi-fo-rich-editor trix-editor table th,
+.fi-fo-rich-editor trix-editor table td {
+    display: table-cell !important;
+}
+
+/* Override any potential CSS resets from other frameworks */
+.fi-form-component-ctn .fi-fo-rich-editor trix-editor table {
+    all: revert !important;
+    display: table !important;
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin: 20px 0 !important;
+    border: 2px solid #d1d5db !important;
+}
+
+.fi-form-component-ctn .fi-fo-rich-editor trix-editor table th,
+.fi-form-component-ctn .fi-fo-rich-editor trix-editor table td {
+    all: revert !important;
+    display: table-cell !important;
+    border: 1px solid #9ca3af !important;
+    padding: 12px !important;
+    cursor: text !important;
+}
+
+/* Specific styling for newly inserted tables */
+.fi-fo-rich-editor trix-editor table:not(.km-table) th {
+    background-color: #f3f4f6 !important;
+    font-weight: bold !important;
+    color: #374151 !important;
+}
+
+.fi-fo-rich-editor trix-editor table:not(.km-table) tbody th {
+    background-color: #f9fafb !important;
+    font-weight: bold !important;
+    color: #374151 !important;
+}
+
+.fi-fo-rich-editor trix-editor table:not(.km-table) td {
+    background-color: white !important;
+    color: #374151 !important;
+}
+
+/* Ensure tables work with both contenteditable and non-contenteditable states */
+.fi-fo-rich-editor trix-editor table[contenteditable="false"] th,
+.fi-fo-rich-editor trix-editor table[contenteditable="false"] td {
+    cursor: text !important;
+}
+
+.fi-fo-rich-editor trix-editor table[contenteditable="false"] th[contenteditable="true"],
+.fi-fo-rich-editor trix-editor table[contenteditable="false"] td[contenteditable="true"] {
+    cursor: text !important;
+    outline: none !important;
+}
+
+/* Additional keyboard navigation support */
+.fi-fo-rich-editor trix-editor table th:focus,
+.fi-fo-rich-editor trix-editor table td:focus {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Prevent text selection issues in Safari */
+.fi-fo-rich-editor trix-editor table {
+    -webkit-user-select: text !important;
+    -webkit-text-size-adjust: 100% !important;
+}
+
+/* Ensure tables display properly on different screen sizes */
+@media (max-width: 768px) {
+    .fi-fo-rich-editor trix-editor table {
+        min-width: 100% !important;
+        font-size: 13px !important;
+    }
+    
+    .fi-fo-rich-editor trix-editor table th,
+    .fi-fo-rich-editor trix-editor table td {
+        padding: 8px !important;
+        min-width: 80px !important;
+    }
+}
+
+/* Tailwindクラス付きテーブルのスタイル強制適用 */
+.fi-fo-rich-editor trix-editor table.w-full,
+.fi-fo-rich-editor .trix-content table.w-full {
+    display: table !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 1.5rem 0 !important;
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+.fi-fo-rich-editor trix-editor table.w-full thead,
+.fi-fo-rich-editor .trix-content table.w-full thead {
+    display: table-header-group !important;
+}
+
+.fi-fo-rich-editor trix-editor table.w-full tbody,
+.fi-fo-rich-editor .trix-content table.w-full tbody {
+    display: table-row-group !important;
+}
+
+.fi-fo-rich-editor trix-editor table.w-full tr,
+.fi-fo-rich-editor .trix-content table.w-full tr {
+    display: table-row !important;
+}
+
+.fi-fo-rich-editor trix-editor table.w-full th,
+.fi-fo-rich-editor trix-editor table.w-full td,
+.fi-fo-rich-editor .trix-content table.w-full th,
+.fi-fo-rich-editor .trix-content table.w-full td {
+    display: table-cell !important;
+    border: 1px solid #e5e7eb !important;
+    padding: 0.75rem 1rem !important;
+    text-align: left !important;
+    cursor: text !important;
+}
+
+/* Tailwindクラス付きテーブルの背景色 */
+.fi-fo-rich-editor trix-editor table.w-full tr.bg-gray-100,
+.fi-fo-rich-editor .trix-content table.w-full tr.bg-gray-100 {
+    background-color: #f3f4f6 !important;
+}
+
+.fi-fo-rich-editor trix-editor table.w-full th.bg-gray-50,
+.fi-fo-rich-editor .trix-content table.w-full th.bg-gray-50 {
+    background-color: #f9fafb !important;
+}
+
+/* contenteditable属性付きセルの編集可能スタイル */
+.fi-fo-rich-editor trix-editor [contenteditable="true"],
+.fi-fo-rich-editor .trix-content [contenteditable="true"] {
+    outline: none !important;
+    cursor: text !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    user-select: text !important;
+}
+
+.fi-fo-rich-editor trix-editor [contenteditable="true"]:focus,
+.fi-fo-rich-editor .trix-content [contenteditable="true"]:focus {
+    outline: 2px solid #3b82f6 !important;
+    box-shadow: 0 0 0 1px #3b82f6 !important;
+    background-color: #eff6ff !important;
+}
+
+.fi-fo-rich-editor trix-editor [contenteditable="true"]:hover:not(:focus),
+.fi-fo-rich-editor .trix-content [contenteditable="true"]:hover:not(:focus) {
+    background-color: #f1f5f9 !important;
+}
+
+/* HTMLテーブル要素の最強制表示設定 */
+.fi-fo-rich-editor *[class*="w-full"] table,
+.fi-fo-rich-editor div[class*="overflow-x-auto"] table {
+    display: table !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 1.5rem 0 !important;
+    border: 1px solid #e5e7eb !important;
+    background: white !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.fi-fo-rich-editor *[class*="w-full"] thead,
+.fi-fo-rich-editor div[class*="overflow-x-auto"] thead {
+    display: table-header-group !important;
+    background-color: #f3f4f6 !important;
+}
+
+.fi-fo-rich-editor *[class*="w-full"] tbody,
+.fi-fo-rich-editor div[class*="overflow-x-auto"] tbody {
+    display: table-row-group !important;
+}
+
+.fi-fo-rich-editor *[class*="w-full"] tr,
+.fi-fo-rich-editor div[class*="overflow-x-auto"] tr {
+    display: table-row !important;
+}
+
+.fi-fo-rich-editor *[class*="w-full"] th,
+.fi-fo-rich-editor *[class*="w-full"] td,
+.fi-fo-rich-editor div[class*="overflow-x-auto"] th,
+.fi-fo-rich-editor div[class*="overflow-x-auto"] td {
+    display: table-cell !important;
+    border: 1px solid #e5e7eb !important;
+    padding: 0.75rem 1rem !important;
+    text-align: left !important;
+    vertical-align: top !important;
+    cursor: text !important;
+}
+
+/* テキストノード（文字列）の表示を強制的に非表示にして、HTMLテーブルだけを表示 */
+.fi-fo-rich-editor .trix-content,
+.fi-fo-rich-editor trix-editor {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+
+/* テーブル周辺のdiv要素の表示確保 */
+.fi-fo-rich-editor div[class*="my-6"],
+.fi-fo-rich-editor div[class*="overflow-x-auto"] {
+    display: block !important;
+    width: 100% !important;
+    margin: 1.5rem 0 !important;
+    overflow-x: auto !important;
+}
+
+/* 最強制テーブル表示ルール - あらゆるCSSを上書き */
+.fi-fo-rich-editor table,
+.fi-fo-rich-editor .trix-content table,
+.fi-fo-rich-editor trix-editor table,
+trix-editor table,
+.trix-content table {
+    display: table !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 20px 0 !important;
+    border: 2px solid #d1d5db !important;
+    background: white !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    font-size: 14px !important;
+}
+
+.fi-fo-rich-editor table *,
+.fi-fo-rich-editor .trix-content table *,
+.fi-fo-rich-editor trix-editor table *,
+trix-editor table *,
+.trix-content table * {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.fi-fo-rich-editor table thead,
+.fi-fo-rich-editor .trix-content table thead,
+.fi-fo-rich-editor trix-editor table thead,
+trix-editor table thead,
+.trix-content table thead {
+    display: table-header-group !important;
+}
+
+.fi-fo-rich-editor table tbody,
+.fi-fo-rich-editor .trix-content table tbody,
+.fi-fo-rich-editor trix-editor table tbody,
+trix-editor table tbody,
+.trix-content table tbody {
+    display: table-row-group !important;
+}
+
+.fi-fo-rich-editor table tr,
+.fi-fo-rich-editor .trix-content table tr,
+.fi-fo-rich-editor trix-editor table tr,
+trix-editor table tr,
+.trix-content table tr {
+    display: table-row !important;
+}
+
+.fi-fo-rich-editor table th,
+.fi-fo-rich-editor table td,
+.fi-fo-rich-editor .trix-content table th,
+.fi-fo-rich-editor .trix-content table td,
+.fi-fo-rich-editor trix-editor table th,
+.fi-fo-rich-editor trix-editor table td,
+trix-editor table th,
+trix-editor table td,
+.trix-content table th,
+.trix-content table td {
+    display: table-cell !important;
+    border: 1px solid #9ca3af !important;
+    padding: 12px !important;
+    text-align: left !important;
+    vertical-align: top !important;
+    cursor: text !important;
+    background: white !important;
+    min-width: 100px !important;
+}
+
+/* ヘッダーセルの特別スタイル */
+.fi-fo-rich-editor table thead th,
+.fi-fo-rich-editor .trix-content table thead th,
+.fi-fo-rich-editor trix-editor table thead th,
+trix-editor table thead th,
+.trix-content table thead th {
+    background-color: #f3f4f6 !important;
+    font-weight: bold !important;
+}
+
+.fi-fo-rich-editor table tbody th,
+.fi-fo-rich-editor .trix-content table tbody th,
+.fi-fo-rich-editor trix-editor table tbody th,
+trix-editor table tbody th,
+.trix-content table tbody th {
+    background-color: #f9fafb !important;
+    font-weight: bold !important;
+}
