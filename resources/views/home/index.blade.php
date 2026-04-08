@@ -375,8 +375,8 @@
 <div class="hero-section">
   <div class="hero-content">
     <div class="hero-text">
-      <img src="{{ asset('images/text.png') }}" alt="高所ロープ業者の口コミ・比較サイト" style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
-      <p style="text-align: left; margin-left: 7.5%;">オヤズナは、高所ロープ作業に対応した業者を比較し、<br>安心して依頼できる会社が見つかるサイトです。</p>
+      <h1 style="font-size: 48px;"><span style="color: #FFD700;">高所ロープ業者の</span><br>口コミ・比較サイト</h1>
+      <p>オヤズナは、高所ロープ作業に対応した業者を比較し、<br>安心して依頼できる会社が見つかるサイトです。</p>
     </div>
     <div class="hero-image">
       <img src="{{ asset('images/waiper.png') }}?v={{ time() }}" alt="オヤズナキャラクター">
