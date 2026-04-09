@@ -375,7 +375,7 @@
 <div class="hero-section">
   <div class="hero-content">
     <div class="hero-text">
-      <h1 style="font-size: 48px;"><span style="color: #FFD700;">高所ロープ業者の</span><br>口コミ・比較サイト</h1>
+      <h1 style="font-size: 48px; font-weight: 1000;"><span style="color: #FFD700; font-weight: 1000;">高所ロープ業者の</span><br><span style="font-weight: 1000;">口コミ・比較サイト</span></h1>
       <p>オヤズナは、高所ロープ作業に対応した業者を比較し、<br>安心して依頼できる会社が見つかるサイトです。</p>
     </div>
     <div class="hero-image">
