@@ -13,48 +13,96 @@ class CompanyController extends Controller
 {
     public function index(Request $request)
     {
-        $filters = $request->only([
-            'prefecture_id',
-            'prefecture',
-            'building_type_id', 
-            'floors', 
-            'service_category_id', 
-            'preferred_service_method_id', 
-            'emergency'
-        ]);
-
-        $query = Company::forQuote($filters)
-            ->with(['prefectures', 'serviceMethods', 'buildingTypes', 'serviceCategories'])
+        $query = Company::with(['prefectures', 'serviceMethods', 'buildingTypes', 'serviceCategories'])
             ->withCount('reviews')
             ->withAvg('reviews as average_rating', 'total_score');
 
-        // Sort by recommended (rank_score desc, emergency for urgent, max_floor desc)
-        if ($request->get('sort') === 'height') {
-            $query->orderByDesc('max_floor')->orderByDesc('rank_score');
-        } else {
-            $query->orderByDesc('rank_score');
-            if (isset($filters['emergency']) && $filters['emergency']) {
-                $query->orderByDesc('emergency_supported');
+        // Prefecture filter
+        if ($prefecture = $request->get('prefecture')) {
+            $prefectureName = $this->getPrefectureName($prefecture);
+            if ($prefectureName) {
+                $query->whereJsonContains('areas', $prefectureName);
             }
-            $query->orderByDesc('max_floor')->orderByDesc('id');
+        }
+
+        // Service filter (multiple services support)
+        if ($service = $request->get('service')) {
+            $services = array_filter(explode(',', $service));
+            if (!empty($services)) {
+                $query->where(function ($q) use ($services) {
+                    foreach ($services as $svc) {
+                        $q->orWhereJsonContains('service_categories', $svc);
+                    }
+                });
+            }
+        }
+
+        // Search filter
+        if ($searchTerm = $request->get('search')) {
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('name', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('description', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('service_areas', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('performance_summary', 'LIKE', "%{$searchTerm}%");
+            });
+        }
+
+        // Sorting
+        $sort = $request->get('sort', 'recommend');
+        switch ($sort) {
+            case 'safety':
+                $query->orderByDesc('safety_score')->orderByDesc('rank_score');
+                break;
+            case 'performance':
+            case 'result':
+                $query->orderByDesc('performance_score')->orderByDesc('rank_score');
+                break;
+            case 'reviews':
+                $query->orderByDesc('average_rating')->orderByDesc('reviews_count')->orderByDesc('rank_score');
+                break;
+            case 'recommend':
+            default:
+                $query->orderByDesc('recommend_score')->orderByDesc('rank_score')->orderByDesc('id');
+                break;
         }
 
         $companies = $query->paginate(12);
 
-        $prefectures = Prefecture::all();
-        $buildingTypes = BuildingType::all();
-        $serviceCategories = ServiceCategory::all();
-        $serviceMethods = ServiceMethod::all();
+        // Pass current filters to view
+        $prefectureFilter = $request->get('prefecture');
+        $serviceFilter = $request->get('service');
+        $searchTerm = $request->get('search');
+        $activeSort = $sort;
 
         return view('companies.index', compact(
             'companies', 
-            'prefectures', 
-            'buildingTypes', 
-            'serviceCategories', 
-            'serviceMethods',
-            'filters'
+            'prefectureFilter',
+            'serviceFilter',
+            'searchTerm',
+            'activeSort'
         ));
     }
+
+    private function getPrefectureName($slug)
+    {
+        $prefectureMapping = [
+            'hokkaido' => '北海道', 'aomori' => '青森県', 'iwate' => '岩手県', 'miyagi' => '宮城県',
+            'akita' => '秋田県', 'yamagata' => '山形県', 'fukushima' => '福島県', 'ibaraki' => '茨城県',
+            'tochigi' => '栃木県', 'gunma' => '群馬県', 'saitama' => '埼玉県', 'chiba' => '千葉県',
+            'tokyo' => '東京都', 'kanagawa' => '神奈川県', 'niigata' => '新潟県', 'toyama' => '富山県',
+            'ishikawa' => '石川県', 'fukui' => '福井県', 'yamanashi' => '山梨県', 'nagano' => '長野県',
+            'gifu' => '岐阜県', 'shizuoka' => '静岡県', 'aichi' => '愛知県', 'mie' => '三重県',
+            'shiga' => '滋賀県', 'kyoto' => '京都府', 'osaka' => '大阪府', 'hyogo' => '兵庫県',
+            'nara' => '奈良県', 'wakayama' => '和歌山県', 'tottori' => '鳥取県', 'shimane' => '島根県',
+            'okayama' => '岡山県', 'hiroshima' => '広島県', 'yamaguchi' => '山口県', 'tokushima' => '徳島県',
+            'kagawa' => '香川県', 'ehime' => '愛媛県', 'kochi' => '高知県', 'fukuoka' => '福岡県',
+            'saga' => '佐賀県', 'nagasaki' => '長崎県', 'kumamoto' => '熊本県', 'oita' => '大分県',
+            'miyazaki' => '宮崎県', 'kagoshima' => '鹿児島県', 'okinawa' => '沖縄県'
+        ];
+
+        return $prefectureMapping[$slug] ?? null;
+    }
+
 
     public function show(Company $company)
     {

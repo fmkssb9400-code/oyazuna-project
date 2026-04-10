@@ -9,7 +9,13 @@
             <li><span class="mx-2">/</span></li>
             <li><a href="{{ route('home') }}" class="hover:text-blue-600">ガイド</a></li>
             <li><span class="mx-2">/</span></li>
-            <li class="text-gray-900">{{ Str::limit($__env->yieldContent('title'), 30) }}</li>
+            <li class="text-gray-900">
+                @if($page && $page->title)
+                    {{ Str::limit($page->title, 30) }}
+                @else
+                    {{ Str::limit($__env->yieldContent('title'), 30) }}
+                @endif
+            </li>
         </ol>
     </nav>
 
@@ -23,9 +29,19 @@
                 </div>
 
                 <!-- Article Title -->
-                <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 leading-tight">@yield('title')</h1>
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 leading-tight">
+                    @if($page && $page->title)
+                        {{ $page->title }}
+                    @else
+                        @yield('title')
+                    @endif
+                </h1>
                 
-                @if(trim($__env->yieldContent('description')))
+                @if($page && $page->description)
+                    <div class="mb-6">
+                        <p class="text-lg text-gray-600">{{ $page->description }}</p>
+                    </div>
+                @elseif(trim($__env->yieldContent('description')))
                     <div class="mb-6">
                         <p class="text-lg text-gray-600">@yield('description')</p>
                     </div>
@@ -111,7 +127,7 @@
                 @endif
 
                 <!-- Article Content -->
-                <div class="prose prose-lg max-w-none article-content page-content page-content-{{ $page->id ?? 'default' }} overflow-hidden">
+                <div class="prose prose-lg max-w-none article-content article-content-{{ $page->id ?? 'default' }} page-content page-content-{{ $page->id ?? 'default' }} overflow-hidden">
                     @if($page)
                         @if($page->content)
                             {!! \App\Support\ContentShortcode::render($page->rendered_content) !!}
@@ -180,12 +196,14 @@
         background: #dfefff;
         box-shadow: 0px 0px 0px 5px #dfefff;
         border: dashed 0.5px #96c2fe;
-        padding: 0.6em 0.5em 0.4em;
+        padding: 1em 0.5em 0.8em;
         color: #454545;
         margin: 1.5em 0;
         position: relative;
-        line-height: 1.4;
+        line-height: 1.6;
         display: block;
+        min-height: 2em;
+        box-sizing: border-box;
     }
     
     /* 記事内のh3スタイル */
@@ -225,23 +243,159 @@
     
     /* スマホでの記事コンテナとパディング調整 */
     @media (max-width: 767px) {
+        /* HTML全体の制御 */
         html, body {
             overflow-x: hidden !important;
             max-width: 100vw !important;
         }
         
+        /* 記事コンテンツ内の全要素（ニュース記事と同じスタイル適用） */
         .article-content,
         .article-content *,
         .article-content img,
         .article-content div,
         .article-content p,
-        .article-content figure {
+        .article-content figure,
+        .article-content span,
+        .article-content strong,
+        .article-content em,
+        .article-content li,
+        .article-content ul,
+        .article-content ol,
+        .article-content br,
+        .page-content,
+        .page-content *,
+        .page-content img,
+        .page-content div,
+        .page-content p,
+        .page-content figure,
+        .page-content span,
+        .page-content strong,
+        .page-content em,
+        .page-content li,
+        .page-content ul,
+        .page-content ol,
+        .page-content br {
             max-width: 85vw !important;
             overflow-x: hidden !important;
             word-wrap: break-word !important;
+            word-break: break-word !important;
+            overflow-wrap: break-word !important;
+            white-space: normal !important;
+            box-sizing: border-box !important;
         }
         
-        .article-content img {
+        /* h2スタイルボックスの調整 */
+        .article-content h2,
+        .page-content h2 {
+            max-width: 85vw !important;
+            width: 85vw !important;
+            margin: 1rem auto !important;
+            box-sizing: border-box !important;
+            padding: 1.2em 0.5em 1em !important;
+            min-height: 3em !important;
+            line-height: 1.6 !important;
+            overflow: visible !important;
+            font-size: 1rem !important;
+        }
+        
+        /* カスタムHTMLブロック・TinyMCE生成コンテンツの制御 */
+        .article-content .mce-content-body,
+        .article-content [data-mce-*],
+        .article-content .html-block,
+        .article-content .custom-html,
+        .page-content .mce-content-body,
+        .page-content [data-mce-*],
+        .page-content .html-block,
+        .page-content .custom-html {
+            max-width: 85vw !important;
+            width: 85vw !important;
+            margin: 0 auto !important;
+            box-sizing: border-box !important;
+            overflow-x: hidden !important;
+        }
+        
+        /* インラインスタイルで幅が指定された要素の強制調整 */
+        .article-content *[style*="width"]:not(img),
+        .page-content *[style*="width"]:not(img) {
+            max-width: 85vw !important;
+            width: 85vw !important;
+            margin: 0 auto !important;
+        }
+        
+        /* divやセクション要素の調整 */
+        .article-content div,
+        .article-content section,
+        .article-content article,
+        .page-content div,
+        .page-content section,
+        .page-content article {
+            max-width: 85vw !important;
+            width: auto !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            box-sizing: border-box !important;
+        }
+        
+        /* カスタムHTMLブロック（targetlist_20など）の制御 */
+        .article-content .targetlist_20,
+        .page-content .targetlist_20,
+        .article-content .targetlist_21,
+        .page-content .targetlist_21,
+        .article-content .custom-html-block,
+        .page-content .custom-html-block {
+            max-width: 85vw !important;
+            width: 85vw !important;
+            margin: 1.5rem auto 1rem auto !important;
+            box-sizing: border-box !important;
+            padding: 35px 15px 15px 15px !important;
+            overflow-wrap: break-word !important;
+            word-break: break-word !important;
+            position: relative !important;
+            overflow: visible !important;
+        }
+        
+        /* targetlistのspan要素（タイトル部分）の調整 */
+        .article-content .targetlist_20 span,
+        .page-content .targetlist_20 span,
+        .article-content .targetlist_21 span,
+        .page-content .targetlist_21 span {
+            position: absolute !important;
+            top: -20px !important;
+            left: 15px !important;
+            max-width: calc(85vw - 60px) !important;
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            padding: 10px 20px !important;
+            font-size: 0.9rem !important;
+            line-height: 1.4 !important;
+            background: #5b8bd0 !important;
+            color: white !important;
+            border-radius: 15px !important;
+            box-shadow: 1px 1px 2px rgba(0,0,0,.3) !important;
+            z-index: 10 !important;
+            min-height: 30px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            overflow: visible !important;
+        }
+        
+        /* targetlist内のdiv要素の調整 */
+        .article-content .targetlist_20 div,
+        .page-content .targetlist_20 div,
+        .article-content .targetlist_21 div,
+        .page-content .targetlist_21 div {
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+        }
+        
+        /* 画像の特別制御 */
+        .article-content img,
+        .page-content img {
             width: 85vw !important;
             height: auto !important;
             margin: 1rem auto !important;
@@ -250,12 +404,20 @@
             border: none !important;
         }
         
+        /* 記事全体のコンテナ調整 */
         .max-w-7xl {
             max-width: 100vw !important;
             padding: 0 0.5rem !important;
             overflow-x: hidden !important;
         }
         
+        .max-w-4xl {
+            overflow-x: hidden !important;
+            width: 100vw !important;
+            max-width: 100vw !important;
+        }
+        
+        /* 記事カード自体の調整 */
         .bg-white.rounded-lg.shadow-md {
             overflow: hidden !important;
             margin: 0 !important;
@@ -263,20 +425,171 @@
             max-width: 95vw !important;
         }
         
+        /* 記事コンテンツのパディング調整 */
         .bg-white.rounded-lg.shadow-md > div {
             padding: 0.75rem !important;
             overflow-x: hidden !important;
         }
         
+        /* proseクラスの制御 */
         .prose {
             max-width: none !important;
             overflow-x: hidden !important;
         }
         
+        /* テーブルや図表の制御 */
         table, figure, .figure {
             max-width: 85vw !important;
             overflow-x: auto !important;
             display: block !important;
+        }
+        
+        /* 長いテキストや計算式の改行制御のみ */
+        .article-content p,
+        .page-content p,
+        .article-content div,
+        .page-content div,
+        .article-content span,
+        .page-content span {
+            word-break: break-word !important;
+            overflow-wrap: break-word !important;
+            hyphens: auto !important;
+        }
+        
+        /* よく使われるカスタムHTMLパターンの対応 */
+        .article-content .targetlist_1,
+        .article-content .targetlist_2,
+        .article-content .targetlist_3,
+        .article-content .targetlist_4,
+        .article-content .targetlist_5,
+        .article-content .targetlist_10,
+        .article-content .targetlist_11,
+        .article-content .targetlist_12,
+        .article-content .targetlist_13,
+        .article-content .targetlist_14,
+        .article-content .targetlist_15,
+        .article-content .targetlist_16,
+        .article-content .targetlist_17,
+        .article-content .targetlist_18,
+        .article-content .targetlist_19,
+        .article-content .targetlist_22,
+        .article-content .targetlist_23,
+        .article-content .targetlist_24,
+        .article-content .targetlist_25,
+        .page-content .targetlist_1,
+        .page-content .targetlist_2,
+        .page-content .targetlist_3,
+        .page-content .targetlist_4,
+        .page-content .targetlist_5,
+        .page-content .targetlist_10,
+        .page-content .targetlist_11,
+        .page-content .targetlist_12,
+        .page-content .targetlist_13,
+        .page-content .targetlist_14,
+        .page-content .targetlist_15,
+        .page-content .targetlist_16,
+        .page-content .targetlist_17,
+        .page-content .targetlist_18,
+        .page-content .targetlist_19,
+        .page-content .targetlist_22,
+        .page-content .targetlist_23,
+        .page-content .targetlist_24,
+        .page-content .targetlist_25 {
+            max-width: 85vw !important;
+            width: 85vw !important;
+            margin: 1.5rem auto 1rem auto !important;
+            box-sizing: border-box !important;
+            padding: 35px 15px 15px 15px !important;
+            overflow-wrap: break-word !important;
+            word-break: break-word !important;
+            position: relative !important;
+            overflow: visible !important;
+        }
+        
+        /* 対応するspan要素（タイトル部分） */
+        .article-content .targetlist_1 span,
+        .article-content .targetlist_2 span,
+        .article-content .targetlist_3 span,
+        .article-content .targetlist_4 span,
+        .article-content .targetlist_5 span,
+        .article-content .targetlist_10 span,
+        .article-content .targetlist_11 span,
+        .article-content .targetlist_12 span,
+        .article-content .targetlist_13 span,
+        .article-content .targetlist_14 span,
+        .article-content .targetlist_15 span,
+        .article-content .targetlist_16 span,
+        .article-content .targetlist_17 span,
+        .article-content .targetlist_18 span,
+        .article-content .targetlist_19 span,
+        .article-content .targetlist_22 span,
+        .article-content .targetlist_23 span,
+        .article-content .targetlist_24 span,
+        .article-content .targetlist_25 span,
+        .page-content .targetlist_1 span,
+        .page-content .targetlist_2 span,
+        .page-content .targetlist_3 span,
+        .page-content .targetlist_4 span,
+        .page-content .targetlist_5 span,
+        .page-content .targetlist_10 span,
+        .page-content .targetlist_11 span,
+        .page-content .targetlist_12 span,
+        .page-content .targetlist_13 span,
+        .page-content .targetlist_14 span,
+        .page-content .targetlist_15 span,
+        .page-content .targetlist_16 span,
+        .page-content .targetlist_17 span,
+        .page-content .targetlist_18 span,
+        .page-content .targetlist_19 span,
+        .page-content .targetlist_22 span,
+        .page-content .targetlist_23 span,
+        .page-content .targetlist_24 span,
+        .page-content .targetlist_25 span {
+            position: absolute !important;
+            top: -20px !important;
+            left: 15px !important;
+            max-width: calc(85vw - 60px) !important;
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            padding: 10px 20px !important;
+            font-size: 0.9rem !important;
+            line-height: 1.4 !important;
+            background: #5b8bd0 !important;
+            color: white !important;
+            border-radius: 15px !important;
+            box-shadow: 1px 1px 2px rgba(0,0,0,.3) !important;
+            z-index: 10 !important;
+            min-height: 30px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            overflow: visible !important;
+        }
+        
+        /* 汎用的なボックススタイル対応 */
+        .article-content [class*="box-"],
+        .article-content [class*="card-"],
+        .article-content [class*="alert-"],
+        .article-content [class*="notice-"],
+        .page-content [class*="box-"],
+        .page-content [class*="card-"],
+        .page-content [class*="alert-"],
+        .page-content [class*="notice-"] {
+            max-width: 85vw !important;
+            width: 85vw !important;
+            margin: 1rem auto !important;
+            box-sizing: border-box !important;
+            overflow-wrap: break-word !important;
+            word-break: break-word !important;
+        }
+        
+        /* インラインでwidth指定された要素の強制調整 */
+        .article-content [style*="width"]:not(img):not(table),
+        .page-content [style*="width"]:not(img):not(table) {
+            max-width: 85vw !important;
+            width: auto !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
         }
     }
 

@@ -133,6 +133,31 @@
             border-left-color: #3b82f6;
             color: #1e40af;
         }
+        
+        .glowing-button {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glowing-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            animation: flowing-light 3s infinite;
+        }
+        
+        @keyframes flowing-light {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
     </style>
 </head>
 <body class="bg-blue-50">
@@ -173,7 +198,7 @@
             </div>
             
             <!-- 右端のボタン -->
-            <a href="{{ route('quote.create') }}" class="bg-orange-600 text-white px-8 font-bold text-xl hover:bg-orange-700 transition-colors flex items-center justify-center h-20 flex-shrink-0">
+            <a href="{{ route('quote.create') }}" class="bg-orange-600 text-white px-8 font-bold text-xl hover:bg-orange-700 transition-colors flex items-center justify-center h-20 flex-shrink-0 glowing-button">
                 専門業者に相談する
             </a>
         </div>

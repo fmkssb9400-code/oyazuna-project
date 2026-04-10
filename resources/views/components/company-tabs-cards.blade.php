@@ -94,7 +94,7 @@
             @endif
           </div>
           <div class="p-5">
-            <a href="{{ route('companies.index', ['service' => 'window']) }}" class="block text-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
+            <a href="{{ route('companies.index', ['service' => 'window']) }}" class="glowing-button block text-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
               窓ガラス清掃会社の<br>ランキングページへ
             </a>
           </div>
@@ -168,7 +168,7 @@
             @endif
           </div>
           <div class="p-5">
-            <a href="{{ route('companies.index', ['service' => 'inspection']) }}" class="block text-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
+            <a href="{{ route('companies.index', ['service' => 'inspection']) }}" class="glowing-button block text-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
               外壁調査会社の<br>ランキングページへ
             </a>
           </div>
@@ -242,7 +242,7 @@
             @endif
           </div>
           <div class="p-5">
-            <a href="{{ route('companies.index', ['service' => 'repair']) }}" class="block text-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
+            <a href="{{ route('companies.index', ['service' => 'repair']) }}" class="glowing-button block text-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
               外壁補修会社の<br>ランキングページへ
             </a>
           </div>
@@ -316,7 +316,7 @@
             @endif
           </div>
           <div class="p-5">
-            <a href="{{ route('companies.index', ['service' => 'painting']) }}" class="block text-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
+            <a href="{{ route('companies.index', ['service' => 'painting']) }}" class="glowing-button block text-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
               外壁塗装会社（部分）の<br>ランキングページへ
             </a>
           </div>
@@ -338,16 +338,22 @@
       <!-- 左：業者カード一覧（カードの上端が基準） -->
       <div class="lg:col-span-2 min-w-0">
         <!-- Search Form Section -->
-        <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-6 mb-8">
-            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 text-center">業者を絞り込み検索</h3>
-            
-            <!-- Step 1: Prefecture -->
-            <div class="mb-6">
-                <div class="flex items-center gap-2 mb-3">
-                    <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
-                    <label for="prefecture-select" class="text-sm md:text-base font-semibold text-gray-700">都道府県を選択</label>
+        <div class="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl border border-blue-100 p-5 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
                 </div>
-                <select id="prefecture-select" class="w-full px-4 md:px-6 py-3 md:py-4 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-700 text-base md:text-lg">
+                <h3 class="text-lg font-bold text-gray-900">業者検索</h3>
+            </div>
+            
+            <!-- Prefecture Selection -->
+            <div class="mb-6">
+                <div class="mb-3">
+                    <label for="prefecture-select" class="text-sm font-semibold text-gray-700">都道府県を選択</label>
+                </div>
+                <select id="prefecture-select" class="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-700 text-base">
                     <option value="">全ての都道府県</option>
                     @php
                     $prefectureMapping = [
@@ -372,69 +378,63 @@
                 </select>
             </div>
 
-            <!-- Step 2: Service Type -->
+            <!-- Service Type Selection -->
             <div class="mb-6">
-                <div class="flex items-center gap-2 mb-3">
-                    <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
-                    <span class="text-sm md:text-base font-semibold text-gray-700">サービス内容を選択</span>
+                <div class="mb-4">
+                    <span class="text-sm font-semibold text-gray-700">サービス内容を選択</span>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="service-options">
-                    <button type="button" data-service="window" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100">
+                    <button type="button" data-service="window" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md">
                         窓ガラス清掃
                     </button>
-                    <button type="button" data-service="inspection" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100">
+                    <button type="button" data-service="inspection" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-green-50 hover:border-green-400 hover:text-green-700 hover:shadow-md">
                         外壁調査
                     </button>
-                    <button type="button" data-service="repair" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100">
+                    <button type="button" data-service="repair" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-orange-50 hover:border-orange-400 hover:text-orange-700 hover:shadow-md">
                         外壁補修
                     </button>
-                    <button type="button" data-service="painting" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100">
+                    <button type="button" data-service="painting" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-purple-50 hover:border-purple-400 hover:text-purple-700 hover:shadow-md">
                         外壁塗装（部分）
                     </button>
-                    <button type="button" data-service="bird" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100">
+                    <button type="button" data-service="bird_control" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-700 hover:shadow-md">
                         鳥害対策
                     </button>
-                    <button type="button" data-service="sign" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100">
+                    <button type="button" data-service="sign" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-indigo-50 hover:border-indigo-400 hover:text-indigo-700 hover:shadow-md">
                         看板作業
                     </button>
-                    <button type="button" data-service="leak" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100">
+                    <button type="button" data-service="leak_inspection" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-teal-50 hover:border-teal-400 hover:text-teal-700 hover:shadow-md">
                         雨漏り調査
                     </button>
-                    <button type="button" data-service="other" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100">
+                    <button type="button" data-service="other" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-400 hover:text-gray-800 hover:shadow-md">
                         その他
                     </button>
                 </div>
             </div>
 
-            <!-- Step 3: Sort Type -->
+            <!-- Sort Type Selection -->
             <div class="mb-6">
-                <div class="flex items-center gap-2 mb-3">
-                    <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
-                    <span class="text-sm md:text-base font-semibold text-gray-700">優先する条件を選択</span>
+                <div class="mb-4">
+                    <span class="text-sm font-semibold text-gray-700">優先する条件を選択</span>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="sort-options">
-                    <button type="button" data-sort="recommend" class="sort-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 bg-blue-50 border-blue-500 text-blue-700">
+                    <button type="button" data-sort="recommend" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-blue-50 border-blue-400 text-blue-700 shadow-md">
                         おすすめ
                     </button>
-                    <button type="button" data-sort="safe" class="sort-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100">
+                    <button type="button" data-sort="safe" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-green-50 hover:border-green-400 hover:text-green-700 hover:shadow-md">
                         安全性重視
                     </button>
-                    <button type="button" data-sort="result" class="sort-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100">
+                    <button type="button" data-sort="result" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-orange-50 hover:border-orange-400 hover:text-orange-700 hover:shadow-md">
                         実績重視
                     </button>
-                    <button type="button" data-sort="review" class="sort-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100">
+                    <button type="button" data-sort="review" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-purple-50 hover:border-purple-400 hover:text-purple-700 hover:shadow-md">
                         口コミ重視
                     </button>
                 </div>
             </div>
 
-            <!-- Step 4: Search Button -->
-            <div class="text-center">
-                <div class="flex items-center gap-2 justify-center mb-4">
-                    <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">4</div>
-                    <span class="text-sm md:text-base font-semibold text-gray-700">検索実行</span>
-                </div>
-                <button id="search-button" class="px-8 md:px-12 py-4 md:py-5 bg-orange-600 text-white font-bold text-lg md:text-xl rounded-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors shadow-lg">
+            <!-- Search Button -->
+            <div class="text-left">
+                <button id="search-button" class="px-8 py-4 bg-orange-600 text-white font-bold text-lg rounded-xl hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                     条件で業者を検索
                 </button>
             </div>
@@ -504,7 +504,7 @@
               <div class="p-6 text-center">
                   <h4 class="text-lg font-bold mb-2">お急ぎの方へ</h4>
                   <p class="text-sm mb-4">最短で業者をお探しします</p>
-                  <a href="{{ route('quote.create') }}" class="block bg-white text-orange-600 px-4 py-2 rounded font-medium hover:bg-gray-50 transition-colors">
+                  <a href="{{ route('quote.create') }}" class="glowing-button block bg-white text-orange-600 px-4 py-2 rounded font-medium hover:bg-gray-50 transition-colors">
                       専門業者に相談する
                   </a>
               </div>
@@ -739,8 +739,16 @@ document.addEventListener('DOMContentLoaded', function() {
             params.set('sort', sort);
         }
         
-        const newUrl = window.location.pathname + '?' + params.toString();
-        window.location.href = newUrl;
+        // ホームページからの検索の場合は/companiesページにリダイレクト
+        const currentPath = window.location.pathname;
+        if (currentPath === '/' || currentPath === '/home') {
+            const newUrl = '/companies?' + params.toString();
+            window.location.href = newUrl;
+        } else {
+            // 既に/companiesページにいる場合は同じページ内で更新
+            const newUrl = window.location.pathname + '?' + params.toString();
+            window.location.href = newUrl;
+        }
     }
     
     // ページロード時に選択状態を復元

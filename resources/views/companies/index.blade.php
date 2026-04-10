@@ -13,14 +13,20 @@
 
 
         <!-- Search Form Section -->
-        <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-6 mb-8 max-w-4xl mx-auto">
-            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 text-center">業者を絞り込み検索</h3>
+        <div class="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl border border-blue-100 p-5 mb-8 max-w-4xl mx-auto">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900">業者検索</h3>
+            </div>
             
-            <!-- Step 1: Prefecture -->
+            <!-- Prefecture Selection -->
             <div class="mb-6">
-                <div class="flex items-center gap-2 mb-3">
-                    <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
-                    <label for="prefecture-select" class="text-sm md:text-base font-semibold text-gray-700">都道府県を選択</label>
+                <div class="mb-3">
+                    <label for="prefecture-select" class="text-sm font-semibold text-gray-700">都道府県を選択</label>
                 </div>
                 <select id="prefecture-select" class="w-full px-4 md:px-6 py-3 md:py-4 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-700 text-base md:text-lg">
                     <option value="">全ての都道府県</option>
@@ -47,72 +53,67 @@
                 </select>
             </div>
 
-            <!-- Step 2: Service Selection -->
+            <!-- Service Type Selection -->
             <div class="mb-6">
-                <div class="flex items-center gap-2 mb-3">
-                    <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
-                    <span class="text-sm md:text-base font-semibold text-gray-700">サービス内容を選択</span>
+                <div class="mb-4">
+                    <span class="text-sm font-semibold text-gray-700">サービス内容を選択</span>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="service-options">
                     @php
-                    $currentService = request()->get('service', 'window');
+                    $requestedServices = request()->get('service', '');
+                    $selectedServices = $requestedServices ? explode(',', $requestedServices) : [];
                     @endphp
-                    <button type="button" data-service="window" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 {{ $currentService === 'window' ? 'bg-blue-50 border-blue-500 text-blue-700' : 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100' }}">
+                    <button type="button" data-service="window" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('window', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
                         窓ガラス清掃
                     </button>
-                    <button type="button" data-service="inspection" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 {{ $currentService === 'inspection' ? 'bg-blue-50 border-blue-500 text-blue-700' : 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100' }}">
+                    <button type="button" data-service="inspection" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('inspection', $selectedServices) ? 'bg-green-50 border-green-400 text-green-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-green-50 hover:border-green-400 hover:text-green-700 hover:shadow-md' }}">
                         外壁調査
                     </button>
-                    <button type="button" data-service="repair" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 {{ $currentService === 'repair' ? 'bg-blue-50 border-blue-500 text-blue-700' : 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100' }}">
+                    <button type="button" data-service="repair" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('repair', $selectedServices) ? 'bg-orange-50 border-orange-400 text-orange-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-orange-50 hover:border-orange-400 hover:text-orange-700 hover:shadow-md' }}">
                         外壁補修
                     </button>
-                    <button type="button" data-service="painting" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 {{ $currentService === 'painting' ? 'bg-blue-50 border-blue-500 text-blue-700' : 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100' }}">
+                    <button type="button" data-service="painting" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('painting', $selectedServices) ? 'bg-purple-50 border-purple-400 text-purple-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-purple-50 hover:border-purple-400 hover:text-purple-700 hover:shadow-md' }}">
                         外壁塗装（部分）
                     </button>
-                    <button type="button" data-service="bird_control" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 {{ $currentService === 'bird_control' ? 'bg-blue-50 border-blue-500 text-blue-700' : 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100' }}">
+                    <button type="button" data-service="bird_control" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('bird_control', $selectedServices) ? 'bg-yellow-50 border-yellow-400 text-yellow-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-700 hover:shadow-md' }}">
                         鳥害対策
                     </button>
-                    <button type="button" data-service="sign" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 {{ $currentService === 'sign' ? 'bg-blue-50 border-blue-500 text-blue-700' : 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100' }}">
+                    <button type="button" data-service="sign" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('sign', $selectedServices) ? 'bg-indigo-50 border-indigo-400 text-indigo-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-indigo-50 hover:border-indigo-400 hover:text-indigo-700 hover:shadow-md' }}">
                         看板作業
                     </button>
-                    <button type="button" data-service="leak_inspection" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 {{ $currentService === 'leak_inspection' ? 'bg-blue-50 border-blue-500 text-blue-700' : 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100' }}">
+                    <button type="button" data-service="leak_inspection" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('leak_inspection', $selectedServices) ? 'bg-teal-50 border-teal-400 text-teal-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-teal-50 hover:border-teal-400 hover:text-teal-700 hover:shadow-md' }}">
                         雨漏り調査
                     </button>
-                    <button type="button" data-service="other" class="service-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 {{ $currentService === 'other' ? 'bg-blue-50 border-blue-500 text-blue-700' : 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100' }}">
+                    <button type="button" data-service="other" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('other', $selectedServices) ? 'bg-gray-50 border-gray-400 text-gray-800 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-400 hover:text-gray-800 hover:shadow-md' }}">
                         その他
                     </button>
                 </div>
             </div>
 
-            <!-- Step 3: Sort Type -->
+            <!-- Sort Type Selection -->
             <div class="mb-6">
-                <div class="flex items-center gap-2 mb-3">
-                    <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
-                    <span class="text-sm md:text-base font-semibold text-gray-700">優先する条件を選択</span>
+                <div class="mb-4">
+                    <span class="text-sm font-semibold text-gray-700">優先する条件を選択</span>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="sort-options">
-                    <button type="button" data-sort="recommend" class="sort-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 {{ $activeSort === 'recommend' ? 'bg-blue-50 border-blue-500 text-blue-700' : 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100' }}">
+                    <button type="button" data-sort="recommend" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'recommend' ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
                         おすすめ
                     </button>
-                    <button type="button" data-sort="safety" class="sort-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 {{ $activeSort === 'safety' ? 'bg-blue-50 border-blue-500 text-blue-700' : 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100' }}">
+                    <button type="button" data-sort="safety" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'safety' ? 'bg-green-50 border-green-400 text-green-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-green-50 hover:border-green-400 hover:text-green-700 hover:shadow-md' }}">
                         安全性重視
                     </button>
-                    <button type="button" data-sort="performance" class="sort-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 {{ $activeSort === 'performance' ? 'bg-blue-50 border-blue-500 text-blue-700' : 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100' }}">
+                    <button type="button" data-sort="performance" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'performance' ? 'bg-orange-50 border-orange-400 text-orange-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-orange-50 hover:border-orange-400 hover:text-orange-700 hover:shadow-md' }}">
                         実績重視
                     </button>
-                    <button type="button" data-sort="reviews" class="sort-option px-4 py-3 text-sm md:text-base font-medium rounded-lg border-2 transition-all duration-200 {{ $activeSort === 'reviews' ? 'bg-blue-50 border-blue-500 text-blue-700' : 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100' }}">
+                    <button type="button" data-sort="reviews" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'reviews' ? 'bg-purple-50 border-purple-400 text-purple-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-purple-50 hover:border-purple-400 hover:text-purple-700 hover:shadow-md' }}">
                         口コミ重視
                     </button>
                 </div>
             </div>
 
-            <!-- Step 4: Search Button -->
-            <div class="text-center">
-                <div class="flex items-center gap-2 justify-center mb-4">
-                    <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">4</div>
-                    <span class="text-sm md:text-base font-semibold text-gray-700">検索実行</span>
-                </div>
-                <button id="search-button" class="px-8 md:px-12 py-4 md:py-5 bg-orange-600 text-white font-bold text-lg md:text-xl rounded-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors shadow-lg">
+            <!-- Search Button -->
+            <div class="text-left">
+                <button id="search-button" class="px-8 py-4 bg-orange-600 text-white font-bold text-lg rounded-xl hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                     条件で業者を検索
                 </button>
             </div>
@@ -317,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const companiesContainer = document.getElementById('companies-container');
     const paginationContainer = document.getElementById('pagination-container');
     let currentSort = getCurrentSortFromPage();
-    let currentService = getCurrentServiceFromPage();
+    let selectedServices = getSelectedServicesFromPage();
     let currentSearch = '{{ $searchTerm ?? "" }}';
     
     // Wishlist management
@@ -328,14 +329,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Get current sort from page state
     function getCurrentSortFromPage() {
-        const activeSortOption = document.querySelector('.sort-option.bg-blue-50');
+        const activeSortOption = document.querySelector('.sort-option.bg-blue-50, .sort-option.bg-green-50, .sort-option.bg-orange-50, .sort-option.bg-purple-50');
         return activeSortOption ? activeSortOption.getAttribute('data-sort') : 'recommend';
     }
 
-    // Get current service from page state
-    function getCurrentServiceFromPage() {
-        const activeServiceOption = document.querySelector('.service-option.bg-blue-50');
-        return activeServiceOption ? activeServiceOption.getAttribute('data-service') : 'window';
+    // Get selected services from page state
+    function getSelectedServicesFromPage() {
+        const activeServiceOptions = document.querySelectorAll('.service-option.bg-blue-50, .service-option.bg-green-50, .service-option.bg-orange-50, .service-option.bg-purple-50, .service-option.bg-yellow-50, .service-option.bg-indigo-50, .service-option.bg-teal-50, .service-option.bg-gray-50');
+        return Array.from(activeServiceOptions).map(option => option.getAttribute('data-service'));
     }
 
     // Get current prefecture
@@ -344,11 +345,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Update URL and reload companies
-    async function updateCompanies(sort, prefecture, service, search) {
-        // Show loading state
-        companiesContainer.innerHTML = '<div class="text-center py-8"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div></div>';
-        paginationContainer.innerHTML = '';
-
+    function updateCompanies(sort, prefecture, services, search) {
         // Build URL parameters
         const params = new URLSearchParams();
         if (sort && sort !== 'recommend') {
@@ -357,40 +354,40 @@ document.addEventListener('DOMContentLoaded', function() {
         if (prefecture) {
             params.set('prefecture', prefecture);
         }
-        if (service) {
-            params.set('service', service);
+        if (services && services.length > 0) {
+            params.set('service', services.join(','));
         }
         if (search && search.trim()) {
             params.set('search', search.trim());
         }
 
-        // Update browser URL
+        // Build new URL
         const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
-        window.history.pushState({}, '', newUrl);
-
-        try {
-            // Fallback to page reload for now to ensure proper filtering
-            window.location.reload();
-        } catch (error) {
-            console.error('Error fetching companies:', error);
-            window.location.reload();
-        }
+        
+        // Navigate to new URL
+        window.location.href = newUrl;
     }
 
     // Handle search button click
     searchButton.addEventListener('click', function() {
         const prefecture = getCurrentPrefecture();
-        updateCompanies(currentSort, prefecture, currentService);
+        updateCompanies(currentSort, prefecture, selectedServices);
     });
 
-    // Handle service option clicks
+    // Handle service option clicks (multiple selection)
     serviceOptions.forEach(option => {
         option.addEventListener('click', function() {
             const serviceType = this.getAttribute('data-service');
-            currentService = serviceType;
             
-            // Update active service styling
-            updateServiceActive(this);
+            // Toggle service selection
+            const index = selectedServices.indexOf(serviceType);
+            if (index > -1) {
+                selectedServices.splice(index, 1);
+                updateServiceInactive(this);
+            } else {
+                selectedServices.push(serviceType);
+                updateServiceActive(this);
+            }
         });
     });
 
@@ -402,18 +399,62 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Update active sort styling
             updateSortActive(this);
+            
+            // Update companies
+            updateCompanies(currentSort, getCurrentPrefecture(), selectedServices, currentSearch);
         });
     });
 
-    // Update service option active state
+    // Update service option active state (for multiple selection)
     function updateServiceActive(activeOption) {
-        serviceOptions.forEach(option => {
-            option.classList.remove('bg-blue-50', 'border-blue-500', 'text-blue-700');
-            option.classList.add('bg-gray-50', 'border-gray-300', 'text-gray-700', 'hover:bg-gray-100');
-        });
+        const service = activeOption.getAttribute('data-service');
+        activeOption.classList.remove('bg-white', 'border-gray-200', 'text-gray-700');
         
-        activeOption.classList.remove('bg-gray-50', 'border-gray-300', 'text-gray-700', 'hover:bg-gray-100');
-        activeOption.classList.add('bg-blue-50', 'border-blue-500', 'text-blue-700');
+        // Apply service-specific colors
+        switch(service) {
+            case 'window':
+                activeOption.classList.add('bg-blue-50', 'border-blue-400', 'text-blue-700', 'shadow-md');
+                break;
+            case 'inspection':
+                activeOption.classList.add('bg-green-50', 'border-green-400', 'text-green-700', 'shadow-md');
+                break;
+            case 'repair':
+                activeOption.classList.add('bg-orange-50', 'border-orange-400', 'text-orange-700', 'shadow-md');
+                break;
+            case 'painting':
+                activeOption.classList.add('bg-purple-50', 'border-purple-400', 'text-purple-700', 'shadow-md');
+                break;
+            case 'bird_control':
+                activeOption.classList.add('bg-yellow-50', 'border-yellow-400', 'text-yellow-700', 'shadow-md');
+                break;
+            case 'sign':
+                activeOption.classList.add('bg-indigo-50', 'border-indigo-400', 'text-indigo-700', 'shadow-md');
+                break;
+            case 'leak_inspection':
+                activeOption.classList.add('bg-teal-50', 'border-teal-400', 'text-teal-700', 'shadow-md');
+                break;
+            case 'other':
+                activeOption.classList.add('bg-gray-50', 'border-gray-400', 'text-gray-800', 'shadow-md');
+                break;
+        }
+    }
+
+    // Update service option inactive state
+    function updateServiceInactive(inactiveOption) {
+        // Remove all active colors
+        inactiveOption.classList.remove(
+            'bg-blue-50', 'border-blue-400', 'text-blue-700',
+            'bg-green-50', 'border-green-400', 'text-green-700',
+            'bg-orange-50', 'border-orange-400', 'text-orange-700',
+            'bg-purple-50', 'border-purple-400', 'text-purple-700',
+            'bg-yellow-50', 'border-yellow-400', 'text-yellow-700',
+            'bg-indigo-50', 'border-indigo-400', 'text-indigo-700',
+            'bg-teal-50', 'border-teal-400', 'text-teal-700',
+            'bg-gray-50', 'border-gray-400', 'text-gray-800',
+            'shadow-md'
+        );
+        // Add inactive colors
+        inactiveOption.classList.add('bg-white', 'border-gray-200', 'text-gray-700');
     }
 
     // Update sort option active state
@@ -531,7 +572,7 @@ document.addEventListener('DOMContentLoaded', function() {
         searchInput.addEventListener('input', debounce(function(e) {
             const searchTerm = e.target.value.trim();
             currentSearch = searchTerm;
-            updateCompanies(currentSort, getCurrentPrefecture(), currentService, searchTerm);
+            updateCompanies(currentSort, getCurrentPrefecture(), selectedServices, searchTerm);
         }, 500));
 
         // Search on Enter key
@@ -540,7 +581,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 const searchTerm = e.target.value.trim();
                 currentSearch = searchTerm;
-                updateCompanies(currentSort, getCurrentPrefecture(), currentService, searchTerm);
+                updateCompanies(currentSort, getCurrentPrefecture(), selectedServices, searchTerm);
             }
         });
     }
@@ -550,31 +591,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (searchInput) {
             searchInput.value = '';
             currentSearch = '';
-            updateCompanies(currentSort, getCurrentPrefecture(), currentService, '');
+            updateCompanies(currentSort, getCurrentPrefecture(), selectedServices, '');
         }
     };
 
-    // Update all calls to updateCompanies to include search parameter
-    sortOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            currentSort = this.getAttribute('data-sort');
-            updateCompanies(currentSort, getCurrentPrefecture(), currentService, currentSearch);
-        });
-    });
-
-    serviceOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            currentService = this.getAttribute('data-service');
-            updateCompanies(currentSort, getCurrentPrefecture(), currentService, currentSearch);
-        });
-    });
-
+    // Prefecture select change
     prefectureSelect.addEventListener('change', function() {
-        updateCompanies(currentSort, this.value, currentService, currentSearch);
-    });
-
-    searchButton.addEventListener('click', function() {
-        updateCompanies(currentSort, getCurrentPrefecture(), currentService, currentSearch);
+        updateCompanies(currentSort, this.value, selectedServices, currentSearch);
     });
 
     // Initialize wishlist
