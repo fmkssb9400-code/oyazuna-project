@@ -188,36 +188,20 @@ class StaticPageResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('id', 'desc')
+            ->striped()
+            ->deferLoading()
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->label('ID'),
+                    
                 Tables\Columns\TextColumn::make('title')
                     ->label('タイトル')
-                    ->searchable()
-                    ->sortable(),
-                
-                Tables\Columns\TextColumn::make('page_type')
-                    ->label('ページタイプ')
-                    ->formatStateUsing(fn ($state) => StaticPage::getPageTypes()[$state] ?? $state)
-                    ->sortable(),
-                
-                Tables\Columns\TextColumn::make('supervisor_name')
-                    ->label('監修者')
-                    ->searchable()
-                    ->toggleable()
-                    ->placeholder('未設定'),
+                    ->limit(50),
                 
                 Tables\Columns\IconColumn::make('is_published')
                     ->label('公開状態')
                     ->boolean(),
-                
-                Tables\Columns\TextColumn::make('published_at')
-                    ->label('公開日時')
-                    ->dateTime()
-                    ->sortable(),
-                
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->label('更新日時')
-                    ->dateTime()
-                    ->sortable(),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('page_type')

@@ -130,7 +130,75 @@
                 <div class="prose prose-lg max-w-none article-content article-content-{{ $page->id ?? 'default' }} page-content page-content-{{ $page->id ?? 'default' }} overflow-hidden">
                     @if($page)
                         @if($page->content)
-                            {!! \App\Support\ContentShortcode::render($page->rendered_content) !!}
+                            @php
+                                // Use the page's rendered_content attribute which properly processes custom HTML blocks
+                                $content = $page->rendered_content;
+                                
+                                // Add image processing for all static pages
+                                // Debug: add visible marker
+                                $staticPageTypes = ['window-cleaning-price-guide', 'window-cleaning-contractor-guide', 'exterior-wall-painting-price-guide', 'exterior-wall-painting-contractor-guide'];
+                                
+                                if(in_array($page->page_type, $staticPageTypes) || in_array($page->slug, ['window-cleaning-price', 'guide-company-selection', 'wall-painting-price']) || $page->slug === 'guide-company-selection') {
+                                    $content = '<!-- PROCESSING STATIC PAGE: ' . $page->slug . ' | ' . $page->page_type . ' -->' . $content;
+                                    
+                                    // Fix first image with escaped quotes
+                                    $content = str_replace(
+                                        '<p><img src=\"http://127.0.0.1:8001/storage/articles/k7yOQOdlWcMpjd05ArrpT7SrN7xr0fUjfc7ncZla.png\" alt=\"\"></p>',
+                                        '<p><img src="http://127.0.0.1:8001/storage/articles/k7yOQOdlWcMpjd05ArrpT7SrN7xr0fUjfc7ncZla.png" alt="" style="max-width: 100%; height: auto;"></p>',
+                                        $content
+                                    );
+                                    
+                                    // Fix first image with width/height attributes (escaped quotes) - direct from contractor-selection page
+                                    $content = str_replace(
+                                        '<img src=\"http://127.0.0.1:8001/storage/articles/k7yOQOdlWcMpjd05ArrpT7SrN7xr0fUjfc7ncZla.png\" alt=\"\" width=\"223\" height=\"210\">',
+                                        '<img src="http://127.0.0.1:8001/storage/articles/k7yOQOdlWcMpjd05ArrpT7SrN7xr0fUjfc7ncZla.png" alt="" style="max-width: 100%; height: auto;">',
+                                        $content
+                                    );
+                                    
+                                    // Fix the safety management image with width/height attributes
+                                    $content = str_replace(
+                                        '<img src="/storage/articles/FcgLaQhA3tmQsGsuulpXUXcmz74QhwQVss6m5C6V.png" alt="" width="223" height="210">',
+                                        '<img src="/storage/articles/FcgLaQhA3tmQsGsuulpXUXcmz74QhwQVss6m5C6V.png" alt="" style="max-width: 300px; height: auto;">',
+                                        $content
+                                    );
+                                    
+                                    // Fix first image with regular quotes
+                                    $content = str_replace(
+                                        '<p><img src="http://127.0.0.1:8001/storage/articles/k7yOQOdlWcMpjd05ArrpT7SrN7xr0fUjfc7ncZla.png" alt=""></p>',
+                                        '<p><img src="http://127.0.0.1:8001/storage/articles/k7yOQOdlWcMpjd05ArrpT7SrN7xr0fUjfc7ncZla.png" alt="" style="max-width: 100%; height: auto;"></p>',
+                                        $content
+                                    );
+                                    
+                                    // Fix second image with escaped quotes in strong tags
+                                    $content = str_replace(
+                                        '<p><strong><img src=\"http://127.0.0.1:8001/storage/articles/MZ7nlzJ5VIpUnq6RzIRC5STfFq5kgHbHVQSHuPjE.png\" alt=\"\"></strong></p>',
+                                        '<p><strong><img src="http://127.0.0.1:8001/storage/articles/MZ7nlzJ5VIpUnq6RzIRC5STfFq5kgHbHVQSHuPjE.png" alt="" style="max-width: 100%; height: auto;"></strong></p>',
+                                        $content
+                                    );
+                                    
+                                    // Fix second image with regular quotes in strong tags
+                                    $content = str_replace(
+                                        '<p><strong><img src="http://127.0.0.1:8001/storage/articles/MZ7nlzJ5VIpUnq6RzIRC5STfFq5kgHbHVQSHuPjE.png" alt=""></strong></p>',
+                                        '<p><strong><img src="http://127.0.0.1:8001/storage/articles/MZ7nlzJ5VIpUnq6RzIRC5STfFq5kgHbHVQSHuPjE.png" alt="" style="max-width: 100%; height: auto;"></strong></p>',
+                                        $content
+                                    );
+                                    
+                                    // Fix any other images that might be in different formats with comprehensive regex
+                                    $content = preg_replace(
+                                        '/(<img[^>]*src=["\\\'])(\/storage\/articles\/[^"\\\']*\.(?:png|jpg|jpeg|gif))(["\\\'][^>]*>)/i',
+                                        '$1http://127.0.0.1:8001$2$3',
+                                        $content
+                                    );
+                                    
+                                    // Apply ContentShortcode processing for comprehensive image handling
+                                    $content = \App\Support\ContentShortcode::convertImageUrls($content);
+                                    
+                                    // Remove hardcoded image styling - let ContentShortcode and CSS handle it
+                                    // This was overriding admin-set image dimensions with fixed styles
+                                    // Images will now respect admin-set width/height attributes
+                                }
+                            @endphp
+                            {!! $content !!}
                         @else
                             <div class="text-center py-12">
                                 <div class="text-gray-500 mb-4">
@@ -226,18 +294,22 @@
         font-weight: 600;
     }
     
-    /* 記事内の画像のスタイル */
+    /* 記事内の画像のスタイル - admin設定の幅・高さを尊重 */
     .article-content img {
         cursor: default !important;
         pointer-events: none !important;
         border: none !important;
         box-shadow: none !important;
         transition: none !important;
-        max-width: 100%;
-        height: auto;
         display: block;
         margin: 1rem auto;
         object-fit: contain;
+    }
+    
+    /* admin で幅・高さが指定されていない画像にのみデフォルト制約を適用 */
+    .article-content img:not([width]):not([height]):not([style*="width"]):not([style*="height"]) {
+        max-width: 100%;
+        height: auto;
         width: auto;
     }
     
@@ -393,15 +465,28 @@
             overflow-wrap: break-word !important;
         }
         
-        /* 画像の特別制御 */
+        /* 画像の特別制御 - admin設定の幅を尊重しつつモバイル対応 */
         .article-content img,
         .page-content img {
-            width: 85vw !important;
-            height: auto !important;
             margin: 1rem auto !important;
             display: block !important;
             object-fit: contain !important;
             border: none !important;
+        }
+        
+        /* admin で幅が設定されていない画像にのみモバイル制約を適用 */
+        .article-content img:not([width]):not([style*="width"]),
+        .page-content img:not([width]):not([style*="width"]) {
+            width: 85vw !important;
+            height: auto !important;
+        }
+        
+        /* admin で幅が設定された画像はその幅を尊重（ただしモバイルでは最大幅制限） */
+        .article-content img[width],
+        .article-content img[style*="width"],
+        .page-content img[width],
+        .page-content img[style*="width"] {
+            max-width: 85vw !important;
         }
         
         /* 記事全体のコンテナ調整 */

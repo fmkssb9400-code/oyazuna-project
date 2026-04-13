@@ -251,7 +251,7 @@
 
 
                     <!-- Article Content -->
-                    <div class="prose prose-lg max-w-none article-content article-content-{{ $article->id }} overflow-hidden">
+                    <div class="article-content article-content-{{ $article->id }}">
                         {!! \App\Support\ContentShortcode::render($article->rendered_content) !!}
                     </div>
                 </div>

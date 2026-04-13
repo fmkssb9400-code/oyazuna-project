@@ -1,6 +1,82 @@
 /* Article Content Styles for Frontend */
 .article-content {
     @apply text-gray-900 leading-relaxed;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+/* === IMAGE FIXES === */
+/* Force all article images to display properly */
+.article-content img,
+.article-content .article-image {
+    display: block !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 1rem auto !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    object-fit: contain !important;
+    background-color: transparent !important;
+}
+
+/* Ensure images are visible and not hidden */
+.article-content img[src*="/storage/"] {
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+}
+
+/* === BUTTON AND CTA FIXES === */
+.article-content a.bg-blue-500,
+.article-content a.bg-blue-600,
+.article-content a[class*="bg-blue"] {
+    display: inline-block !important;
+    background-color: #3b82f6 !important;
+    color: white !important;
+    text-decoration: none !important;
+    padding: 1rem 2rem !important;
+    border-radius: 0.5rem !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    text-align: center !important;
+    margin: 1rem 0 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
+    border: none !important;
+}
+
+.article-content a.bg-blue-500:hover,
+.article-content a.bg-blue-600:hover,
+.article-content a[class*="bg-blue"]:hover {
+    background-color: #1d4ed8 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4) !important;
+}
+
+.article-content a.bg-orange-500,
+.article-content a.bg-orange-600,
+.article-content a[class*="bg-orange"] {
+    display: inline-block !important;
+    background-color: #f97316 !important;
+    color: white !important;
+    text-decoration: none !important;
+    padding: 1rem 2rem !important;
+    border-radius: 0.5rem !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    text-align: center !important;
+    margin: 1rem 0 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3) !important;
+    border: none !important;
+}
+
+.article-content a.bg-orange-500:hover,
+.article-content a.bg-orange-600:hover,
+.article-content a[class*="bg-orange"]:hover {
+    background-color: #ea580c !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4) !important;
 }
 
 /* === Legacy HTML Support (従来のHTMLタグに対応) === */
@@ -362,63 +438,125 @@
     @apply mt-2 text-sm text-gray-600 text-center italic;
 }
 
-/* === Table Styles === */
+/* === TABLE FIXES === */
 .article-content table {
-    @apply w-full border-collapse border border-gray-300 mb-6 bg-white;
+    display: table !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 2rem 0 !important;
+    background-color: white !important;
+    border: 2px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+}
+
+.article-content table thead {
+    display: table-header-group !important;
+}
+
+.article-content table tbody {
+    display: table-row-group !important;
+}
+
+.article-content table tr {
+    display: table-row !important;
 }
 
 .article-content table th {
-    @apply px-4 py-3 text-left font-semibold text-gray-900 border border-gray-300 bg-gray-100;
+    display: table-cell !important;
+    padding: 1rem !important;
+    text-align: left !important;
+    font-weight: 600 !important;
+    color: #1f2937 !important;
+    background-color: #f3f4f6 !important;
+    border: 1px solid #e5e7eb !important;
+    vertical-align: top !important;
 }
 
 .article-content table td {
-    @apply px-4 py-3 text-gray-700 border border-gray-300 bg-white;
+    display: table-cell !important;
+    padding: 1rem !important;
+    text-align: left !important;
+    color: #374151 !important;
+    background-color: white !important;
+    border: 1px solid #e5e7eb !important;
+    vertical-align: top !important;
 }
 
-.article-content table tr:nth-child(even) td {
-    @apply bg-white;
+/* Alternate row colors for better readability */
+.article-content table tbody tr:nth-child(odd) td {
+    background-color: #f9fafb !important;
 }
 
-.article-content table tr:nth-child(odd) td {
-    @apply bg-white;
+.article-content table tbody tr:hover td {
+    background-color: #f1f5f9 !important;
 }
 
-/* Ensure first row (header) is always gray */
-.article-content table tr:first-child th,
-.article-content table tr:first-child td {
-    @apply bg-gray-100 font-semibold text-gray-900;
-}
-
-/* Responsive adjustments */
-@media (max-width: 640px) {
-    .article-content .block-image.width-normal img,
-    .article-content .block-image.width-wide img {
-        @apply max-w-full;
+/* === RESPONSIVE FIXES === */
+@media (max-width: 768px) {
+    .article-content {
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow-x: hidden !important;
     }
     
-    /* 小さい画面では画像サイズクラスもレスポンシブに */
-    .article-content img.img-sm,
-    .article-content img.img-md,
-    .article-content img.img-lg,
-    .article-content img.image-small,
-    .article-content img.image-medium,
-    .article-content img.image-large,
-    .article-content img[data-size="sm"],
-    .article-content img[data-size="md"],
-    .article-content img[data-size="lg"],
-    .article-content figure.img-sm img,
-    .article-content figure.img-md img,
-    .article-content figure.img-lg img,
-    .article-content figure[data-trix-attributes*='"imageSize"'] img {
+    /* Mobile image handling */
+    .article-content img,
+    .article-content .article-image {
         max-width: 100% !important;
         width: 100% !important;
+        height: auto !important;
+        margin: 1rem 0 !important;
+        padding: 0 !important;
     }
     
-    .article-content h2 {
-        @apply text-xl;
+    /* Mobile table handling */
+    .article-content table {
+        width: 100% !important;
+        font-size: 0.75rem !important;
+        border-radius: 4px !important;
     }
     
-    .article-content h3 {
-        @apply text-lg;
+    .article-content table th,
+    .article-content table td {
+        padding: 0.5rem !important;
+        font-size: 0.75rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    /* Mobile heading adjustments */
+    .article-content h1,
+    .article-content h1:not([class]) {
+        font-size: 1.5rem !important;
+        margin-top: 1rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .article-content h2,
+    .article-content h2:not([class]) {
+        font-size: 1.25rem !important;
+        margin-top: 1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .article-content h3,
+    .article-content h3:not([class]) {
+        font-size: 1.125rem !important;
+        margin-top: 0.75rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    /* Mobile buttons */
+    .article-content a.bg-blue-500,
+    .article-content a.bg-orange-500,
+    .article-content a.bg-green-500 {
+        width: 100% !important;
+        max-width: 100% !important;
+        font-size: 1rem !important;
+        padding: 1rem !important;
+        margin: 1rem 0 !important;
     }
 }

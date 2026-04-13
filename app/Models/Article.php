@@ -93,34 +93,40 @@ class Article extends Model
     // Replace [html:key] shortcodes with custom HTML blocks
     public function replaceHtmlShortcodes($content)
     {
-        if (empty($content) || empty($this->custom_html_blocks)) {
+        if (empty($content)) {
             return $content;
         }
 
-        // Create a lookup array for faster access
-        $htmlBlocks = [];
-        foreach ($this->custom_html_blocks as $block) {
-            if (!empty($block['key']) && !empty($block['html'])) {
-                $htmlBlocks[$block['key']] = $block['html'];
+        // If we have custom HTML blocks, process them first
+        if (!empty($this->custom_html_blocks)) {
+            // Create a lookup array for faster access
+            $htmlBlocks = [];
+            foreach ($this->custom_html_blocks as $block) {
+                if (!empty($block['key']) && !empty($block['html'])) {
+                    $htmlBlocks[$block['key']] = $block['html'];
+                }
             }
+
+            // Replace shortcodes with HTML
+            $content = preg_replace_callback(
+                '/\[html:([a-zA-Z0-9_-]+)\]/',
+                function ($matches) use ($htmlBlocks) {
+                    $key = $matches[1];
+                    if (isset($htmlBlocks[$key])) {
+                        // Sanitize the HTML content
+                        $html = $this->sanitizeCustomHtml($htmlBlocks[$key]);
+                        // Wrap in article-specific container
+                        return '<div class="custom-html-block article-content-' . $this->id . '">' . $html . '</div>';
+                    }
+                    // Return shortcode as-is if no matching block found
+                    return $matches[0];
+                },
+                $content
+            );
         }
 
-        // Replace shortcodes with HTML
-        $content = preg_replace_callback(
-            '/\[html:([a-zA-Z0-9_-]+)\]/',
-            function ($matches) use ($htmlBlocks) {
-                $key = $matches[1];
-                if (isset($htmlBlocks[$key])) {
-                    // Sanitize the HTML content
-                    $html = $this->sanitizeCustomHtml($htmlBlocks[$key]);
-                    // Wrap in article-specific container
-                    return '<div class="custom-html-block article-content-' . $this->id . '">' . $html . '</div>';
-                }
-                // Return shortcode as-is if no matching block found
-                return $matches[0];
-            },
-            $content
-        );
+        // Fallback: Use ContentShortcode for any remaining HTML shortcodes
+        $content = \App\Support\ContentShortcode::render($content);
 
         return $content;
     }

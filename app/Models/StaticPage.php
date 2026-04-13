@@ -29,6 +29,16 @@ class StaticPage extends Model
         'is_published' => 'boolean',
         'published_at' => 'datetime',
         'custom_html_blocks' => 'array',
+        'supervisor_name' => 'string',
+        'supervisor_title' => 'string',
+        'supervisor_description' => 'string',
+        'supervisor_avatar' => 'string',
+        'title' => 'string',
+        'slug' => 'string',
+        'page_type' => 'string',
+        'content' => 'string',
+        'featured_image' => 'string',
+        'custom_css' => 'string',
     ];
 
     // 公開設定時に自動的にpublished_atを設定
@@ -41,7 +51,18 @@ class StaticPage extends Model
                 $page->published_at = null;
             }
         });
+        
+        // Clear any potential caching when content is updated
+        static::saved(function ($page) {
+            // Force clear any view caching or OPcache
+            if (function_exists('opcache_invalidate') && $page->wasChanged('content')) {
+                // This ensures the rendered_content accessor reflects changes immediately
+                $page->refresh();
+            }
+        });
     }
+
+    // No special handling needed for supervisor fields - allow normal data storage
 
     // Scope for published pages
     public function scopePublished($query)
@@ -104,6 +125,9 @@ class StaticPage extends Model
             },
             $content
         );
+
+        // Fallback: Use ContentShortcode for any remaining HTML shortcodes
+        $content = \App\Support\ContentShortcode::render($content);
 
         return $content;
     }

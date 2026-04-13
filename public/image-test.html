@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Size Test</title>
+    <style>
+        /* Same CSS as the main template */
+        .article-content img {
+            cursor: default !important;
+            pointer-events: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            transition: none !important;
+            display: block;
+            margin: 1rem auto;
+            object-fit: contain;
+        }
+        
+        /* admin で幅・高さが指定されていない画像にのみデフォルト制約を適用 */
+        .article-content img:not([width]):not([height]):not([style*="width"]):not([style*="height"]) {
+            max-width: 100%;
+            height: auto;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="article-content">
+        <h1>Image Size Test</h1>
+        
+        <h2>Image with width attribute (should respect admin sizing):</h2>
+        <img src="https://picsum.photos/300/200" alt="test" width="150" height="100">
+        <p>This image has width="150" height="100" and should display at 150x100px</p>
+        
+        <h2>Image with inline style (should respect admin styling):</h2>
+        <img src="https://picsum.photos/300/200" alt="test" style="width: 200px;">
+        <p>This image has style="width: 200px;" and should display at 200px width</p>
+        
+        <h2>Image without size attributes (should use CSS defaults):</h2>
+        <img src="https://picsum.photos/300/200" alt="test">
+        <p>This image has no width/height/style attributes and should be responsive with max-width: 100%</p>
+    </div>
+</body>
+</html>
