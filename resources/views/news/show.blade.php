@@ -188,8 +188,8 @@
                         /* targetlist_21のスタイル */
                         .article-content .targetlist_21 {
                             position: relative !important;
-                            margin: 2em 0 !important;
-                            padding: 10px 20px 0px 20px !important;
+                            margin: 3em 0 2em 0 !important; /* 上部マージンを追加してタイトル用スペースを確保 */
+                            padding: 15px 20px 15px 20px !important;
                             background: #f0f7ff !important;
                             border: 2px solid #5b8bd0 !important;
                         }
@@ -245,6 +245,31 @@
 
                         .article-content .targetlist_21 li::before {
                             display: none !important;
+                        }
+                        
+                        /* モバイル専用の追加調整 */
+                        @media (max-width: 767px) {
+                            .article-content .targetlist_21,
+                            .targetlist_21 {
+                                margin: 4em 0 2em 0 !important; /* モバイルでさらに上部マージンを増加 */
+                                padding: 20px 15px 20px 15px !important;
+                                width: 90vw !important;
+                                max-width: 90vw !important;
+                                box-sizing: border-box !important;
+                            }
+                            
+                            .article-content .targetlist_21 span,
+                            .targetlist_21 span,
+                            div.targetlist_21 span {
+                                top: -18px !important; /* モバイルでタイトル位置を少し調整 */
+                                left: 10px !important;
+                                padding: 8px 15px !important;
+                                font-size: 14px !important;
+                                max-width: calc(90vw - 40px) !important;
+                                white-space: nowrap !important;
+                                overflow: hidden !important;
+                                text-overflow: ellipsis !important;
+                            }
                         }
                     </style>
 

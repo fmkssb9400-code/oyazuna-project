@@ -155,12 +155,7 @@
                                         $content
                                     );
                                     
-                                    // Fix the safety management image with width/height attributes
-                                    $content = str_replace(
-                                        '<img src="/storage/articles/FcgLaQhA3tmQsGsuulpXUXcmz74QhwQVss6m5C6V.png" alt="" width="223" height="210">',
-                                        '<img src="/storage/articles/FcgLaQhA3tmQsGsuulpXUXcmz74QhwQVss6m5C6V.png" alt="" style="max-width: 300px; height: auto;">',
-                                        $content
-                                    );
+                                    // Allow admin-set dimensions to be respected - removed hardcoded override
                                     
                                     // Fix first image with regular quotes
                                     $content = str_replace(
@@ -190,8 +185,7 @@
                                         $content
                                     );
                                     
-                                    // Apply ContentShortcode processing for comprehensive image handling
-                                    $content = \App\Support\ContentShortcode::convertImageUrls($content);
+                                    // ContentShortcode processing is already handled by the StaticPage model's rendered_content
                                     
                                     // Remove hardcoded image styling - let ContentShortcode and CSS handle it
                                     // This was overriding admin-set image dimensions with fixed styles
@@ -304,6 +298,41 @@
         display: block;
         margin: 1rem auto;
         object-fit: contain;
+    }
+    
+    /* admin設定の幅・高さ属性を強制的に適用 */
+    .article-content img[width][height] {
+        max-width: none !important;
+        max-height: none !important;
+    }
+    
+    /* admin設定画像のスタイルを最優先で適用 - 全てのCSSを上書き */
+    .article-content img[width],
+    .page-content img[width],
+    .prose img[width],
+    img[width] {
+        max-width: unset !important;
+        max-height: unset !important;
+        width: attr(width px) !important;
+        height: attr(height px) !important;
+    }
+    
+    /* Tailwind proseやその他のCSSフレームワークを強制上書き */
+    .prose img,
+    .prose-lg img,
+    .article-content img,
+    .page-content img {
+        max-width: unset !important;
+    }
+    
+    /* width/height属性を持つ画像専用の最優先ルール */
+    img[src*="FcgLaQhA3tmQsGsuulpXUXcmz74QhwQVss6m5C6V"][width][height] {
+        width: attr(width px) !important;
+        height: attr(height px) !important;
+        max-width: unset !important;
+        max-height: unset !important;
+        min-width: unset !important;
+        min-height: unset !important;
     }
     
     /* admin で幅・高さが指定されていない画像にのみデフォルト制約を適用 */
@@ -481,12 +510,13 @@
             height: auto !important;
         }
         
-        /* admin で幅が設定された画像はその幅を尊重（ただしモバイルでは最大幅制限） */
+        /* admin で幅が設定された画像はその幅を尊重（モバイルでも admin 設定を優先） */
         .article-content img[width],
         .article-content img[style*="width"],
         .page-content img[width],
         .page-content img[style*="width"] {
-            max-width: 85vw !important;
+            /* admin で設定された幅を尊重し、max-width制限を削除 */
+            /* 必要に応じて最大幅を画面幅に制限する場合のみコメントアウトを解除: max-width: 85vw !important; */
         }
         
         /* 記事全体のコンテナ調整 */
@@ -1033,6 +1063,34 @@ function generateTableOfContents() {
             }
         });
     }
+
+    // admin設定の画像サイズを強制適用
+    function forceImageSizes() {
+        const images = document.querySelectorAll('img[width], img[height]');
+        images.forEach(function(img) {
+            if (img.hasAttribute('width')) {
+                const width = img.getAttribute('width') + 'px';
+                img.style.setProperty('width', width, 'important');
+                img.style.setProperty('max-width', 'none', 'important');
+                img.style.setProperty('min-width', 'auto', 'important');
+            }
+            if (img.hasAttribute('height')) {
+                const height = img.getAttribute('height') + 'px';
+                img.style.setProperty('height', height, 'important');
+                img.style.setProperty('max-height', 'none', 'important');
+                img.style.setProperty('min-height', 'auto', 'important');
+            }
+            // Tailwind prose等の制約を削除
+            img.style.setProperty('object-fit', 'contain', 'important');
+        });
+    }
+    
+    // ページ読み込み時とDOMContentLoaded時の両方で実行
+    forceImageSizes();
+    
+    // 遅延読み込みの画像にも対応
+    setTimeout(forceImageSizes, 100);
+    setTimeout(forceImageSizes, 500);
 }
 </script>
 @endsection

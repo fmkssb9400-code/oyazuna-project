@@ -126,12 +126,27 @@ class ContentShortcode
                 $hasWidthHeight = (strpos($imgStart . $imgEnd, 'width=') !== false || strpos($imgStart . $imgEnd, 'height=') !== false);
                 $hasInlineStyles = (strpos($imgStart . $imgEnd, 'style=') !== false);
                 
+                // Extract width and height values if they exist
+                $widthValue = null;
+                $heightValue = null;
+                if (preg_match('/width=["\']?(\d+)["\']?/', $imgStart . $imgEnd, $widthMatch)) {
+                    $widthValue = $widthMatch[1];
+                }
+                if (preg_match('/height=["\']?(\d+)["\']?/', $imgStart . $imgEnd, $heightMatch)) {
+                    $heightValue = $heightMatch[1];
+                }
+                
                 // Only add basic responsive classes if no explicit sizing is set
                 if (!$hasWidthHeight && !$hasInlineStyles) {
                     $responsiveClasses = 'article-image max-w-full h-auto mx-auto my-4 rounded-lg';
+                    $inlineStyle = '';
                 } else {
-                    // If admin has set specific dimensions, just add minimal styling
+                    // If admin has set specific dimensions, add minimal styling and force the size with inline CSS
                     $responsiveClasses = 'article-image mx-auto my-4 rounded-lg';
+                    $inlineStyle = '';
+                    if ($widthValue && $heightValue) {
+                        $inlineStyle = ' style="width: ' . $widthValue . 'px !important; height: ' . $heightValue . 'px !important; max-width: none !important; max-height: none !important; min-width: auto !important; min-height: auto !important; flex-shrink: 0 !important;"';
+                    }
                 }
                 
                 if ($existingClasses) {
@@ -140,7 +155,7 @@ class ContentShortcode
                     $newClasses = $responsiveClasses;
                 }
                 
-                return $imgStart . ' class="' . $newClasses . '"' . $imgEnd;
+                return $imgStart . ' class="' . $newClasses . '"' . $inlineStyle . $imgEnd;
             },
             $content
         );
