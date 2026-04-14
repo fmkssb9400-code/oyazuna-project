@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'オヤズナ - 高所窓ガラス清掃業者比較・一括見積もり')</title>
+    <title>@yield('title', 'オヤズナ｜高所ロープ業者の口コミ・比較・見積もりサイト【窓ガラス清掃・外壁補修・塗装】')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Inter:wght@300;400;500;600;700&family=M+PLUS+1+Code:wght@100;200;300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Zen+Maru+Gothic:wght@300;400;500;700;900&family=Kosugi+Maru&family=Shippori+Antique+B1&family=Sawarabi+Gothic&family=M+PLUS+1p:wght@100;300;400;500;700;800;900&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta name="description" content="@yield('description', '高所ロープ作業の専門業者を口コミと実績で比較できるサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安心・信頼できる業者選びをサポートします。')">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <!-- Favicon -->
