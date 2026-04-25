@@ -3,8 +3,10 @@
 
     <!-- 人気ランキングから探すセクション -->
     <section style="margin-bottom: 100px;">
-      <div class="text-center mb-8">
-        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">人気ランキングから探す</h2>
+      <div class="ranking-header-container flex items-center justify-center mb-8">
+        <h1 class="heading-6 text-xl md:text-2xl font-bold">
+          ランキングから探す
+        </h1>
       </div>
       
       <!-- 4つのカテゴリーのランキング -->
@@ -29,7 +31,7 @@
         <!-- 窓ガラス清掃会社 -->
         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100" style="width: 340px; min-width: 340px;">
           <div class="bg-gradient-to-r from-gray-200 to-gray-300 text-center py-6">
-            <h3 class="font-bold text-lg text-black">窓ガラス清掃会社</h3>
+            <h3 class="font-bold text-base text-black">窓ガラス清掃会社</h3>
           </div>
           <div class="p-6">
             @if(isset($rankingData['window']) && count($rankingData['window']) > 0)
@@ -51,7 +53,7 @@
                     </div>
                   </div>
                   <div class="flex-1 min-w-0 ml-4">
-                    <div class="font-bold text-lg text-gray-800 leading-tight mb-1 hover:text-blue-600 transition-colors duration-200">{{ $company['name'] }}</div>
+                    <div class="font-bold text-base text-gray-800 leading-tight mb-1 hover:text-blue-600 transition-colors duration-200">{{ $company['name'] }}</div>
                     <div class="flex items-center">
                       @if($company['has_reviews'] ?? false)
                         <div class="flex text-yellow-400 text-base">
@@ -84,7 +86,7 @@
                   </div>
                 </div>
                 <div class="flex-1 min-w-0 ml-4">
-                  <div class="font-bold text-lg text-gray-800 leading-tight mb-1">データ準備中</div>
+                  <div class="font-bold text-base text-gray-800 leading-tight mb-1">データ準備中</div>
                   <div class="flex items-center">
                     <div class="flex text-yellow-400 text-base">★★★★★</div>
                     <span class="text-sm text-gray-600 ml-2 font-medium">準備中</span>
@@ -94,8 +96,11 @@
             @endif
           </div>
           <div class="p-5">
-            <a href="{{ route('companies.index', ['service' => 'window']) }}" class="glowing-button block text-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
-              窓ガラス清掃会社の<br>ランキングページへ
+            <a href="{{ route('companies.index', ['service' => 'window']) }}" class="flex items-center justify-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+              ランキングページへ
             </a>
           </div>
         </div>
@@ -103,7 +108,7 @@
         <!-- 外壁調査会社 -->
         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100" style="width: 340px; min-width: 340px;">
           <div class="bg-gradient-to-r from-gray-200 to-gray-300 text-center py-6">
-            <h3 class="font-bold text-lg text-black">外壁調査会社</h3>
+            <h3 class="font-bold text-base text-black">外壁調査会社</h3>
           </div>
           <div class="p-6">
             @if(isset($rankingData['inspection']) && count($rankingData['inspection']) > 0)
@@ -125,7 +130,7 @@
                     </div>
                   </div>
                   <div class="flex-1 min-w-0 ml-4">
-                    <div class="font-bold text-lg text-gray-800 leading-tight mb-1 hover:text-blue-600 transition-colors duration-200">{{ $company['name'] }}</div>
+                    <div class="font-bold text-base text-gray-800 leading-tight mb-1 hover:text-blue-600 transition-colors duration-200">{{ $company['name'] }}</div>
                     <div class="flex items-center">
                       @if($company['has_reviews'] ?? false)
                         <div class="flex text-yellow-400 text-base">
@@ -158,7 +163,7 @@
                   </div>
                 </div>
                 <div class="flex-1 min-w-0 ml-4">
-                  <div class="font-bold text-lg text-gray-800 leading-tight mb-1">データ準備中</div>
+                  <div class="font-bold text-base text-gray-800 leading-tight mb-1">データ準備中</div>
                   <div class="flex items-center">
                     <div class="flex text-yellow-400 text-base">★★★★★</div>
                     <span class="text-sm text-gray-600 ml-2 font-medium">準備中</span>
@@ -168,8 +173,11 @@
             @endif
           </div>
           <div class="p-5">
-            <a href="{{ route('companies.index', ['service' => 'inspection']) }}" class="glowing-button block text-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
-              外壁調査会社の<br>ランキングページへ
+            <a href="{{ route('companies.index', ['service' => 'inspection']) }}" class="flex items-center justify-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+              ランキングページへ
             </a>
           </div>
         </div>
@@ -177,7 +185,7 @@
         <!-- 外壁補修会社 -->
         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100" style="width: 340px; min-width: 340px;">
           <div class="bg-gradient-to-r from-gray-200 to-gray-300 text-center py-6">
-            <h3 class="font-bold text-lg text-black">外壁補修会社</h3>
+            <h3 class="font-bold text-base text-black">外壁補修会社</h3>
           </div>
           <div class="p-6">
             @if(isset($rankingData['repair']) && count($rankingData['repair']) > 0)
@@ -199,7 +207,7 @@
                     </div>
                   </div>
                   <div class="flex-1 min-w-0 ml-4">
-                    <div class="font-bold text-lg text-gray-800 leading-tight mb-1 hover:text-blue-600 transition-colors duration-200">{{ $company['name'] }}</div>
+                    <div class="font-bold text-base text-gray-800 leading-tight mb-1 hover:text-blue-600 transition-colors duration-200">{{ $company['name'] }}</div>
                     <div class="flex items-center">
                       @if($company['has_reviews'] ?? false)
                         <div class="flex text-yellow-400 text-base">
@@ -232,7 +240,7 @@
                   </div>
                 </div>
                 <div class="flex-1 min-w-0 ml-4">
-                  <div class="font-bold text-lg text-gray-800 leading-tight mb-1">データ準備中</div>
+                  <div class="font-bold text-base text-gray-800 leading-tight mb-1">データ準備中</div>
                   <div class="flex items-center">
                     <div class="flex text-yellow-400 text-base">★★★★★</div>
                     <span class="text-sm text-gray-600 ml-2 font-medium">準備中</span>
@@ -242,8 +250,11 @@
             @endif
           </div>
           <div class="p-5">
-            <a href="{{ route('companies.index', ['service' => 'repair']) }}" class="glowing-button block text-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
-              外壁補修会社の<br>ランキングページへ
+            <a href="{{ route('companies.index', ['service' => 'repair']) }}" class="flex items-center justify-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+              ランキングページへ
             </a>
           </div>
         </div>
@@ -251,7 +262,7 @@
         <!-- 外壁塗装会社（部分） -->
         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100" style="width: 340px; min-width: 340px;">
           <div class="bg-gradient-to-r from-gray-200 to-gray-300 text-center py-6">
-            <h3 class="font-bold text-lg text-black">外壁塗装会社（部分）</h3>
+            <h3 class="font-bold text-base text-black">外壁塗装会社（部分）</h3>
           </div>
           <div class="p-6">
             @if(isset($rankingData['painting']) && count($rankingData['painting']) > 0)
@@ -273,7 +284,7 @@
                     </div>
                   </div>
                   <div class="flex-1 min-w-0 ml-4">
-                    <div class="font-bold text-lg text-gray-800 leading-tight mb-1 hover:text-blue-600 transition-colors duration-200">{{ $company['name'] }}</div>
+                    <div class="font-bold text-base text-gray-800 leading-tight mb-1 hover:text-blue-600 transition-colors duration-200">{{ $company['name'] }}</div>
                     <div class="flex items-center">
                       @if($company['has_reviews'] ?? false)
                         <div class="flex text-yellow-400 text-base">
@@ -306,7 +317,7 @@
                   </div>
                 </div>
                 <div class="flex-1 min-w-0 ml-4">
-                  <div class="font-bold text-lg text-gray-800 leading-tight mb-1">データ準備中</div>
+                  <div class="font-bold text-base text-gray-800 leading-tight mb-1">データ準備中</div>
                   <div class="flex items-center">
                     <div class="flex text-yellow-400 text-base">★★★★★</div>
                     <span class="text-sm text-gray-600 ml-2 font-medium">準備中</span>
@@ -316,8 +327,11 @@
             @endif
           </div>
           <div class="p-5">
-            <a href="{{ route('companies.index', ['service' => 'painting']) }}" class="glowing-button block text-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
-              外壁塗装会社（部分）の<br>ランキングページへ
+            <a href="{{ route('companies.index', ['service' => 'painting']) }}" class="flex items-center justify-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+              ランキングページへ
             </a>
           </div>
         </div>
@@ -327,9 +341,8 @@
     </section>
 
     <!-- 1) header（見出し+説明）: ここはgridの外 -->
-    <header class="text-center mt-2 md:mt-4 mb-6 md:mb-8">
-      <h2 class="text-xl md:text-2xl font-bold text-gray-900">おすすめの専門業者</h2>
-      <p class="mt-2 text-gray-600 text-sm md:text-base">信頼できる高所ロープ作業会社をご紹介</p>
+    <header class="text-left mt-2 md:mt-4 mb-6 md:mb-8">
+      <h2 class="heading-21 text-xl md:text-2xl font-bold">おすすめの専門業者</h2>
     </header>
 
     <!-- 2) grid（カード一覧 + サイドバー）: ここから左右同じ開始位置 -->
@@ -338,22 +351,94 @@
       <!-- 左：業者カード一覧（カードの上端が基準） -->
       <div class="lg:col-span-2 min-w-0">
         <!-- Search Form Section -->
-        <div class="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl border border-blue-100 p-5 mb-8">
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 rounded-3xl p-6 mb-8 shadow-lg">
+            <!-- Top Row: 3 Selection Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <!-- Prefecture Selection Card -->
+                <button type="button" id="prefecture-card" class="bg-white bg-opacity-90 backdrop-blur-sm rounded-2xl p-4 text-left hover:bg-opacity-100 transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <!-- Map/Globe icon -->
+                            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">都道府県</h3>
+                            <p class="text-sm text-gray-600">から探す</p>
+                        </div>
+                    </div>
+                    <div id="selected-prefecture" class="mt-2 text-sm text-blue-600 hidden">選択中: <span></span></div>
+                </button>
+
+                <!-- Service Selection Card -->
+                <button type="button" id="service-card" class="bg-white bg-opacity-90 backdrop-blur-sm rounded-2xl p-4 text-left hover:bg-opacity-100 transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <!-- Cog/Service icon -->
+                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">サービス内容</h3>
+                            <p class="text-sm text-gray-600">から探す</p>
+                        </div>
+                    </div>
+                    <div id="selected-services" class="mt-2 text-sm text-blue-600 hidden">選択中: <span></span></div>
+                </button>
+
+                <!-- Condition Selection Card -->
+                <button type="button" id="condition-card" class="bg-white bg-opacity-90 backdrop-blur-sm rounded-2xl p-4 text-left hover:bg-opacity-100 transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <!-- Smiley face icon -->
+                            <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">条件</h3>
+                            <p class="text-sm text-gray-600">から探す</p>
+                        </div>
+                    </div>
+                    <div id="selected-condition" class="mt-2 text-sm text-blue-600 hidden">選択中: <span></span></div>
+                </button>
+            </div>
+
+            <!-- Main Search Button -->
+            <div class="mb-4">
+                <button type="button" id="main-search-button" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
-                </div>
-                <h3 class="text-lg font-bold text-gray-900">業者検索</h3>
+                    条件で業者を検索
+                </button>
             </div>
-            
-            <!-- Prefecture Selection -->
-            <div class="mb-6">
-                <div class="mb-3">
-                    <label for="prefecture-select" class="text-sm font-semibold text-gray-700">都道府県を選択</label>
+
+            <!-- Bottom Row: Keyword Search -->
+            <div class="bg-white bg-opacity-90 backdrop-blur-sm rounded-2xl p-4 hover:bg-opacity-100 transition-all duration-300 shadow-md">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <!-- Search icon -->
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <input type="text" id="keyword-search" placeholder="キーワードで探す" class="flex-1 bg-transparent border-none outline-none text-lg font-medium text-gray-800 placeholder-gray-600">
+                    <button type="button" id="keyword-search-button" class="p-2 text-gray-600 hover:text-gray-800 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
                 </div>
-                <select id="prefecture-select" class="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-700 text-base">
+            </div>
+
+            <!-- Hidden dropdown menus -->
+            <div id="prefecture-dropdown" class="hidden mt-4 bg-white rounded-2xl p-4 shadow-lg max-h-60 overflow-y-auto">
+                <h4 class="font-bold text-gray-800 mb-3">都道府県を選択</h4>
+                <select id="prefecture-select" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                     <option value="">全ての都道府県</option>
                     @php
                     $prefectureMapping = [
@@ -378,72 +463,70 @@
                 </select>
             </div>
 
-            <!-- Service Type Selection -->
-            <div class="mb-6">
-                <div class="mb-4">
-                    <span class="text-sm font-semibold text-gray-700">サービス内容を選択</span>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="service-options">
-                    <button type="button" data-service="window" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md">
+            <div id="service-dropdown" class="hidden mt-4 bg-white rounded-2xl p-4 shadow-lg">
+                <h4 class="font-bold text-gray-800 mb-3">サービス内容を選択</h4>
+                <div class="grid grid-cols-2 gap-3" id="service-options">
+                    <button type="button" data-service="window" class="service-option px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-300 bg-gray-50 border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700">
                         窓ガラス清掃
                     </button>
-                    <button type="button" data-service="inspection" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-green-50 hover:border-green-400 hover:text-green-700 hover:shadow-md">
+                    <button type="button" data-service="inspection" class="service-option px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-300 bg-gray-50 border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700">
                         外壁調査
                     </button>
-                    <button type="button" data-service="repair" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-orange-50 hover:border-orange-400 hover:text-orange-700 hover:shadow-md">
+                    <button type="button" data-service="repair" class="service-option px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-300 bg-gray-50 border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700">
                         外壁補修
                     </button>
-                    <button type="button" data-service="painting" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-purple-50 hover:border-purple-400 hover:text-purple-700 hover:shadow-md">
+                    <button type="button" data-service="painting" class="service-option px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-300 bg-gray-50 border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700">
                         外壁塗装（部分）
                     </button>
-                    <button type="button" data-service="bird_control" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-700 hover:shadow-md">
+                    <button type="button" data-service="bird_control" class="service-option px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-300 bg-gray-50 border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700">
                         鳥害対策
                     </button>
-                    <button type="button" data-service="sign" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-indigo-50 hover:border-indigo-400 hover:text-indigo-700 hover:shadow-md">
+                    <button type="button" data-service="sign" class="service-option px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-300 bg-gray-50 border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700">
                         看板作業
                     </button>
-                    <button type="button" data-service="leak_inspection" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-teal-50 hover:border-teal-400 hover:text-teal-700 hover:shadow-md">
+                    <button type="button" data-service="leak_inspection" class="service-option px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-300 bg-gray-50 border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700">
                         雨漏り調査
                     </button>
-                    <button type="button" data-service="other" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-400 hover:text-gray-800 hover:shadow-md">
+                    <button type="button" data-service="other" class="service-option px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-300 bg-gray-50 border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700">
                         その他
                     </button>
                 </div>
             </div>
 
-            <!-- Sort Type Selection -->
-            <div class="mb-6">
-                <div class="mb-4">
-                    <span class="text-sm font-semibold text-gray-700">優先する条件を選択</span>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="sort-options">
-                    <button type="button" data-sort="recommend" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-blue-50 border-blue-400 text-blue-700 shadow-md">
+            <div id="condition-dropdown" class="hidden mt-4 bg-white rounded-2xl p-4 shadow-lg">
+                <h4 class="font-bold text-gray-800 mb-3">優先する条件を選択</h4>
+                <div class="grid grid-cols-2 gap-3" id="sort-options">
+                    <button type="button" data-sort="recommend" class="sort-option px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-300 bg-blue-50 border-blue-400 text-blue-700">
                         おすすめ
                     </button>
-                    <button type="button" data-sort="safe" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-green-50 hover:border-green-400 hover:text-green-700 hover:shadow-md">
+                    <button type="button" data-sort="safe" class="sort-option px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-300 bg-gray-50 border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700">
                         安全性重視
                     </button>
-                    <button type="button" data-sort="result" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-orange-50 hover:border-orange-400 hover:text-orange-700 hover:shadow-md">
+                    <button type="button" data-sort="result" class="sort-option px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-300 bg-gray-50 border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700">
                         実績重視
                     </button>
-                    <button type="button" data-sort="review" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 bg-white border-gray-200 text-gray-700 hover:bg-purple-50 hover:border-purple-400 hover:text-purple-700 hover:shadow-md">
+                    <button type="button" data-sort="review" class="sort-option px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-300 bg-gray-50 border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700">
                         口コミ重視
                     </button>
                 </div>
-            </div>
-
-            <!-- Search Button -->
-            <div class="text-left">
-                <button id="search-button" class="px-8 py-4 bg-orange-600 text-white font-bold text-lg rounded-xl hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-                    条件で業者を検索
-                </button>
             </div>
         </div>
         
         <!-- Results Title -->
         <div class="mb-4 md:mb-6">
-            <h4 class="text-lg md:text-xl font-bold text-gray-800">検索結果</h4>
-            <div class="hidden bg-gray-100 rounded-lg p-1 min-w-max" id="homepage-tabs">
+            <h4 class="text-lg md:text-xl font-bold text-gray-800 mb-8">検索結果</h4>
+        </div>
+        
+        <!-- Tabs for おすすめ and 口コミ positioned above cards -->
+        <div class="kirikae-tab mb-0">
+            <input id="recommend-tab" type="radio" name="tab-style" value="recommend" checked>
+            <label class="tab-style" for="recommend-tab">おすすめ</label>
+
+            <input id="review-tab" type="radio" name="tab-style" value="review">
+            <label class="tab-style" for="review-tab">口コミ</label>
+        </div>
+        
+        <div class="hidden bg-gray-100 rounded-lg p-1 min-w-max" id="homepage-tabs">
             <a href="?sort=recommend"
                class="tab-button px-4 md:px-8 py-3 md:py-4 text-sm md:text-xl font-medium rounded-md transition-colors whitespace-nowrap {{ ($sort ?? 'recommend') === 'recommend' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-600 hover:text-gray-900' }}">
                 おすすめ
@@ -460,13 +543,15 @@
                class="tab-button px-4 md:px-8 py-3 md:py-4 text-sm md:text-xl font-medium rounded-md transition-colors whitespace-nowrap {{ ($sort ?? 'recommend') === 'review' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-600 hover:text-gray-900' }}">
                 口コミ
             </a>
-          </div>
         </div>
         
-        <div class="space-y-6 mb-8" id="companies-container">
-          @foreach($companies as $company)
-            <x-company-card :company="$company" />
-          @endforeach
+        <!-- Company Cards Container with white background connected to tabs -->
+        <div class="bg-white rounded-t-none rounded-b-lg shadow-sm border border-t-0 border-gray-200 p-6 mb-8" style="margin-top: -1px;">
+            <div class="space-y-6" id="companies-container">
+                @foreach($companies as $company)
+                    <x-company-card :company="$company" />
+                @endforeach
+            </div>
         </div>
         
         <!-- View More Button -->
@@ -499,14 +584,56 @@
           </div>
           @endif
 
-          <!-- お問い合わせバナー -->
-          <div class="bg-orange-600 rounded-lg shadow text-white">
-              <div class="p-6 text-center">
-                  <h4 class="text-lg font-bold mb-2">お急ぎの方へ</h4>
-                  <p class="text-sm mb-4">最短で業者をお探しします</p>
-                  <a href="{{ route('quote.create') }}" class="glowing-button block bg-white text-orange-600 px-4 py-2 rounded font-medium hover:bg-gray-50 transition-colors">
-                      専門業者に相談する
-                  </a>
+          <!-- お問い合わせフォーム -->
+          <div class="bg-gray-500 rounded-lg shadow text-white">
+              <div class="p-6">
+                  <h4 class="text-lg font-bold mb-2 text-center">お急ぎの方へ</h4>
+                  <p class="text-sm mb-4 text-center">最短で業者をお探しします</p>
+                  
+                  <form action="{{ route('quote.store') }}" method="POST" class="space-y-4">
+                      @csrf
+                      <div>
+                          <input type="text" 
+                                 name="name" 
+                                 placeholder="お名前" 
+                                 required
+                                 class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
+                      </div>
+                      
+                      <div>
+                          <input type="tel" 
+                                 name="phone" 
+                                 placeholder="電話番号" 
+                                 required
+                                 class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
+                      </div>
+                      
+                      <div>
+                          <select name="service_type" 
+                                  required
+                                  class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
+                              <option value="">サービスを選択</option>
+                              <option value="window_cleaning">窓ガラス清掃</option>
+                              <option value="building_cleaning">ビル清掃</option>
+                              <option value="wall_painting">外壁塗装</option>
+                              <option value="roof_repair">屋根修理</option>
+                              <option value="sign_installation">看板設置</option>
+                              <option value="other">その他</option>
+                          </select>
+                      </div>
+                      
+                      <div>
+                          <textarea name="message" 
+                                    placeholder="ご要望・詳細（任意）" 
+                                    rows="3"
+                                    class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent resize-none"></textarea>
+                      </div>
+                      
+                      <button type="submit" 
+                              class="glowing-button w-full bg-orange-600 text-white px-4 py-3 rounded-md font-bold hover:bg-orange-700 transition-colors">
+                          無料で相談する
+                      </button>
+                  </form>
               </div>
           </div>
 
@@ -649,6 +776,104 @@
         font-size: 14px;
     }
 }
+
+/* ランキングタイトルスタイル */
+.ranking-header-container {
+    position: relative;
+    padding-bottom: .2em;
+}
+
+.heading-6 {
+    display: inline-block;
+    position: relative;
+    padding: 0 4em;
+    color: #333333;
+}
+
+.heading-6::before,
+.heading-6::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    width: 45px;
+    height: 3px;
+    background-color: #2589d0;
+}
+
+.heading-6::before {
+    left: 0;
+}
+
+.heading-6::after {
+    right: 0;
+}
+
+/* おすすめの専門業者タイトルスタイル */
+.heading-21 {
+    position: relative;
+    padding: .5em .7em .4em;
+    border-bottom: 3px solid #2589d0;
+    color: #333333;
+}
+
+.heading-21::before,
+.heading-21::after {
+    position: absolute;
+    left: 30px;
+    bottom: -15px;
+    width: 30px;
+    height: 15px;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    content: '';
+}
+
+.heading-21::before {
+    background-color: #2589d0;
+}
+
+.heading-21::after {
+    bottom: -11px;
+    background-color: #fff;
+}
+
+/* Kirikae tab styles */
+.kirikae-tab {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+}
+
+.kirikae-tab input[type="radio"] {
+    display: none;
+}
+
+.kirikae-tab .tab-style {
+    padding: 16px 32px;
+    background-color: #f2f2f2;
+    color: #999;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    margin-right: 4px;
+    min-width: 120px;
+    border-radius: 0;
+}
+
+.kirikae-tab .tab-style:hover {
+    background-color: #e8e8e8;
+    color: #666;
+}
+
+.kirikae-tab input[type="radio"]:checked + .tab-style {
+    background-color: #fff;
+    color: #333;
+    border-bottom: 4px solid #2589d0;
+    font-weight: 600;
+}
 </style>
 
 <script>
@@ -656,62 +881,166 @@ document.addEventListener('DOMContentLoaded', function() {
     const prefectureSelect = document.getElementById('prefecture-select');
     const serviceOptions = document.querySelectorAll('.service-option');
     const sortOptions = document.querySelectorAll('.sort-option');
-    const searchButton = document.getElementById('search-button');
+    const mainSearchButton = document.getElementById('main-search-button');
+    const keywordSearchButton = document.getElementById('keyword-search-button');
+    const keywordSearch = document.getElementById('keyword-search');
+    
+    // Card elements
+    const prefectureCard = document.getElementById('prefecture-card');
+    const serviceCard = document.getElementById('service-card');
+    const conditionCard = document.getElementById('condition-card');
+    
+    // Dropdown elements
+    const prefectureDropdown = document.getElementById('prefecture-dropdown');
+    const serviceDropdown = document.getElementById('service-dropdown');
+    const conditionDropdown = document.getElementById('condition-dropdown');
+    
     let currentSort = getCurrentSort();
     let currentService = getCurrentService();
+    let selectedServices = [];
     
-    // 検索ボタンクリック時の処理
-    searchButton.addEventListener('click', function() {
-        const prefecture = prefectureSelect.value;
-        updateURL(prefecture, currentService, currentSort);
+    // Card click handlers to toggle dropdowns
+    prefectureCard.addEventListener('click', function() {
+        toggleDropdown('prefecture');
     });
     
-    // サービス選択時の処理（複数選択可能）
-    let selectedServices = [];
+    serviceCard.addEventListener('click', function() {
+        toggleDropdown('service');
+    });
+    
+    conditionCard.addEventListener('click', function() {
+        toggleDropdown('condition');
+    });
+    
+    function toggleDropdown(type) {
+        // Hide all dropdowns first
+        prefectureDropdown.classList.add('hidden');
+        serviceDropdown.classList.add('hidden');
+        conditionDropdown.classList.add('hidden');
+        
+        // Show the selected dropdown
+        if (type === 'prefecture') {
+            prefectureDropdown.classList.remove('hidden');
+        } else if (type === 'service') {
+            serviceDropdown.classList.remove('hidden');
+        } else if (type === 'condition') {
+            conditionDropdown.classList.remove('hidden');
+        }
+    }
+    
+    // Prefecture selection handler
+    prefectureSelect.addEventListener('change', function() {
+        const selectedText = this.options[this.selectedIndex].text;
+        const selectedPrefecture = document.getElementById('selected-prefecture');
+        
+        if (this.value) {
+            selectedPrefecture.querySelector('span').textContent = selectedText;
+            selectedPrefecture.classList.remove('hidden');
+        } else {
+            selectedPrefecture.classList.add('hidden');
+        }
+    });
+    
+    // Search button handlers
+    mainSearchButton.addEventListener('click', function() {
+        performSearch();
+    });
+    
+    keywordSearchButton.addEventListener('click', function() {
+        performSearch();
+    });
+    
+    keywordSearch.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            performSearch();
+        }
+    });
+    
+    function performSearch() {
+        const prefecture = prefectureSelect.value;
+        const keyword = keywordSearch.value.trim();
+        
+        let searchParams = new URLSearchParams();
+        
+        if (prefecture) searchParams.set('prefecture', prefecture);
+        if (currentService) searchParams.set('service', currentService);
+        if (currentSort) searchParams.set('sort', currentSort);
+        if (keyword) searchParams.set('keyword', keyword);
+        
+        updateURL(searchParams);
+    }
+    
+    // Hide dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('#prefecture-card') && !e.target.closest('#prefecture-dropdown')) {
+            prefectureDropdown.classList.add('hidden');
+        }
+        if (!e.target.closest('#service-card') && !e.target.closest('#service-dropdown')) {
+            serviceDropdown.classList.add('hidden');
+        }
+        if (!e.target.closest('#condition-card') && !e.target.closest('#condition-dropdown')) {
+            conditionDropdown.classList.add('hidden');
+        }
+    });
+    
+    // Service selection handler
     serviceOptions.forEach(option => {
         option.addEventListener('click', function() {
             const serviceType = this.getAttribute('data-service');
             
-            // サービスの選択状態をトグル
             if (selectedServices.includes(serviceType)) {
-                // 既に選択されている場合は削除
                 selectedServices = selectedServices.filter(s => s !== serviceType);
-                this.classList.remove('bg-blue-50', 'border-blue-500', 'text-blue-700');
-                this.classList.add('bg-gray-50', 'border-gray-300', 'text-gray-700', 'hover:bg-gray-100');
+                this.classList.remove('bg-blue-50', 'border-blue-400', 'text-blue-700');
+                this.classList.add('bg-gray-50', 'border-gray-300', 'text-gray-700');
             } else {
-                // 選択されていない場合は追加
                 selectedServices.push(serviceType);
-                this.classList.remove('bg-gray-50', 'border-gray-300', 'text-gray-700', 'hover:bg-gray-100');
-                this.classList.add('bg-blue-50', 'border-blue-500', 'text-blue-700');
+                this.classList.remove('bg-gray-50', 'border-gray-300', 'text-gray-700');
+                this.classList.add('bg-blue-50', 'border-blue-400', 'text-blue-700');
             }
             
-            // 現在のサービスを更新（最初の選択項目を使用）
             currentService = selectedServices.length > 0 ? selectedServices.join(',') : '';
+            
+            // Update selected services display
+            const selectedServicesDisplay = document.getElementById('selected-services');
+            if (selectedServices.length > 0) {
+                const serviceNames = selectedServices.map(service => {
+                    const option = document.querySelector(`[data-service="${service}"]`);
+                    return option ? option.textContent.trim() : service;
+                });
+                selectedServicesDisplay.querySelector('span').textContent = serviceNames.join(', ');
+                selectedServicesDisplay.classList.remove('hidden');
+            } else {
+                selectedServicesDisplay.classList.add('hidden');
+            }
         });
     });
     
-    // ソート選択時の処理
+    // Sort selection handler
     sortOptions.forEach(option => {
         option.addEventListener('click', function() {
             const sortType = this.getAttribute('data-sort');
             currentSort = sortType;
             
-            // ソートオプションのアクティブ状態を更新
             updateSortActive(this);
+            
+            // Update selected condition display
+            const selectedConditionDisplay = document.getElementById('selected-condition');
+            const conditionText = this.textContent.trim();
+            selectedConditionDisplay.querySelector('span').textContent = conditionText;
+            selectedConditionDisplay.classList.remove('hidden');
         });
     });
     
     // サービスオプションのアクティブ状態を更新（複数選択対応のため削除）
     
-    // ソートオプションのアクティブ状態を更新
     function updateSortActive(activeOption) {
         sortOptions.forEach(option => {
-            option.classList.remove('bg-blue-50', 'border-blue-500', 'text-blue-700');
-            option.classList.add('bg-gray-50', 'border-gray-300', 'text-gray-700', 'hover:bg-gray-100');
+            option.classList.remove('bg-blue-50', 'border-blue-400', 'text-blue-700');
+            option.classList.add('bg-gray-50', 'border-gray-300', 'text-gray-700');
         });
         
-        activeOption.classList.remove('bg-gray-50', 'border-gray-300', 'text-gray-700', 'hover:bg-gray-100');
-        activeOption.classList.add('bg-blue-50', 'border-blue-500', 'text-blue-700');
+        activeOption.classList.remove('bg-gray-50', 'border-gray-300', 'text-gray-700');
+        activeOption.classList.add('bg-blue-50', 'border-blue-400', 'text-blue-700');
     }
     
     // 現在のソートタイプを取得
@@ -726,27 +1055,13 @@ document.addEventListener('DOMContentLoaded', function() {
         return urlParams.get('service') || '';
     }
     
-    // URLを更新してページ遷移
-    function updateURL(prefecture, service, sort) {
-        const params = new URLSearchParams();
-        if (prefecture) {
-            params.set('prefecture', prefecture);
-        }
-        if (service) {
-            params.set('service', service);
-        }
-        if (sort) {
-            params.set('sort', sort);
-        }
-        
-        // ホームページからの検索の場合は/companiesページにリダイレクト
+    function updateURL(searchParams) {
         const currentPath = window.location.pathname;
         if (currentPath === '/' || currentPath === '/home') {
-            const newUrl = '/companies?' + params.toString();
+            const newUrl = '/companies?' + searchParams.toString();
             window.location.href = newUrl;
         } else {
-            // 既に/companiesページにいる場合は同じページ内で更新
-            const newUrl = window.location.pathname + '?' + params.toString();
+            const newUrl = window.location.pathname + '?' + searchParams.toString();
             window.location.href = newUrl;
         }
     }
@@ -756,6 +1071,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentPrefecture = urlParams.get('prefecture');
     if (currentPrefecture && prefectureSelect) {
         prefectureSelect.value = currentPrefecture;
+        const selectedText = prefectureSelect.options[prefectureSelect.selectedIndex].text;
+        const selectedPrefectureDisplay = document.getElementById('selected-prefecture');
+        selectedPrefectureDisplay.querySelector('span').textContent = selectedText;
+        selectedPrefectureDisplay.classList.remove('hidden');
     }
     
     // ページロード時にサービス選択を復元
@@ -766,11 +1085,22 @@ document.addEventListener('DOMContentLoaded', function() {
         services.forEach(service => {
             const activeService = document.querySelector(`[data-service="${service}"]`);
             if (activeService) {
-                activeService.classList.remove('bg-gray-50', 'border-gray-300', 'text-gray-700', 'hover:bg-gray-100');
-                activeService.classList.add('bg-blue-50', 'border-blue-500', 'text-blue-700');
+                activeService.classList.remove('bg-gray-50', 'border-gray-300', 'text-gray-700');
+                activeService.classList.add('bg-blue-50', 'border-blue-400', 'text-blue-700');
             }
         });
         currentService = serviceParam;
+        
+        // Update selected services display
+        const selectedServicesDisplay = document.getElementById('selected-services');
+        if (services.length > 0) {
+            const serviceNames = services.map(service => {
+                const option = document.querySelector(`[data-service="${service}"]`);
+                return option ? option.textContent.trim() : service;
+            });
+            selectedServicesDisplay.querySelector('span').textContent = serviceNames.join(', ');
+            selectedServicesDisplay.classList.remove('hidden');
+        }
     }
     
     // ページロード時にソート選択を復元
@@ -778,6 +1108,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const activeSort = document.querySelector(`[data-sort="${sortParam}"]`);
     if (activeSort) {
         updateSortActive(activeSort);
+        const selectedConditionDisplay = document.getElementById('selected-condition');
+        const conditionText = activeSort.textContent.trim();
+        selectedConditionDisplay.querySelector('span').textContent = conditionText;
+        selectedConditionDisplay.classList.remove('hidden');
     }
     // Wishlist management for home page
     let wishlist = JSON.parse(localStorage.getItem('companyWishlist') || '[]');
@@ -881,6 +1215,99 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize wishlist
     initWishlist();
+    
+    // Results tabs functionality with instant switching
+    const resultsTabInputs = document.querySelectorAll('input[name="tab-style"]');
+    
+    resultsTabInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            if (this.checked) {
+                const tabType = this.value;
+                sortCompaniesByTab(tabType);
+            }
+        });
+    });
+    
+    function sortCompaniesByTab(sortType) {
+        const companiesContainer = document.getElementById('companies-container');
+        if (!companiesContainer) return;
+        
+        const companies = Array.from(companiesContainer.children);
+        
+        companies.sort((a, b) => {
+            if (sortType === 'recommend') {
+                // Sort by average rating (higher first)
+                const aRating = extractRating(a);
+                const bRating = extractRating(b);
+                if (bRating !== aRating) {
+                    return bRating - aRating;
+                }
+                // If ratings are equal, sort by review count
+                const aCount = extractReviewCount(a);
+                const bCount = extractReviewCount(b);
+                return bCount - aCount;
+            } else if (sortType === 'review') {
+                // Sort by review count first (more reviews first)
+                const aCount = extractReviewCount(a);
+                const bCount = extractReviewCount(b);
+                if (bCount !== aCount) {
+                    return bCount - aCount;
+                }
+                // If review counts are equal, sort by rating
+                const aRating = extractRating(a);
+                const bRating = extractRating(b);
+                return bRating - aRating;
+            }
+            return 0;
+        });
+        
+        // Re-append sorted companies
+        companies.forEach(company => {
+            companiesContainer.appendChild(company);
+        });
+        
+        // Update URL without reload
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('sort', sortType);
+        const newUrl = window.location.pathname + '?' + urlParams.toString();
+        window.history.pushState({}, '', newUrl);
+    }
+    
+    function extractRating(companyElement) {
+        // Look for rating in the format "4.5" with class text-2xl font-bold
+        const ratingElement = companyElement.querySelector('.text-2xl.font-bold.text-gray-900');
+        if (ratingElement) {
+            const rating = parseFloat(ratingElement.textContent.trim());
+            return !isNaN(rating) ? rating : 0;
+        }
+        return 0;
+    }
+    
+    function extractReviewCount(companyElement) {
+        // Look for review count in parentheses like "(15件)"
+        const reviewElement = companyElement.querySelector('a[href*="reviews"]');
+        if (reviewElement) {
+            const text = reviewElement.textContent;
+            const match = text.match(/\((\d+)件\)/);
+            if (match) {
+                return parseInt(match[1]);
+            }
+        }
+        return 0;
+    }
+    
+    // Initialize tab state based on current sort parameter
+    const currentTabSort = getCurrentSort();
+    const activeTabInput = document.querySelector(`input[name="tab-style"][value="${currentTabSort === 'review' ? 'review' : 'recommend'}"]`);
+    if (activeTabInput) {
+        activeTabInput.checked = true;
+    } else {
+        // Default to recommend tab
+        const defaultTab = document.querySelector(`input[name="tab-style"][value="recommend"]`);
+        if (defaultTab) {
+            defaultTab.checked = true;
+        }
+    }
     
     // ランキングカードスライダー機能
     const rankingCards = document.getElementById('ranking-cards');

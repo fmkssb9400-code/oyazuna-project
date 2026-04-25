@@ -5,7 +5,7 @@
     <div class="px-6 py-5 border-b border-gray-200">
         <div class="flex justify-between items-start">
             <div class="flex-1">
-                <h3 class="text-xl font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
+                <h3 class="text-lg font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
                     {{ $company->name }}
                 </h3>
                 <div class="text-sm text-gray-600 space-y-1">

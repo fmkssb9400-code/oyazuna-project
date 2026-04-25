@@ -5,130 +5,155 @@
 @section('content')
 <div class="min-h-screen bg-blue-50 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-4">専門業者一覧</h1>
-            <p class="text-lg text-gray-600">高所ロープ作業会社を比較・検索</p>
-        </div>
 
-
-        <!-- Search Form Section -->
-        <div class="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl border border-blue-100 p-5 mb-8 max-w-4xl mx-auto">
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold text-gray-900">業者検索</h3>
-            </div>
-            
-            <!-- Prefecture Selection -->
-            <div class="mb-6">
-                <div class="mb-3">
-                    <label for="prefecture-select" class="text-sm font-semibold text-gray-700">都道府県を選択</label>
-                </div>
-                <select id="prefecture-select" class="w-full px-4 md:px-6 py-3 md:py-4 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-700 text-base md:text-lg">
-                    <option value="">全ての都道府県</option>
-                    @php
-                    $prefectureMapping = [
-                        '北海道' => 'hokkaido', '青森県' => 'aomori', '岩手県' => 'iwate', '宮城県' => 'miyagi',
-                        '秋田県' => 'akita', '山形県' => 'yamagata', '福島県' => 'fukushima', '茨城県' => 'ibaraki',
-                        '栃木県' => 'tochigi', '群馬県' => 'gunma', '埼玉県' => 'saitama', '千葉県' => 'chiba',
-                        '東京都' => 'tokyo', '神奈川県' => 'kanagawa', '新潟県' => 'niigata', '富山県' => 'toyama',
-                        '石川県' => 'ishikawa', '福井県' => 'fukui', '山梨県' => 'yamanashi', '長野県' => 'nagano',
-                        '岐阜県' => 'gifu', '静岡県' => 'shizuoka', '愛知県' => 'aichi', '三重県' => 'mie',
-                        '滋賀県' => 'shiga', '京都府' => 'kyoto', '大阪府' => 'osaka', '兵庫県' => 'hyogo',
-                        '奈良県' => 'nara', '和歌山県' => 'wakayama', '鳥取県' => 'tottori', '島根県' => 'shimane',
-                        '岡山県' => 'okayama', '広島県' => 'hiroshima', '山口県' => 'yamaguchi', '徳島県' => 'tokushima',
-                        '香川県' => 'kagawa', '愛媛県' => 'ehime', '高知県' => 'kochi', '福岡県' => 'fukuoka',
-                        '佐賀県' => 'saga', '長崎県' => 'nagasaki', '熊本県' => 'kumamoto', '大分県' => 'oita',
-                        '宮崎県' => 'miyazaki', '鹿児島県' => 'kagoshima', '沖縄県' => 'okinawa'
-                    ];
-                    $currentPrefecture = request()->get('prefecture');
-                    @endphp
-                    @foreach($prefectureMapping as $name => $slug)
-                        <option value="{{ $slug }}" {{ $currentPrefecture === $slug ? 'selected' : '' }}>{{ $name }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <!-- Service Type Selection -->
-            <div class="mb-6">
-                <div class="mb-4">
-                    <span class="text-sm font-semibold text-gray-700">サービス内容を選択</span>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="service-options">
-                    @php
-                    $requestedServices = request()->get('service', '');
-                    $selectedServices = $requestedServices ? explode(',', $requestedServices) : [];
-                    @endphp
-                    <button type="button" data-service="window" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('window', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
-                        窓ガラス清掃
-                    </button>
-                    <button type="button" data-service="inspection" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('inspection', $selectedServices) ? 'bg-green-50 border-green-400 text-green-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-green-50 hover:border-green-400 hover:text-green-700 hover:shadow-md' }}">
-                        外壁調査
-                    </button>
-                    <button type="button" data-service="repair" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('repair', $selectedServices) ? 'bg-orange-50 border-orange-400 text-orange-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-orange-50 hover:border-orange-400 hover:text-orange-700 hover:shadow-md' }}">
-                        外壁補修
-                    </button>
-                    <button type="button" data-service="painting" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('painting', $selectedServices) ? 'bg-purple-50 border-purple-400 text-purple-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-purple-50 hover:border-purple-400 hover:text-purple-700 hover:shadow-md' }}">
-                        外壁塗装（部分）
-                    </button>
-                    <button type="button" data-service="bird_control" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('bird_control', $selectedServices) ? 'bg-yellow-50 border-yellow-400 text-yellow-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-700 hover:shadow-md' }}">
-                        鳥害対策
-                    </button>
-                    <button type="button" data-service="sign" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('sign', $selectedServices) ? 'bg-indigo-50 border-indigo-400 text-indigo-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-indigo-50 hover:border-indigo-400 hover:text-indigo-700 hover:shadow-md' }}">
-                        看板作業
-                    </button>
-                    <button type="button" data-service="leak_inspection" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('leak_inspection', $selectedServices) ? 'bg-teal-50 border-teal-400 text-teal-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-teal-50 hover:border-teal-400 hover:text-teal-700 hover:shadow-md' }}">
-                        雨漏り調査
-                    </button>
-                    <button type="button" data-service="other" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('other', $selectedServices) ? 'bg-gray-50 border-gray-400 text-gray-800 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-400 hover:text-gray-800 hover:shadow-md' }}">
-                        その他
-                    </button>
-                </div>
-            </div>
-
-            <!-- Sort Type Selection -->
-            <div class="mb-6">
-                <div class="mb-4">
-                    <span class="text-sm font-semibold text-gray-700">優先する条件を選択</span>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="sort-options">
-                    <button type="button" data-sort="recommend" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'recommend' ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
-                        おすすめ
-                    </button>
-                    <button type="button" data-sort="safety" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'safety' ? 'bg-green-50 border-green-400 text-green-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-green-50 hover:border-green-400 hover:text-green-700 hover:shadow-md' }}">
-                        安全性重視
-                    </button>
-                    <button type="button" data-sort="performance" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'performance' ? 'bg-orange-50 border-orange-400 text-orange-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-orange-50 hover:border-orange-400 hover:text-orange-700 hover:shadow-md' }}">
-                        実績重視
-                    </button>
-                    <button type="button" data-sort="reviews" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'reviews' ? 'bg-purple-50 border-purple-400 text-purple-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-purple-50 hover:border-purple-400 hover:text-purple-700 hover:shadow-md' }}">
-                        口コミ重視
-                    </button>
-                </div>
-            </div>
-
-            <!-- Search Button -->
-            <div class="text-left">
-                <button id="search-button" class="px-8 py-4 bg-orange-600 text-white font-bold text-lg rounded-xl hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-                    条件で業者を検索
-                </button>
-            </div>
-        </div>
 
         <!-- Main Content with Sidebar -->
         <div class="max-w-7xl mx-auto px-4">
             <!-- プロモーション含有の表示 -->
-            <div class="mb-4 text-center">
+            <div class="mb-6 text-left">
                 <p class="text-sm text-gray-600">本ページにはプロモーションが含まれています</p>
             </div>
             
             <div class="lg:grid lg:grid-cols-3 lg:gap-8">
-                <!-- 左：業者一覧 -->
-                <div class="lg:col-span-2">
+                <!-- 左：検索フォーム + 業者一覧 -->
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- Search Form -->
+                    <div class="bg-white rounded-2xl border border-gray-200 shadow-lg p-8">
+                        <div class="flex items-center gap-4 mb-8 pb-6 border-b border-gray-100">
+                            <div class="w-12 h-12 flex items-center justify-center">
+                                <img src="{{ asset('images/life066.png') }}" alt="検索" class="w-8 h-8">
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900">専門業者検索</h3>
+                                <p class="text-sm text-gray-600">条件を指定して最適な業者を見つけましょう</p>
+                            </div>
+                        </div>
+                
+                        <!-- Prefecture Selection -->
+                        <div class="mb-8">
+                            <label for="prefecture-select" class="block text-sm font-semibold text-gray-800 mb-3">
+                                <span class="flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    都道府県を選択
+                                </span>
+                            </label>
+                            <div class="relative">
+                                <select id="prefecture-select" class="w-full pl-6 pr-12 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-700 text-lg font-medium shadow-sm hover:border-gray-300 transition-all duration-200 appearance-none cursor-pointer">
+                                <option value="">全ての都道府県</option>
+                                @php
+                                $prefectureMapping = [
+                                    '北海道' => 'hokkaido', '青森県' => 'aomori', '岩手県' => 'iwate', '宮城県' => 'miyagi',
+                                    '秋田県' => 'akita', '山形県' => 'yamagata', '福島県' => 'fukushima', '茨城県' => 'ibaraki',
+                                    '栃木県' => 'tochigi', '群馬県' => 'gunma', '埼玉県' => 'saitama', '千葉県' => 'chiba',
+                                    '東京都' => 'tokyo', '神奈川県' => 'kanagawa', '新潟県' => 'niigata', '富山県' => 'toyama',
+                                    '石川県' => 'ishikawa', '福井県' => 'fukui', '山梨県' => 'yamanashi', '長野県' => 'nagano',
+                                    '岐阜県' => 'gifu', '静岡県' => 'shizuoka', '愛知県' => 'aichi', '三重県' => 'mie',
+                                    '滋賀県' => 'shiga', '京都府' => 'kyoto', '大阪府' => 'osaka', '兵庫県' => 'hyogo',
+                                    '奈良県' => 'nara', '和歌山県' => 'wakayama', '鳥取県' => 'tottori', '島根県' => 'shimane',
+                                    '岡山県' => 'okayama', '広島県' => 'hiroshima', '山口県' => 'yamaguchi', '徳島県' => 'tokushima',
+                                    '香川県' => 'kagawa', '愛媛県' => 'ehime', '高知県' => 'kochi', '福岡県' => 'fukuoka',
+                                    '佐賀県' => 'saga', '長崎県' => 'nagasaki', '熊本県' => 'kumamoto', '大分県' => 'oita',
+                                    '宮崎県' => 'miyazaki', '鹿児島県' => 'kagoshima', '沖縄県' => 'okinawa'
+                                ];
+                                $currentPrefecture = request()->get('prefecture');
+                                @endphp
+                                @foreach($prefectureMapping as $name => $slug)
+                                    <option value="{{ $slug }}" {{ $currentPrefecture === $slug ? 'selected' : '' }}>{{ $name }}</option>
+                                @endforeach
+                            </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+                                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Service Type Selection -->
+                        <div class="mb-8">
+                            <label class="block text-sm font-semibold text-gray-800 mb-3">
+                                <span class="flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    サービス内容を選択
+                                </span>
+                            </label>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-3" id="service-options">
+                                @php
+                                $requestedServices = request()->get('service', '');
+                                $selectedServices = $requestedServices ? explode(',', $requestedServices) : [];
+                                @endphp
+                                <button type="button" data-service="window" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('window', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                    窓ガラス清掃
+                                </button>
+                                <button type="button" data-service="inspection" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('inspection', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                    外壁調査
+                                </button>
+                                <button type="button" data-service="repair" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('repair', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                    外壁補修
+                                </button>
+                                <button type="button" data-service="painting" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('painting', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                    外壁塗装（部分）
+                                </button>
+                                <button type="button" data-service="bird_control" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('bird_control', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                    鳥害対策
+                                </button>
+                                <button type="button" data-service="sign" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('sign', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                    看板作業
+                                </button>
+                                <button type="button" data-service="leak_inspection" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('leak_inspection', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                    雨漏り調査
+                                </button>
+                                <button type="button" data-service="other" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('other', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                    その他
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Sort Type Selection -->
+                        <div class="mb-8">
+                            <label class="block text-sm font-semibold text-gray-800 mb-3">
+                                <span class="flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h7a1 1 0 100-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3z" clip-rule="evenodd"/>
+                                    </svg>
+                                    優先する条件を選択
+                                </span>
+                            </label>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="sort-options">
+                                <button type="button" data-sort="recommend" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'recommend' ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                    おすすめ
+                                </button>
+                                <button type="button" data-sort="safety" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'safety' ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                    安全性重視
+                                </button>
+                                <button type="button" data-sort="performance" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'performance' ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                    実績重視
+                                </button>
+                                <button type="button" data-sort="reviews" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'reviews' ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                    口コミ重視
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Search Button -->
+                        <div class="flex justify-center pt-4 border-t border-gray-100">
+                            <button id="search-button" class="w-full inline-flex items-center justify-center gap-3 px-16 py-4 text-white font-bold text-lg rounded-2xl focus:outline-none focus:ring-4 focus:ring-orange-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" style="background: linear-gradient(to right, #f97316, #ea580c) !important; color: white !important;">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                </svg>
+                                条件で業者を検索
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 業者一覧 -->
                     <div class="space-y-6 mb-8" id="companies-container">
                         @foreach($companies as $company)
                             <x-company-card :company="$company" />
@@ -137,72 +162,89 @@
                 </div>
                 
                 <!-- 右：サイドバー -->
-                <aside class="mt-10 lg:mt-0 space-y-6">
-                    <!-- 検索フォーム -->
-                    <div class="bg-white rounded-lg shadow border border-gray-200">
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-gray-900 mb-4">会社名・キーワード検索</h3>
-                            <div class="relative">
-                                <input type="text" 
-                                       id="search-input" 
-                                       name="search"
-                                       value="{{ $searchTerm ?? '' }}"
-                                       placeholder="例：ロープアクセス、高所作業..." 
-                                       class="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-700">
-                                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
-                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            @if($searchTerm)
-                            <div class="mt-3">
-                                <p class="text-sm text-gray-600">検索中: <span class="font-medium text-blue-600">"{{ $searchTerm }}"</span></p>
-                                <button onclick="clearSearch()" class="text-sm text-blue-600 hover:text-blue-800 underline">検索をクリア</button>
-                            </div>
-                            @endif
+                <aside class="mt-10 lg:mt-0 space-y-4">
+                    <!-- 会社名・キーワード検索 -->
+                    <div class="bg-white rounded-2xl border border-gray-200 shadow-lg p-6">
+                        <div class="mb-6 pb-4 border-b border-gray-100">
+                            <h3 class="text-lg font-bold text-gray-900">会社名・キーワード検索</h3>
+                            <p class="text-xs text-gray-600 mt-1">特定の会社名やキーワードで絞り込み</p>
                         </div>
+                        
+                        <div class="relative">
+                            <input type="text" 
+                                   id="search-input" 
+                                   name="search"
+                                   value="{{ $searchTerm ?? '' }}"
+                                   placeholder="例：ロープアクセス、高所作業、会社名..." 
+                                   class="w-full pl-4 pr-10 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white text-gray-700 shadow-sm hover:border-gray-300 transition-all duration-200">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        @if($searchTerm)
+                        <div class="mt-3">
+                            <p class="text-sm text-gray-600">検索中: <span class="font-medium text-orange-600">"{{ $searchTerm }}"</span></p>
+                            <button onclick="clearSearch()" class="text-sm text-orange-600 hover:text-orange-800 underline">検索をクリア</button>
+                        </div>
+                        @endif
                     </div>
-
-                    <!-- サイドバー広告1 -->
-                    @php
-                        $siteSettings = app(\App\Models\SiteSetting::class)->getSettings();
-                    @endphp
                     
-                    @if(!empty($siteSettings['sidebar_ad_1']))
-                    <div class="bg-white rounded-lg shadow border border-gray-200">
-                        <div class="p-4">
-                            <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
-                            <div class="ad-container">
-                                {!! $siteSettings['sidebar_ad_1'] !!}
-                            </div>
+                    <!-- お問い合わせフォーム -->
+                    <div class="bg-gray-500 rounded-lg shadow text-white">
+                        <div class="p-6">
+                            <h4 class="text-lg font-bold mb-2 text-center">お急ぎの方へ</h4>
+                            <p class="text-sm mb-4 text-center">最短で業者をお探しします</p>
+                            
+                            <form action="{{ route('quote.store') }}" method="POST" class="space-y-4">
+                                @csrf
+                                <div>
+                                    <input type="text" 
+                                           name="name" 
+                                           placeholder="お名前" 
+                                           required
+                                           class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
+                                </div>
+                                
+                                <div>
+                                    <input type="tel" 
+                                           name="phone" 
+                                           placeholder="電話番号" 
+                                           required
+                                           class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
+                                </div>
+                                
+                                <div>
+                                    <select name="service_type" 
+                                            required
+                                            class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
+                                        <option value="">サービスを選択</option>
+                                        <option value="window_cleaning">窓ガラス清掃</option>
+                                        <option value="building_cleaning">ビル清掃</option>
+                                        <option value="wall_painting">外壁塗装</option>
+                                        <option value="roof_repair">屋根修理</option>
+                                        <option value="sign_installation">看板設置</option>
+                                        <option value="other">その他</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <textarea name="message" 
+                                              placeholder="ご要望・詳細（任意）" 
+                                              rows="3"
+                                              class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent resize-none"></textarea>
+                                </div>
+                                
+                                <button type="submit" 
+                                        class="glowing-button w-full bg-orange-600 text-white px-4 py-3 rounded-md font-bold hover:bg-orange-700 transition-colors">
+                                    無料で相談する
+                                </button>
+                            </form>
                         </div>
                     </div>
-                    @endif
-
-                    <!-- お問い合わせバナー -->
-                    <div class="bg-orange-600 rounded-lg shadow text-white">
-                        <div class="p-6 text-center">
-                            <h4 class="text-lg font-bold mb-2">お急ぎの方へ</h4>
-                            <p class="text-sm mb-4">最短で業者をお探しします</p>
-                            <a href="{{ route('quote.create') }}" class="block bg-white text-orange-600 px-4 py-2 rounded font-medium hover:bg-gray-50 transition-colors">
-                                専門業者に相談する
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- サイドバー広告2 -->
-                    @if(!empty($siteSettings['sidebar_ad_2']))
-                    <div class="bg-white rounded-lg shadow border border-gray-200">
-                        <div class="p-4">
-                            <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
-                            <div class="ad-container">
-                                {!! $siteSettings['sidebar_ad_2'] !!}
-                            </div>
-                        </div>
-                    </div>
-                    @endif
-
+                    
                     <!-- おすすめ記事 -->
                     <div class="bg-white rounded-xl shadow p-6">
                         <h2 class="text-xl font-bold mb-6 text-blue-600">
@@ -238,6 +280,36 @@
                             @endforelse
                         </div>
                     </div>
+
+                    <!-- サイドバー広告1 -->
+                    @php
+                        $siteSettings = app(\App\Models\SiteSetting::class)->getSettings();
+                    @endphp
+                    
+                    @if(!empty($siteSettings['sidebar_ad_1']))
+                    <div class="bg-white rounded-lg shadow border border-gray-200">
+                        <div class="p-4">
+                            <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
+                            <div class="ad-container">
+                                {!! $siteSettings['sidebar_ad_1'] !!}
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+
+
+                    <!-- サイドバー広告2 -->
+                    @if(!empty($siteSettings['sidebar_ad_2']))
+                    <div class="bg-white rounded-lg shadow border border-gray-200">
+                        <div class="p-4">
+                            <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
+                            <div class="ad-container">
+                                {!! $siteSettings['sidebar_ad_2'] !!}
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+
 
                     <!-- サイドバー広告3 -->
                     @if(!empty($siteSettings['sidebar_ad_3']))
@@ -407,52 +479,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Update service option active state (for multiple selection)
     function updateServiceActive(activeOption) {
-        const service = activeOption.getAttribute('data-service');
         activeOption.classList.remove('bg-white', 'border-gray-200', 'text-gray-700');
-        
-        // Apply service-specific colors
-        switch(service) {
-            case 'window':
-                activeOption.classList.add('bg-blue-50', 'border-blue-400', 'text-blue-700', 'shadow-md');
-                break;
-            case 'inspection':
-                activeOption.classList.add('bg-green-50', 'border-green-400', 'text-green-700', 'shadow-md');
-                break;
-            case 'repair':
-                activeOption.classList.add('bg-orange-50', 'border-orange-400', 'text-orange-700', 'shadow-md');
-                break;
-            case 'painting':
-                activeOption.classList.add('bg-purple-50', 'border-purple-400', 'text-purple-700', 'shadow-md');
-                break;
-            case 'bird_control':
-                activeOption.classList.add('bg-yellow-50', 'border-yellow-400', 'text-yellow-700', 'shadow-md');
-                break;
-            case 'sign':
-                activeOption.classList.add('bg-indigo-50', 'border-indigo-400', 'text-indigo-700', 'shadow-md');
-                break;
-            case 'leak_inspection':
-                activeOption.classList.add('bg-teal-50', 'border-teal-400', 'text-teal-700', 'shadow-md');
-                break;
-            case 'other':
-                activeOption.classList.add('bg-gray-50', 'border-gray-400', 'text-gray-800', 'shadow-md');
-                break;
-        }
+        activeOption.classList.add('bg-blue-50', 'border-blue-400', 'text-blue-700', 'shadow-md');
     }
 
     // Update service option inactive state
     function updateServiceInactive(inactiveOption) {
         // Remove all active colors
-        inactiveOption.classList.remove(
-            'bg-blue-50', 'border-blue-400', 'text-blue-700',
-            'bg-green-50', 'border-green-400', 'text-green-700',
-            'bg-orange-50', 'border-orange-400', 'text-orange-700',
-            'bg-purple-50', 'border-purple-400', 'text-purple-700',
-            'bg-yellow-50', 'border-yellow-400', 'text-yellow-700',
-            'bg-indigo-50', 'border-indigo-400', 'text-indigo-700',
-            'bg-teal-50', 'border-teal-400', 'text-teal-700',
-            'bg-gray-50', 'border-gray-400', 'text-gray-800',
-            'shadow-md'
-        );
+        inactiveOption.classList.remove('bg-blue-50', 'border-blue-400', 'text-blue-700', 'shadow-md');
         // Add inactive colors
         inactiveOption.classList.add('bg-white', 'border-gray-200', 'text-gray-700');
     }
@@ -460,12 +494,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update sort option active state
     function updateSortActive(activeOption) {
         sortOptions.forEach(option => {
-            option.classList.remove('bg-blue-50', 'border-blue-500', 'text-blue-700');
-            option.classList.add('bg-gray-50', 'border-gray-300', 'text-gray-700', 'hover:bg-gray-100');
+            option.classList.remove('bg-blue-50', 'border-blue-400', 'text-blue-700', 'shadow-md');
+            option.classList.add('bg-white', 'border-gray-200', 'text-gray-700');
         });
         
-        activeOption.classList.remove('bg-gray-50', 'border-gray-300', 'text-gray-700', 'hover:bg-gray-100');
-        activeOption.classList.add('bg-blue-50', 'border-blue-500', 'text-blue-700');
+        activeOption.classList.remove('bg-white', 'border-gray-200', 'text-gray-700');
+        activeOption.classList.add('bg-blue-50', 'border-blue-400', 'text-blue-700', 'shadow-md');
     }
 
     // Wishlist functions
