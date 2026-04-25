@@ -351,7 +351,7 @@
       <!-- 左：業者カード一覧（カードの上端が基準） -->
       <div class="lg:col-span-2 min-w-0">
         <!-- Search Form Section -->
-        <div class="bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 rounded-3xl p-6 mb-8 shadow-lg">
+        <div class="bg-transparent rounded-3xl p-6 mb-8">
             <!-- Top Row: 3 Selection Cards -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <!-- Prefecture Selection Card -->

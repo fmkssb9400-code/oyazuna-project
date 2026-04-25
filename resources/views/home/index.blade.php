@@ -458,9 +458,9 @@
         <div class="flex gap-4 mb-8">
             <!-- 東京都 -->
             <a href="{{ route('companies.index', ['prefecture' => 'tokyo']) }}" class="relative group flex-1">
-                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden">
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
                     <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/tokyo.png') }}')"></div>
-                    <div class="p-3 text-center">
+                    <div class="p-3 text-center" style="background-color: #ffffff !important;">
                         <div class="font-semibold text-gray-800">東京都</div>
                     </div>
                 </div>
@@ -468,9 +468,9 @@
 
             <!-- 大阪府 -->
             <a href="{{ route('companies.index', ['prefecture' => 'osaka']) }}" class="relative group flex-1">
-                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden">
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
                     <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/osaka.png') }}')"></div>
-                    <div class="p-3 text-center">
+                    <div class="p-3 text-center" style="background-color: #ffffff !important;">
                         <div class="font-semibold text-gray-800">大阪府</div>
                     </div>
                 </div>
@@ -478,9 +478,9 @@
 
             <!-- 北海道 -->
             <a href="{{ route('companies.index', ['prefecture' => 'hokkaido']) }}" class="relative group flex-1">
-                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden">
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
                     <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/hokkaido.png') }}')"></div>
-                    <div class="p-3 text-center">
+                    <div class="p-3 text-center" style="background-color: #ffffff !important;">
                         <div class="font-semibold text-gray-800">北海道</div>
                     </div>
                 </div>
@@ -488,9 +488,9 @@
 
             <!-- 福岡県 -->
             <a href="{{ route('companies.index', ['prefecture' => 'fukuoka']) }}" class="relative group flex-1">
-                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden">
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
                     <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/fukuoka.png') }}')"></div>
-                    <div class="p-3 text-center">
+                    <div class="p-3 text-center" style="background-color: #ffffff !important;">
                         <div class="font-semibold text-gray-800">福岡県</div>
                     </div>
                 </div>
@@ -498,9 +498,9 @@
 
             <!-- 京都府 -->
             <a href="{{ route('companies.index', ['prefecture' => 'kyoto']) }}" class="relative group flex-1">
-                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden">
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
                     <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/kyoto.png') }}')"></div>
-                    <div class="p-3 text-center">
+                    <div class="p-3 text-center" style="background-color: #ffffff !important;">
                         <div class="font-semibold text-gray-800">京都府</div>
                     </div>
                 </div>
@@ -508,9 +508,9 @@
 
             <!-- 愛知県 -->
             <a href="{{ route('companies.index', ['prefecture' => 'aichi']) }}" class="relative group flex-1">
-                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden">
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
                     <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/aichi.png') }}')"></div>
-                    <div class="p-3 text-center">
+                    <div class="p-3 text-center" style="background-color: #ffffff !important;">
                         <div class="font-semibold text-gray-800">愛知県</div>
                     </div>
                 </div>
