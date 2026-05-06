@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'オヤズナ｜高所ロープ業者の口コミ・比較・見積もりサイト【窓ガラス清掃・外壁補修・塗装】')
+@section('title', 'オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
 
 @section('description', '高所ロープ作業の専門業者を口コミと実績で比較できるサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安心・信頼できる業者選びをサポートします。')
 
@@ -424,7 +424,7 @@
   <div class="hero-content">
     <div class="hero-text">
       <img src="{{ asset('images/text.png') }}" alt="高所ロープ業者の口コミ・比較サイト" class="mb-4" style="width: 450px; height: auto;">
-      <p>オヤズナは、高所ロープ作業に対応した業者を比較し、<br>安心して依頼できる会社が見つかるサイトです。</p>
+      <p>オヤズナは、高所ロープ作業の見積もりや相場をもとに、<br>安心して依頼できる会社がわかるサイトです。</p>
     </div>
     <div class="hero-image">
       <img src="{{ asset('images/waiper.png') }}?v={{ time() }}" alt="オヤズナキャラクター">
@@ -1037,7 +1037,7 @@
                     <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.959 8.959 0 01-4.906-1.451c-.302-.163-.622-.35-.963-.589L4 20l1.729-3.131c-.27-.476-.547-.949-.826-1.448C3.639 13.644 3 11.904 3 12c0-4.418 3.582-8 8-8s8 3.582 8 8z"/>
                     </svg>
-                    専門業者に相談する
+                    現調依頼する
                     <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                     </svg>

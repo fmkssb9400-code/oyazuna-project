@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'オヤズナ｜高所ロープ業者の口コミ・比較・見積もりサイト【窓ガラス清掃・外壁補修・塗装】')</title>
+    <title>@yield('title', 'オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Inter:wght@300;400;500;600;700&family=M+PLUS+1+Code:wght@100;200;300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Zen+Maru+Gothic:wght@300;400;500;700;900&family=Kosugi+Maru&family=Shippori+Antique+B1&family=Sawarabi+Gothic&family=M+PLUS+1p:wght@100;300;400;500;700;800;900&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
@@ -198,24 +198,26 @@
                 <a href="{{ route('companies.index') }}" class="text-gray-700 hover:text-blue-600 font-bold text-xl flex items-center h-full">業者一覧</a>
                 <a href="{{ route('news.index') }}" class="text-gray-700 hover:text-blue-600 font-bold text-xl flex items-center h-full">ニュース・記事</a>
                 <a href="{{ route('reviews.index') }}" class="text-gray-700 hover:text-blue-600 font-bold text-xl flex items-center h-full">口コミを書く</a>
+                <a href="#" class="text-gray-700 hover:text-blue-600 font-bold text-xl flex items-center h-full">見積もりデータを登録</a>
                 <span class="bg-blue-100 text-blue-800 px-5 py-3 rounded-full text-lg font-bold flex items-center">
                     掲載社数{{ $companyCount ?? 0 }}社
                 </span>
             </div>
             
             <!-- 右端のボタン -->
-            <a href="{{ route('quote.create') }}" class="bg-orange-600 text-white px-8 font-bold text-xl hover:bg-orange-700 transition-colors flex items-center justify-center h-20 flex-shrink-0 glowing-button">
-                専門業者に相談する
+            <a href="{{ route('quote.create') }}" class="bg-orange-600 text-white px-16 font-bold text-xl hover:bg-orange-700 transition-colors flex items-center justify-center h-20 flex-shrink-0 glowing-button">
+                現調依頼する
             </a>
         </div>
 
         <!-- スマホ版ナビゲーション -->
         <div class="md:hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- 上段：メニューリンク -->
-            <div class="flex justify-center items-center space-x-4 py-3">
-                <a href="{{ route('companies.index') }}" class="text-gray-700 hover:text-blue-600 text-sm font-semibold">業者一覧</a>
-                <a href="{{ route('news.index') }}" class="text-gray-700 hover:text-blue-600 text-sm font-semibold">ニュース・記事</a>
-                <a href="{{ route('reviews.index') }}" class="text-gray-700 hover:text-blue-600 text-sm font-semibold">口コミを書く</a>
+            <div class="flex flex-wrap justify-center items-center gap-2 py-3">
+                <a href="{{ route('companies.index') }}" class="text-gray-700 hover:text-blue-600 text-xs font-semibold px-2 py-1">業者一覧</a>
+                <a href="{{ route('news.index') }}" class="text-gray-700 hover:text-blue-600 text-xs font-semibold px-2 py-1">ニュース・記事</a>
+                <a href="{{ route('reviews.index') }}" class="text-gray-700 hover:text-blue-600 text-xs font-semibold px-2 py-1">口コミを書く</a>
+                <a href="#" class="text-gray-700 hover:text-blue-600 text-xs font-semibold px-2 py-1">見積もりデータを登録</a>
                 <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">
                     掲載社数{{ $companyCount ?? 0 }}社
                 </span>
@@ -223,7 +225,7 @@
             <!-- 下段：専門業者ボタン -->
             <div class="flex justify-center pb-3">
                 <a href="{{ route('quote.create') }}" class="bg-orange-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-orange-700 transition-colors text-sm">
-                    専門業者に相談する
+                    現調依頼する
                 </a>
             </div>
         </div>
@@ -267,6 +269,7 @@
                     <ul class="space-y-2">
                         <li><a href="{{ route('quote.create') }}" class="text-white hover:text-blue-200 transition-colors">お見積もり相談</a></li>
                         <li><a href="{{ route('reviews.index') }}" class="text-white hover:text-blue-200 transition-colors">口コミを書く</a></li>
+                        <li><a href="#" class="text-white hover:text-blue-200 transition-colors">見積もりデータを登録</a></li>
                         <li><a href="#" class="text-white hover:text-blue-200 transition-colors">よくある質問</a></li>
                         <li><a href="{{ route('contact.create') }}" class="text-white hover:text-blue-200 transition-colors">お問い合わせ</a></li>
                         <li><a href="#" class="text-white hover:text-blue-200 transition-colors">ヘルプ</a></li>

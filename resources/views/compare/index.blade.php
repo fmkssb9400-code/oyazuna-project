@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '業者比較 - オヤズナ')
+@section('title', '業者比較 - オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 py-8">

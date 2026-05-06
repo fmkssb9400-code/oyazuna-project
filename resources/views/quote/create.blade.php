@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', '高所ロープ専門業者に相談する - オヤズナ')
+@section('title', '高所ロープ専門業者に現調依頼する - オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
 
 @section('content')
 <div class="max-w-4xl mx-auto px-4 py-6 md:py-8">
-    <h1 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8">高所ロープ専門業者に相談する</h1>
+    <h1 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8">高所ロープ専門業者に現調依頼する</h1>
     
     <!-- Wishlist Companies Display -->
     <div id="wishlist-companies-section" class="bg-orange-50 border border-orange-200 rounded-lg p-3 md:p-4 mb-6 md:mb-8" style="display: none;">

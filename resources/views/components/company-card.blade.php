@@ -199,7 +199,7 @@
         <!-- Action Buttons -->
         <div class="flex flex-col sm:flex-row gap-3">
             <a href="{{ route('quote.create') }}" class="flex-1 inline-flex justify-center items-center px-6 py-3 bg-orange-500 text-white text-sm font-bold rounded hover:bg-orange-600 transition-all duration-200">
-                専門業者に相談する
+                現調依頼する
                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                 </svg>

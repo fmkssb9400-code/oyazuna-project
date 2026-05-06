@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $company->name . ' - 業者詳細 - オヤズナ')
+@section('title', $company->name . ' - 業者詳細 - オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
 
 @section('content')
 <div class="max-w-6xl mx-auto px-4 py-6 md:py-8">
@@ -383,7 +383,7 @@
                     </button>
                     <a href="{{ route('quote.create') }}" 
                        class="bg-orange-600 text-white px-6 md:px-8 py-3 rounded-lg hover:bg-orange-700 text-center text-sm md:text-base">
-                        専門業者に相談する
+                        現調依頼する
                     </a>
                 </div>
             </div>
@@ -424,7 +424,7 @@
                     <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.959 8.959 0 01-4.906-1.451c-.302-.163-.622-.35-.963-.589L4 20l1.729-3.131c-.27-.476-.547-.949-.826-1.448C3.639 13.644 3 11.904 3 12c0-4.418 3.582-8 8-8s8 3.582 8 8z"/>
                     </svg>
-                    専門業者に相談する
+                    現調依頼する
                     <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                     </svg>
