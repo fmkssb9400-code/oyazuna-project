@@ -418,20 +418,15 @@
             </div>
 
             <!-- Bottom Row: Keyword Search -->
-            <div class="bg-white bg-opacity-90 backdrop-blur-sm rounded-2xl p-4 hover:bg-opacity-100 transition-all duration-300 shadow-md">
-                <div class="flex items-center gap-3">
+            <div class="bg-white bg-opacity-90 backdrop-blur-sm rounded-2xl p-4 hover:bg-opacity-100 transition-all duration-300 shadow-md overflow-hidden">
+                <div class="flex items-center gap-2 w-full">
                     <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                         <!-- Search icon -->
                         <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                     </div>
-                    <input type="text" id="keyword-search" placeholder="キーワードで探す" class="flex-1 bg-transparent border-none outline-none text-lg font-medium text-gray-800 placeholder-gray-600">
-                    <button type="button" id="keyword-search-button" class="p-2 text-gray-600 hover:text-gray-800 transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
+                    <input type="text" id="keyword-search" placeholder="キーワードで探す" class="flex-1 bg-transparent border-none outline-none text-lg font-medium text-gray-800 placeholder-gray-600 min-w-0 overflow-hidden">
                 </div>
             </div>
 

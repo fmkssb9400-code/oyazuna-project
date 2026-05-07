@@ -187,8 +187,8 @@
                     <img
                         src="{{ asset('images/cremoba_logo.png') }}"
                         alt="オヤズナ"
-                        class="h-12 w-auto object-contain shrink-0 block"
-                        style="display: block !important;"
+                        class="w-auto object-contain shrink-0 block"
+                        style="display: block !important; height: 45px; max-height: 45px;"
                     />
                 </a>
             </div>
@@ -205,7 +205,7 @@
             </div>
             
             <!-- 右端のボタン -->
-            <a href="{{ route('quote.create') }}" class="bg-orange-600 text-white px-16 font-bold text-xl hover:bg-orange-700 transition-colors flex items-center justify-center h-20 flex-shrink-0 glowing-button">
+            <a href="{{ route('quote.create') }}" class="bg-orange-600 text-white px-8 font-bold text-xl hover:bg-orange-700 transition-colors flex items-center justify-center h-20 flex-shrink-0 glowing-button">
                 現調依頼する
             </a>
         </div>
