@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class QuoteRecipient extends Model
 {
     protected $fillable = [
-        'quote_request_id',
-        'company_id',
+        'region',
+        'building_type',
+        'floor_range',
+        'order_type',
+        'contract_type',
+        'quote_items',
         'delivery_status',
         'sent_at',
         'error_message',
@@ -16,6 +20,7 @@ class QuoteRecipient extends Model
 
     protected $casts = [
         'sent_at' => 'datetime',
+        'quote_items' => 'array',
     ];
 
     public function quoteRequest()

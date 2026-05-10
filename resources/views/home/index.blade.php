@@ -673,13 +673,13 @@
                 <p class="text-sm text-gray-600">ひび割れ補修 剥離補修<br>シーリング 部分工事</p>
             </a>
 
-            <!-- 外壁塗装（部分） -->
+            <!-- 外壁塗装 -->
             <a href="{{ route('companies.index', ['service' => 'painting']) }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
                 <div class="flex items-center mb-3">
                     <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
                         <img src="{{ asset('images/penki.png') }}" alt="外壁塗装" class="w-8 h-8">
                     </div>
-                    <h3 class="text-lg font-bold text-blue-600">外壁塗装（部分）</h3>
+                    <h3 class="text-lg font-bold text-blue-600">外壁塗装</h3>
                 </div>
                 <p class="text-sm text-gray-600">部分塗装 タッチアップ<br>色合わせ 局所塗替え</p>
             </a>
@@ -831,7 +831,7 @@
         <!-- メインタイトル -->
         <div style="margin-bottom: 80px;">
             <h2 class="text-xl md:text-2xl font-bold heading-16">
-                当サイトは、高所ロープ業者を探せるサイトです。
+                高所ロープ作業の見積もり情報をもとに、適正価格の比較をサポートします。
             </h2>
         </div>
 

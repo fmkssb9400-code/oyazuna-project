@@ -135,6 +135,66 @@
     </div>
     @endif
     
+    <!-- 最新見積もりデータ -->
+    @php
+        $recentQuoteSubmissions = \App\Models\QuoteSubmission::where('status', 'completed')
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+    @endphp
+    
+    @if($recentQuoteSubmissions->count() > 0)
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <div class="p-4">
+            <h4 class="text-lg font-bold text-gray-900 mb-4 border-b pb-2">最新見積もりデータ</h4>
+            <div class="space-y-3">
+                @foreach($recentQuoteSubmissions as $submission)
+                <div class="border-l-4 border-blue-500 pl-3 py-2 bg-blue-50 rounded-r">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <p class="text-sm font-semibold text-gray-800">
+                                {{ \App\Models\QuoteSubmission::WORK_TYPES[$submission->work_type] ?? $submission->work_type }}
+                            </p>
+                            <p class="text-xs text-gray-600 mt-1">
+                                {{ $submission->prefecture }}
+                                @if($submission->building_floors)
+                                    • {{ $submission->building_floors }}階建て
+                                @endif
+                            </p>
+                            <p class="text-xs text-gray-500 mt-1">
+                                {{ $submission->created_at->format('Y/m/d') }}投稿
+                            </p>
+                        </div>
+                        @if($submission->images && count($submission->images) > 0)
+                        <div class="ml-2">
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                画像{{ count($submission->images) }}枚
+                            </span>
+                        </div>
+                        @endif
+                    </div>
+                    @if($submission->comment)
+                    <p class="text-xs text-gray-600 mt-2 line-clamp-2">
+                        {{ Str::limit($submission->comment, 60) }}
+                    </p>
+                    @endif
+                </div>
+                @endforeach
+            </div>
+            
+            <div class="mt-4 text-center">
+                <a href="{{ route('quote-data.create') }}" 
+                   class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    見積もりデータを投稿
+                </a>
+            </div>
+        </div>
+    </div>
+    @endif
+    
     <!-- おすすめ記事 -->
     @if(isset($featuredArticles) && count($featuredArticles) > 0)
         <x-recommended-articles :articles="$featuredArticles" />

@@ -26,7 +26,113 @@ class QuoteRecipientResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Section::make('案件詳細')
+                    ->schema([
+                        Forms\Components\Select::make('region')
+                            ->label('地域')
+                            ->options([
+                                '東京都' => '東京都',
+                                '神奈川県' => '神奈川県',
+                                '埼玉県' => '埼玉県',
+                                '千葉県' => '千葉県',
+                                '大阪府' => '大阪府',
+                                '愛知県' => '愛知県',
+                                '兵庫県' => '兵庫県',
+                                '福岡県' => '福岡県',
+                            ])
+                            ->required(),
+                        Forms\Components\Select::make('building_type')
+                            ->label('建物種別')
+                            ->options([
+                                'オフィス' => 'オフィス',
+                                'マンション' => 'マンション',
+                                '商業施設' => '商業施設',
+                                '工場' => '工場',
+                                '病院' => '病院',
+                                '学校' => '学校',
+                                'ホテル' => 'ホテル',
+                                'その他' => 'その他',
+                            ])
+                            ->required(),
+                        Forms\Components\Select::make('floor_range')
+                            ->label('階数帯')
+                            ->options([
+                                '1〜5階' => '1〜5階',
+                                '6〜10階' => '6〜10階',
+                                '11〜20階' => '11〜20階',
+                                '21階以上' => '21階以上',
+                            ])
+                            ->required(),
+                        Forms\Components\Select::make('order_type')
+                            ->label('発注形態')
+                            ->options([
+                                '管理会社経由' => '管理会社経由',
+                                'オーナー直接' => 'オーナー直接',
+                                '代理店経由' => '代理店経由',
+                                '元請業者経由' => '元請業者経由',
+                            ])
+                            ->required(),
+                        Forms\Components\Select::make('contract_type')
+                            ->label('契約')
+                            ->options([
+                                '年2回定期' => '年2回定期',
+                                '年4回定期' => '年4回定期',
+                                '年1回定期' => '年1回定期',
+                                'スポット' => 'スポット',
+                                'その他定期' => 'その他定期',
+                            ])
+                            ->required(),
+                    ])->columns(2),
+                
+                Forms\Components\Section::make('見積もりテーブル')
+                    ->schema([
+                        Forms\Components\Repeater::make('quote_items')
+                            ->label('見積もり項目')
+                            ->schema([
+                                Forms\Components\TextInput::make('item_name')
+                                    ->label('項目名')
+                                    ->placeholder('例：窓ガラス清掃'),
+                                Forms\Components\TextInput::make('quantity')
+                                    ->label('数量')
+                                    ->numeric()
+                                    ->placeholder('例：100'),
+                                Forms\Components\TextInput::make('unit')
+                                    ->label('単位')
+                                    ->placeholder('例：㎡、枚、式'),
+                                Forms\Components\TextInput::make('unit_price')
+                                    ->label('単価')
+                                    ->numeric()
+                                    ->placeholder('例：500'),
+                                Forms\Components\TextInput::make('total_price')
+                                    ->label('小計')
+                                    ->numeric()
+                                    ->placeholder('例：50000'),
+                            ])
+                            ->columns(5)
+                            ->addActionLabel('行を追加')
+                            ->grid(1)
+                            ->reorderable(false),
+                    ]),
+                
+                Forms\Components\Section::make('配信設定')
+                    ->schema([
+                        Forms\Components\Select::make('delivery_status')
+                            ->label('配信ステータス')
+                            ->options([
+                                'pending' => '配信待ち',
+                                'sent' => '配信済み',
+                                'failed' => '配信失敗',
+                            ])
+                            ->default('pending')
+                            ->required(),
+                        Forms\Components\DateTimePicker::make('sent_at')
+                            ->label('配信日時')
+                            ->nullable(),
+                        Forms\Components\Textarea::make('error_message')
+                            ->label('エラーメッセージ')
+                            ->nullable()
+                            ->rows(3),
+                    ])->columns(2),
             ]);
     }
 
@@ -34,10 +140,44 @@ class QuoteRecipientResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('region')
+                    ->label('地域')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('building_type')
+                    ->label('建物種別')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('delivery_status')
+                    ->label('配信ステータス')
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'pending' => '配信待ち',
+                        'sent' => '配信済み',
+                        'failed' => '配信失敗',
+                        default => $state,
+                    })
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'pending' => 'warning',
+                        'sent' => 'success',
+                        'failed' => 'danger',
+                        default => 'gray',
+                    }),
+                Tables\Columns\TextColumn::make('sent_at')
+                    ->label('配信日時')
+                    ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('作成日時')
+                    ->dateTime()
+                    ->sortable(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('delivery_status')
+                    ->label('配信ステータス')
+                    ->options([
+                        'pending' => '配信待ち',
+                        'sent' => '配信済み',
+                        'failed' => '配信失敗',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -46,7 +186,8 @@ class QuoteRecipientResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function getRelations(): array

@@ -198,7 +198,6 @@ class HomeController extends Controller
             ->where(function ($query) use ($searchTerms) {
                 foreach ($searchTerms as $term) {
                     $query->orWhereJsonContains('service_categories', $term)
-                          ->orWhere('services', 'LIKE', '%' . $term . '%')
                           ->orWhere('description', 'LIKE', '%' . $term . '%');
                 }
             })

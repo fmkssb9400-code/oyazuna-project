@@ -29,11 +29,11 @@
 
             <!-- Companies 3-Column Grid -->
             @if($companies->count() > 0)
-            <div class="grid grid-cols-3 gap-6 mb-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-8">
                 @foreach($companies as $company)
                 <a href="{{ route('reviews.create', $company->slug) }}" 
                    class="bg-white rounded-lg border-2 border-blue-300 hover:border-blue-400 hover:shadow-md transition-all duration-200 block">
-                    <div class="p-6">
+                    <div class="p-4 md:p-6">
                         <div class="flex items-start gap-4">
                             <!-- Company Logo/Initial Badge -->
                             <div class="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">

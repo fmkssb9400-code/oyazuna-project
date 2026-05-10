@@ -259,10 +259,10 @@
           </div>
         </div>
 
-        <!-- 外壁塗装会社（部分） -->
+        <!-- 外壁塗装会社 -->
         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100" style="width: 340px; min-width: 340px;">
           <div class="bg-gradient-to-r from-gray-200 to-gray-300 text-center py-6">
-            <h3 class="font-bold text-base text-black">外壁塗装会社（部分）</h3>
+            <h3 class="font-bold text-base text-black">外壁塗装会社</h3>
           </div>
           <div class="p-6">
             @if(isset($rankingData['painting']) && count($rankingData['painting']) > 0)
@@ -471,7 +471,7 @@
                         外壁補修
                     </button>
                     <button type="button" data-service="painting" class="service-option px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-300 bg-gray-50 border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700">
-                        外壁塗装（部分）
+                        外壁塗装
                     </button>
                     <button type="button" data-service="bird_control" class="service-option px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-300 bg-gray-50 border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700">
                         鳥害対策

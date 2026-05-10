@@ -96,7 +96,7 @@
                                     外壁補修
                                 </button>
                                 <button type="button" data-service="painting" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('painting', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
-                                    外壁塗装（部分）
+                                    外壁塗装
                                 </button>
                                 <button type="button" data-service="bird_control" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('bird_control', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
                                     鳥害対策

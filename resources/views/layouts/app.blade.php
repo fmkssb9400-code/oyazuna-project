@@ -169,12 +169,13 @@
 <body class="bg-blue-50">
     <nav class="bg-white shadow-sm border-b overflow-visible">
         <!-- Mobile Logo - スマホで上部に表示 -->
-        <div class="md:hidden text-center py-3 border-b max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="md:hidden text-center py-2 border-b max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <a href="{{ url('/') }}">
                 <img
                     src="{{ asset('images/cremoba_logo.png') }}"
                     alt="オヤズナ"
-                    class="h-8 w-auto object-contain mx-auto"
+                    class="w-auto object-contain mx-auto"
+                    style="height: 35px !important; max-height: 35px !important; width: auto !important;"
                 />
             </a>
         </div>
@@ -198,16 +199,14 @@
                 <a href="{{ route('companies.index') }}" class="text-gray-700 hover:text-blue-600 font-bold text-xl flex items-center h-full">業者一覧</a>
                 <a href="{{ route('news.index') }}" class="text-gray-700 hover:text-blue-600 font-bold text-xl flex items-center h-full">ニュース・記事</a>
                 <a href="{{ route('reviews.index') }}" class="text-gray-700 hover:text-blue-600 font-bold text-xl flex items-center h-full">口コミを書く</a>
-                <a href="#" class="text-gray-700 hover:text-blue-600 font-bold text-xl flex items-center h-full">見積もりデータを登録</a>
+                <a href="{{ route('quote-data.create') }}" class="text-gray-700 hover:text-blue-600 font-bold text-xl flex items-center h-full">見積もりデータを登録</a>
                 <span class="bg-blue-100 text-blue-800 px-5 py-3 rounded-full text-lg font-bold flex items-center">
                     掲載社数{{ $companyCount ?? 0 }}社
                 </span>
             </div>
             
-            <!-- 右端のボタン -->
-            <a href="{{ route('quote.create') }}" class="bg-orange-600 text-white px-8 font-bold text-xl hover:bg-orange-700 transition-colors flex items-center justify-center h-20 flex-shrink-0 glowing-button">
-                現調依頼する
-            </a>
+            <!-- 右端の空白 -->
+            <div style="padding-right: 80px;"></div>
         </div>
 
         <!-- スマホ版ナビゲーション -->
@@ -217,19 +216,29 @@
                 <a href="{{ route('companies.index') }}" class="text-gray-700 hover:text-blue-600 text-xs font-semibold px-2 py-1">業者一覧</a>
                 <a href="{{ route('news.index') }}" class="text-gray-700 hover:text-blue-600 text-xs font-semibold px-2 py-1">ニュース・記事</a>
                 <a href="{{ route('reviews.index') }}" class="text-gray-700 hover:text-blue-600 text-xs font-semibold px-2 py-1">口コミを書く</a>
-                <a href="#" class="text-gray-700 hover:text-blue-600 text-xs font-semibold px-2 py-1">見積もりデータを登録</a>
+                <a href="{{ route('quote-data.create') }}" class="text-gray-700 hover:text-blue-600 text-xs font-semibold px-2 py-1">見積もりデータを登録</a>
                 <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">
                     掲載社数{{ $companyCount ?? 0 }}社
                 </span>
             </div>
-            <!-- 下段：専門業者ボタン -->
-            <div class="flex justify-center pb-3">
-                <a href="{{ route('quote.create') }}" class="bg-orange-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-orange-700 transition-colors text-sm">
+        </div>
+    </nav>
+
+    <!-- ヘッダー下のボタンセクション -->
+    <div class="bg-white shadow-sm border-b">
+        <div class="w-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                <!-- 見積もりデータを見るボタン（青） -->
+                <a href="{{ route('quote-data.index') }}" class="bg-blue-600 text-white px-6 py-3 font-bold text-lg hover:bg-blue-700 transition-colors text-center flex items-center justify-center">
+                    見積もりデータを見る
+                </a>
+                <!-- 現調依頼するボタン（オレンジ） -->
+                <a href="{{ route('quote.create') }}" class="bg-orange-600 text-white px-6 py-3 font-bold text-lg hover:bg-orange-700 transition-colors text-center flex items-center justify-center glowing-button">
                     現調依頼する
                 </a>
             </div>
         </div>
-    </nav>
+    </div>
 
     <main>
         @yield('content')
@@ -269,7 +278,7 @@
                     <ul class="space-y-2">
                         <li><a href="{{ route('quote.create') }}" class="text-white hover:text-blue-200 transition-colors">お見積もり相談</a></li>
                         <li><a href="{{ route('reviews.index') }}" class="text-white hover:text-blue-200 transition-colors">口コミを書く</a></li>
-                        <li><a href="#" class="text-white hover:text-blue-200 transition-colors">見積もりデータを登録</a></li>
+                        <li><a href="{{ route('quote-data.create') }}" class="text-white hover:text-blue-200 transition-colors">見積もりデータを登録</a></li>
                         <li><a href="#" class="text-white hover:text-blue-200 transition-colors">よくある質問</a></li>
                         <li><a href="{{ route('contact.create') }}" class="text-white hover:text-blue-200 transition-colors">お問い合わせ</a></li>
                         <li><a href="#" class="text-white hover:text-blue-200 transition-colors">ヘルプ</a></li>
