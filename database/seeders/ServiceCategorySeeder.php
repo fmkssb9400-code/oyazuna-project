@@ -16,7 +16,7 @@ class ServiceCategorySeeder extends Seeder
             ['key' => 'window', 'label' => '窓ガラス清掃'],
             ['key' => 'inspection', 'label' => '外壁調査'],
             ['key' => 'repair', 'label' => '外壁補修'],
-            ['key' => 'painting', 'label' => '外壁塗装（部分）'],
+            ['key' => 'painting', 'label' => '外壁塗装'],
             ['key' => 'bird_control', 'label' => '鳥害対策'],
             ['key' => 'sign', 'label' => '看板作業'],
             ['key' => 'leak_inspection', 'label' => '雨漏り調査'],

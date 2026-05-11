@@ -13,6 +13,7 @@ use App\Http\Controllers\GuideController;
 use App\Http\Controllers\Admin\EditorImageController;
 use App\Http\Controllers\Admin\EditorImageUploadController;
 use App\Http\Controllers\Admin\EditorUploadController;
+use App\Http\Controllers\QuoteDataController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/api/homepage/companies/{sort}', [HomeController::class, 'getCompaniesBySort'])->name('api.homepage.companies');
@@ -26,6 +27,12 @@ Route::get('/compare', [CompareController::class, 'index'])->name('compare.index
 Route::get('/quote', [QuoteController::class, 'create'])->name('quote.create');
 Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
 Route::get('/quote/complete', [QuoteController::class, 'complete'])->name('quote.complete');
+
+// Quote Data routes
+Route::get('/quote-data', [QuoteDataController::class, 'index'])->name('quote-data.index');
+Route::get('/quote-data/create', [QuoteDataController::class, 'create'])->name('quote-data.create');
+Route::post('/quote-data', [QuoteDataController::class, 'store'])->name('quote-data.store');
+Route::get('/quote-data/complete', [QuoteDataController::class, 'complete'])->name('quote-data.complete');
 
 // Contact routes
 Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
