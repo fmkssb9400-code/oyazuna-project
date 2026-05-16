@@ -56,12 +56,10 @@
                                     <!-- 見積もりカード 1 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/15</div>
-                                                <div><span class="font-semibold">物件名:</span> オフィスビルA</div>
-                                                <div><span class="font-semibold">クライアント名:</span> ABC不動産管理株式会社</div>
+                                                <div><span class="font-semibold">階数:</span> 10階</div>
                                                 <div><span class="font-semibold">金額:</span> 180,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 田中</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -139,12 +137,10 @@
                                     <!-- 見積もりカード 2 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/20</div>
-                                                <div><span class="font-semibold">物件名:</span> レジデンスB</div>
-                                                <div><span class="font-semibold">クライアント名:</span> マンション管理組合</div>
+                                                <div><span class="font-semibold">階数:</span> 8階</div>
                                                 <div><span class="font-semibold">金額:</span> 85,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 佐藤</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -182,12 +178,10 @@
                                     <!-- 見積もりカード 3 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/25</div>
-                                                <div><span class="font-semibold">物件名:</span> 戸建住宅C</div>
-                                                <div><span class="font-semibold">クライアント名:</span> 山田様邸</div>
+                                                <div><span class="font-semibold">階数:</span> 2階</div>
                                                 <div><span class="font-semibold">金額:</span> 45,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 鈴木</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -240,12 +234,10 @@
                                     <!-- 見積もりカード 1 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/18</div>
-                                                <div><span class="font-semibold">物件名:</span> グランドマンションA</div>
-                                                <div><span class="font-semibold">クライアント名:</span> 大手不動産管理株式会社</div>
+                                                <div><span class="font-semibold">階数:</span> 15階</div>
                                                 <div><span class="font-semibold">金額:</span> 350,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 高橋</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -307,12 +299,10 @@
                                     <!-- 見積もりカード 2 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/22</div>
-                                                <div><span class="font-semibold">物件名:</span> オフィスビルB</div>
-                                                <div><span class="font-semibold">クライアント名:</span> XYZ管理会社</div>
+                                                <div><span class="font-semibold">階数:</span> 12階</div>
                                                 <div><span class="font-semibold">金額:</span> 280,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 中村</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -357,12 +347,10 @@
                                     <!-- 見積もりカード 1 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/19</div>
-                                                <div><span class="font-semibold">物件名:</span> レジデンスC</div>
-                                                <div><span class="font-semibold">クライアント名:</span> 住宅管理組合C</div>
+                                                <div><span class="font-semibold">階数:</span> 6階</div>
                                                 <div><span class="font-semibold">金額:</span> 120,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 渡辺</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -400,12 +388,10 @@
                                     <!-- 見積もりカード 2 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/24</div>
-                                                <div><span class="font-semibold">物件名:</span> オフィスビルC</div>
-                                                <div><span class="font-semibold">クライアント名:</span> 商業ビル管理株式会社</div>
+                                                <div><span class="font-semibold">階数:</span> 9階</div>
                                                 <div><span class="font-semibold">金額:</span> 180,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 小林</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -450,12 +436,10 @@
                                     <!-- 見積もりカード 1 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/26</div>
-                                                <div><span class="font-semibold">物件名:</span> 戸建住宅D</div>
-                                                <div><span class="font-semibold">クライアント名:</span> 佐藤様邸</div>
+                                                <div><span class="font-semibold">階数:</span> 2階</div>
                                                 <div><span class="font-semibold">金額:</span> 250,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 田中</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -493,12 +477,10 @@
                                     <!-- 見積もりカード 2 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/28</div>
-                                                <div><span class="font-semibold">物件名:</span> レジデンシャルE</div>
-                                                <div><span class="font-semibold">クライアント名:</span> マンション管理組合E</div>
+                                                <div><span class="font-semibold">階数:</span> 11階</div>
                                                 <div><span class="font-semibold">金額:</span> 320,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 吉田</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -551,12 +533,10 @@
                                     <!-- 見積もりカード 1 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/29</div>
-                                                <div><span class="font-semibold">物件名:</span> オフィスビルF</div>
-                                                <div><span class="font-semibold">クライアント名:</span> 都心不動産管理株式会社</div>
+                                                <div><span class="font-semibold">階数:</span> 7階</div>
                                                 <div><span class="font-semibold">金額:</span> 150,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 鈴木</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -594,12 +574,10 @@
                                     <!-- 見積もりカード 2 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/30</div>
-                                                <div><span class="font-semibold">物件名:</span> レジデンシャルG</div>
-                                                <div><span class="font-semibold">クライアント名:</span> マンション管理組合G</div>
+                                                <div><span class="font-semibold">階数:</span> 4階</div>
                                                 <div><span class="font-semibold">金額:</span> 80,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 佐藤</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -644,12 +622,10 @@
                                     <!-- 見積もりカード 1 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/4/1</div>
-                                                <div><span class="font-semibold">物件名:</span> 商業ビルH</div>
-                                                <div><span class="font-semibold">クライアント名:</span> 新大阪商事株式会社</div>
+                                                <div><span class="font-semibold">階数:</span> 14階</div>
                                                 <div><span class="font-semibold">金額:</span> 200,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 中川</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -695,12 +671,10 @@
                                     <!-- 見積もりカード 2 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/4/3</div>
-                                                <div><span class="font-semibold">物件名:</span> 店舗I</div>
-                                                <div><span class="font-semibold">クライアント名:</span> 横浜グリルレストラン</div>
+                                                <div><span class="font-semibold">階数:</span> 2階</div>
                                                 <div><span class="font-semibold">金額:</span> 80,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 山崎</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -745,12 +719,10 @@
                                     <!-- 見積もりカード 1 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/4/5</div>
-                                                <div><span class="font-semibold">物件名:</span> マンションJ</div>
-                                                <div><span class="font-semibold">クライアント名:</span> 住宅管理組合J</div>
+                                                <div><span class="font-semibold">階数:</span> 8階</div>
                                                 <div><span class="font-semibold">金額:</span> 120,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 立花</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -788,12 +760,10 @@
                                     <!-- 見積もりカード 2 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/4/7</div>
-                                                <div><span class="font-semibold">物件名:</span> 戸建住宅K</div>
-                                                <div><span class="font-semibold">クライアント名:</span> 田中様邸</div>
+                                                <div><span class="font-semibold">階数:</span> 2階</div>
                                                 <div><span class="font-semibold">金額:</span> 60,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 加藤</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -838,12 +808,10 @@
                                     <!-- 見積もりカード 1 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/4/8</div>
-                                                <div><span class="font-semibold">物件名:</span> 工場L</div>
-                                                <div><span class="font-semibold">クライアント名:</span> 製造業株式会社L</div>
+                                                <div><span class="font-semibold">階数:</span> 3階</div>
                                                 <div><span class="font-semibold">金額:</span> 400,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 伊藤</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
@@ -889,12 +857,10 @@
                                     <!-- 見積もりカード 2 -->
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
                                         <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-5 gap-4 text-sm">
+                                            <div class="grid grid-cols-3 gap-4 text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/4/10</div>
-                                                <div><span class="font-semibold">物件名:</span> 倉庫M</div>
-                                                <div><span class="font-semibold">クライアント名:</span> 物流センター株式会社</div>
+                                                <div><span class="font-semibold">階数:</span> 1階</div>
                                                 <div><span class="font-semibold">金額:</span> 150,000円</div>
-                                                <div><span class="font-semibold">担当者:</span> 松本</div>
                                             </div>
                                         </div>
                                         <div class="p-6">
