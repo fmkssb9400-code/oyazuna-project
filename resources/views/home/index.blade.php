@@ -428,14 +428,6 @@
     </div>
     <div class="hero-image">
       <img src="{{ asset('images/waiper.png') }}?v={{ time() }}" alt="オヤズナキャラクター">
-      <!-- No.1バッジ -->
-      <div class="no1-badge">
-        <div class="no1-badge-text">
-          <div class="top">ご利用者数</div>
-          <div class="main">No.1</div>
-          <div class="note">※</div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
