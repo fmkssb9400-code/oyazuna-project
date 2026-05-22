@@ -21,24 +21,30 @@ class QuoteSubmission extends Model
         'ai_analysis',
         'status',
         'admin_notes',
+        'total_amount',
+        'quote_items',
+        'floor_count',
+        'work_area',
+        'area_unit',
+        'work_description',
     ];
 
     protected $casts = [
         'images' => 'array',
         'ocr_data' => 'array',
         'ai_analysis' => 'array',
+        'quote_items' => 'array',
         'quote_date' => 'date',
     ];
 
     public const WORK_TYPES = [
-        'window_cleaning' => '窓ガラス清掃',
-        'exterior_painting' => '外壁塗装',
-        'exterior_cleaning' => '外壁清掃',
-        'exterior_inspection' => '外壁点検',
-        'exterior_repair' => '外壁補修',
-        'leak_survey' => '雨漏り調査',
+        'window' => '窓ガラス清掃',
+        'inspection' => '外壁調査',
+        'repair' => '外壁補修',
+        'painting' => '外壁塗装',
         'bird_control' => '鳥害対策',
-        'signboard_work' => '看板作業',
+        'sign' => '看板作業',
+        'leak' => '雨漏り調査',
         'other' => 'その他',
     ];
 

@@ -13,6 +13,8 @@ class QuoteRecipient extends Model
         'order_type',
         'contract_type',
         'quote_items',
+        'total_amount',
+        'additional_info',
         'delivery_status',
         'sent_at',
         'error_message',

@@ -75,64 +75,52 @@ class QuoteRecipientResource extends Resource
                         Forms\Components\Select::make('contract_type')
                             ->label('契約')
                             ->options([
-                                '年2回定期' => '年2回定期',
-                                '年4回定期' => '年4回定期',
+                                '毎月定期' => '毎月定期',
                                 '年1回定期' => '年1回定期',
-                                'スポット' => 'スポット',
-                                'その他定期' => 'その他定期',
+                                '年2回定期' => '年2回定期',
+                                '年3回定期' => '年3回定期',
+                                '年4回定期' => '年4回定期',
+                                '年5回定期' => '年5回定期',
                             ])
                             ->required(),
                     ])->columns(2),
                 
                 Forms\Components\Section::make('見積もりテーブル')
                     ->schema([
-                        Forms\Components\Repeater::make('quote_items')
-                            ->label('見積もり項目')
-                            ->schema([
-                                Forms\Components\TextInput::make('item_name')
-                                    ->label('項目名')
-                                    ->placeholder('例：窓ガラス清掃'),
-                                Forms\Components\TextInput::make('quantity')
-                                    ->label('数量')
-                                    ->numeric()
-                                    ->placeholder('例：100'),
-                                Forms\Components\TextInput::make('unit')
-                                    ->label('単位')
-                                    ->placeholder('例：㎡、枚、式'),
-                                Forms\Components\TextInput::make('unit_price')
-                                    ->label('単価')
-                                    ->numeric()
-                                    ->placeholder('例：500'),
-                                Forms\Components\TextInput::make('total_price')
-                                    ->label('小計')
-                                    ->numeric()
-                                    ->placeholder('例：50000'),
-                            ])
-                            ->columns(5)
-                            ->addActionLabel('行を追加')
-                            ->grid(1)
-                            ->reorderable(false),
+                        Forms\Components\Textarea::make('quote_items')
+                            ->label('')
+                            ->extraInputAttributes(['style' => 'display: none;'])
+                            ->formatStateUsing(fn ($state) => is_array($state) ? json_encode($state) : $state)
+                            ->dehydrateStateUsing(fn ($state) => is_string($state) ? json_decode($state, true) : $state)
+                            ->columnSpanFull(),
+                        Forms\Components\ViewField::make('quote_table_display')
+                            ->view('filament.forms.components.quote-table')
+                            ->label('')
+                            ->columnSpanFull(),
+                        Forms\Components\Hidden::make('total_amount')
+                            ->dehydrateStateUsing(function ($get) {
+                                $items = $get('quote_items');
+                                if (is_string($items)) {
+                                    $items = json_decode($items, true);
+                                }
+                                $items = $items ?: [];
+                                $total = 0;
+                                foreach ($items as $item) {
+                                    $total += ($item['total_price'] ?? 0);
+                                }
+                                return $total;
+                            }),
                     ]),
                 
-                Forms\Components\Section::make('配信設定')
+                Forms\Components\Section::make('備考欄')
                     ->schema([
-                        Forms\Components\Select::make('delivery_status')
-                            ->label('配信ステータス')
-                            ->options([
-                                'pending' => '配信待ち',
-                                'sent' => '配信済み',
-                                'failed' => '配信失敗',
-                            ])
-                            ->default('pending')
-                            ->required(),
-                        Forms\Components\DateTimePicker::make('sent_at')
-                            ->label('配信日時')
-                            ->nullable(),
-                        Forms\Components\Textarea::make('error_message')
-                            ->label('エラーメッセージ')
+                        Forms\Components\Textarea::make('additional_info')
+                            ->label('備考欄')
+                            ->placeholder('その他の情報やメモがあれば入力してください')
                             ->nullable()
-                            ->rows(3),
-                    ])->columns(2),
+                            ->rows(4)
+                            ->columnSpanFull(),
+                    ]),
             ]);
     }
 

@@ -12,15 +12,23 @@ class QuoteDataController extends Controller
 {
     public function index()
     {
-        $quoteSubmissions = QuoteSubmission::where('status', 'completed')
-            ->orderBy('created_at', 'desc')
-            ->paginate(12);
+        // 各サービス種別のデータを取得
+        $quoteData = [];
+        $workTypes = ['window', 'inspection', 'repair', 'painting', 'bird_control', 'sign', 'leak', 'other'];
+        
+        foreach ($workTypes as $workType) {
+            $quoteData[$workType] = QuoteSubmission::where('status', 'completed')
+                ->where('work_type', $workType)
+                ->orderBy('created_at', 'desc')
+                ->take(10)
+                ->get();
+        }
         
         // おすすめ記事をホームページと同じ方法で取得
         $recommendedItemsService = new RecommendedItemsService();
         $featuredArticles = $recommendedItemsService->getRecommendedItems(8);
         
-        return view('quote-data.index', compact('quoteSubmissions', 'featuredArticles'));
+        return view('quote-data.index', compact('quoteData', 'featuredArticles'));
     }
 
     public function create()

@@ -18,892 +18,134 @@
                     <!-- タブナビゲーション -->
                     <div class="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
                         <div class="border-b border-gray-200">
-                            <nav class="flex overflow-x-auto">
-                                <button class="service-tab flex-1 py-4 px-6 text-sm font-medium text-center whitespace-nowrap border-b-2 border-blue-500 text-blue-600 bg-blue-50" data-service="window">
+                            <nav class="flex overflow-x-auto scrollbar-hide">
+                                <button class="service-tab flex-shrink-0 py-3 px-4 md:py-4 md:px-6 text-xs md:text-sm font-medium text-center whitespace-nowrap border-b-2 border-blue-500 text-blue-600 bg-blue-50" data-service="window">
                                     窓ガラス清掃
                                 </button>
-                                <button class="service-tab flex-1 py-4 px-6 text-sm font-medium text-center whitespace-nowrap border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-service="inspection">
+                                <button class="service-tab flex-shrink-0 py-3 px-4 md:py-4 md:px-6 text-xs md:text-sm font-medium text-center whitespace-nowrap border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-service="inspection">
                                     外壁調査
                                 </button>
-                                <button class="service-tab flex-1 py-4 px-6 text-sm font-medium text-center whitespace-nowrap border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-service="repair">
+                                <button class="service-tab flex-shrink-0 py-3 px-4 md:py-4 md:px-6 text-xs md:text-sm font-medium text-center whitespace-nowrap border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-service="repair">
                                     外壁補修
                                 </button>
-                                <button class="service-tab flex-1 py-4 px-6 text-sm font-medium text-center whitespace-nowrap border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-service="painting">
+                                <button class="service-tab flex-shrink-0 py-3 px-4 md:py-4 md:px-6 text-xs md:text-sm font-medium text-center whitespace-nowrap border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-service="painting">
                                     外壁塗装
                                 </button>
-                                <button class="service-tab flex-1 py-4 px-6 text-sm font-medium text-center whitespace-nowrap border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-service="bird_control">
+                                <button class="service-tab flex-shrink-0 py-3 px-4 md:py-4 md:px-6 text-xs md:text-sm font-medium text-center whitespace-nowrap border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-service="bird_control">
                                     鳥害対策
                                 </button>
-                                <button class="service-tab flex-1 py-4 px-6 text-sm font-medium text-center whitespace-nowrap border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-service="sign">
+                                <button class="service-tab flex-shrink-0 py-3 px-4 md:py-4 md:px-6 text-xs md:text-sm font-medium text-center whitespace-nowrap border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-service="sign">
                                     看板作業
                                 </button>
-                                <button class="service-tab flex-1 py-4 px-6 text-sm font-medium text-center whitespace-nowrap border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-service="leak">
+                                <button class="service-tab flex-shrink-0 py-3 px-4 md:py-4 md:px-6 text-xs md:text-sm font-medium text-center whitespace-nowrap border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-service="leak">
                                     雨漏り調査
                                 </button>
-                                <button class="service-tab flex-1 py-4 px-6 text-sm font-medium text-center whitespace-nowrap border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-service="other">
+                                <button class="service-tab flex-shrink-0 py-3 px-4 md:py-4 md:px-6 text-xs md:text-sm font-medium text-center whitespace-nowrap border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-service="other">
                                     その他
                                 </button>
                             </nav>
                         </div>
 
                         <!-- タブコンテンツ -->
-                        <div class="p-8">
-                            <!-- 窓ガラス清掃 -->
-                            <div id="tab-window" class="tab-content">
-                                <h3 class="text-xl font-bold text-gray-900 mb-6">窓ガラス清掃の見積もりデータ</h3>
+                        <div class="p-4 md:p-8">
+                            @php
+                                $tabServices = [
+                                    'window' => '窓ガラス清掃',
+                                    'inspection' => '外壁調査', 
+                                    'repair' => '外壁補修',
+                                    'painting' => '外壁塗装',
+                                    'bird_control' => '鳥害対策',
+                                    'sign' => '看板作業',
+                                    'leak' => '雨漏り調査',
+                                    'other' => 'その他'
+                                ];
+                            @endphp
+                            
+                            @foreach($tabServices as $serviceKey => $serviceName)
+                            <div id="tab-{{ $serviceKey }}" class="tab-content {{ $loop->first ? '' : 'hidden' }}">
+                                <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6">{{ $serviceName }}の見積もりデータ</h3>
                                 
                                 <div class="space-y-6">
-                                    <!-- 見積もりカード 1 -->
+                                    @forelse($quoteData[$serviceKey] ?? [] as $quote)
                                     <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/3/15</div>
-                                                <div><span class="font-semibold">階数:</span> 10階</div>
-                                                <div><span class="font-semibold">金額:</span> 180,000円</div>
+                                        <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
+                                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
+                                                <div><span class="font-semibold">日付:</span> {{ $quote->quote_date?->format('Y/n/j') ?? '未設定' }}</div>
+                                                <div><span class="font-semibold">階数:</span> {{ $quote->floor_count ?? '-' }}階</div>
+                                                <div><span class="font-semibold">金額:</span> {{ number_format($quote->total_amount) }}円</div>
                                             </div>
                                         </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
+                                        <div class="p-4 md:p-6">
+                                            @if($quote->quote_items)
+                                            <div class="overflow-x-auto -mx-4 md:mx-0">
+                                                <table class="min-w-full text-xs md:text-sm">
                                                     <thead class="bg-green-100">
                                                         <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
+                                                            <th class="px-2 md:px-4 py-2 text-left font-medium text-gray-700">項目名</th>
+                                                            <th class="px-1 md:px-4 py-2 text-center font-medium text-gray-700">単位</th>
+                                                            <th class="px-1 md:px-4 py-2 text-center font-medium text-gray-700">数量</th>
+                                                            <th class="px-1 md:px-4 py-2 text-center font-medium text-gray-700">単価/円</th>
+                                                            <th class="px-1 md:px-4 py-2 text-center font-medium text-gray-700">回/年</th>
+                                                            <th class="px-2 md:px-4 py-2 text-center font-medium text-gray-700">金額/円</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody class="divide-y divide-gray-200">
-                                                        <tr class="bg-gray-50">
-                                                            <td class="px-4 py-2 text-sm font-medium">定期窓ガラス清掃（年4回）</td>
-                                                            <td class="px-4 py-2 text-center text-sm"></td>
-                                                            <td class="px-4 py-2 text-center text-sm"></td>
-                                                            <td class="px-4 py-2 text-center text-sm"></td>
-                                                            <td class="px-4 py-2 text-center text-sm"></td>
-                                                            <td class="px-4 py-2 text-center text-sm">0</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm font-medium">外装ガラス清掃費</td>
-                                                            <td class="px-4 py-2 text-center text-sm"></td>
-                                                            <td class="px-4 py-2 text-center text-sm"></td>
-                                                            <td class="px-4 py-2 text-center text-sm"></td>
-                                                            <td class="px-4 py-2 text-center text-sm"></td>
-                                                            <td class="px-4 py-2 text-center text-sm">0</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm pl-8">① 外装ガラス/外面のみ</td>
-                                                            <td class="px-4 py-2 text-center text-sm">㎡</td>
-                                                            <td class="px-4 py-2 text-center text-sm">306.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">80</td>
-                                                            <td class="px-4 py-2 text-center text-sm">4</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">97,920</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm pl-8">② 手摺ガラス/両面</td>
-                                                            <td class="px-4 py-2 text-center text-sm">㎡</td>
-                                                            <td class="px-4 py-2 text-center text-sm">90.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">160</td>
-                                                            <td class="px-4 py-2 text-center text-sm">4</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">57,600</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">地上監視員配置費</td>
-                                                            <td class="px-4 py-2 text-center text-sm">人工</td>
-                                                            <td class="px-4 py-2 text-center text-sm">0.50</td>
-                                                            <td class="px-4 py-2 text-center text-sm">18500</td>
-                                                            <td class="px-4 py-2 text-center text-sm">4</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">37,000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">資材搬入出費</td>
-                                                            <td class="px-4 py-2 text-center text-sm">台</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">4000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">4</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">16,000</td>
-                                                        </tr>
+                                                        @foreach($quote->quote_items as $item)
+                                                            @if(isset($item['items']))
+                                                                <!-- Group header -->
+                                                                <tr class="bg-gray-50">
+                                                                    <td class="px-2 md:px-4 py-2 text-xs md:text-sm font-medium">{{ $item['name'] }}</td>
+                                                                    <td class="px-2 md:px-4 py-2 text-center text-xs md:text-sm"></td>
+                                                                    <td class="px-2 md:px-4 py-2 text-center text-xs md:text-sm"></td>
+                                                                    <td class="px-2 md:px-4 py-2 text-center text-xs md:text-sm"></td>
+                                                                    <td class="px-2 md:px-4 py-2 text-center text-xs md:text-sm"></td>
+                                                                    <td class="px-2 md:px-4 py-2 text-center text-xs md:text-sm">0</td>
+                                                                </tr>
+                                                                @foreach($item['items'] as $subItem)
+                                                                <tr>
+                                                                    <td class="px-2 md:px-4 py-2 text-xs md:text-sm pl-8">{{ $subItem['name'] }}</td>
+                                                                    <td class="px-2 md:px-4 py-2 text-center text-xs md:text-sm">{{ $subItem['unit'] ?? '' }}</td>
+                                                                    <td class="px-2 md:px-4 py-2 text-center text-xs md:text-sm">{{ number_format($subItem['quantity'] ?? 0, 2) }}</td>
+                                                                    <td class="px-2 md:px-4 py-2 text-center text-xs md:text-sm">{{ number_format($subItem['unit_price'] ?? 0) }}</td>
+                                                                    <td class="px-2 md:px-4 py-2 text-center text-xs md:text-sm">{{ $subItem['frequency'] ?? 1 }}</td>
+                                                                    <td class="px-2 md:px-4 py-2 text-center text-xs md:text-sm text-blue-600 font-medium">{{ number_format($subItem['amount'] ?? 0) }}</td>
+                                                                </tr>
+                                                                @endforeach
+                                                            @else
+                                                                <!-- Regular item -->
+                                                                <tr>
+                                                                    <td class="px-2 md:px-4 py-2 text-xs md:text-sm">{{ $item['name'] }}</td>
+                                                                    <td class="px-2 md:px-4 py-2 text-center text-xs md:text-sm">{{ $item['unit'] ?? '' }}</td>
+                                                                    <td class="px-2 md:px-4 py-2 text-center text-xs md:text-sm">{{ number_format($item['quantity'] ?? 0, 2) }}</td>
+                                                                    <td class="px-2 md:px-4 py-2 text-center text-xs md:text-sm">{{ number_format($item['unit_price'] ?? 0) }}</td>
+                                                                    <td class="px-2 md:px-4 py-2 text-center text-xs md:text-sm">{{ $item['frequency'] ?? 1 }}</td>
+                                                                    <td class="px-2 md:px-4 py-2 text-center text-xs md:text-sm text-blue-600 font-medium">{{ number_format($item['amount'] ?? 0) }}</td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">東京都 | 施工面積: 396㎡</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥208,520</div>
+                                            @endif
+                                            <div class="mt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                                                <div class="text-xs md:text-sm text-gray-600">
+                                                    {{ $quote->prefecture }}
+                                                    @if($quote->work_area)
+                                                        | {{ $serviceKey === 'bird_control' || $serviceKey === 'leak' ? '調査' : ($serviceKey === 'sign' ? 'サイズ' : '施工') }}{{ $serviceKey === 'repair' && $quote->area_unit === 'm' ? '箇所' : '面積' }}: {{ number_format($quote->work_area) }}{{ $quote->area_unit }}
+                                                    @endif
+                                                </div>
+                                                <div class="text-sm md:text-lg font-bold text-blue-600">合計: ¥{{ number_format($quote->total_amount) }}</div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/3/20</div>
-                                                <div><span class="font-semibold">階数:</span> 8階</div>
-                                                <div><span class="font-semibold">金額:</span> 85,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">定期窓ガラス清掃（月1回）</td>
-                                                            <td class="px-4 py-2 text-center text-sm">式</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">85000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">85,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">大阪府 | 施工面積: 150㎡</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥85,000</div>
-                                            </div>
-                                        </div>
+                                    @empty
+                                    <div class="text-center text-gray-500 py-8">
+                                        {{ $serviceName }}の見積もりデータはまだありません
                                     </div>
-
-                                    <!-- 見積もりカード 3 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/3/25</div>
-                                                <div><span class="font-semibold">階数:</span> 2階</div>
-                                                <div><span class="font-semibold">金額:</span> 45,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">スポット窓ガラス清掃</td>
-                                                            <td class="px-4 py-2 text-center text-sm">㎡</td>
-                                                            <td class="px-4 py-2 text-center text-sm">80.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">450</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">36,000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">出張費</td>
-                                                            <td class="px-4 py-2 text-center text-sm">式</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">9000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">9,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">愛知県 | 施工面積: 80㎡</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥45,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforelse
                                 </div>
                             </div>
-
-                            <!-- 外壁調査 -->
-                            <div id="tab-inspection" class="tab-content hidden">
-                                <h3 class="text-xl font-bold text-gray-900 mb-6">外壁調査の見積もりデータ</h3>
-                                
-                                <div class="space-y-6">
-                                    <!-- 見積もりカード 1 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/3/18</div>
-                                                <div><span class="font-semibold">階数:</span> 15階</div>
-                                                <div><span class="font-semibold">金額:</span> 350,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr class="bg-gray-50">
-                                                            <td class="px-4 py-2 text-sm font-medium">外壁全面点検調査</td>
-                                                            <td class="px-4 py-2 text-center text-sm"></td>
-                                                            <td class="px-4 py-2 text-center text-sm"></td>
-                                                            <td class="px-4 py-2 text-center text-sm"></td>
-                                                            <td class="px-4 py-2 text-center text-sm"></td>
-                                                            <td class="px-4 py-2 text-center text-sm">0</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm pl-8">① 目視点検調査</td>
-                                                            <td class="px-4 py-2 text-center text-sm">㎡</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1,200.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">150</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">180,000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm pl-8">② 打診調査</td>
-                                                            <td class="px-4 py-2 text-center text-sm">㎡</td>
-                                                            <td class="px-4 py-2 text-center text-sm">400.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">300</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">120,000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">調査報告書作成</td>
-                                                            <td class="px-4 py-2 text-center text-sm">式</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">50000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">50,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">東京都 | 調査面積: 1,200㎡</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥350,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/3/22</div>
-                                                <div><span class="font-semibold">階数:</span> 12階</div>
-                                                <div><span class="font-semibold">金額:</span> 280,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">劣化診断調査</td>
-                                                            <td class="px-4 py-2 text-center text-sm">㎡</td>
-                                                            <td class="px-4 py-2 text-center text-sm">800.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">350</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">280,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">神奈川県 | 調査面積: 800㎡</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥280,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 外壁補修 -->
-                            <div id="tab-repair" class="tab-content hidden">
-                                <h3 class="text-xl font-bold text-gray-900 mb-6">外壁補修の見積もりデータ</h3>
-                                
-                                <div class="space-y-6">
-                                    <!-- 見積もりカード 1 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/3/19</div>
-                                                <div><span class="font-semibold">階数:</span> 6階</div>
-                                                <div><span class="font-semibold">金額:</span> 120,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">ひび割れ補修工事</td>
-                                                            <td class="px-4 py-2 text-center text-sm">m</td>
-                                                            <td class="px-4 py-2 text-center text-sm">50.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">2400</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">120,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">大阪府 | 補修箇所: 50m</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥120,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/3/24</div>
-                                                <div><span class="font-semibold">階数:</span> 9階</div>
-                                                <div><span class="font-semibold">金額:</span> 180,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">外壁剥離部補修</td>
-                                                            <td class="px-4 py-2 text-center text-sm">㎡</td>
-                                                            <td class="px-4 py-2 text-center text-sm">30.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">6000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">180,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">愛知県 | 補修面積: 30㎡</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥180,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 外壁塗装 -->
-                            <div id="tab-painting" class="tab-content hidden">
-                                <h3 class="text-xl font-bold text-gray-900 mb-6">外壁塗装の見積もりデータ</h3>
-                                
-                                <div class="space-y-6">
-                                    <!-- 見積もりカード 1 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/3/26</div>
-                                                <div><span class="font-semibold">階数:</span> 2階</div>
-                                                <div><span class="font-semibold">金額:</span> 250,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">外壁部分塗装工事</td>
-                                                            <td class="px-4 py-2 text-center text-sm">㎡</td>
-                                                            <td class="px-4 py-2 text-center text-sm">100.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">2500</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">250,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">福岡県 | 塗装面積: 100㎡</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥250,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/3/28</div>
-                                                <div><span class="font-semibold">階数:</span> 11階</div>
-                                                <div><span class="font-semibold">金額:</span> 320,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">色合わせ塗装工事</td>
-                                                            <td class="px-4 py-2 text-center text-sm">㎡</td>
-                                                            <td class="px-4 py-2 text-center text-sm">150.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">2000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">300,000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">調色費用</td>
-                                                            <td class="px-4 py-2 text-center text-sm">式</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">20000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">20,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">兵庫県 | 塗装面積: 150㎡</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥320,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 鳥害対策 -->
-                            <div id="tab-bird_control" class="tab-content hidden">
-                                <h3 class="text-xl font-bold text-gray-900 mb-6">鳥害対策の見積もりデータ</h3>
-                                
-                                <div class="space-y-6">
-                                    <!-- 見積もりカード 1 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/3/29</div>
-                                                <div><span class="font-semibold">階数:</span> 7階</div>
-                                                <div><span class="font-semibold">金額:</span> 150,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">防鳥ネット設置工事</td>
-                                                            <td class="px-4 py-2 text-center text-sm">㎡</td>
-                                                            <td class="px-4 py-2 text-center text-sm">200.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">750</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">150,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">東京都 | 設置面積: 200㎡</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥150,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/3/30</div>
-                                                <div><span class="font-semibold">階数:</span> 4階</div>
-                                                <div><span class="font-semibold">金額:</span> 80,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">鳥の巣除去作業</td>
-                                                            <td class="px-4 py-2 text-center text-sm">箇所</td>
-                                                            <td class="px-4 py-2 text-center text-sm">5.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">16000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">80,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">千葉県 | 除去箇所: 5箇所</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥80,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 看板作業 -->
-                            <div id="tab-sign" class="tab-content hidden">
-                                <h3 class="text-xl font-bold text-gray-900 mb-6">看板作業の見積もりデータ</h3>
-                                
-                                <div class="space-y-6">
-                                    <!-- 見積もりカード 1 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/4/1</div>
-                                                <div><span class="font-semibold">階数:</span> 14階</div>
-                                                <div><span class="font-semibold">金額:</span> 200,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">看板設置作業</td>
-                                                            <td class="px-4 py-2 text-center text-sm">枚</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">150000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">150,000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">高所作業車使用料</td>
-                                                            <td class="px-4 py-2 text-center text-sm">日</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">50000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">50,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">大阪府 | 看板サイズ: 3m×2m</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥200,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/4/3</div>
-                                                <div><span class="font-semibold">階数:</span> 2階</div>
-                                                <div><span class="font-semibold">金額:</span> 80,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">看板撤去作業</td>
-                                                            <td class="px-4 py-2 text-center text-sm">枚</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">80000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">80,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">神奈川県 | 看板サイズ: 2m×1.5m</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥80,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 雨漏り調査 -->
-                            <div id="tab-leak" class="tab-content hidden">
-                                <h3 class="text-xl font-bold text-gray-900 mb-6">雨漏り調査の見積もりデータ</h3>
-                                
-                                <div class="space-y-6">
-                                    <!-- 見積もりカード 1 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/4/5</div>
-                                                <div><span class="font-semibold">階数:</span> 8階</div>
-                                                <div><span class="font-semibold">金額:</span> 120,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">雨漏り散水試験</td>
-                                                            <td class="px-4 py-2 text-center text-sm">箇所</td>
-                                                            <td class="px-4 py-2 text-center text-sm">3.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">40000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">120,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">埼玉県 | 調査箇所: 3箇所</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥120,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/4/7</div>
-                                                <div><span class="font-semibold">階数:</span> 2階</div>
-                                                <div><span class="font-semibold">金額:</span> 60,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">雨漏り原因調査</td>
-                                                            <td class="px-4 py-2 text-center text-sm">箇所</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">60000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">60,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">愛知県 | 調査箇所: 1箇所</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥60,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- その他 -->
-                            <div id="tab-other" class="tab-content hidden">
-                                <h3 class="text-xl font-bold text-gray-900 mb-6">その他の見積もりデータ</h3>
-                                
-                                <div class="space-y-6">
-                                    <!-- 見積もりカード 1 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/4/8</div>
-                                                <div><span class="font-semibold">階数:</span> 3階</div>
-                                                <div><span class="font-semibold">金額:</span> 400,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">特殊清掃作業</td>
-                                                            <td class="px-4 py-2 text-center text-sm">㎡</td>
-                                                            <td class="px-4 py-2 text-center text-sm">500.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">700</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">350,000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">特殊器具使用料</td>
-                                                            <td class="px-4 py-2 text-center text-sm">式</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">50000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">50,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">茨城県 | 清掃面積: 500㎡</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥400,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
-                                        <div class="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                            <div class="grid grid-cols-3 gap-4 text-sm">
-                                                <div><span class="font-semibold">日付:</span> 2026/4/10</div>
-                                                <div><span class="font-semibold">階数:</span> 1階</div>
-                                                <div><span class="font-semibold">金額:</span> 150,000円</div>
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="overflow-x-auto">
-                                                <table class="min-w-full">
-                                                    <thead class="bg-green-100">
-                                                        <tr>
-                                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-700">項目名</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単位</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">数量</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">単価/円</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">回/年</th>
-                                                            <th class="px-4 py-2 text-center text-xs font-medium text-gray-700">金額/円</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="divide-y divide-gray-200">
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">緊急対応作業</td>
-                                                            <td class="px-4 py-2 text-center text-sm">式</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">120000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">120,000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="px-4 py-2 text-sm">夜間作業加算</td>
-                                                            <td class="px-4 py-2 text-center text-sm">式</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1.00</td>
-                                                            <td class="px-4 py-2 text-center text-sm">30000</td>
-                                                            <td class="px-4 py-2 text-center text-sm">1</td>
-                                                            <td class="px-4 py-2 text-center text-sm text-blue-600 font-medium">30,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="mt-4 flex justify-between items-center">
-                                                <div class="text-sm text-gray-600">栃木県 | 対応内容: 緊急対応</div>
-                                                <div class="text-lg font-bold text-blue-600">合計: ¥150,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -1069,6 +311,30 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+/* スクロールバーを隠す */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* スマホでのテーブルセル調整 */
+@media (max-width: 640px) {
+    .min-w-full td {
+        min-width: 0 !important;
+        white-space: nowrap;
+    }
+    
+    /* 項目名のセルは広めに */
+    .min-w-full td:first-child {
+        min-width: 120px !important;
+        white-space: normal;
+    }
 }
 </style>
 
