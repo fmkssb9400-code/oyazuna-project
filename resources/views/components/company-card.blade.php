@@ -157,40 +157,35 @@
             <!-- Fixed Company Tags List -->
             <div class="flex flex-wrap gap-2">
                 @php
-                    $fixedTags = [
-                        '見積もり無料',
-                        'ロープアクセス対応', 
-                        'ブランコ対応',
-                        '高所作業車',
-                        'ゴンドラ対応',
-                        '定期作業',
-                        '口コミ評判',
-                        '事例',
-                        '損害賠償保険加入',
-                        '労災保険加入',
-                        '有資格者在籍',
-                        '法人対応',
-                        '土日対応',
-                        '夜間対応',
-                        '即日対応',
-                        'オンライン相談',
-                        'メール対応',
-                        'LINE対応'
+                    $tags = [
+                        ['label' => '見積もり無料', 'field' => 'free_estimate'],
+                        ['label' => 'ロープアクセス対応', 'field' => 'rope_support'], 
+                        ['label' => 'ブランコ対応', 'field' => 'branco_supported'],
+                        ['label' => '高所作業車', 'field' => 'aerial_platform_supported'],
+                        ['label' => 'ゴンドラ対応', 'field' => 'gondola_supported'],
+                        ['label' => '定期作業', 'field' => 'regular_work'],
+                        ['label' => '口コミ評判', 'field' => 'reviews_reputation'],
+                        ['label' => '事例', 'field' => 'case_studies'],
+                        ['label' => '損害賠償保険加入', 'field' => 'liability_insurance'],
+                        ['label' => '労災保険加入', 'field' => 'workers_insurance'],
+                        ['label' => '有資格者在籍', 'field' => 'certified_staff'],
+                        ['label' => '法人対応', 'field' => 'corporate_support'],
+                        ['label' => '土日対応', 'field' => 'weekend_support'],
+                        ['label' => '夜間対応', 'field' => 'night_support'],
+                        ['label' => '即日対応', 'field' => 'emergency_supported'],
+                        ['label' => 'オンライン相談', 'field' => 'online_consultation'],
+                        ['label' => 'メール対応', 'field' => 'email_support'],
+                        ['label' => 'LINE対応', 'field' => 'line_support']
                     ];
-                    $companyTags = $company->tags;
-                    if (is_string($companyTags)) {
-                        $companyTags = json_decode($companyTags, true) ?: explode(',', $companyTags);
-                    }
-                    $companyTags = is_array($companyTags) ? $companyTags : [];
                 @endphp
-                @foreach($fixedTags as $tag)
+                @foreach($tags as $tag)
                     @php
-                        $isActive = in_array($tag, $companyTags);
+                        $isActive = $company->{$tag['field']} ?? false;
                         $tagClass = $isActive 
                             ? 'px-2 py-1 text-xs border border-blue-200 text-blue-700 bg-blue-50 rounded'
                             : 'px-2 py-1 text-xs border border-gray-300 text-gray-600 bg-gray-100 rounded';
                     @endphp
-                    <span class="{{ $tagClass }}">{{ $tag }}</span>
+                    <span class="{{ $tagClass }}">{{ $tag['label'] }}</span>
                 @endforeach
             </div>
         </div>
