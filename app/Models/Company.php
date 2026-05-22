@@ -443,12 +443,13 @@ class Company extends Model
             'painting' => '外壁塗装',
             'bird_control' => '鳥害対策',
             'sign' => '看板作業',
-            'leak_inspection' => '雨漏り調査',
-            'other' => 'その他'
+            'leak_inspection' => '雨漏り調査'
         ];
         
         return collect($this->service_categories)
+            ->filter(fn($key) => $key !== 'other')
             ->map(fn($key) => $labels[$key] ?? $key)
+            ->filter()
             ->implode(' / ');
     }
 
