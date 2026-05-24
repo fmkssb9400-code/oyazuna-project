@@ -155,7 +155,7 @@
             @endif
             
             <!-- Fixed Company Tags List -->
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-2 w-full">
                 @php
                     $tags = [
                         ['label' => '見積もり無料', 'field' => 'free_estimate'],
@@ -182,8 +182,8 @@
                     @php
                         $isActive = $company->{$tag['field']} ?? false;
                         $tagClass = $isActive 
-                            ? 'px-2 py-1 text-xs border border-blue-200 text-blue-700 bg-blue-50 rounded'
-                            : 'px-2 py-1 text-xs border border-gray-300 text-gray-600 bg-gray-100 rounded';
+                            ? 'inline-block px-2 py-1 text-xs border border-blue-200 text-blue-700 bg-blue-50 rounded whitespace-nowrap'
+                            : 'inline-block px-2 py-1 text-xs border border-gray-300 text-gray-600 bg-gray-100 rounded whitespace-nowrap';
                     @endphp
                     <span class="{{ $tagClass }}">{{ $tag['label'] }}</span>
                 @endforeach
