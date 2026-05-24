@@ -40,11 +40,11 @@
               <a href="{{ $company['url'] }}" class="block">
                 <div class="flex items-center {{ $index < 2 ? 'mb-5' : 'mb-4' }} relative hover:bg-gray-50 p-2 rounded-lg transition-colors duration-200">
                   <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                    <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
                       @if($company['logo_url'])
-                        <img src="{{ $company['logo_url'] }}" alt="{{ $company['name'] }}ロゴ" class="w-full h-full object-cover">
+                        <img src="{{ $company['logo_url'] }}" alt="{{ $company['name'] }}ロゴ" class="w-16 h-16 object-contain">
                       @else
-                        <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-full h-full object-cover">
+                        <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
                       @endif
                     </div>
                     <!-- ランキングバッジ -->
@@ -78,8 +78,8 @@
               <!-- フォールバック用のサンプルデータ -->
               <div class="flex items-center mb-5 relative">
                 <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                  <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-full h-full object-cover">
+                  <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
+                    <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
                   </div>
                   <div class="absolute z-20" style="top: -4px; left: -4px;">
                     <img src="{{ asset('images/ranking-crown-no1.png') }}" alt="1位" class="w-6 h-6">
@@ -117,11 +117,11 @@
               <a href="{{ $company['url'] }}" class="block">
                 <div class="flex items-center {{ $index < 2 ? 'mb-5' : 'mb-4' }} relative hover:bg-gray-50 p-2 rounded-lg transition-colors duration-200">
                   <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                    <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
                       @if($company['logo_url'])
-                        <img src="{{ $company['logo_url'] }}" alt="{{ $company['name'] }}ロゴ" class="w-full h-full object-cover">
+                        <img src="{{ $company['logo_url'] }}" alt="{{ $company['name'] }}ロゴ" class="w-16 h-16 object-contain">
                       @else
-                        <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-full h-full object-cover">
+                        <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
                       @endif
                     </div>
                     <!-- ランキングバッジ -->
@@ -155,8 +155,8 @@
               <!-- フォールバック用のサンプルデータ -->
               <div class="flex items-center mb-5 relative">
                 <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                  <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-full h-full object-cover">
+                  <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
+                    <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
                   </div>
                   <div class="absolute z-20" style="top: -4px; left: -4px;">
                     <img src="{{ asset('images/ranking-crown-no1.png') }}" alt="1位" class="w-6 h-6">
@@ -194,11 +194,11 @@
               <a href="{{ $company['url'] }}" class="block">
                 <div class="flex items-center {{ $index < 2 ? 'mb-5' : 'mb-4' }} relative hover:bg-gray-50 p-2 rounded-lg transition-colors duration-200">
                   <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                    <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
                       @if($company['logo_url'])
-                        <img src="{{ $company['logo_url'] }}" alt="{{ $company['name'] }}ロゴ" class="w-full h-full object-cover">
+                        <img src="{{ $company['logo_url'] }}" alt="{{ $company['name'] }}ロゴ" class="w-16 h-16 object-contain">
                       @else
-                        <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-full h-full object-cover">
+                        <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
                       @endif
                     </div>
                     <!-- ランキングバッジ -->
@@ -232,8 +232,8 @@
               <!-- フォールバック用のサンプルデータ -->
               <div class="flex items-center mb-5 relative">
                 <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                  <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-full h-full object-cover">
+                  <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
+                    <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
                   </div>
                   <div class="absolute z-20" style="top: -4px; left: -4px;">
                     <img src="{{ asset('images/ranking-crown-no1.png') }}" alt="1位" class="w-6 h-6">
@@ -271,11 +271,11 @@
               <a href="{{ $company['url'] }}" class="block">
                 <div class="flex items-center {{ $index < 2 ? 'mb-5' : 'mb-4' }} relative hover:bg-gray-50 p-2 rounded-lg transition-colors duration-200">
                   <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                    <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
                       @if($company['logo_url'])
-                        <img src="{{ $company['logo_url'] }}" alt="{{ $company['name'] }}ロゴ" class="w-full h-full object-cover">
+                        <img src="{{ $company['logo_url'] }}" alt="{{ $company['name'] }}ロゴ" class="w-16 h-16 object-contain">
                       @else
-                        <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-full h-full object-cover">
+                        <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
                       @endif
                     </div>
                     <!-- ランキングバッジ -->
@@ -309,8 +309,8 @@
               <!-- フォールバック用のサンプルデータ -->
               <div class="flex items-center mb-5 relative">
                 <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                  <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-full h-full object-cover">
+                  <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
+                    <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
                   </div>
                   <div class="absolute z-20" style="top: -4px; left: -4px;">
                     <img src="{{ asset('images/ranking-crown-no1.png') }}" alt="1位" class="w-6 h-6">
@@ -720,7 +720,7 @@
 
                           <div class="w-24 h-16 bg-blue-100 rounded flex items-center justify-center flex-shrink-0 overflow-hidden">
                               @if(!empty($item['featured_image_url']))
-                                  <img src="{{ $item['featured_image_url'] }}" alt="{{ $item['title'] }}" class="w-full h-full object-cover">
+                                  <img src="{{ $item['featured_image_url'] }}" alt="{{ $item['title'] }}" class="w-16 h-16 object-contain">
                               @else
                                   <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>

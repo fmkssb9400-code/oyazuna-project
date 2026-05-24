@@ -40,7 +40,7 @@
                     <!-- スコア表示 -->
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 mb-4 md:mb-6">
                         @if($company->recommend_score > 0)
-                            <div class="text-center p-2 md:p-3 bg-blue-50 rounded">
+                            <div class="text-center p-2 md:p-3 bg-blue-100 rounded">
                                 <div class="text-xs md:text-sm text-gray-600">おすすめ</div>
                                 <div class="text-sm md:text-lg font-bold text-blue-600">
                                     ★{{ number_format($company->recommend_score, 1) }}
@@ -48,17 +48,17 @@
                             </div>
                         @endif
                         @if($company->safety_score > 0)
-                            <div class="text-center p-2 md:p-3 bg-green-50 rounded">
+                            <div class="text-center p-2 md:p-3 bg-blue-100 rounded">
                                 <div class="text-xs md:text-sm text-gray-600">安全性</div>
-                                <div class="text-sm md:text-lg font-bold text-green-600">
+                                <div class="text-sm md:text-lg font-bold text-blue-600">
                                     ★{{ number_format($company->safety_score, 1) }}
                                 </div>
                             </div>
                         @endif
                         @if($company->performance_score > 0)
-                            <div class="text-center p-2 md:p-3 bg-purple-50 rounded">
+                            <div class="text-center p-2 md:p-3 bg-blue-100 rounded">
                                 <div class="text-xs md:text-sm text-gray-600">実績</div>
-                                <div class="text-sm md:text-lg font-bold text-purple-600">
+                                <div class="text-sm md:text-lg font-bold text-blue-600">
                                     ★{{ number_format($company->performance_score, 1) }}
                                 </div>
                             </div>

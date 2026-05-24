@@ -25,7 +25,7 @@
             <a href="{{ $article['url'] }}" class="block group hover:bg-gray-50 rounded-lg p-3 transition-colors">
                 <div class="flex gap-3">
                     <div class="flex-shrink-0">
-                        <div class="w-16 h-12 rounded bg-blue-100 flex items-center justify-center overflow-hidden">
+                        <div class="w-20 h-16 rounded bg-blue-100 flex items-center justify-center overflow-hidden">
                             @if(!empty($article['featured_image_url']))
                                 <img src="{{ $article['featured_image_url'] }}" alt="{{ $article['title'] }}" class="w-full h-full object-cover">
                             @else
