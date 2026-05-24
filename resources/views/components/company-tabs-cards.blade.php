@@ -715,10 +715,8 @@
 
               <div class="space-y-6">
                   @forelse($featuredArticles ?? [] as $item)
-                      <a href="{{ $item['url'] ?? '#' }}"
-                         class="flex gap-4 hover:opacity-80 transition">
-
-                          <div class="w-28 h-20 bg-blue-100 rounded flex items-center justify-center flex-shrink-0 overflow-hidden">
+                      <a href="{{ $item['url'] ?? '#' }}" class="flex gap-4 hover:opacity-80 transition">
+                          <div class="w-24 h-16 bg-blue-100 rounded flex items-center justify-center flex-shrink-0 overflow-hidden">
                               @if(!empty($item['featured_image_url']))
                                   <img src="{{ $item['featured_image_url'] }}" alt="{{ $item['title'] }}" class="w-full h-full object-cover">
                               @else
@@ -727,13 +725,11 @@
                                   </svg>
                               @endif
                           </div>
-
                           <div class="flex-1">
                               <div class="text-sm font-semibold leading-snug mb-1">
                                   {{ $item['title'] ?? '記事タイトル' }}
                               </div>
                           </div>
-
                       </a>
                   @empty
                       <div class="text-center text-gray-500 text-sm py-8">
@@ -764,6 +760,13 @@
 .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
