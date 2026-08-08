@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')</title>
+    <title>@yield('title', 'おやづな | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Inter:wght@300;400;500;600;700&family=M+PLUS+1+Code:wght@100;200;300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Zen+Maru+Gothic:wght@300;400;500;700;900&family=Kosugi+Maru&family=Shippori+Antique+B1&family=Sawarabi+Gothic&family=M+PLUS+1p:wght@100;300;400;500;700;800;900&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
@@ -167,13 +167,13 @@
     </style>
 </head>
 <body class="bg-blue-50">
-    <nav class="bg-white shadow-sm border-b overflow-visible">
+    <nav class="bg-[#1e90ff] shadow-sm border-b overflow-visible">
         <!-- Mobile Logo - スマホで上部に表示 -->
         <div class="md:hidden text-center py-2 border-b max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <a href="{{ url('/') }}">
                 <img
                     src="{{ asset('images/cremoba_logo.png') }}"
-                    alt="オヤズナ"
+                    alt="おやづな"
                     class="w-auto object-contain mx-auto"
                     style="height: 35px !important; max-height: 35px !important; width: auto !important;"
                 />
@@ -187,7 +187,7 @@
                 <a href="{{ url('/') }}" class="nav-logo flex items-center gap-2">
                     <img
                         src="{{ asset('images/cremoba_logo.png') }}"
-                        alt="オヤズナ"
+                        alt="おやづな"
                         class="w-auto object-contain shrink-0 block"
                         style="display: block !important; height: 45px; max-height: 45px;"
                     />
@@ -196,10 +196,10 @@
             
             <!-- 中央のナビゲーションメニュー -->
             <div class="flex items-center flex-1 justify-center space-x-6 h-20">
-                <a href="{{ route('companies.index') }}" class="text-gray-700 hover:text-blue-600 font-bold text-xl flex items-center h-full">業者一覧</a>
-                <a href="{{ route('news.index') }}" class="text-gray-700 hover:text-blue-600 font-bold text-xl flex items-center h-full">ニュース・記事</a>
-                <a href="{{ route('reviews.index') }}" class="text-gray-700 hover:text-blue-600 font-bold text-xl flex items-center h-full">口コミを書く</a>
-                <a href="{{ route('quote-data.create') }}" class="text-gray-700 hover:text-blue-600 font-bold text-xl flex items-center h-full">見積もりデータを登録</a>
+                <a href="{{ route('companies.index') }}" class="text-white hover:opacity-80 transition-opacity font-bold text-xl flex items-center h-full">業者一覧</a>
+                <a href="{{ route('news.index') }}" class="text-white hover:opacity-80 transition-opacity font-bold text-xl flex items-center h-full">ニュース・記事</a>
+                <a href="{{ route('reviews.index') }}" class="text-white hover:opacity-80 transition-opacity font-bold text-xl flex items-center h-full">口コミを書く</a>
+                <a href="{{ route('quote-data.create') }}" class="text-white hover:opacity-80 transition-opacity font-bold text-xl flex items-center h-full">見積もりデータを登録</a>
                 <span class="bg-blue-100 text-blue-800 px-5 py-3 rounded-full text-lg font-bold flex items-center">
                     掲載社数{{ $companyCount ?? 0 }}社
                 </span>
@@ -213,10 +213,10 @@
         <div class="md:hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- 上段：メニューリンク -->
             <div class="flex flex-wrap justify-center items-center gap-2 py-3">
-                <a href="{{ route('companies.index') }}" class="text-gray-700 hover:text-blue-600 text-xs font-semibold px-2 py-1">業者一覧</a>
-                <a href="{{ route('news.index') }}" class="text-gray-700 hover:text-blue-600 text-xs font-semibold px-2 py-1">ニュース・記事</a>
-                <a href="{{ route('reviews.index') }}" class="text-gray-700 hover:text-blue-600 text-xs font-semibold px-2 py-1">口コミを書く</a>
-                <a href="{{ route('quote-data.create') }}" class="text-gray-700 hover:text-blue-600 text-xs font-semibold px-2 py-1">見積もりデータを登録</a>
+                <a href="{{ route('companies.index') }}" class="text-white hover:opacity-80 transition-opacity text-xs font-semibold px-2 py-1">業者一覧</a>
+                <a href="{{ route('news.index') }}" class="text-white hover:opacity-80 transition-opacity text-xs font-semibold px-2 py-1">ニュース・記事</a>
+                <a href="{{ route('reviews.index') }}" class="text-white hover:opacity-80 transition-opacity text-xs font-semibold px-2 py-1">口コミを書く</a>
+                <a href="{{ route('quote-data.create') }}" class="text-white hover:opacity-80 transition-opacity text-xs font-semibold px-2 py-1">見積もりデータを登録</a>
                 <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">
                     掲載社数{{ $companyCount ?? 0 }}社
                 </span>
@@ -228,8 +228,8 @@
     <div class="bg-white shadow-sm border-b">
         <div class="w-full">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-                <!-- 見積もりデータを見るボタン（青） -->
-                <a href="{{ route('quote-data.index') }}" class="bg-blue-600 text-white px-6 py-3 font-bold text-lg hover:bg-blue-700 transition-colors text-center flex items-center justify-center">
+                <!-- 見積もりデータを見るボタン（緑） -->
+                <a href="{{ route('quote-data.index') }}" class="bg-green-600 text-white px-6 py-3 font-bold text-lg hover:bg-green-700 transition-colors text-center flex items-center justify-center">
                     見積もりデータを見る
                 </a>
                 <!-- 現調依頼するボタン（オレンジ） -->
@@ -300,7 +300,7 @@
 
             <!-- コピーライト -->
             <div class="border-t pt-8 text-center" style="border-color: #3b82f6;">
-                <p class="text-white">&copy; 2026 オヤズナ. All rights reserved.</p>
+                <p class="text-white">&copy; 2026 おやづな. All rights reserved.</p>
             </div>
         </div>
     </footer>

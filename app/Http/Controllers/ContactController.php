@@ -30,7 +30,7 @@ class ContactController extends Controller
             Mail::raw($this->formatContactEmail($validated), function ($message) use ($validated, $adminEmail) {
                 $message->from($validated['email'], $validated['name'])
                         ->to($adminEmail)
-                        ->subject('[オヤズナお問い合わせ] ' . $validated['subject']);
+                        ->subject('[おやづなお問い合わせ] ' . $validated['subject']);
             });
 
             return redirect()->route('contact.complete');
@@ -47,7 +47,7 @@ class ContactController extends Controller
     private function formatContactEmail($data)
     {
         return "
-オヤズナお問い合わせフォームより新しいメッセージが届きました。
+おやづなお問い合わせフォームより新しいメッセージが届きました。
 
 【お名前】
 {$data['name']}

@@ -175,8 +175,8 @@ class QuoteController extends Controller
         try {
             // Get email settings
             $fromEmail = EmailSettings::getValue('quote_from_email', 'noreply@oyazuna.com');
-            $fromName = EmailSettings::getValue('quote_from_name', 'オヤズナ');
-            $subjectTemplate = EmailSettings::getValue('quote_subject_template', '【オヤズナ】新しい見積もり依頼が届きました');
+            $fromName = EmailSettings::getValue('quote_from_name', 'おやづな');
+            $subjectTemplate = EmailSettings::getValue('quote_subject_template', '【おやづな】新しい見積もり依頼が届きました');
             $bodyTemplate = EmailSettings::getValue('quote_email_template', 'デフォルトテンプレート');
 
             // Prepare template variables

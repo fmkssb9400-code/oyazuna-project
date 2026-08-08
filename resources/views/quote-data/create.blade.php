@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '見積もりデータを投稿 - オヤズナ | 高所ロープ作業の見積もり・相場データベース')
+@section('title', '見積もりデータを投稿 - おやづな | 高所ロープ作業の見積もり・相場データベース')
 
 @section('content')
 <div class="max-w-4xl mx-auto px-4 py-6 md:py-8">

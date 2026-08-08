@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
+@section('title', 'おやづな | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
 
 @section('description', '高所ロープ作業の専門業者を口コミと実績で比較できるサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安心・信頼できる業者選びをサポートします。')
 
@@ -424,10 +424,10 @@
   <div class="hero-content">
     <div class="hero-text">
       <img src="{{ asset('images/text.png') }}" alt="高所ロープ業者の口コミ・比較サイト" class="mb-4" style="width: 450px; height: auto;">
-      <p>オヤズナは、高所ロープ作業の見積もりや相場をもとに、<br>安心して依頼できる会社がわかるサイトです。</p>
+      <p>おやづなは、高所ロープ作業の見積もりや相場をもとに、<br>安心して依頼できる会社がわかるサイトです。</p>
     </div>
     <div class="hero-image">
-      <img src="{{ asset('images/waiper.png') }}?v={{ time() }}" alt="オヤズナキャラクター">
+      <img src="{{ asset('images/waiper.png') }}?v={{ time() }}" alt="おやづなキャラクター">
     </div>
   </div>
 </div>
@@ -817,7 +817,7 @@
     </div>
 </section>
 
-<!-- オヤズナとは？セクション -->
+<!-- おやづなとは？セクション -->
 <section class="bg-gray-100 py-12 md:py-16">
     <div class="max-w-6xl mx-auto px-4">
         <!-- メインタイトル -->
@@ -841,7 +841,7 @@
                     <span class="text-blue-600">比較</span>できる
                 </h3>
                 <p class="text-sm text-gray-600 leading-relaxed">
-                    オヤズナでは、対応エリア・施工内容・実績などの情報をもとに、<br>
+                    おやづなでは、対応エリア・施工内容・実績などの情報をもとに、<br>
                     高所ロープ作業に対応する会社を比較できます。
                 </p>
             </div>
@@ -986,7 +986,7 @@
                         </button>
                         
                         <div class="text-xs text-gray-200 text-center">
-                            <p>※送信後、オヤズナにて内容確認後、適切な業者へ共有いたします。</p>
+                            <p>※送信後、おやづなにて内容確認後、適切な業者へ共有いたします。</p>
                             <p>※その後、業者より直接ご連絡させていただきます。</p>
                         </div>
                     </form>

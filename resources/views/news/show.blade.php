@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $article->title . ' - オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
+@section('title', $article->title . ' - おやづな | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
 
 @section('content')
 <div class="max-w-7xl mx-auto px-2 md:px-4 py-4 md:py-8 overflow-x-hidden">
@@ -432,7 +432,7 @@
                         </button>
                         
                         <div class="text-xs text-gray-200 text-center">
-                            <p>※送信後、オヤズナにて内容確認後、適切な業者へ共有いたします。</p>
+                            <p>※送信後、おやづなにて内容確認後、適切な業者へ共有いたします。</p>
                             <p>※その後、業者より直接ご連絡させていただきます。</p>
                         </div>
                     </form>

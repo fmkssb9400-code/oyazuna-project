@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer(['layouts.app', 'home.*', 'companies.*', 'compare.*', 'quote.*'], function ($view) {
             try {
                 $siteLogo = Cache::remember('site_logo', 3600, fn() => SiteSetting::get('site_logo'));
-                $siteName = Cache::remember('site_name', 3600, fn() => SiteSetting::get('site_name', 'オヤズナ'));
+                $siteName = Cache::remember('site_name', 3600, fn() => SiteSetting::get('site_name', 'おやづな'));
                 
                 $view->with([
                     'siteLogo' => $siteLogo,
@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
             } catch (\Exception $e) {
                 $view->with([
                     'siteLogo' => null,
-                    'siteName' => 'オヤズナ',
+                    'siteName' => 'おやづな',
                 ]);
             }
         });

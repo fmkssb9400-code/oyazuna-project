@@ -38,7 +38,7 @@ class HomeController extends Controller
         $heroSubtitle = SiteSetting::get('hero_subtitle', 'まとめて比較・一括見積もり');
         $heroDescription = SiteSetting::get('hero_description', '専門業者へ安全に直接つなぐプラットフォーム');
         $siteLogo = SiteSetting::get('site_logo');
-        $siteName = SiteSetting::get('site_name', 'オヤズナ');
+        $siteName = SiteSetting::get('site_name', 'おやづな');
 
         // Featured companies from database with filtering and sorting
         $query = Company::published()->where('is_featured', true);
