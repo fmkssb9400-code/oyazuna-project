@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $company->name . ' - 業者詳細 - おやづな | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
+@section('title', $company->name . ' - 業者詳細 - オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
 
 @section('content')
 <div class="max-w-6xl mx-auto px-4 py-6 md:py-8">

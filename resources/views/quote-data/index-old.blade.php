@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '見積もりデータ一覧 - おやづな | 高所ロープ作業の見積もり・相場データベース')
+@section('title', '見積もりデータ一覧 - オヤズナ | 高所ロープ作業の見積もり・相場データベース')
 
 @section('content')
 <div class="min-h-screen bg-blue-50 py-8">

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'おやづな | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')</title>
+    <title>@yield('title', 'オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Inter:wght@300;400;500;600;700&family=M+PLUS+1+Code:wght@100;200;300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Zen+Maru+Gothic:wght@300;400;500;700;900&family=Kosugi+Maru&family=Shippori+Antique+B1&family=Sawarabi+Gothic&family=M+PLUS+1p:wght@100;300;400;500;700;800;900&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
@@ -173,7 +173,7 @@
             <a href="{{ url('/') }}">
                 <img
                     src="{{ asset('images/cremoba_logo.png') }}"
-                    alt="おやづな"
+                    alt="オヤズナ"
                     class="w-auto object-contain mx-auto"
                     style="height: 35px !important; max-height: 35px !important; width: auto !important;"
                 />
@@ -187,7 +187,7 @@
                 <a href="{{ url('/') }}" class="nav-logo flex items-center gap-2">
                     <img
                         src="{{ asset('images/cremoba_logo.png') }}"
-                        alt="おやづな"
+                        alt="オヤズナ"
                         class="w-auto object-contain shrink-0 block"
                         style="display: block !important; height: 45px; max-height: 45px;"
                     />
@@ -300,7 +300,7 @@
 
             <!-- コピーライト -->
             <div class="border-t pt-8 text-center" style="border-color: #3b82f6;">
-                <p class="text-white">&copy; 2026 おやづな. All rights reserved.</p>
+                <p class="text-white">&copy; 2026 オヤズナ. All rights reserved.</p>
             </div>
         </div>
     </footer>

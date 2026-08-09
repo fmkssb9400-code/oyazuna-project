@@ -22,7 +22,7 @@ class SiteSettingSeeder extends Seeder
             ],
             [
                 'key' => 'site_name',
-                'value' => 'おやづな',
+                'value' => 'オヤズナ',
                 'type' => 'text',
                 'label' => 'サイト名',
                 'description' => 'ヘッダーに表示されるサイト名（ロゴがない場合のテキスト）',

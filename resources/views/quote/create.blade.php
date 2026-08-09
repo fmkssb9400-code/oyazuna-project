@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '高所ロープ専門業者に現調依頼する - おやづな | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
+@section('title', '高所ロープ専門業者に現調依頼する - オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
 
 @section('content')
 <div class="max-w-4xl mx-auto px-4 py-6 md:py-8">
@@ -13,7 +13,7 @@
             <!-- Companies will be populated by JavaScript -->
         </div>
         <div class="text-sm text-orange-700 mt-3">
-            <p class="mb-1">ご相談内容は一旦おやづなにて確認させていただきます。</p>
+            <p class="mb-1">ご相談内容は一旦オヤズナにて確認させていただきます。</p>
             <p class="mb-1">内容を精査のうえ、適切な専門業者へ共有いたします。</p>
             <p>その後、業者より直接ご連絡させていただきます。</p>
         </div>
