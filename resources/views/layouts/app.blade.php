@@ -186,7 +186,7 @@
             <div class="flex items-center overflow-visible" style="padding-left: 80px;">
                 <a href="{{ url('/') }}" class="nav-logo flex items-center gap-2">
                     <img
-                        src="{{ asset('images/cremoba_logo.png') }}"
+                        src="{{ asset('oyazunaicon.png') }}"
                         alt="オヤズナ"
                         class="w-auto object-contain shrink-0 block"
                         style="display: block !important; height: 45px; max-height: 45px;"
