@@ -134,33 +134,10 @@ svg {
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
-/* CTA用クラスを強制的に生成対象にする - Tailwind v4形式 */
-.my-8 { margin-top: 2rem; margin-bottom: 2rem; }
-.flex { display: flex; }
-.justify-center { justify-content: center; }
-.items-center { align-items: center; }
-.gap-2 { gap: 0.5rem; }
-.w-full { width: 100%; }
-.max-w-lg { max-width: 32rem; }
-.max-w-xl { max-width: 36rem; }
-.mx-auto { margin-left: auto; margin-right: auto; }
-.text-center { text-align: center; }
-.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
-.rounded-xl { border-radius: 0.75rem; }
-.font-bold { font-weight: 700; }
-.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
-.text-white { --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); }
-.bg-blue-600 { --tw-bg-opacity: 1; background-color: rgb(37 99 235 / var(--tw-bg-opacity)); }
-.bg-orange-600 { --tw-bg-opacity: 1; background-color: rgb(234 88 12 / var(--tw-bg-opacity)); }
-.transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
-.duration-200 { transition-duration: 200ms; }
-.transform { transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)); }
-
-.hover\:bg-blue-700:hover { --tw-bg-opacity: 1; background-color: rgb(29 78 216 / var(--tw-bg-opacity)); }
-.hover\:bg-orange-700:hover { --tw-bg-opacity: 1; background-color: rgb(194 65 12 / var(--tw-bg-opacity)); }
-.hover\:shadow-lg:hover { --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color); box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); }
-.hover\:scale-105:hover { --tw-scale-x: 1.05; --tw-scale-y: 1.05; transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)); }
+/* CTA用クラスを強制的に生成対象にする（記事本文などDB内の動的HTMLで使われ、Tailwindの自動スキャンでは検出できないため）
+   Tailwind v4の正規機能 @source inline() で検出対象に含める。
+   手書きCSSでの複製はcascade順序の衝突（例: flex + md:hiddenが効かなくなる）を招くため廃止。 */
+@source inline("my-8 flex justify-center items-center gap-2 w-full max-w-lg max-w-xl mx-auto text-center px-6 py-4 rounded-xl font-bold text-lg text-white bg-blue-600 bg-orange-600 transition-all duration-200 transform hover:bg-blue-700 hover:bg-orange-700 hover:shadow-lg hover:scale-105");
 
 @theme {
     --font-sans: 'BIZ UDGothic', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', 'Meiryo UI', sans-serif;
