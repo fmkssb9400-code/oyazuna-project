@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', $article->title . ' - オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
+@section('title', $article->title . ' | オヤズナ')
+@section('description', $article->excerpt ? \Illuminate\Support\Str::limit(strip_tags($article->excerpt), 155) : '高所ロープ作業の専門業者を口コミと実績で比較できるサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安心・信頼できる業者選びをサポートします。')
 
 @section('content')
 <div class="max-w-7xl mx-auto px-2 md:px-4 py-4 md:py-8 overflow-x-hidden">

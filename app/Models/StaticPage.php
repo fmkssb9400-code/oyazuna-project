@@ -14,6 +14,7 @@ class StaticPage extends Model
         'slug',
         'page_type',
         'content',
+        'meta_description',
         'featured_image',
         'is_published',
         'published_at',

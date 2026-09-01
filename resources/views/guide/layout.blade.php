@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', ($page && $page->title) ? $page->title . ' - オヤズナ' : 'ガイド - オヤズナ')
+@section('description', ($page && $page->meta_description) ? $page->meta_description : '高所ロープ作業の専門業者を口コミと実績で比較できるサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安心・信頼できる業者選びをサポートします。')
+
 @section('content')
 <div class="max-w-7xl mx-auto px-2 md:px-4 py-4 md:py-8 overflow-x-hidden">
     <!-- Breadcrumb -->
