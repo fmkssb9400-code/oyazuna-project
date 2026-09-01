@@ -4,9 +4,12 @@
 @import './admin-editor.css';
 
 /* Global responsive styles */
-html,
-body {
+html {
   overflow-x: hidden;
+  width: 100%;
+}
+
+body {
   width: 100%;
 }
 

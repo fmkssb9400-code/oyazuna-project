@@ -167,7 +167,7 @@
     </style>
 </head>
 <body class="bg-blue-50">
-    <nav class="shadow-sm border-b overflow-visible bg-[linear-gradient(to_right,#66ccff_0%,#66ccff_17%,white_24%,white_100%)]">
+    <nav class="sticky top-0 z-50 shadow-sm border-b overflow-visible bg-[linear-gradient(to_right,#66ccff_0%,#66ccff_17%,white_24%,white_100%)]">
         <!-- Mobile Logo - スマホで上部に表示 -->
         <div class="md:hidden text-center py-2 border-b max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#66ccff]">
             <a href="{{ url('/') }}">
