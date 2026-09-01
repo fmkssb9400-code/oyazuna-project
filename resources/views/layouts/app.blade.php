@@ -168,16 +168,30 @@
 </head>
 <body class="bg-blue-50">
     <nav class="sticky top-0 z-50 shadow-sm border-b overflow-visible bg-[linear-gradient(to_right,#66ccff_0%,#66ccff_17%,white_24%,white_100%)]">
-        <!-- Mobile Logo - スマホで上部に表示 -->
-        <div class="md:hidden text-center py-2 border-b max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#66ccff]">
-            <a href="{{ url('/') }}">
+        <!-- スマホ版ヘッダー：ロゴ（左）＋ハンバーガーメニュー（右） -->
+        <div class="md:hidden flex items-center justify-between gap-2 py-2 px-4 border-b bg-[#66ccff]">
+            <a href="{{ url('/') }}" class="shrink-0">
                 <img
                     src="{{ asset('images/cremoba_logo.png') }}"
                     alt="オヤズナ"
-                    class="w-auto object-contain mx-auto"
+                    class="w-auto object-contain"
                     style="height: 35px !important; max-height: 35px !important; width: auto !important;"
                 />
             </a>
+            <button
+                type="button"
+                onclick="document.getElementById('mobile-menu-panel').classList.toggle('hidden'); document.getElementById('mobile-menu-icon-open').classList.toggle('hidden'); document.getElementById('mobile-menu-icon-close').classList.toggle('hidden');"
+                class="p-2 text-blue-950 shrink-0"
+                aria-label="メニューを開く"
+                aria-controls="mobile-menu-panel"
+            >
+                <svg id="mobile-menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18M3 12h18M3 18h18" />
+                </svg>
+                <svg id="mobile-menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
+            </button>
         </div>
 
         <!-- PC版ナビゲーション -->
@@ -208,46 +222,39 @@
                     <path d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125" />
                     <path d="M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                 </svg>
-                現調依頼する
+                無料で現調依頼する
             </a>
         </div>
 
-        <!-- スマホ版ナビゲーション -->
-        <div class="md:hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- 上段：メニューリンク -->
-            <div class="flex flex-wrap justify-center items-center gap-2 py-3">
-                <a href="{{ route('companies.index') }}" class="text-blue-950 hover:opacity-80 transition-opacity text-xs font-semibold px-2 py-1">掲載社数<span class="text-[#1d4ed8]" style="font-size: 1.25em;">{{ $companyCount ?? 0 }}</span>社</a>
-                <a href="{{ route('news.index') }}" class="text-blue-950 hover:opacity-80 transition-opacity text-xs font-semibold px-2 py-1">ニュース・記事</a>
-                <a href="{{ route('reviews.index') }}" class="text-blue-950 hover:opacity-80 transition-opacity text-xs font-semibold px-2 py-1">口コミを書く</a>
-                <a href="{{ route('quote-data.create') }}" class="text-blue-950 hover:opacity-80 transition-opacity text-xs font-semibold px-2 py-1">見積もりデータを登録</a>
+        <!-- スマホ版：ハンバーガーメニューの開閉パネル -->
+        <div id="mobile-menu-panel" class="hidden md:hidden border-b bg-white">
+            <div class="flex flex-col divide-y divide-gray-100 px-4">
+                <a href="{{ route('companies.index') }}" class="py-3 text-blue-950 hover:opacity-80 transition-opacity text-sm font-semibold">掲載社数<span class="text-[#1d4ed8]" style="font-size: 1.15em;">{{ $companyCount ?? 0 }}</span>社</a>
+                <a href="{{ route('news.index') }}" class="py-3 text-blue-950 hover:opacity-80 transition-opacity text-sm font-semibold">ニュース・記事</a>
+                <a href="{{ route('reviews.index') }}" class="py-3 text-blue-950 hover:opacity-80 transition-opacity text-sm font-semibold">口コミを書く</a>
+                <a href="{{ route('quote-data.create') }}" class="py-3 text-blue-950 hover:opacity-80 transition-opacity text-sm font-semibold">見積もりデータを登録</a>
             </div>
         </div>
     </nav>
 
-    <!-- ヘッダー下のボタンセクション -->
+    {{-- ヘッダー下のボタンセクション - 現調依頼するボタンはPC・スマホともヘッダー内に移動したため不要に。
+    見積もりデータを見るボタンは遷移先エラーのため非表示のまま。
     <div class="bg-white shadow-sm border-b">
         <div class="w-full">
             <div class="grid grid-cols-1 gap-0">
-                {{-- 見積もりデータを見るボタン（緑）- 遷移先エラーのため一旦非表示
                 <a href="{{ route('quote-data.index') }}" class="bg-green-600 text-white px-6 py-3 font-bold text-lg hover:bg-green-700 transition-colors text-center flex items-center justify-center">
                     見積もりデータを見る
                 </a>
-                --}}
-                <!-- 現調依頼するボタン（オレンジ）- スマホのみ表示。PCはヘッダー右側に配置 -->
-                <div class="md:hidden">
-                    <a href="{{ route('quote.create') }}" class="bg-orange-500 text-white px-6 py-3 font-bold text-lg hover:bg-orange-600 transition-colors text-center flex items-center justify-center glowing-button">
-                        現調依頼する
-                    </a>
-                </div>
             </div>
         </div>
     </div>
+    --}}
 
-    <main>
+    <main class="pb-16 md:pb-0">
         @yield('content')
     </main>
 
-    <footer class="mt-20" style="background-color: #2563eb; color: white;">
+    <footer class="mt-20 pb-16 md:pb-0" style="background-color: #2563eb; color: white;">
         <div class="max-w-7xl mx-auto px-4 py-12">
             <!-- フッター項目 -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
@@ -307,6 +314,19 @@
             </div>
         </div>
     </footer>
+
+    <!-- スマホ版：画面下部固定の現調依頼CTA -->
+    <a
+        href="{{ route('quote.create') }}"
+        class="md:hidden fixed bottom-0 inset-x-0 z-50 flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 transition-colors text-white font-bold text-base py-4 shadow-[0_-4px_12px_rgba(0,0,0,0.15)] glowing-button"
+        style="position: fixed !important;"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125" />
+            <path d="M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+        </svg>
+        無料で現調依頼する
+    </a>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
