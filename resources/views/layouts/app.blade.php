@@ -315,18 +315,19 @@
         </div>
     </footer>
 
-    <!-- スマホ版：画面下部固定の現調依頼CTA -->
-    <a
-        href="{{ route('quote.create') }}"
-        class="md:hidden fixed bottom-0 inset-x-0 z-50 flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 transition-colors text-white font-bold text-base py-4 shadow-[0_-4px_12px_rgba(0,0,0,0.15)] glowing-button"
-        style="position: fixed !important;"
-    >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125" />
-            <path d="M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-        </svg>
-        無料で現調依頼する
-    </a>
+    <!-- スマホ版：画面下部固定の現調依頼CTA（黒帯の中にオレンジボタンが浮く形） -->
+    <div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-black/80 px-4 py-3" style="position: fixed !important;">
+        <a
+            href="{{ route('quote.create') }}"
+            class="flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 transition-colors text-white font-bold text-base py-3 rounded-lg glowing-button"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125" />
+                <path d="M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+            </svg>
+            無料で現調依頼する
+        </a>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
