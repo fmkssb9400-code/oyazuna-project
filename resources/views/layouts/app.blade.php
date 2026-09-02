@@ -268,7 +268,7 @@
                         <li><a href="{{ route('companies.index', ['service' => 'sign']) }}" class="text-white hover:text-blue-200 transition-colors">看板清掃</a></li>
                         <li><a href="{{ route('companies.index', ['service' => 'other']) }}" class="text-white hover:text-blue-200 transition-colors">その他</a></li>
                         <li><a href="{{ route('hub.category', 'window-cleaning') }}" class="text-white hover:text-blue-200 transition-colors">窓ガラス清掃業者を比較</a></li>
-                        <li><a href="{{ route('hub.category', 'wall-repair') }}" class="text-white hover:text-blue-200 transition-colors">外壁補修業者を比較</a></li>
+                        <li><a href="{{ route('hub.category', 'wall-repair') }}" class="text-white hover:text-blue-200 transition-colors">外壁補修業者一覧</a></li>
                     </ul>
                 </div>
 
