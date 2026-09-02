@@ -26,7 +26,6 @@
         <!-- Hero -->
         <div class="bg-white rounded-2xl border border-gray-200 shadow-lg p-6 md:p-8 mb-8">
             <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">{{ $config['h1'] }}</h1>
-            <p class="text-gray-700 leading-relaxed mb-4">{{ $config['lead'] }}</p>
             <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-medium px-4 py-2 rounded-full">
                 掲載業者数 {{ $companies->total() }}社
             </div>
@@ -35,56 +34,57 @@
         <!-- 比較表 -->
         @if($topCompanies->isNotEmpty())
         <div class="mb-8">
-            <h2 class="text-xl font-bold text-gray-900 mb-3">{{ $config['label'] }}対応業者 比較表（上位{{ $topCompanies->count() }}社）</h2>
-            <p class="text-xs text-gray-500 mb-2 sm:hidden">→ 横にスクロールできます</p>
-            <div class="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-x-auto">
-                <table class="w-full text-sm text-left border-collapse min-w-[640px]">
-                    <thead>
-                        <tr class="bg-blue-50 text-gray-700">
-                            <th class="px-4 py-3 font-semibold whitespace-nowrap">順位</th>
-                            <th class="px-4 py-3 font-semibold whitespace-nowrap">会社名</th>
-                            <th class="px-4 py-3 font-semibold whitespace-nowrap">対応エリア</th>
-                            <th class="px-4 py-3 font-semibold whitespace-nowrap">評価</th>
-                            <th class="px-4 py-3 font-semibold whitespace-nowrap">対応工法</th>
-                            <th class="px-4 py-3 font-semibold whitespace-nowrap"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($topCompanies as $index => $company)
-                            @php
-                                $areasList = is_array($company->areas) ? $company->areas : [];
-                                $areasText = count($areasList) > 2
-                                    ? $areasList[0].'・'.$areasList[1].' 他'.(count($areasList) - 2).'県'
-                                    : (implode('・', $areasList) ?: '全国');
-
-                                $methods = array_filter([
-                                    $company->rope_support ? 'ロープアクセス' : null,
-                                    $company->gondola_supported ? 'ゴンドラ' : null,
-                                    $company->branco_supported ? 'ブランコ' : null,
-                                    $company->aerial_platform_supported ? '高所作業車' : null,
-                                ]);
-                            @endphp
-                            <tr class="border-t border-gray-100 {{ $index % 2 === 1 ? 'bg-gray-50' : '' }}">
-                                <td class="px-4 py-3 font-bold text-blue-700 whitespace-nowrap">{{ $index + 1 }}位</td>
-                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">
-                                    <a href="{{ route('companies.show', $company->slug) }}" class="hover:text-blue-600 hover:underline">{{ $company->name }}</a>
-                                </td>
-                                <td class="px-4 py-3 text-gray-600 whitespace-nowrap">{{ $areasText }}</td>
-                                <td class="px-4 py-3 text-gray-600 whitespace-nowrap">
-                                    @if($company->average_rating)
-                                        ★{{ number_format($company->average_rating, 1) }}（{{ $company->reviews_count }}件）
-                                    @else
-                                        評価待ち
-                                    @endif
-                                </td>
-                                <td class="px-4 py-3 text-gray-600 whitespace-nowrap">{{ $methods ? implode('・', $methods) : '-' }}</td>
-                                <td class="px-4 py-3 whitespace-nowrap">
-                                    <a href="{{ route('companies.show', $company->slug) }}" class="text-blue-600 text-xs font-semibold hover:underline">詳細を見る &rsaquo;</a>
-                                </td>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">{{ $config['label'] }}対応業者 比較表（{{ $topCompanies->count() }}社）</h2>
+            <div class="bg-white rounded-2xl border border-gray-200 shadow-lg p-6 md:p-8">
+                <p class="text-gray-700 leading-relaxed mb-6">{{ $config['lead'] }}</p>
+                <p class="text-xs text-gray-500 mb-2 sm:hidden">→ 横にスクロールできます</p>
+                <div class="overflow-x-auto -mx-6 md:-mx-8 px-6 md:px-8">
+                    <table class="w-full text-sm text-left border-collapse min-w-[640px]">
+                        <thead>
+                            <tr class="bg-blue-50 text-gray-700">
+                                <th class="px-4 py-3 font-semibold whitespace-nowrap">会社名</th>
+                                <th class="px-4 py-3 font-semibold whitespace-nowrap">対応エリア</th>
+                                <th class="px-4 py-3 font-semibold whitespace-nowrap">評価</th>
+                                <th class="px-4 py-3 font-semibold whitespace-nowrap">対応工法</th>
+                                <th class="px-4 py-3 font-semibold whitespace-nowrap"></th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach($topCompanies as $index => $company)
+                                @php
+                                    $areasList = is_array($company->areas) ? $company->areas : [];
+                                    $areasText = count($areasList) > 2
+                                        ? $areasList[0].'・'.$areasList[1].' 他'.(count($areasList) - 2).'県'
+                                        : (implode('・', $areasList) ?: '全国');
+
+                                    $methods = array_filter([
+                                        $company->rope_support ? 'ロープアクセス' : null,
+                                        $company->gondola_supported ? 'ゴンドラ' : null,
+                                        $company->branco_supported ? 'ブランコ' : null,
+                                        $company->aerial_platform_supported ? '高所作業車' : null,
+                                    ]);
+                                @endphp
+                                <tr class="border-t border-gray-100 {{ $index % 2 === 1 ? 'bg-gray-50' : '' }}">
+                                    <td class="px-4 py-3 font-medium whitespace-nowrap">
+                                        <a href="{{ $company->official_url }}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">{{ $company->name }}</a>
+                                    </td>
+                                    <td class="px-4 py-3 text-gray-600 whitespace-nowrap">{{ $areasText }}</td>
+                                    <td class="px-4 py-3 text-gray-600 whitespace-nowrap">
+                                        @if($company->average_rating)
+                                            ★{{ number_format($company->average_rating, 1) }}（{{ $company->reviews_count }}件）
+                                        @else
+                                            評価待ち
+                                        @endif
+                                    </td>
+                                    <td class="px-4 py-3 text-gray-600 whitespace-nowrap">{{ $methods ? implode('・', $methods) : '-' }}</td>
+                                    <td class="px-4 py-3 whitespace-nowrap">
+                                        <a href="{{ route('companies.show', $company->slug) }}" class="text-blue-600 text-xs font-semibold hover:underline">詳細を見る &rsaquo;</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         @endif
