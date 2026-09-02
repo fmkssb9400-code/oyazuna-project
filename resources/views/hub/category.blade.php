@@ -82,19 +82,8 @@
 
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <!-- CTA -->
-        <div class="bg-gray-500 rounded-2xl shadow p-6 md:p-8 mb-8 text-white text-center">
-            <h2 class="text-lg md:text-xl font-bold mb-2">{{ $config['label'] }}の業者を比較したい方へ</h2>
-            <p class="text-sm mb-4">条件を伝えるだけで、最短で複数社から見積もりを取り寄せられます</p>
-            <a href="{{ route('quote.create') }}"
-               class="inline-flex items-center justify-center gap-2 px-10 py-4 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-               style="background: linear-gradient(to right, #f97316, #ea580c);">
-                無料で見積もり依頼する
-            </a>
-        </div>
-
         <!-- 業者一覧 -->
-        <div class="mb-16">
+        <div class="mb-10">
             <h2 class="text-xl font-bold text-gray-900 mb-4">{{ $config['label'] }}対応業者一覧</h2>
             @if($companies->isEmpty())
                 <div class="bg-white rounded-2xl border border-gray-200 p-8 text-center text-gray-600">
@@ -107,7 +96,7 @@
                     @endforeach
                 </div>
                 @if($companies->hasPages())
-                    <div class="mt-8 flex justify-center">
+                    <div class="mt-10 flex justify-center">
                         {{ $companies->links('hub.pagination') }}
                     </div>
                 @endif
