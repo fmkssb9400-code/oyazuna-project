@@ -80,11 +80,10 @@
         </div>
     @endif
 
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <!-- 業者一覧 -->
+    <!-- 業者一覧（比較表と同じ横幅: max-w-7xl） -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mt-10 mb-10">
-            <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+            <div class="lg:grid lg:grid-cols-3 lg:gap-8 lg:items-stretch">
                 <div class="lg:col-span-2">
                     <h2 class="text-xl font-bold text-gray-900 mb-4">{{ $config['label'] }}対応業者一覧</h2>
                     @if($companies->isEmpty())
@@ -105,9 +104,9 @@
                     @endif
                 </div>
 
-                <!-- 関連ページ（サイドバー） -->
-                <aside class="mt-10 lg:mt-0 lg:sticky lg:top-24 lg:self-start">
-                    <div class="border border-gray-200">
+                <!-- 関連ページ（サイドバー、カード一覧と高さを揃える） -->
+                <aside class="mt-10 lg:mt-0">
+                    <div class="border border-gray-200 h-full flex flex-col">
                         <div class="bg-blue-500 px-4 py-3">
                             <h3 class="text-white font-bold">関連ページ</h3>
                         </div>
@@ -121,10 +120,14 @@
                                 </a>
                             @endforeach
                         </div>
+                        <div class="flex-1 bg-white"></div>
                     </div>
                 </aside>
             </div>
         </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- FAQ -->
         <div class="bg-white p-6 md:p-8 mb-10">
