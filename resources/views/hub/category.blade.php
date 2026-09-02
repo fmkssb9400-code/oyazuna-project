@@ -64,8 +64,11 @@
                                         <a href="{{ $company->official_url }}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">{{ $company->name }}</a>
                                     </td>
                                     <td class="px-4 py-3 text-gray-600 whitespace-nowrap border border-gray-300">{{ $areasText }}</td>
+                                    @php
+                                        $highlightTags = $company->matchingConditionTags($config['highlight_tags'] ?? []);
+                                    @endphp
                                     <td class="px-4 py-3 text-gray-600 whitespace-nowrap border border-gray-300">
-                                        {{ $company->condition_highlights ? implode('・', $company->condition_highlights) : '-' }}
+                                        {{ $highlightTags ? implode('・', $highlightTags) : '-' }}
                                     </td>
                                     <td class="px-4 py-3 text-gray-600 whitespace-nowrap border border-gray-300">{{ $methods ? implode('・', $methods) : '-' }}</td>
                                     <td class="px-4 py-3 whitespace-nowrap border border-gray-300">
@@ -117,7 +120,7 @@
                             </a>
                             @foreach($otherHubs as $otherSlug => $otherConfig)
                                 <a href="{{ route('hub.category', $otherSlug) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
-                                    {{ $otherConfig['label'] }}対応業者一覧
+                                    {{ $otherConfig['nav_label'] ?? ($otherConfig['label'] . '対応業者一覧') }}
                                 </a>
                             @endforeach
                         </div>

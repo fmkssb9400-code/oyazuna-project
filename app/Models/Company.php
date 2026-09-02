@@ -296,6 +296,16 @@ class Company extends Model
      */
     public function getConditionHighlightsAttribute(): array
     {
+        return $this->matchingConditionTags();
+    }
+
+    /**
+     * strength_tags/safety_itemsから条件タグを抽出する。$priorityTagsを指定すると、
+     * そのタグを最優先で（一致すれば必ず含めて）返す。ハブページ（条件別ページ）で
+     * 該当条件を比較表に確実に表示するために使う。
+     */
+    public function matchingConditionTags(array $priorityTags = []): array
+    {
         $flatten = function (string $field): array {
             $values = is_array($this->{$field}) ? $this->{$field} : [];
             $result = [];
@@ -310,12 +320,24 @@ class Company extends Model
             return $result;
         };
 
+        $strengthFlat = $flatten('strength_tags');
+        $safetyFlat = $flatten('safety_items');
+        $allFlat = array_merge($strengthFlat, $safetyFlat);
+
         $conditionKeywords = ['土日対応可', '夜間対応可', '緊急対応可', '24時間対応'];
         $trustKeywords = ['有資格者在籍', '労災保険加入', '賠償責任保険加入', '建設業許可'];
 
-        $matched = array_values(array_intersect($conditionKeywords, $flatten('strength_tags')));
-        if (empty($matched)) {
-            $matched = array_values(array_intersect($trustKeywords, $flatten('safety_items')));
+        $matched = array_values(array_intersect($priorityTags, $allFlat));
+
+        $rest = array_values(array_intersect($conditionKeywords, $strengthFlat));
+        if (empty($rest)) {
+            $rest = array_values(array_intersect($trustKeywords, $safetyFlat));
+        }
+
+        foreach ($rest as $tag) {
+            if (!in_array($tag, $matched, true)) {
+                $matched[] = $tag;
+            }
         }
 
         return array_slice($matched, 0, 2);
