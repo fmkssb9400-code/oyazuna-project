@@ -8,7 +8,7 @@
 <style>
 /* ヒーローセクション専用スタイル */
 .hero-section {
-  background: linear-gradient(135deg, rgba(96, 178, 181, 0.3) 0%, rgba(78, 205, 196, 0.3) 100%), url('{{ asset('images/top-img.png') }}');
+  background: linear-gradient(135deg, rgba(96, 178, 181, 0.3) 0%, rgba(78, 205, 196, 0.3) 100%), url('{{ asset('images/top-img.webp') }}');
   background-size: cover;
   background-position: center;
   min-height: 500px;
@@ -423,11 +423,11 @@
 <div class="hero-section">
   <div class="hero-content">
     <div class="hero-text">
-      <img src="{{ asset('images/text.png') }}" alt="高所ロープ業者の口コミ・比較サイト" class="mb-4" style="width: 450px; height: auto;">
+      <img src="{{ asset('images/text.webp') }}" alt="高所ロープ業者の口コミ・比較サイト" class="mb-4" style="width: 450px; height: auto;">
       <p>オヤズナは、高所ロープ作業の見積もりや相場をもとに、<br>安心して依頼できる会社がわかるサイトです。</p>
     </div>
     <div class="hero-image">
-      <img src="{{ asset('images/waiper.png') }}?v={{ time() }}" alt="オヤズナキャラクター">
+      <img src="{{ asset('images/waiper.webp') }}" alt="オヤズナキャラクター">
     </div>
   </div>
 </div>
@@ -750,7 +750,7 @@
             <a href="/guide/window-cleaning-price" class="block bg-white border border-gray-300 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 group">
                 <!-- 画像エリア -->
                 <div class="h-40 overflow-hidden rounded-t-lg">
-                    <img src="{{ asset('images/useful_guide1.png') }}" alt="窓ガラス清掃の相場・費用目安を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide1.webp') }}" alt="窓ガラス清掃の相場・費用目安を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <!-- テキストエリア -->
                 <div class="p-6">
@@ -767,7 +767,7 @@
             <a href="{{ route('guide.window-cleaning-contractor-selection') }}" class="block bg-white border border-gray-300 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 group">
                 <!-- 画像エリア -->
                 <div class="h-40 overflow-hidden rounded-t-lg">
-                    <img src="{{ asset('images/useful_guide2.png') }}" alt="窓ガラス清掃業者の選び方を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide2.webp') }}" alt="窓ガラス清掃業者の選び方を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <!-- テキストエリア -->
                 <div class="p-6">
@@ -784,7 +784,7 @@
             <a href="{{ route('guide.exterior-wall-painting-pricing') }}" class="block bg-white border border-gray-300 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 group">
                 <!-- 画像エリア -->
                 <div class="h-40 overflow-hidden rounded-t-lg">
-                    <img src="{{ asset('images/useful_guide3.png') }}" alt="外壁塗装の料金相場・費用目安を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide3.webp') }}" alt="外壁塗装の料金相場・費用目安を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <!-- テキストエリア -->
                 <div class="p-6">
@@ -801,7 +801,7 @@
             <a href="{{ route('guide.exterior-wall-painting-contractor-selection') }}" class="block bg-white border border-gray-300 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 group">
                 <!-- 画像エリア -->
                 <div class="h-40 overflow-hidden rounded-t-lg">
-                    <img src="{{ asset('images/useful_guide4.png') }}" alt="外壁塗装業者の選び方を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide4.webp') }}" alt="外壁塗装業者の選び方を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <!-- テキストエリア -->
                 <div class="p-6">
