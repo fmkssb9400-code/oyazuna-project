@@ -3,6 +3,24 @@
 @section('title', $config['h1'] . ' | オヤズナ')
 @section('description', $config['meta_description'])
 
+@section('head')
+    <link rel="canonical" href="{{ url()->full() }}">
+    <script type="application/ld+json">
+        {!! json_encode([
+            '@@context' => 'https://schema.org',
+            '@type' => 'FAQPage',
+            'mainEntity' => collect($config['faq'])->map(fn ($item) => [
+                '@type' => 'Question',
+                'name' => $item['q'],
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => $item['a'],
+                ],
+            ])->values()->all(),
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+    </script>
+@endsection
+
 @section('content')
 <div class="min-h-screen bg-blue-50 py-8">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

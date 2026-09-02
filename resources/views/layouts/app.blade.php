@@ -10,6 +10,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <meta name="description" content="@yield('description', '高所ロープ作業の専門業者を口コミと実績で比較できるサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安心・信頼できる業者選びをサポートします。')">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('head')
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
