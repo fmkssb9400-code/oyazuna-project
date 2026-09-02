@@ -44,7 +44,7 @@
                             <tr class="bg-blue-50 text-gray-700">
                                 <th class="px-4 py-3 font-semibold whitespace-nowrap">会社名</th>
                                 <th class="px-4 py-3 font-semibold whitespace-nowrap">対応エリア</th>
-                                <th class="px-4 py-3 font-semibold whitespace-nowrap">評価</th>
+                                <th class="px-4 py-3 font-semibold whitespace-nowrap">特徴</th>
                                 <th class="px-4 py-3 font-semibold whitespace-nowrap">対応工法</th>
                                 <th class="px-4 py-3 font-semibold whitespace-nowrap"></th>
                             </tr>
@@ -70,11 +70,7 @@
                                     </td>
                                     <td class="px-4 py-3 text-gray-600 whitespace-nowrap">{{ $areasText }}</td>
                                     <td class="px-4 py-3 text-gray-600 whitespace-nowrap">
-                                        @if($company->average_rating)
-                                            ★{{ number_format($company->average_rating, 1) }}（{{ $company->reviews_count }}件）
-                                        @else
-                                            評価待ち
-                                        @endif
+                                        {{ $company->condition_highlights ? implode('・', $company->condition_highlights) : '-' }}
                                     </td>
                                     <td class="px-4 py-3 text-gray-600 whitespace-nowrap">{{ $methods ? implode('・', $methods) : '-' }}</td>
                                     <td class="px-4 py-3 whitespace-nowrap">

@@ -290,6 +290,37 @@ class Company extends Model
         return is_array($this->safety_items) ? implode(', ', $this->safety_items) : '';
     }
 
+    /**
+     * strength_tags/safety_itemsから「土日対応可」等のユーザーが気にする条件タグを抽出する。
+     * 各要素は「タグA、タグB」のように全角カンマ区切りで複数格納されている場合があるため展開する。
+     */
+    public function getConditionHighlightsAttribute(): array
+    {
+        $flatten = function (string $field): array {
+            $values = is_array($this->{$field}) ? $this->{$field} : [];
+            $result = [];
+            foreach ($values as $value) {
+                foreach (explode('、', (string) $value) as $piece) {
+                    $piece = trim($piece);
+                    if ($piece !== '') {
+                        $result[] = $piece;
+                    }
+                }
+            }
+            return $result;
+        };
+
+        $conditionKeywords = ['土日対応可', '夜間対応可', '緊急対応可', '24時間対応'];
+        $trustKeywords = ['有資格者在籍', '労災保険加入', '賠償責任保険加入', '建設業許可'];
+
+        $matched = array_values(array_intersect($conditionKeywords, $flatten('strength_tags')));
+        if (empty($matched)) {
+            $matched = array_values(array_intersect($trustKeywords, $flatten('safety_items')));
+        }
+
+        return array_slice($matched, 0, 2);
+    }
+
     // Mutators for handling string inputs from textarea components
     public function setAreasAttribute($value)
     {
