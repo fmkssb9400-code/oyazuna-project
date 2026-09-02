@@ -110,7 +110,7 @@
             <div class="space-y-10">
                 @foreach($config['faq'] as $item)
                     <div>
-                        <h3 class="text-lg font-bold text-gray-900 border-l-4 border-green-500 pl-3 mb-3">{{ $item['q'] }}</h3>
+                        <h3 class="text-xl font-bold text-gray-900 border-l-4 border-green-500 pl-3 mb-3">{{ $item['q'] }}</h3>
                         <p class="text-base text-gray-700 leading-relaxed">{{ $item['a'] }}</p>
                     </div>
                 @endforeach
