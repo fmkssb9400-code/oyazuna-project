@@ -257,7 +257,7 @@
     <footer class="mt-20 pb-16 md:pb-0" style="background-color: #2563eb; color: white;">
         <div class="max-w-7xl mx-auto px-4 py-12">
             <!-- フッター項目 -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
                 <!-- サービス内容 -->
                 <div>
                     <h3 class="text-lg font-semibold mb-4">サービス内容</h3>
@@ -269,6 +269,21 @@
                         <li><a href="{{ route('companies.index', ['service' => 'other']) }}" class="text-white hover:text-blue-200 transition-colors">その他</a></li>
                         <li><a href="{{ route('hub.category', 'window-cleaning') }}" class="text-white hover:text-blue-200 transition-colors">窓ガラス清掃業者を比較</a></li>
                         <li><a href="{{ route('hub.category', 'wall-repair') }}" class="text-white hover:text-blue-200 transition-colors">外壁補修業者一覧</a></li>
+                    </ul>
+                </div>
+
+                <!-- 条件で絞り込む -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">条件で絞り込む</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{{ route('hub.category', 'commercial-facility') }}" class="text-white hover:text-blue-200 transition-colors">商業施設対応</a></li>
+                        <li><a href="{{ route('hub.category', 'high-rise') }}" class="text-white hover:text-blue-200 transition-colors">高層ビル対応</a></li>
+                        <li><a href="{{ route('hub.category', 'gondola') }}" class="text-white hover:text-blue-200 transition-colors">ゴンドラ対応</a></li>
+                        <li><a href="{{ route('hub.category', 'night-work') }}" class="text-white hover:text-blue-200 transition-colors">夜間対応</a></li>
+                        <li><a href="{{ route('hub.category', 'hotel') }}" class="text-white hover:text-blue-200 transition-colors">ホテル対応</a></li>
+                        <li><a href="{{ route('hub.category', 'scaffold-work') }}" class="text-white hover:text-blue-200 transition-colors">足場対応</a></li>
+                        <li><a href="{{ route('hub.category', 'weekend') }}" class="text-white hover:text-blue-200 transition-colors">土日対応</a></li>
+                        <li><a href="{{ route('hub.category', 'emergency') }}" class="text-white hover:text-blue-200 transition-colors">緊急・即日対応</a></li>
                     </ul>
                 </div>
 
