@@ -19,16 +19,19 @@
         </nav>
 
         <!-- Hero -->
-        <div class="bg-white rounded-2xl border border-gray-200 shadow-lg p-6 md:p-8 mb-8">
-            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">{{ $config['h1'] }}</h1>
-        </div>
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 leading-tight">{{ $config['h1'] }}</h1>
 
-        <!-- 比較表 -->
-        @if($topCompanies->isNotEmpty())
-        <div class="mb-8">
-            <h2 class="text-xl font-bold text-gray-900 mb-3">{{ $config['label'] }}対応業者 比較表（{{ $topCompanies->count() }}社）</h2>
-            <div class="bg-white rounded-2xl border border-gray-200 shadow-lg p-6 md:p-8">
-                <p class="text-gray-700 leading-relaxed mb-6">{{ $config['lead'] }}</p>
+    </div>
+
+    <!-- 比較表（他セクションより横幅1.25倍: max-w-5xl(64rem) → max-w-7xl(80rem)） -->
+    @if($topCompanies->isNotEmpty())
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white border border-gray-200 shadow-lg p-6 md:p-8">
+                <div class="space-y-4 mb-6">
+                    @foreach((array) $config['lead'] as $paragraph)
+                        <p class="text-gray-700 leading-relaxed">{{ $paragraph }}</p>
+                    @endforeach
+                </div>
                 <p class="text-xs text-gray-500 mb-2 sm:hidden">→ 横にスクロールできます</p>
                 <div class="overflow-x-auto -mx-6 md:-mx-8 px-6 md:px-8">
                     <table class="w-full text-sm text-left border-collapse min-w-[640px]">
@@ -75,7 +78,9 @@
                 </div>
             </div>
         </div>
-        @endif
+    @endif
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- CTA -->
         <div class="bg-gray-500 rounded-2xl shadow p-6 md:p-8 mb-8 text-white text-center">
