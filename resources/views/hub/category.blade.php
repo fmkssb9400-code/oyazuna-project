@@ -108,7 +108,7 @@
                 </div>
                 @if($companies->hasPages())
                     <div class="mt-6 flex justify-center">
-                        {{ $companies->links() }}
+                        {{ $companies->links('hub.pagination') }}
                     </div>
                 @endif
             @endif
