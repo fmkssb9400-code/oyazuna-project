@@ -127,22 +127,24 @@
         </div>
     </div>
 
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <!-- FAQ -->
-        <div class="bg-white p-6 md:p-8 mb-10">
-            <h2 class="text-3xl font-bold text-gray-900 mb-2">よくある質問</h2>
-            <div class="h-1 bg-green-500 mb-8"></div>
-            <div class="space-y-10">
-                @foreach($config['faq'] as $item)
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900 border-l-4 border-green-500 pl-3 mb-3">{{ $item['q'] }}</h3>
-                        <p class="text-base text-gray-700 leading-relaxed">{{ $item['a'] }}</p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+            <div class="lg:col-span-2">
+                <!-- FAQ -->
+                <div class="bg-white p-6 md:p-8 mb-10">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-2">よくある質問</h2>
+                    <div class="h-1 bg-green-500 mb-8"></div>
+                    <div class="space-y-10">
+                        @foreach($config['faq'] as $item)
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 border-l-4 border-green-500 pl-3 mb-3">{{ $item['q'] }}</h3>
+                                <p class="text-base text-gray-700 leading-relaxed">{{ $item['a'] }}</p>
+                            </div>
+                        @endforeach
                     </div>
-                @endforeach
+                </div>
             </div>
         </div>
-
 
     </div>
 </div>
