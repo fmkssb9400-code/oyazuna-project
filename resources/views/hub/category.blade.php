@@ -44,7 +44,7 @@
                             <tr class="bg-blue-50 text-gray-700">
                                 <th class="px-4 py-3 font-semibold whitespace-nowrap">会社名</th>
                                 <th class="px-4 py-3 font-semibold whitespace-nowrap">対応エリア</th>
-                                <th class="px-4 py-3 font-semibold whitespace-nowrap">特徴</th>
+                                <th class="px-4 py-3 font-semibold whitespace-nowrap">対応可能ケース</th>
                                 <th class="px-4 py-3 font-semibold whitespace-nowrap">対応工法</th>
                                 <th class="px-4 py-3 font-semibold whitespace-nowrap"></th>
                             </tr>
