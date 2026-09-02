@@ -92,7 +92,7 @@ class CompaniesController extends Controller
         }
 
         // Append query parameters to pagination links
-        $companies = $query->paginate(12)->withQueryString();
+        $companies = $query->paginate(10)->withQueryString();
 
         // Featured articles and static pages from database
         $recommendedItemsService = new RecommendedItemsService();
@@ -187,7 +187,7 @@ class CompaniesController extends Controller
                 break;
         }
 
-        $companies = $query->paginate(12);
+        $companies = $query->paginate(10);
 
         return response()->json([
             'html' => view('companies.companies-list', ['companies' => $companies])->render(),

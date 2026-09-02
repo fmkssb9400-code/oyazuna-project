@@ -66,7 +66,7 @@ class CompanyController extends Controller
                 break;
         }
 
-        $companies = $query->paginate(12);
+        $companies = $query->paginate(10);
 
         // Pass current filters to view
         $prefectureFilter = $request->get('prefecture');

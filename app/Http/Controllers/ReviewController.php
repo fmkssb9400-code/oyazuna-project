@@ -20,8 +20,8 @@ class ReviewController extends Controller
             $query->search($search);
         }
         
-        $companies = $query->paginate(12);
-        
+        $companies = $query->paginate(10);
+
         return view('reviews.select-company', compact('companies', 'search'));
     }
     

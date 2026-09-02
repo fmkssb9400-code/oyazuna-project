@@ -738,7 +738,7 @@ class HubController extends Controller
         $topCompanies = $baseQuery()->take(10)->get();
 
         $companies = $baseQuery()
-            ->paginate(12)
+            ->paginate(10)
             ->withQueryString();
 
         return view('hub.category', [
