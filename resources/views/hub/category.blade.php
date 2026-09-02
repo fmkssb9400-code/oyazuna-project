@@ -151,6 +151,25 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:grid lg:grid-cols-3 lg:gap-8">
             <div class="lg:col-span-2">
+                <!-- 解説セクション -->
+                @if(!empty($config['sections']))
+                    <div class="bg-white p-6 md:p-8 mb-10">
+                        @foreach($config['sections'] as $section)
+                            <div class="{{ $loop->first ? '' : 'mt-12' }}">
+                                <h2 class="text-3xl font-bold text-gray-900 mb-2">{{ $section['heading'] }}</h2>
+                                <div class="h-1 bg-green-500 mb-6"></div>
+                                @foreach($section['body'] ?? [] as $p)
+                                    <p class="text-base text-gray-700 leading-relaxed mb-4">{{ $p }}</p>
+                                @endforeach
+                                @foreach($section['subsections'] ?? [] as $sub)
+                                    <h3 class="text-lg font-bold text-gray-900 border-l-4 border-green-500 pl-3 mb-3 mt-6">{{ $sub['heading'] }}</h3>
+                                    <p class="text-base text-gray-700 leading-relaxed mb-4">{{ $sub['body'] }}</p>
+                                @endforeach
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+
                 <!-- FAQ -->
                 <div class="bg-white p-6 md:p-8 mb-10">
                     <h2 class="text-3xl font-bold text-gray-900 mb-2">よくある質問</h2>
@@ -164,6 +183,17 @@
                         @endforeach
                     </div>
                 </div>
+
+                <!-- まとめ -->
+                @if(!empty($config['summary']))
+                    <div class="bg-white p-6 md:p-8 mb-10">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-2">まとめ</h2>
+                        <div class="h-1 bg-green-500 mb-6"></div>
+                        @foreach((array) $config['summary'] as $p)
+                            <p class="text-base text-gray-700 leading-relaxed mb-4">{{ $p }}</p>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
 
