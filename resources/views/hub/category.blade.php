@@ -94,7 +94,7 @@
         </div>
 
         <!-- 業者一覧 -->
-        <div class="mb-10">
+        <div class="mb-16">
             <h2 class="text-xl font-bold text-gray-900 mb-4">{{ $config['label'] }}対応業者一覧</h2>
             @if($companies->isEmpty())
                 <div class="bg-white rounded-2xl border border-gray-200 p-8 text-center text-gray-600">
@@ -107,7 +107,7 @@
                     @endforeach
                 </div>
                 @if($companies->hasPages())
-                    <div class="mt-6 flex justify-center">
+                    <div class="mt-8 flex justify-center">
                         {{ $companies->links('hub.pagination') }}
                     </div>
                 @endif
