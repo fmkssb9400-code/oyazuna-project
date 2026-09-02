@@ -83,7 +83,7 @@
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- 業者一覧 -->
-        <div class="mb-10">
+        <div class="mt-10 mb-10">
             <h2 class="text-xl font-bold text-gray-900 mb-4">{{ $config['label'] }}対応業者一覧</h2>
             @if($companies->isEmpty())
                 <div class="bg-white rounded-2xl border border-gray-200 p-8 text-center text-gray-600">
