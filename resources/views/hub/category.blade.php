@@ -84,23 +84,46 @@
 
         <!-- 業者一覧 -->
         <div class="mt-10 mb-10">
-            <h2 class="text-xl font-bold text-gray-900 mb-4">{{ $config['label'] }}対応業者一覧</h2>
-            @if($companies->isEmpty())
-                <div class="bg-white rounded-2xl border border-gray-200 p-8 text-center text-gray-600">
-                    現在この条件に合う業者情報を準備中です。<a href="{{ route('companies.index') }}" class="text-blue-600 underline">業者一覧</a>から他の条件もご確認ください。
+            <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+                <div class="lg:col-span-2">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">{{ $config['label'] }}対応業者一覧</h2>
+                    @if($companies->isEmpty())
+                        <div class="bg-white rounded-2xl border border-gray-200 p-8 text-center text-gray-600">
+                            現在この条件に合う業者情報を準備中です。<a href="{{ route('companies.index') }}" class="text-blue-600 underline">業者一覧</a>から他の条件もご確認ください。
+                        </div>
+                    @else
+                        <div class="space-y-6">
+                            @foreach($companies as $company)
+                                <x-company-card :company="$company" />
+                            @endforeach
+                        </div>
+                        @if($companies->hasPages())
+                            <div class="mt-10 flex justify-center">
+                                {{ $companies->links('hub.pagination') }}
+                            </div>
+                        @endif
+                    @endif
                 </div>
-            @else
-                <div class="space-y-6">
-                    @foreach($companies as $company)
-                        <x-company-card :company="$company" />
-                    @endforeach
-                </div>
-                @if($companies->hasPages())
-                    <div class="mt-10 flex justify-center">
-                        {{ $companies->links('hub.pagination') }}
+
+                <!-- 関連ページ（サイドバー） -->
+                <aside class="mt-10 lg:mt-0 lg:sticky lg:top-24 lg:self-start">
+                    <div class="border border-gray-200">
+                        <div class="bg-blue-500 px-4 py-3">
+                            <h3 class="text-white font-bold">関連ページ</h3>
+                        </div>
+                        <div class="bg-white divide-y divide-dashed divide-gray-300">
+                            <a href="{{ route('companies.index') }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
+                                専門業者一覧（全カテゴリ）
+                            </a>
+                            @foreach($otherHubs as $otherSlug => $otherConfig)
+                                <a href="{{ route('hub.category', $otherSlug) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
+                                    {{ $otherConfig['label'] }}対応業者一覧
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
-                @endif
-            @endif
+                </aside>
+            </div>
         </div>
 
         <!-- FAQ -->
@@ -117,20 +140,6 @@
             </div>
         </div>
 
-        <!-- 関連ページ -->
-        <div class="mb-4">
-            <h2 class="text-lg font-bold text-gray-900 mb-4">関連ページ</h2>
-            <div class="flex flex-wrap gap-3">
-                <a href="{{ route('companies.index') }}" class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm text-gray-700 hover:border-blue-400 hover:text-blue-700 transition-colors">
-                    専門業者一覧（全カテゴリ）
-                </a>
-                @foreach($otherHubs as $otherSlug => $otherConfig)
-                    <a href="{{ route('hub.category', $otherSlug) }}" class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm text-gray-700 hover:border-blue-400 hover:text-blue-700 transition-colors">
-                        {{ $otherConfig['label'] }}対応業者一覧
-                    </a>
-                @endforeach
-            </div>
-        </div>
 
     </div>
 </div>
