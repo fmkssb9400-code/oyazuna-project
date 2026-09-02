@@ -18,17 +18,9 @@
             </ol>
         </nav>
 
-        <!-- プロモーション含有の表示 -->
-        <div class="mb-4 text-left">
-            <p class="text-sm text-gray-600">本ページにはプロモーションが含まれています</p>
-        </div>
-
         <!-- Hero -->
         <div class="bg-white rounded-2xl border border-gray-200 shadow-lg p-6 md:p-8 mb-8">
             <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">{{ $config['h1'] }}</h1>
-            <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-medium px-4 py-2 rounded-full">
-                掲載業者数 {{ $companies->total() }}社
-            </div>
         </div>
 
         <!-- 比較表 -->
