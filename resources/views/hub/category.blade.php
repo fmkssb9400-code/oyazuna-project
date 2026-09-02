@@ -106,6 +106,7 @@
 
                 <!-- 関連ページ（サイドバー、カード一覧と高さを揃える） -->
                 <aside class="mt-10 lg:mt-0">
+                    <h2 class="text-xl font-bold mb-4 invisible hidden lg:block" aria-hidden="true">&nbsp;</h2>
                     <div class="border border-gray-200 h-full flex flex-col">
                         <div class="bg-blue-500 px-4 py-3">
                             <h3 class="text-white font-bold">関連ページ</h3>
