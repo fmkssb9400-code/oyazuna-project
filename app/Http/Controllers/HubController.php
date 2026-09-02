@@ -44,17 +44,23 @@ class HubController extends Controller
 
         $config = $this->categories[$slug];
 
-        $companies = Company::published()
+        $baseQuery = fn () => Company::published()
             ->whereJsonContains('service_categories', $config['key'])
             ->withCount('reviews')
             ->withAvg('reviews as average_rating', 'total_score')
-            ->orderByDesc('recommend_score')
+            ->orderByDesc('recommend_score');
+
+        // 比較表用：上位10社のみ（一覧とは別に取得。ページングの影響を受けない）
+        $topCompanies = $baseQuery()->take(10)->get();
+
+        $companies = $baseQuery()
             ->paginate(12)
             ->withQueryString();
 
         return view('hub.category', [
             'config' => $config,
             'slug' => $slug,
+            'topCompanies' => $topCompanies,
             'companies' => $companies,
             'otherHubs' => collect($this->categories)->except($slug),
         ]);
