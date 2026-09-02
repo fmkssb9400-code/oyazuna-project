@@ -34,14 +34,14 @@
                 </div>
                 <p class="text-xs text-gray-500 mb-2 sm:hidden">→ 横にスクロールできます</p>
                 <div class="overflow-x-auto -mx-6 md:-mx-8 px-6 md:px-8">
-                    <table class="w-full text-sm text-left border-collapse min-w-[640px]">
+                    <table class="w-full text-sm text-left border-collapse border border-gray-300 min-w-[640px]">
                         <thead>
                             <tr class="bg-blue-50 text-gray-700">
-                                <th class="px-4 py-3 font-semibold whitespace-nowrap">会社名</th>
-                                <th class="px-4 py-3 font-semibold whitespace-nowrap">対応エリア</th>
-                                <th class="px-4 py-3 font-semibold whitespace-nowrap">対応可能ケース</th>
-                                <th class="px-4 py-3 font-semibold whitespace-nowrap">対応工法</th>
-                                <th class="px-4 py-3 font-semibold whitespace-nowrap"></th>
+                                <th class="px-4 py-3 font-semibold whitespace-nowrap border border-gray-300">会社名</th>
+                                <th class="px-4 py-3 font-semibold whitespace-nowrap border border-gray-300">対応エリア</th>
+                                <th class="px-4 py-3 font-semibold whitespace-nowrap border border-gray-300">対応可能ケース</th>
+                                <th class="px-4 py-3 font-semibold whitespace-nowrap border border-gray-300">対応工法</th>
+                                <th class="px-4 py-3 font-semibold whitespace-nowrap border border-gray-300"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,16 +59,16 @@
                                         $company->aerial_platform_supported ? '高所作業車' : null,
                                     ]);
                                 @endphp
-                                <tr class="border-t border-gray-100 {{ $index % 2 === 1 ? 'bg-gray-50' : '' }}">
-                                    <td class="px-4 py-3 font-medium whitespace-nowrap">
+                                <tr class="{{ $index % 2 === 1 ? 'bg-gray-50' : '' }}">
+                                    <td class="px-4 py-3 font-medium whitespace-nowrap border border-gray-300">
                                         <a href="{{ $company->official_url }}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">{{ $company->name }}</a>
                                     </td>
-                                    <td class="px-4 py-3 text-gray-600 whitespace-nowrap">{{ $areasText }}</td>
-                                    <td class="px-4 py-3 text-gray-600 whitespace-nowrap">
+                                    <td class="px-4 py-3 text-gray-600 whitespace-nowrap border border-gray-300">{{ $areasText }}</td>
+                                    <td class="px-4 py-3 text-gray-600 whitespace-nowrap border border-gray-300">
                                         {{ $company->condition_highlights ? implode('・', $company->condition_highlights) : '-' }}
                                     </td>
-                                    <td class="px-4 py-3 text-gray-600 whitespace-nowrap">{{ $methods ? implode('・', $methods) : '-' }}</td>
-                                    <td class="px-4 py-3 whitespace-nowrap">
+                                    <td class="px-4 py-3 text-gray-600 whitespace-nowrap border border-gray-300">{{ $methods ? implode('・', $methods) : '-' }}</td>
+                                    <td class="px-4 py-3 whitespace-nowrap border border-gray-300">
                                         <a href="{{ route('companies.show', $company->slug) }}" class="text-blue-600 text-xs font-semibold hover:underline">詳細を見る &rsaquo;</a>
                                     </td>
                                 </tr>
