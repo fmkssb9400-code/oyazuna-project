@@ -285,6 +285,11 @@
                         <li><a href="{{ route('hub.category', 'scaffold-work') }}" class="text-white hover:text-blue-200 transition-colors">足場対応</a></li>
                         <li><a href="{{ route('hub.category', 'weekend') }}" class="text-white hover:text-blue-200 transition-colors">土日対応</a></li>
                         <li><a href="{{ route('hub.category', 'emergency') }}" class="text-white hover:text-blue-200 transition-colors">緊急・即日対応</a></li>
+                        <li><a href="{{ route('hub.category', 'after-service') }}" class="text-white hover:text-blue-200 transition-colors">アフターサービス充実</a></li>
+                        <li><a href="{{ route('hub.category', 'medical-facility') }}" class="text-white hover:text-blue-200 transition-colors">医療施設対応</a></li>
+                        <li><a href="{{ route('hub.category', '24-hour') }}" class="text-white hover:text-blue-200 transition-colors">24時間対応</a></li>
+                        <li><a href="{{ route('hub.category', 'iso-certified') }}" class="text-white hover:text-blue-200 transition-colors">ISO認証取得</a></li>
+                        <li><a href="{{ route('hub.category', 'eco-friendly') }}" class="text-white hover:text-blue-200 transition-colors">環境配慮</a></li>
                     </ul>
                 </div>
 
