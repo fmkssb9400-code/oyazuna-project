@@ -104,13 +104,14 @@
         </div>
 
         <!-- FAQ -->
-        <div class="bg-white rounded-2xl border border-gray-200 shadow-lg p-6 md:p-8 mb-10">
-            <h2 class="text-xl font-bold text-gray-900 mb-6">よくある質問</h2>
-            <div class="space-y-5">
+        <div class="bg-white p-6 md:p-8 mb-10">
+            <h2 class="text-xl font-bold text-gray-900 mb-8">よくある質問</h2>
+            <div class="space-y-10">
                 @foreach($config['faq'] as $item)
-                    <div class="border-b border-gray-100 pb-5 last:border-b-0 last:pb-0">
-                        <p class="font-semibold text-gray-900 mb-2">Q. {{ $item['q'] }}</p>
-                        <p class="text-gray-700 text-sm leading-relaxed">A. {{ $item['a'] }}</p>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">{{ $item['q'] }}</h3>
+                        <div class="h-1 bg-green-500 mb-4"></div>
+                        <p class="text-gray-700 leading-relaxed">{{ $item['a'] }}</p>
                     </div>
                 @endforeach
             </div>
