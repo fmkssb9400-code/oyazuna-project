@@ -35,7 +35,19 @@ class StaticPageResource extends Resource
                         Forms\Components\TextInput::make('title')
                             ->label('タイトル')
                             ->required()
-                            ->afterStateUpdated(fn (string $context, $state, callable $set) => $context === 'create' ? $set('slug', \Illuminate\Support\Str::slug($state)) : null),
+                            ->afterStateUpdated(function (string $context, $state, callable $set) {
+                                if ($context !== 'create') {
+                                    return;
+                                }
+                                $slug = \Illuminate\Support\Str::slug($state);
+                                // Str::slug()は日本語を変換できず削ぎ落とすため、タイトル中の数字だけが残る
+                                // （例:「〇〇10選」→"10"）ケースがある。空または数字のみになる場合は
+                                // 自動入力せず、担当者に手動でスラッグを入力してもらう。
+                                if ($slug === '' || ctype_digit($slug)) {
+                                    return;
+                                }
+                                $set('slug', $slug);
+                            }),
                         
                         Forms\Components\TextInput::make('slug')
                             ->label('スラッグ（URL用）')

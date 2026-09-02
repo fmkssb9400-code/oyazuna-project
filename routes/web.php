@@ -45,6 +45,8 @@ Route::get('/contact/complete', [ContactController::class, 'complete'])->name('c
 
 // News routes
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+// 旧スラッグ"10"（自動生成バグで数字のみになっていた）からのリダイレクト
+Route::redirect('/news/10', '/news/fukuoka-window-cleaning', 301);
 Route::get('/news/{article:slug}', [NewsController::class, 'show'])->name('news.show');
 
 // Review routes
