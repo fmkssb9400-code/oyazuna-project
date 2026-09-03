@@ -34,6 +34,7 @@
   min-width: 0;
   text-align: left;
   position: relative;
+  transform: translateY(-40px);
 }
 
 .hero-text h1 {
