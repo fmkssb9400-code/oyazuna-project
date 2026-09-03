@@ -64,8 +64,7 @@ Route::get('/reviews/complete/{company:slug}', [ReviewController::class, 'comple
 Route::get('/guide/window-cleaning-price', [GuideController::class, 'windowCleaningPrice'])->name('guide.window-cleaning-price');
 Route::get('/guide/window-cleaning-contractor-selection', [GuideController::class, 'windowCleaningContractorSelection'])->name('guide.window-cleaning-contractor-selection');
 Route::get('/guide/exterior-wall-painting-pricing', [GuideController::class, 'exteriorWallPaintingPricing'])->name('guide.exterior-wall-painting-pricing');
-// 中身(static_pages行)が未作成のため一旦非公開。コンテンツ用意でき次第このルートを復活させる
-// Route::get('/guide/exterior-wall-painting-contractor-selection', [GuideController::class, 'exteriorWallPaintingContractorSelection'])->name('guide.exterior-wall-painting-contractor-selection');
+Route::get('/guide/exterior-wall-painting-contractor-selection', [GuideController::class, 'exteriorWallPaintingContractorSelection'])->name('guide.exterior-wall-painting-contractor-selection');
 
 // Admin Editor Image Upload Routes (Filament管理者のみ)
 Route::middleware(['web', 'auth'])->prefix('admin')->group(function () {

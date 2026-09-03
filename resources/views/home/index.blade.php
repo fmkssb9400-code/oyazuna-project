@@ -641,6 +641,114 @@
 </section>
 
 
+<!-- サービスカテゴリーメニューセクション -->
+<div class="bg-gray-50 py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4">
+        <!-- カテゴリーから探すタイトル -->
+        <div class="ranking-header-container flex items-center justify-center mb-8">
+            <h2 class="heading-6 text-xl md:text-2xl font-bold">
+                カテゴリーから探す
+            </h2>
+        </div>
+        
+        <!-- サービスカテゴリーグリッド -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <!-- 窓ガラス清掃 -->
+            <a href="{{ route('companies.index', ['service' => 'window']) }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 flex items-center justify-center mr-3">
+                        <img src="{{ asset('images/window.png') }}" alt="窓ガラス清掃" class="w-8 h-8">
+                    </div>
+                    <h3 class="text-lg font-bold text-blue-600">窓ガラス清掃</h3>
+                </div>
+                <p class="text-sm text-gray-600">高所窓ガラス清掃 定期清掃<br>スポット清掃 メンテナンス</p>
+            </a>
+
+            <!-- 外壁調査 -->
+            <a href="{{ route('companies.index', ['service' => 'inspection']) }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 flex items-center justify-center mr-3">
+                        <img src="{{ asset('images/hekiga.png') }}" alt="外壁調査" class="w-8 h-8">
+                    </div>
+                    <h3 class="text-lg font-bold text-blue-600">外壁調査</h3>
+                </div>
+                <p class="text-sm text-gray-600">外壁点検 劣化調査<br>診断レポート 安全確認</p>
+            </a>
+
+            <!-- 外壁補修 -->
+            <a href="{{ route('companies.index', ['service' => 'repair']) }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 flex items-center justify-center mr-3">
+                        <img src="{{ asset('images/hekiga.png') }}" alt="外壁補修" class="w-8 h-8">
+                    </div>
+                    <h3 class="text-lg font-bold text-blue-600">外壁補修</h3>
+                </div>
+                <p class="text-sm text-gray-600">ひび割れ補修 剥離補修<br>シーリング 部分工事</p>
+            </a>
+
+            <!-- 外壁塗装 -->
+            <a href="{{ route('companies.index', ['service' => 'painting']) }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                        <img src="{{ asset('images/penki.png') }}" alt="外壁塗装" class="w-8 h-8">
+                    </div>
+                    <h3 class="text-lg font-bold text-blue-600">外壁塗装</h3>
+                </div>
+                <p class="text-sm text-gray-600">部分塗装 タッチアップ<br>色合わせ 局所塗替え</p>
+            </a>
+
+            <!-- 鳥害対策 -->
+            <a href="{{ route('companies.index', ['service' => 'bird_control']) }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mr-3">
+                        <img src="{{ asset('images/bird_toriyoke.png') }}" alt="鳥害対策" class="w-8 h-8">
+                    </div>
+                    <h3 class="text-lg font-bold text-blue-600">鳥害対策</h3>
+                </div>
+                <p class="text-sm text-gray-600">防鳥ネット設置 忌避剤散布<br>巣の除去 対策工事</p>
+            </a>
+
+            <!-- 看板作業 -->
+            <a href="{{ route('companies.index', ['service' => 'sign']) }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mr-3">
+                        <img src="{{ asset('images/koukoku_building.png') }}" alt="看板作業" class="w-8 h-8">
+                    </div>
+                    <h3 class="text-lg font-bold text-blue-600">看板作業</h3>
+                </div>
+                <p class="text-sm text-gray-600">看板設置 看板撤去<br>メンテナンス 修理工事</p>
+            </a>
+
+            <!-- 雨漏り調査 -->
+            <a href="{{ route('companies.index', ['service' => 'leak_inspection']) }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mr-3">
+                        <img src="{{ asset('images/water.png') }}" alt="雨漏り調査" class="w-8 h-8">
+                    </div>
+                    <h3 class="text-lg font-bold text-blue-600">雨漏り調査</h3>
+                </div>
+                <p class="text-sm text-gray-600">原因調査 散水試験<br>診断 応急処置</p>
+            </a>
+
+            <!-- その他 -->
+            <a href="{{ route('companies.index', ['service' => 'other']) }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mr-3">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-blue-600">その他</h3>
+                </div>
+                <p class="text-sm text-gray-600">特殊作業 緊急対応<br>カスタム工事 その他業務</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
 @include('components.company-tabs-cards', ['companies' => $companies, 'activeSort' => 'recommend', 'featuredArticles' => $featuredArticles])
 
 <!-- 高所ロープ作業の基礎ガイドセクション -->
@@ -657,8 +765,8 @@
             </h2>
         </div>
 
-        <!-- 3つのカード -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <!-- 4つのカード -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
             <!-- カード1: 窓ガラス清掃の相場・費用目安を解説 -->
             <a href="/guide/window-cleaning-price" class="block bg-white border border-gray-300 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 group">
                 <!-- 画像エリア -->
@@ -706,6 +814,23 @@
                     </h3>
                     <p class="text-xs text-gray-700 leading-relaxed">
                         外壁塗装の費用相場を、面積や塗料別に詳しく解説。適正価格を把握して、後悔しない業者選びに役立てましょう。
+                    </p>
+                </div>
+            </a>
+
+            <!-- カード4: 外壁塗装業者の選び方を解説 -->
+            <a href="{{ route('guide.exterior-wall-painting-contractor-selection') }}" class="block bg-white border border-gray-300 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 group">
+                <!-- 画像エリア -->
+                <div class="h-40 overflow-hidden rounded-t-lg">
+                    <img src="{{ asset('images/useful_guide4.webp') }}" alt="外壁塗装業者の選び方を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <!-- テキストエリア -->
+                <div class="p-6">
+                    <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
+                        外壁塗装業者の選び方を解説
+                    </h3>
+                    <p class="text-xs text-gray-700 leading-relaxed">
+                        技術力、安全性、料金、サービス内容など、信頼できる業者を見極めるための具体的なチェック項目をご紹介。
                     </p>
                 </div>
             </a>
