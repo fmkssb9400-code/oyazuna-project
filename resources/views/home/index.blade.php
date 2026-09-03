@@ -32,7 +32,7 @@
 .hero-text {
   flex: 1 1 55%;
   min-width: 0;
-  text-align: center;
+  text-align: left;
 }
 
 .hero-text h1 {
@@ -45,6 +45,7 @@
   overflow-wrap: break-word;
   letter-spacing: -0.3px;
   font-stretch: condensed;
+  text-align: center;
 }
 
 .hero-text .highlight {
@@ -68,7 +69,7 @@
   width: 180px;
   height: auto;
   display: block;
-  margin: 4px auto 20px;
+  margin: 4px 0 20px;
 }
 
 .hero-text p {
