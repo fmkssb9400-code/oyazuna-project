@@ -27,6 +27,33 @@
   align-items: center;
   gap: 40px;
   min-width: 0;
+  position: relative;
+}
+
+.hero-badge {
+  position: absolute;
+  width: 110px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  z-index: 3;
+}
+
+.hero-badge-1 {
+  top: -10px;
+  left: 10px;
+  transform: rotate(-10deg);
+}
+
+.hero-badge-2 {
+  top: 55px;
+  left: -25px;
+  transform: rotate(9deg);
+}
+
+.hero-badge-3 {
+  top: -18px;
+  left: 220px;
+  transform: rotate(5deg);
 }
 
 .hero-text {
@@ -34,13 +61,14 @@
   min-width: 0;
   text-align: left;
   position: relative;
-  transform: translateY(-40px);
+  transform: translateY(10px);
 }
 
 .hero-text h1 {
   font-size: 56px;
   font-weight: 900 !important;
   color: #1f2a44;
+  margin-top: 50px;
   margin-bottom: 0;
   line-height: 1.2;
   word-break: keep-all;
@@ -139,7 +167,7 @@
 .area-search-overlap {
   position: relative;
   z-index: 5;
-  margin-top: 40px;
+  margin-top: 70px;
   padding: 0 20px 60px;
 }
 
@@ -222,6 +250,10 @@
     background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('{{ asset('images/hero-window-cleaning.webp') }}');
     min-height: 400px;
     padding: 40px 0 80px;
+  }
+
+  .hero-badge {
+    display: none;
   }
 
   .hero-content {
@@ -339,10 +371,6 @@
 
 /* エリア検索カード レスポンシブ対応 */
 @media (max-width: 1024px) {
-  .area-search-overlap {
-    margin-top: 0;
-  }
-
   .area-search-card {
     padding: 32px 28px 36px;
   }
@@ -354,7 +382,7 @@
 
 @media (max-width: 768px) {
   .area-search-overlap {
-    margin-top: 0;
+    margin-top: 40px;
     padding: 0 14px 40px;
   }
 
@@ -449,6 +477,9 @@
       <h1><span class="highlight">高所ロープ作業</span>に<br>特化した専門業者への<br>一括見積もりサイト</h1>
       <img src="{{ asset('オヤズナ (1).png') }}" alt="オヤズナ" class="hero-logo">
     </div>
+    <img src="{{ asset('ロープアクセス.png') }}" alt="ロープアクセス対応" class="hero-badge hero-badge-1">
+    <img src="{{ asset('ゴンドラ.png') }}" alt="ゴンドラ対応" class="hero-badge hero-badge-2">
+    <img src="{{ asset('ブランコ.png') }}" alt="ブランコ対応" class="hero-badge hero-badge-3">
   </div>
 </div>
 
