@@ -69,7 +69,7 @@
   width: 180px;
   height: auto;
   display: block;
-  margin: 4px 0 20px;
+  margin: 4px auto 20px;
 }
 
 .hero-text p {
