@@ -437,7 +437,7 @@
 <div class="hero-section">
   <div class="hero-content">
     <div class="hero-text">
-      <h1><span class="highlight">高所作業</span>に特化した<br>清掃会社の<br>一括見積もりサイト</h1>
+      <h1><span class="highlight">高所ロープ作業</span>に<br>特化した専門業者への<br>一括見積もりサイト</h1>
       <img src="{{ asset('オヤズナ (1).png') }}" alt="オヤズナ" class="hero-logo">
       <p>オヤズナは、高所ロープ作業の専門業者を安全基準と実績で選べる、一括見積もりサイトです。</p>
     </div>
