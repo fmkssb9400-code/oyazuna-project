@@ -63,7 +63,7 @@
 }
 
 .hero-logo {
-  width: 220px;
+  width: 180px;
   height: auto;
   display: block;
   margin: 4px 0 20px;
@@ -240,7 +240,7 @@
   }
 
   .hero-logo {
-    width: 180px;
+    width: 150px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -437,8 +437,8 @@
 <div class="hero-section">
   <div class="hero-content">
     <div class="hero-text">
-      <h1><span class="highlight">高所作業</span>に特化した清掃会社の<br>一括見積もりサイト</h1>
-      <img src="{{ asset('oyazunaicon.png') }}" alt="オヤズナ" class="hero-logo">
+      <h1><span class="highlight">高所作業</span>に特化した<br>清掃会社の<br>一括見積もりサイト</h1>
+      <img src="{{ asset('オヤズナ (1).png') }}" alt="オヤズナ" class="hero-logo">
       <p>オヤズナは、高所ロープ作業の専門業者を安全基準と実績で選べる、一括見積もりサイトです。</p>
     </div>
   </div>
