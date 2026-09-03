@@ -8,7 +8,7 @@
 <style>
 /* ヒーローセクション専用スタイル */
 .hero-section {
-  background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.9) 45%, rgba(255,255,255,0.2) 68%, rgba(255,255,255,0) 85%), url('{{ asset('images/hero-window-cleaning.webp') }}');
+  background: url('{{ asset('images/hero-window-cleaning-2.webp') }}');
   background-size: cover;
   background-position: center;
   min-height: 500px;
@@ -220,7 +220,7 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('{{ asset('images/hero-window-cleaning.webp') }}');
+    background-image: url('{{ asset('images/hero-window-cleaning-2.webp') }}');
     min-height: 400px;
     padding: 40px 0 80px;
   }
