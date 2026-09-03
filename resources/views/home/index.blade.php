@@ -8,7 +8,7 @@
 <style>
 /* ヒーローセクション専用スタイル */
 .hero-section {
-  background: url('{{ asset('images/hero-window-cleaning-2.webp') }}');
+  background: url('{{ asset('images/hero-window-cleaning-3.webp') }}');
   background-size: cover;
   background-position: center;
   min-height: 500px;
@@ -220,7 +220,7 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    background-image: url('{{ asset('images/hero-window-cleaning-2.webp') }}');
+    background-image: url('{{ asset('images/hero-window-cleaning-3.webp') }}');
     min-height: 400px;
     padding: 40px 0 80px;
   }
