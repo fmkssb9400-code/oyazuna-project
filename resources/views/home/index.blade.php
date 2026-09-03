@@ -31,6 +31,7 @@
 .hero-text {
   flex: 1 1 55%;
   min-width: 0;
+  text-align: center;
 }
 
 .hero-text h1 {
@@ -66,7 +67,7 @@
   width: 180px;
   height: auto;
   display: block;
-  margin: 4px 0 20px;
+  margin: 4px auto 20px;
 }
 
 .hero-text p {
