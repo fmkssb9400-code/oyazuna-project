@@ -30,7 +30,7 @@
 }
 
 .hero-text {
-  flex: 1 1 55%;
+  flex: 0 1 55%;
   min-width: 0;
   text-align: left;
 }
