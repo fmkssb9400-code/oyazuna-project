@@ -11,7 +11,7 @@
   background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.9) 45%, rgba(255,255,255,0.2) 68%, rgba(255,255,255,0) 85%), url('{{ asset('images/hero-window-cleaning.webp') }}');
   background-size: cover;
   background-position: center;
-  min-height: 500px;
+  min-height: 560px;
   display: flex;
   align-items: center;
   position: relative;
@@ -22,7 +22,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 16px;
+  padding: 40px 16px 40px 0;
   display: flex;
   align-items: center;
   gap: 40px;
@@ -67,7 +67,7 @@
 }
 
 .hero-logo {
-  width: 180px;
+  width: 270px;
   height: auto;
   display: block;
   position: absolute;
@@ -248,7 +248,7 @@
   }
 
   .hero-logo {
-    width: 150px;
+    width: 225px;
     margin-left: auto;
     margin-right: auto;
   }
