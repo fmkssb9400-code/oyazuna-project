@@ -301,6 +301,14 @@
                         <li><a href="{{ route('area.show', 'osaka') }}" class="text-white hover:text-blue-200 transition-colors">大阪府</a></li>
                         <li><a href="{{ route('area.show', 'kanagawa') }}" class="text-white hover:text-blue-200 transition-colors">神奈川県</a></li>
                         <li><a href="{{ route('area.show', 'aichi') }}" class="text-white hover:text-blue-200 transition-colors">愛知県</a></li>
+                        <li><a href="{{ route('area.show', 'saitama') }}" class="text-white hover:text-blue-200 transition-colors">埼玉県</a></li>
+                        <li><a href="{{ route('area.show', 'chiba') }}" class="text-white hover:text-blue-200 transition-colors">千葉県</a></li>
+                        <li><a href="{{ route('area.show', 'fukuoka') }}" class="text-white hover:text-blue-200 transition-colors">福岡県</a></li>
+                        <li><a href="{{ route('area.show', 'mie') }}" class="text-white hover:text-blue-200 transition-colors">三重県</a></li>
+                        <li><a href="{{ route('area.show', 'gifu') }}" class="text-white hover:text-blue-200 transition-colors">岐阜県</a></li>
+                        <li><a href="{{ route('area.show', 'shizuoka') }}" class="text-white hover:text-blue-200 transition-colors">静岡県</a></li>
+                        <li><a href="{{ route('area.show', 'ibaraki') }}" class="text-white hover:text-blue-200 transition-colors">茨城県</a></li>
+                        <li><a href="{{ route('area.show', 'hyogo') }}" class="text-white hover:text-blue-200 transition-colors">兵庫県</a></li>
                         <li><a href="{{ route('companies.index') }}" class="text-white hover:text-blue-200 transition-colors">すべての都道府県</a></li>
                     </ul>
                 </div>

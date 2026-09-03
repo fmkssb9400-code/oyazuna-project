@@ -479,7 +479,7 @@
             </a>
 
             <!-- 福岡県 -->
-            <a href="{{ route('companies.index', ['prefecture' => 'fukuoka']) }}" class="relative group flex-1">
+            <a href="{{ route('area.show', 'fukuoka') }}" class="relative group flex-1">
                 <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
                     <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/fukuoka.png') }}')"></div>
                     <div class="p-3 text-center" style="background-color: #ffffff !important;">
@@ -545,9 +545,9 @@
                 <div class="flex flex-wrap gap-2">
                     <a href="{{ route('area.show', 'tokyo') }}" class="text-blue-600 hover:text-blue-800">東京</a>
                     <a href="{{ route('area.show', 'kanagawa') }}" class="text-blue-600 hover:text-blue-800">神奈川</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'chiba']) }}" class="text-blue-600 hover:text-blue-800">千葉</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'saitama']) }}" class="text-blue-600 hover:text-blue-800">埼玉</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'ibaraki']) }}" class="text-blue-600 hover:text-blue-800">茨城</a>
+                    <a href="{{ route('area.show', 'chiba') }}" class="text-blue-600 hover:text-blue-800">千葉</a>
+                    <a href="{{ route('area.show', 'saitama') }}" class="text-blue-600 hover:text-blue-800">埼玉</a>
+                    <a href="{{ route('area.show', 'ibaraki') }}" class="text-blue-600 hover:text-blue-800">茨城</a>
                     <a href="{{ route('companies.index', ['prefecture' => 'tochigi']) }}" class="text-blue-600 hover:text-blue-800">栃木</a>
                     <a href="{{ route('companies.index', ['prefecture' => 'gunma']) }}" class="text-blue-600 hover:text-blue-800">群馬</a>
                 </div>
@@ -558,9 +558,9 @@
                 <div class="font-bold text-gray-800 min-w-24">東海</div>
                 <div class="flex flex-wrap gap-2">
                     <a href="{{ route('area.show', 'aichi') }}" class="text-blue-600 hover:text-blue-800">愛知</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'shizuoka']) }}" class="text-blue-600 hover:text-blue-800">静岡</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'gifu']) }}" class="text-blue-600 hover:text-blue-800">岐阜</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'mie']) }}" class="text-blue-600 hover:text-blue-800">三重</a>
+                    <a href="{{ route('area.show', 'shizuoka') }}" class="text-blue-600 hover:text-blue-800">静岡</a>
+                    <a href="{{ route('area.show', 'gifu') }}" class="text-blue-600 hover:text-blue-800">岐阜</a>
+                    <a href="{{ route('area.show', 'mie') }}" class="text-blue-600 hover:text-blue-800">三重</a>
                 </div>
             </div>
 
@@ -581,7 +581,7 @@
                 <div class="font-bold text-gray-800 min-w-24">関西</div>
                 <div class="flex flex-wrap gap-2">
                     <a href="{{ route('area.show', 'osaka') }}" class="text-blue-600 hover:text-blue-800">大阪</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'hyogo']) }}" class="text-blue-600 hover:text-blue-800">兵庫</a>
+                    <a href="{{ route('area.show', 'hyogo') }}" class="text-blue-600 hover:text-blue-800">兵庫</a>
                     <a href="{{ route('companies.index', ['prefecture' => 'kyoto']) }}" class="text-blue-600 hover:text-blue-800">京都</a>
                     <a href="{{ route('companies.index', ['prefecture' => 'shiga']) }}" class="text-blue-600 hover:text-blue-800">滋賀</a>
                     <a href="{{ route('companies.index', ['prefecture' => 'nara']) }}" class="text-blue-600 hover:text-blue-800">奈良</a>
@@ -604,7 +604,7 @@
             <div class="flex flex-wrap items-center gap-2">
                 <div class="font-bold text-gray-800 min-w-24">九州・沖縄</div>
                 <div class="flex flex-wrap gap-2">
-                    <a href="{{ route('companies.index', ['prefecture' => 'fukuoka']) }}" class="text-blue-600 hover:text-blue-800">福岡</a>
+                    <a href="{{ route('area.show', 'fukuoka') }}" class="text-blue-600 hover:text-blue-800">福岡</a>
                     <a href="{{ route('companies.index', ['prefecture' => 'saga']) }}" class="text-blue-600 hover:text-blue-800">佐賀</a>
                     <a href="{{ route('companies.index', ['prefecture' => 'nagasaki']) }}" class="text-blue-600 hover:text-blue-800">長崎</a>
                     <a href="{{ route('companies.index', ['prefecture' => 'kumamoto']) }}" class="text-blue-600 hover:text-blue-800">熊本</a>
