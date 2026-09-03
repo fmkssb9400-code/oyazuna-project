@@ -22,7 +22,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 32px 16px 90px;
+  padding: 32px 16px 48px;
   display: flex;
   align-items: center;
   gap: 40px;
@@ -133,7 +133,7 @@
 .area-search-overlap {
   position: relative;
   z-index: 5;
-  margin-top: -90px;
+  margin-top: 0;
   padding: 0 20px 60px;
 }
 
@@ -334,7 +334,7 @@
 /* エリア検索カード レスポンシブ対応 */
 @media (max-width: 1024px) {
   .area-search-overlap {
-    margin-top: -70px;
+    margin-top: 0;
   }
 
   .area-search-card {
@@ -348,7 +348,7 @@
 
 @media (max-width: 768px) {
   .area-search-overlap {
-    margin-top: -40px;
+    margin-top: 0;
     padding: 0 14px 40px;
   }
 
