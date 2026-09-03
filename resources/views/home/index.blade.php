@@ -8,7 +8,7 @@
 <style>
 /* ヒーローセクション専用スタイル */
 .hero-section {
-  background: linear-gradient(135deg, rgba(96, 178, 181, 0.3) 0%, rgba(78, 205, 196, 0.3) 100%), url('{{ asset('images/top-img.webp') }}');
+  background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.9) 45%, rgba(255,255,255,0.2) 68%, rgba(255,255,255,0) 85%), url('{{ asset('images/hero-window-cleaning.webp') }}');
   background-size: cover;
   background-position: center;
   min-height: 500px;
@@ -35,7 +35,7 @@
 .hero-text h1 {
   font-size: 56px;
   font-weight: 900 !important;
-  color: white;
+  color: #1f2a44;
   margin-bottom: 24px;
   line-height: 1.2;
   word-break: keep-all;
@@ -45,7 +45,7 @@
 }
 
 .hero-text .highlight {
-  color: #fde047;
+  color: #ea580c;
   font-weight: 900 !important;
   letter-spacing: -0.3px;
   font-stretch: condensed;
@@ -54,7 +54,7 @@
 
 .hero-text .subtitle {
   font-size: 0.9em;
-  color: white;
+  color: #1f2a44;
   font-weight: 900 !important;
   letter-spacing: -0.3px;
   font-stretch: condensed;
@@ -63,8 +63,7 @@
 
 .hero-text p {
   font-size: 18px;
-  color: white;
-  opacity: 0.9;
+  color: #374151;
   margin-bottom: 24px;
   line-height: 1.8;
 }
@@ -203,6 +202,7 @@
 
 @media (max-width: 768px) {
   .hero-section {
+    background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('{{ asset('images/hero-window-cleaning.webp') }}');
     min-height: 400px;
     padding: 40px 0 80px;
   }
@@ -423,11 +423,8 @@
 <div class="hero-section">
   <div class="hero-content">
     <div class="hero-text">
-      <img src="{{ asset('images/text.webp') }}" alt="高所ロープ業者の口コミ・比較サイト" class="mb-4" style="width: 450px; height: auto;">
-      <p>オヤズナは、高所ロープ作業の見積もりや相場をもとに、<br>安心して依頼できる会社がわかるサイトです。</p>
-    </div>
-    <div class="hero-image">
-      <img src="{{ asset('images/waiper.webp') }}" alt="オヤズナキャラクター">
+      <h1><span class="highlight">高所特化</span>。安全基準で選べる、一括見積もり。</h1>
+      <p>オヤズナは、高所ロープ作業の専門業者を安全基準と実績で選べる、一括見積もりサイトです。</p>
     </div>
   </div>
 </div>
