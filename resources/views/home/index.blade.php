@@ -32,28 +32,30 @@
 
 .hero-badge {
   position: absolute;
-  width: 110px;
   height: auto;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
   z-index: 3;
 }
 
 .hero-badge-1 {
-  top: -10px;
-  left: 10px;
-  transform: rotate(-10deg);
+  width: 128px;
+  top: -20px;
+  left: 40px;
+  transform: rotate(-9deg);
 }
 
 .hero-badge-2 {
-  top: 55px;
-  left: -25px;
-  transform: rotate(9deg);
+  width: 96px;
+  top: 48px;
+  left: -35px;
+  transform: rotate(11deg);
 }
 
 .hero-badge-3 {
-  top: -18px;
-  left: 220px;
-  transform: rotate(5deg);
+  width: 112px;
+  top: -32px;
+  left: 300px;
+  transform: rotate(6deg);
 }
 
 .hero-text {
