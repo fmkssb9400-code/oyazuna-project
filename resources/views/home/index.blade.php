@@ -440,8 +440,8 @@
 <div class="hero-section">
   <div class="hero-content">
     <div class="hero-text">
-      <img src="{{ asset('オヤズナ (1).png') }}" alt="オヤズナ" class="hero-logo">
       <h1><span class="highlight">高所ロープ作業</span>に<br>特化した専門業者への<br>一括見積もりサイト</h1>
+      <img src="{{ asset('オヤズナ (1).png') }}" alt="オヤズナ" class="hero-logo">
     </div>
   </div>
 </div>
