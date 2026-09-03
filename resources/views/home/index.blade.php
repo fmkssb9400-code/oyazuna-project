@@ -11,7 +11,7 @@
   background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.9) 45%, rgba(255,255,255,0.2) 68%, rgba(255,255,255,0) 85%), url('{{ asset('images/hero-window-cleaning.webp') }}');
   background-size: cover;
   background-position: center;
-  min-height: 560px;
+  min-height: 500px;
   display: flex;
   align-items: center;
   position: relative;
@@ -138,7 +138,7 @@
 .area-search-overlap {
   position: relative;
   z-index: 5;
-  margin-top: 0;
+  margin-top: 40px;
   padding: 0 20px 60px;
 }
 
