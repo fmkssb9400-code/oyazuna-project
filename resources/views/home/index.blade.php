@@ -19,6 +19,7 @@
 }
 
 .hero-content {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 32px 16px 90px;
