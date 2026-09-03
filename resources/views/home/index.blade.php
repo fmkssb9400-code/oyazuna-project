@@ -33,13 +33,14 @@
   flex: 0 1 55%;
   min-width: 0;
   text-align: left;
+  position: relative;
 }
 
 .hero-text h1 {
   font-size: 56px;
   font-weight: 900 !important;
   color: #1f2a44;
-  margin-bottom: 24px;
+  margin-bottom: 0;
   line-height: 1.2;
   word-break: keep-all;
   overflow-wrap: break-word;
@@ -69,7 +70,11 @@
   width: 180px;
   height: auto;
   display: block;
-  margin: 4px auto 20px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 20px;
 }
 
 .hero-text p {
