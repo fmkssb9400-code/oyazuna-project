@@ -297,7 +297,7 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4">都道府県から探す</h3>
                     <ul class="space-y-2">
-                        <li><a href="{{ route('companies.index', ['prefecture' => 'tokyo']) }}" class="text-white hover:text-blue-200 transition-colors">東京都</a></li>
+                        <li><a href="{{ route('area.show', 'tokyo') }}" class="text-white hover:text-blue-200 transition-colors">東京都</a></li>
                         <li><a href="{{ route('companies.index', ['prefecture' => 'osaka']) }}" class="text-white hover:text-blue-200 transition-colors">大阪府</a></li>
                         <li><a href="{{ route('companies.index', ['prefecture' => 'kanagawa']) }}" class="text-white hover:text-blue-200 transition-colors">神奈川県</a></li>
                         <li><a href="{{ route('companies.index', ['prefecture' => 'aichi']) }}" class="text-white hover:text-blue-200 transition-colors">愛知県</a></li>

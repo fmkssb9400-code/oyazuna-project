@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\EditorImageUploadController;
 use App\Http\Controllers\Admin\EditorUploadController;
 use App\Http\Controllers\QuoteDataController;
 use App\Http\Controllers\HubController;
+use App\Http\Controllers\AreaController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/api/homepage/companies/{sort}', [HomeController::class, 'getCompaniesBySort'])->name('api.homepage.companies');
@@ -23,8 +24,11 @@ Route::get('/companies', [CompaniesController::class, 'index'])->name('companies
 Route::get('/companies/{company:slug}', [CompanyController::class, 'show'])->name('companies.show');
 Route::get('/companies/{company:slug}/reviews', [CompanyController::class, 'reviews'])->name('companies.reviews');
 
-// Hub pages (SEO landing pages, category/prefecture axis)
+// Hub pages (SEO landing pages, category/condition axis)
 Route::get('/hub/{slug}', [HubController::class, 'category'])->name('hub.category');
+
+// Area pages (SEO landing pages, prefecture axis)
+Route::get('/area/{slug}', [AreaController::class, 'show'])->name('area.show');
 Route::post('/compare/add/{company}', [CompareController::class, 'add'])->name('compare.add');
 Route::delete('/compare/remove/{company}', [CompareController::class, 'remove'])->name('compare.remove');
 Route::get('/compare', [CompareController::class, 'index'])->name('compare.index');
