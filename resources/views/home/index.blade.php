@@ -21,7 +21,7 @@
 .hero-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 32px 16px;
+  padding: 32px 16px 90px;
   display: flex;
   align-items: center;
   gap: 40px;
