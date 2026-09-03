@@ -168,15 +168,15 @@
     </style>
 </head>
 <body class="bg-blue-50">
-    <nav class="sticky top-0 z-50 shadow-sm border-b overflow-visible bg-[linear-gradient(to_right,#66ccff_0%,#66ccff_17%,white_24%,white_100%)]">
+    <nav class="sticky top-0 z-50 shadow-sm border-b overflow-visible bg-white">
         <!-- スマホ版ヘッダー：ロゴ（左）＋ハンバーガーメニュー（右） -->
-        <div class="md:hidden flex items-center justify-between gap-2 py-2 px-4 border-b bg-[#66ccff]">
-            <a href="{{ url('/') }}" class="shrink-0">
+        <div class="md:hidden flex items-center justify-between gap-2 py-2 px-4 border-b bg-white">
+            <a href="{{ url('/') }}" class="shrink-0 flex items-center">
                 <img
-                    src="{{ asset('images/cremoba_logo.png') }}"
+                    src="{{ asset('オヤズナ (1).png') }}"
                     alt="オヤズナ"
                     class="w-auto object-contain"
-                    style="height: 35px !important; max-height: 35px !important; width: auto !important;"
+                    style="height: 53px !important; max-height: 53px !important; width: auto !important;"
                 />
             </a>
             <button
@@ -201,10 +201,10 @@
             <div class="flex items-center overflow-visible" style="padding-left: 80px;">
                 <a href="{{ url('/') }}" class="nav-logo flex items-center gap-2">
                     <img
-                        src="{{ asset('oyazunaicon.png') }}"
+                        src="{{ asset('オヤズナ (1).png') }}"
                         alt="オヤズナ"
                         class="w-auto object-contain shrink-0 block"
-                        style="display: block !important; height: 45px; max-height: 45px;"
+                        style="display: block !important; height: 68px; max-height: 68px;"
                     />
                 </a>
             </div>

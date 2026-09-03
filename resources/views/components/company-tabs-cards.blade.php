@@ -583,7 +583,7 @@
           <div class="bg-white rounded-lg shadow border border-gray-200">
               <div class="p-4">
                   <a href="{{ route('contact.create') }}" class="block hover:opacity-90 transition-opacity">
-                      <img src="{{ asset('images/teikei.png') }}" alt="提携企業" class="w-full h-auto rounded">
+                      <img src="{{ asset('お問い合わせはこちら.png') }}" alt="提携会社募集中" class="w-full h-auto rounded">
                   </a>
               </div>
           </div>
