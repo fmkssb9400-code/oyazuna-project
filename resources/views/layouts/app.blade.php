@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')</title>
+    <title>@yield('title', 'オヤズナ | 高所ロープ作業特化の一括見積もりサイト【窓ガラス清掃・外壁塗装・外壁補修など】')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <meta name="description" content="@yield('description', '高所ロープ作業の専門業者を口コミと実績で比較できるサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安心・信頼できる業者選びをサポートします。')">
+    <meta name="description" content="@yield('description', '高所ロープ作業特化の一括見積もりサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安全基準・実績を確認して、安心して依頼できる会社が見つかります。')">
+    <link rel="canonical" href="@yield('canonical', 'https://oyazuna.com' . preg_replace('#^https?://[^/]+#', '', url()->current()))">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('head')
     
