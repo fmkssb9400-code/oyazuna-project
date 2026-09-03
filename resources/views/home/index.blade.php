@@ -30,47 +30,18 @@
   position: relative;
 }
 
-.hero-badge {
-  position: absolute;
-  height: auto;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
-  z-index: 3;
-}
-
-.hero-badge-1 {
-  width: 128px;
-  top: -20px;
-  left: 40px;
-  transform: rotate(-9deg);
-}
-
-.hero-badge-2 {
-  width: 96px;
-  top: 48px;
-  left: -35px;
-  transform: rotate(11deg);
-}
-
-.hero-badge-3 {
-  width: 112px;
-  top: -32px;
-  left: 300px;
-  transform: rotate(6deg);
-}
-
 .hero-text {
   flex: 0 1 55%;
   min-width: 0;
   text-align: left;
   position: relative;
-  transform: translateY(10px);
+  transform: translateY(-40px);
 }
 
 .hero-text h1 {
   font-size: 56px;
   font-weight: 900 !important;
   color: #1f2a44;
-  margin-top: 50px;
   margin-bottom: 0;
   line-height: 1.2;
   word-break: keep-all;
@@ -169,7 +140,7 @@
 .area-search-overlap {
   position: relative;
   z-index: 5;
-  margin-top: 70px;
+  margin-top: 40px;
   padding: 0 20px 60px;
 }
 
@@ -252,10 +223,6 @@
     background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('{{ asset('images/hero-window-cleaning.webp') }}');
     min-height: 400px;
     padding: 40px 0 80px;
-  }
-
-  .hero-badge {
-    display: none;
   }
 
   .hero-content {
@@ -373,6 +340,10 @@
 
 /* エリア検索カード レスポンシブ対応 */
 @media (max-width: 1024px) {
+  .area-search-overlap {
+    margin-top: 0;
+  }
+
   .area-search-card {
     padding: 32px 28px 36px;
   }
@@ -384,7 +355,7 @@
 
 @media (max-width: 768px) {
   .area-search-overlap {
-    margin-top: 40px;
+    margin-top: 0;
     padding: 0 14px 40px;
   }
 
@@ -479,9 +450,6 @@
       <h1><span class="highlight">高所ロープ作業</span>に<br>特化した専門業者への<br>一括見積もりサイト</h1>
       <img src="{{ asset('オヤズナ (1).png') }}" alt="オヤズナ" class="hero-logo">
     </div>
-    <img src="{{ asset('ロープアクセス.png') }}" alt="ロープアクセス対応" class="hero-badge hero-badge-1">
-    <img src="{{ asset('ゴンドラ.png') }}" alt="ゴンドラ対応" class="hero-badge hero-badge-2">
-    <img src="{{ asset('ブランコ.png') }}" alt="ブランコ対応" class="hero-badge hero-badge-3">
   </div>
 </div>
 
