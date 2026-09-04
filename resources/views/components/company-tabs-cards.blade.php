@@ -2,341 +2,38 @@
   <div class="max-w-7xl mx-auto px-4 py-6 md:py-10">
 
     <!-- 人気ランキングから探すセクション -->
+    <!-- 条件から探すセクション -->
     <section id="ranking-section" style="margin-bottom: 100px;">
       <div class="ranking-header-container flex items-center justify-center mb-8">
         <h1 class="heading-6 text-xl md:text-2xl font-bold">
           条件から探す
         </h1>
       </div>
-      
-      <!-- 4つのカテゴリーのランキング -->
-      <div class="relative max-w-full">
-        <!-- スライドボタン（左） -->
-        <button id="slide-left" class="absolute left-2 top-1/2 transform -translate-y-1/2 z-20 bg-white rounded-full shadow-xl p-3 hover:bg-gray-50 transition-all duration-200 border border-gray-200 hover:shadow-2xl hidden md:flex items-center justify-center">
-          <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </button>
-        
-        <!-- スライドボタン（右） -->
-        <button id="slide-right" class="absolute right-2 top-1/2 transform -translate-y-1/2 z-20 bg-white rounded-full shadow-xl p-3 hover:bg-gray-50 transition-all duration-200 border border-gray-200 hover:shadow-2xl hidden md:flex items-center justify-center">
-          <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </button>
-        
-        <!-- カードコンテナ -->
-        <div class="ranking-slider-container relative mx-4 md:mx-8">
-          <div id="ranking-cards" class="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4">
-        <!-- 窓ガラス清掃会社 -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100" style="width: 340px; min-width: 340px;">
-          <div class="bg-gradient-to-r from-gray-200 to-gray-300 text-center py-6">
-            <h3 class="font-bold text-base text-black">窓ガラス清掃会社</h3>
-          </div>
-          <div class="p-6">
-            @if(isset($rankingData['window']) && count($rankingData['window']) > 0)
-              @foreach($rankingData['window'] as $index => $company)
-              <!-- {{ $index + 1 }}位 -->
-              <a href="{{ $company['url'] }}" class="block">
-                <div class="flex items-center {{ $index < 2 ? 'mb-5' : 'mb-4' }} relative hover:bg-gray-50 p-2 rounded-lg transition-colors duration-200">
-                  <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                    <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
-                      @if($company['logo_url'])
-                        <img src="{{ $company['logo_url'] }}" alt="{{ $company['name'] }}ロゴ" class="w-16 h-16 object-contain">
-                      @else
-                        <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
-                      @endif
-                    </div>
-                    <!-- ランキングバッジ -->
-                    <div class="absolute z-20" style="top: -4px; left: -4px;">
-                      <img src="{{ asset('images/ranking-crown-no' . ($index + 1) . '.png') }}" alt="{{ $index + 1 }}位" class="w-6 h-6">
-                    </div>
-                  </div>
-                  <div class="flex-1 min-w-0 ml-4">
-                    <div class="font-bold text-base text-gray-800 leading-tight mb-1 hover:text-blue-600 transition-colors duration-200">{{ $company['name'] }}</div>
-                    <div class="flex items-center">
-                      @if($company['has_reviews'] ?? false)
-                        <div class="flex text-yellow-400 text-base">
-                          @for($i = 1; $i <= 5; $i++)
-                            @if($i <= ($company['star_rating'] ?? 0))
-                              ★
-                            @else
-                              ☆
-                            @endif
-                          @endfor
-                        </div>
-                        <span class="text-sm text-gray-600 ml-2 font-medium">{{ number_format(($company['average_rating'] ?: 0) / 20, 1) }}({{ $company['reviews_count'] }}件)</span>
-                      @else
-                        <span class="text-sm text-gray-600 font-medium">口コミ投稿募集中</span>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-              </a>
-              @endforeach
-            @else
-              <!-- フォールバック用のサンプルデータ -->
-              <div class="flex items-center mb-5 relative">
-                <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                  <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
-                    <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
-                  </div>
-                  <div class="absolute z-20" style="top: -4px; left: -4px;">
-                    <img src="{{ asset('images/ranking-crown-no1.png') }}" alt="1位" class="w-6 h-6">
-                  </div>
-                </div>
-                <div class="flex-1 min-w-0 ml-4">
-                  <div class="font-bold text-base text-gray-800 leading-tight mb-1">データ準備中</div>
-                  <div class="flex items-center">
-                    <div class="flex text-yellow-400 text-base">★★★★★</div>
-                    <span class="text-sm text-gray-600 ml-2 font-medium">準備中</span>
-                  </div>
-                </div>
-              </div>
-            @endif
-          </div>
-          <div class="p-5">
-            <a href="{{ route('companies.index', ['service' => 'window']) }}" class="flex items-center justify-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-              </svg>
-              ランキングページへ
-            </a>
-          </div>
-        </div>
 
-        <!-- 外壁調査会社 -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100" style="width: 340px; min-width: 340px;">
-          <div class="bg-gradient-to-r from-gray-200 to-gray-300 text-center py-6">
-            <h3 class="font-bold text-base text-black">外壁調査会社</h3>
+      <!-- 条件カード -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6">
+        @php
+          $conditionCards = [
+            ['label' => 'ゴンドラ対応', 'image' => 'ゴンドラ対応.png', 'slug' => 'gondola'],
+            ['label' => '土日対応', 'image' => '土日対応.png', 'slug' => 'weekend'],
+            ['label' => '夜間対応', 'image' => '夜間対応.png', 'slug' => 'night-work'],
+            ['label' => '足場対応', 'image' => '足場対応.png', 'slug' => 'scaffold-work'],
+            ['label' => '高層ビル対応', 'image' => '高層ビル対応.png', 'slug' => 'high-rise'],
+          ];
+        @endphp
+        @foreach($conditionCards as $card)
+        <a href="{{ route('hub.category', $card['slug']) }}" class="block bg-white border border-gray-200 hover:shadow-lg transition-shadow duration-200">
+          <div class="aspect-square overflow-hidden border-b border-gray-200">
+            <img src="{{ asset('条件から探す/' . $card['image']) }}" alt="{{ $card['label'] }}" class="w-full h-full object-cover" loading="lazy">
           </div>
-          <div class="p-6">
-            @if(isset($rankingData['inspection']) && count($rankingData['inspection']) > 0)
-              @foreach($rankingData['inspection'] as $index => $company)
-              <!-- {{ $index + 1 }}位 -->
-              <a href="{{ $company['url'] }}" class="block">
-                <div class="flex items-center {{ $index < 2 ? 'mb-5' : 'mb-4' }} relative hover:bg-gray-50 p-2 rounded-lg transition-colors duration-200">
-                  <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                    <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
-                      @if($company['logo_url'])
-                        <img src="{{ $company['logo_url'] }}" alt="{{ $company['name'] }}ロゴ" class="w-16 h-16 object-contain">
-                      @else
-                        <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
-                      @endif
-                    </div>
-                    <!-- ランキングバッジ -->
-                    <div class="absolute z-20" style="top: -4px; left: -4px;">
-                      <img src="{{ asset('images/ranking-crown-no' . ($index + 1) . '.png') }}" alt="{{ $index + 1 }}位" class="w-6 h-6">
-                    </div>
-                  </div>
-                  <div class="flex-1 min-w-0 ml-4">
-                    <div class="font-bold text-base text-gray-800 leading-tight mb-1 hover:text-blue-600 transition-colors duration-200">{{ $company['name'] }}</div>
-                    <div class="flex items-center">
-                      @if($company['has_reviews'] ?? false)
-                        <div class="flex text-yellow-400 text-base">
-                          @for($i = 1; $i <= 5; $i++)
-                            @if($i <= ($company['star_rating'] ?? 0))
-                              ★
-                            @else
-                              ☆
-                            @endif
-                          @endfor
-                        </div>
-                        <span class="text-sm text-gray-600 ml-2 font-medium">{{ number_format(($company['average_rating'] ?: 0) / 20, 1) }}({{ $company['reviews_count'] }}件)</span>
-                      @else
-                        <span class="text-sm text-gray-600 font-medium">口コミ投稿募集中</span>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-              </a>
-              @endforeach
-            @else
-              <!-- フォールバック用のサンプルデータ -->
-              <div class="flex items-center mb-5 relative">
-                <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                  <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
-                    <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
-                  </div>
-                  <div class="absolute z-20" style="top: -4px; left: -4px;">
-                    <img src="{{ asset('images/ranking-crown-no1.png') }}" alt="1位" class="w-6 h-6">
-                  </div>
-                </div>
-                <div class="flex-1 min-w-0 ml-4">
-                  <div class="font-bold text-base text-gray-800 leading-tight mb-1">データ準備中</div>
-                  <div class="flex items-center">
-                    <div class="flex text-yellow-400 text-base">★★★★★</div>
-                    <span class="text-sm text-gray-600 ml-2 font-medium">準備中</span>
-                  </div>
-                </div>
-              </div>
-            @endif
+          <div class="p-4">
+            <h3 class="text-center font-bold text-sm md:text-base text-gray-800 mb-3">{{ $card['label'] }}</h3>
+            <span class="block text-center text-white font-bold text-sm bg-blue-600 hover:bg-blue-700 py-3 transition-colors">
+              もっと詳しくみる
+            </span>
           </div>
-          <div class="p-5">
-            <a href="{{ route('companies.index', ['service' => 'inspection']) }}" class="flex items-center justify-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-              </svg>
-              ランキングページへ
-            </a>
-          </div>
-        </div>
-
-        <!-- 外壁補修会社 -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100" style="width: 340px; min-width: 340px;">
-          <div class="bg-gradient-to-r from-gray-200 to-gray-300 text-center py-6">
-            <h3 class="font-bold text-base text-black">外壁補修会社</h3>
-          </div>
-          <div class="p-6">
-            @if(isset($rankingData['repair']) && count($rankingData['repair']) > 0)
-              @foreach($rankingData['repair'] as $index => $company)
-              <!-- {{ $index + 1 }}位 -->
-              <a href="{{ $company['url'] }}" class="block">
-                <div class="flex items-center {{ $index < 2 ? 'mb-5' : 'mb-4' }} relative hover:bg-gray-50 p-2 rounded-lg transition-colors duration-200">
-                  <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                    <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
-                      @if($company['logo_url'])
-                        <img src="{{ $company['logo_url'] }}" alt="{{ $company['name'] }}ロゴ" class="w-16 h-16 object-contain">
-                      @else
-                        <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
-                      @endif
-                    </div>
-                    <!-- ランキングバッジ -->
-                    <div class="absolute z-20" style="top: -4px; left: -4px;">
-                      <img src="{{ asset('images/ranking-crown-no' . ($index + 1) . '.png') }}" alt="{{ $index + 1 }}位" class="w-6 h-6">
-                    </div>
-                  </div>
-                  <div class="flex-1 min-w-0 ml-4">
-                    <div class="font-bold text-base text-gray-800 leading-tight mb-1 hover:text-blue-600 transition-colors duration-200">{{ $company['name'] }}</div>
-                    <div class="flex items-center">
-                      @if($company['has_reviews'] ?? false)
-                        <div class="flex text-yellow-400 text-base">
-                          @for($i = 1; $i <= 5; $i++)
-                            @if($i <= ($company['star_rating'] ?? 0))
-                              ★
-                            @else
-                              ☆
-                            @endif
-                          @endfor
-                        </div>
-                        <span class="text-sm text-gray-600 ml-2 font-medium">{{ number_format(($company['average_rating'] ?: 0) / 20, 1) }}({{ $company['reviews_count'] }}件)</span>
-                      @else
-                        <span class="text-sm text-gray-600 font-medium">口コミ投稿募集中</span>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-              </a>
-              @endforeach
-            @else
-              <!-- フォールバック用のサンプルデータ -->
-              <div class="flex items-center mb-5 relative">
-                <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                  <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
-                    <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
-                  </div>
-                  <div class="absolute z-20" style="top: -4px; left: -4px;">
-                    <img src="{{ asset('images/ranking-crown-no1.png') }}" alt="1位" class="w-6 h-6">
-                  </div>
-                </div>
-                <div class="flex-1 min-w-0 ml-4">
-                  <div class="font-bold text-base text-gray-800 leading-tight mb-1">データ準備中</div>
-                  <div class="flex items-center">
-                    <div class="flex text-yellow-400 text-base">★★★★★</div>
-                    <span class="text-sm text-gray-600 ml-2 font-medium">準備中</span>
-                  </div>
-                </div>
-              </div>
-            @endif
-          </div>
-          <div class="p-5">
-            <a href="{{ route('companies.index', ['service' => 'repair']) }}" class="flex items-center justify-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-              </svg>
-              ランキングページへ
-            </a>
-          </div>
-        </div>
-
-        <!-- 外壁塗装会社 -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100" style="width: 340px; min-width: 340px;">
-          <div class="bg-gradient-to-r from-gray-200 to-gray-300 text-center py-6">
-            <h3 class="font-bold text-base text-black">外壁塗装会社</h3>
-          </div>
-          <div class="p-6">
-            @if(isset($rankingData['painting']) && count($rankingData['painting']) > 0)
-              @foreach($rankingData['painting'] as $index => $company)
-              <!-- {{ $index + 1 }}位 -->
-              <a href="{{ $company['url'] }}" class="block">
-                <div class="flex items-center {{ $index < 2 ? 'mb-5' : 'mb-4' }} relative hover:bg-gray-50 p-2 rounded-lg transition-colors duration-200">
-                  <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                    <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
-                      @if($company['logo_url'])
-                        <img src="{{ $company['logo_url'] }}" alt="{{ $company['name'] }}ロゴ" class="w-16 h-16 object-contain">
-                      @else
-                        <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
-                      @endif
-                    </div>
-                    <!-- ランキングバッジ -->
-                    <div class="absolute z-20" style="top: -4px; left: -4px;">
-                      <img src="{{ asset('images/ranking-crown-no' . ($index + 1) . '.png') }}" alt="{{ $index + 1 }}位" class="w-6 h-6">
-                    </div>
-                  </div>
-                  <div class="flex-1 min-w-0 ml-4">
-                    <div class="font-bold text-base text-gray-800 leading-tight mb-1 hover:text-blue-600 transition-colors duration-200">{{ $company['name'] }}</div>
-                    <div class="flex items-center">
-                      @if($company['has_reviews'] ?? false)
-                        <div class="flex text-yellow-400 text-base">
-                          @for($i = 1; $i <= 5; $i++)
-                            @if($i <= ($company['star_rating'] ?? 0))
-                              ★
-                            @else
-                              ☆
-                            @endif
-                          @endfor
-                        </div>
-                        <span class="text-sm text-gray-600 ml-2 font-medium">{{ number_format(($company['average_rating'] ?: 0) / 20, 1) }}({{ $company['reviews_count'] }}件)</span>
-                      @else
-                        <span class="text-sm text-gray-600 font-medium">口コミ投稿募集中</span>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-              </a>
-              @endforeach
-            @else
-              <!-- フォールバック用のサンプルデータ -->
-              <div class="flex items-center mb-5 relative">
-                <div class="w-20 h-20 mr-8 flex-shrink-0 relative">
-                  <div class="w-full h-full bg-gray-200 rounded-lg overflow-hidden shadow-sm flex items-center justify-center">
-                    <img src="{{ asset('images/company_placeholder.png') }}" alt="会社ロゴ" class="w-16 h-16 object-contain">
-                  </div>
-                  <div class="absolute z-20" style="top: -4px; left: -4px;">
-                    <img src="{{ asset('images/ranking-crown-no1.png') }}" alt="1位" class="w-6 h-6">
-                  </div>
-                </div>
-                <div class="flex-1 min-w-0 ml-4">
-                  <div class="font-bold text-base text-gray-800 leading-tight mb-1">データ準備中</div>
-                  <div class="flex items-center">
-                    <div class="flex text-yellow-400 text-base">★★★★★</div>
-                    <span class="text-sm text-gray-600 ml-2 font-medium">準備中</span>
-                  </div>
-                </div>
-              </div>
-            @endif
-          </div>
-          <div class="p-5">
-            <a href="{{ route('companies.index', ['service' => 'painting']) }}" class="flex items-center justify-center text-white font-bold text-base bg-gradient-to-r from-blue-600 to-blue-700 py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-              </svg>
-              ランキングページへ
-            </a>
-          </div>
-        </div>
-          </div>
-        </div>
+        </a>
+        @endforeach
       </div>
     </section>
 
