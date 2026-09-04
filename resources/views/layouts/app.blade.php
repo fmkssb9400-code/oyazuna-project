@@ -343,9 +343,9 @@
                     <h3 class="text-lg font-semibold mb-4">運営情報</h3>
                     <ul class="space-y-2">
                         <li><a href="#" class="text-white hover:text-blue-200 transition-colors">会社概要</a></li>
-                        <li><a href="#" class="text-white hover:text-blue-200 transition-colors">プライバシーポリシー</a></li>
-                        <li><a href="#" class="text-white hover:text-blue-200 transition-colors">利用規約</a></li>
-                        <li><a href="#" class="text-white hover:text-blue-200 transition-colors">免責事項</a></li>
+                        <li><a href="{{ route('legal.privacy') }}" class="text-white hover:text-blue-200 transition-colors">プライバシーポリシー</a></li>
+                        <li><a href="{{ route('legal.terms') }}" class="text-white hover:text-blue-200 transition-colors">利用規約</a></li>
+                        <li><a href="{{ route('legal.disclaimer') }}" class="text-white hover:text-blue-200 transition-colors">免責事項</a></li>
                         <li><a href="#" class="text-white hover:text-blue-200 transition-colors">サイトマップ</a></li>
                     </ul>
                 </div>

@@ -18,6 +18,7 @@ use App\Http\Controllers\HubController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\AreaHubController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\LegalController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
@@ -65,6 +66,11 @@ Route::get('/reviews/select-company', [ReviewController::class, 'selectCompany']
 Route::get('/reviews/create/{company:slug}', [ReviewController::class, 'create'])->name('reviews.create');
 Route::post('/reviews/{company:slug}', [ReviewController::class, 'store'])->name('reviews.store');
 Route::get('/reviews/complete/{company:slug}', [ReviewController::class, 'complete'])->name('reviews.complete');
+
+// Legal / static info routes
+Route::get('/privacy', [LegalController::class, 'privacy'])->name('legal.privacy');
+Route::get('/terms', [LegalController::class, 'terms'])->name('legal.terms');
+Route::get('/disclaimer', [LegalController::class, 'disclaimer'])->name('legal.disclaimer');
 
 // Guide routes
 Route::get('/guide/window-cleaning-price', [GuideController::class, 'windowCleaningPrice'])->name('guide.window-cleaning-price');
