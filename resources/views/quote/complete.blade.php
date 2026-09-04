@@ -21,7 +21,7 @@
             </p>
         @endif
         
-        <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+        <div class="bg-blue-50 border border-blue-200 p-6 mb-8">
             <h2 class="text-xl font-semibold text-blue-800 mb-4">今後の流れ</h2>
             <div class="text-left max-w-md mx-auto space-y-3">
                 <div class="flex items-center">
@@ -43,7 +43,7 @@
             </div>
         </div>
         
-        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-8">
+        <div class="bg-yellow-50 border border-yellow-200 p-4 mb-8">
             <h3 class="font-semibold text-yellow-800 mb-2">重要事項</h3>
             <div class="text-sm text-yellow-700 text-left max-w-2xl mx-auto">
                 <ul class="list-disc list-inside space-y-1">
@@ -54,7 +54,7 @@
             </div>
         </div>
         
-        <a href="{{ url('/') }}" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700">
+        <a href="{{ url('/') }}" class="inline-block bg-blue-600 text-white px-8 py-3 font-semibold hover:bg-blue-700">
             トップページに戻る
         </a>
     </div>

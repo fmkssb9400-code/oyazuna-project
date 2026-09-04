@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="max-w-2xl mx-auto px-4 py-8 md:py-12">
-    <div class="bg-white rounded-lg shadow-md p-6 md:p-8 text-center">
+    <div class="bg-white shadow-md p-6 md:p-8 text-center">
         <div class="mb-6">
             <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -20,12 +20,12 @@
         
         <div class="space-y-4">
             <a href="{{ route('home') }}" 
-               class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+               class="inline-block bg-blue-600 text-white px-8 py-3 font-semibold hover:bg-blue-700 transition-colors">
                 トップページに戻る
             </a>
             <br>
             <a href="{{ route('quote-data.create') }}" 
-               class="inline-block border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+               class="inline-block border border-blue-600 text-blue-600 px-8 py-3 font-semibold hover:bg-blue-50 transition-colors">
                 他の見積もりデータも投稿する
             </a>
         </div>

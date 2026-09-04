@@ -7,7 +7,7 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <!-- Company Reviews Header -->
-        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+        <div class="bg-white shadow-sm border border-gray-200 p-6 mb-6">
             <div class="flex items-center gap-4 mb-4">
                 <img src="{{ asset('images/building_kaisya_small.png') }}" alt="会社アイコン" class="w-12 h-12 object-contain">
                 <div>
@@ -53,7 +53,7 @@
             <h2 class="text-xl font-semibold text-gray-900">口コミ一覧</h2>
             <div class="flex items-center gap-2">
                 <label class="text-sm text-gray-600">並び替え:</label>
-                <select id="sortSelect" class="border border-gray-300 rounded-md px-3 py-2 text-sm">
+                <select id="sortSelect" class="border border-gray-300 px-3 py-2 text-sm">
                     <option value="newest" {{ $sort === 'newest' ? 'selected' : '' }}>新着順</option>
                     <option value="oldest" {{ $sort === 'oldest' ? 'selected' : '' }}>古い順</option>
                     <option value="highest" {{ $sort === 'highest' ? 'selected' : '' }}>評価が高い順</option>
@@ -65,7 +65,7 @@
         <!-- Reviews List -->
         <div class="space-y-6">
             @forelse($reviews as $review)
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="bg-white shadow-sm border border-gray-200 p-6">
                     <div class="flex justify-between items-start mb-4">
                         <div class="flex items-center gap-3">
                             <!-- User Icon -->
@@ -126,7 +126,7 @@
 
                     <!-- Rating Breakdown -->
                     @if($review->service_quality || $review->staff_response || $review->value_for_money || $review->would_use_again)
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 p-4 bg-gray-50">
                             @if($review->service_quality)
                                 <div class="text-center">
                                     <p class="text-xs text-gray-500 mb-1">サービス品質</p>
@@ -170,13 +170,13 @@
                     </div>
                 </div>
             @empty
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
+                <div class="bg-white shadow-sm border border-gray-200 p-12 text-center">
                     <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.959 8.959 0 01-4.906-1.452l-3.22 1.288a.75.75 0 01-.953-.953l1.288-3.22A8.959 8.959 0 013 12c0-4.418 3.582-8 8-8s8 3.582 8 8z"></path>
                     </svg>
                     <p class="text-gray-500 text-lg mb-4">まだ口コミがありません</p>
                     <a href="{{ route('reviews.create', $company) }}" 
-                       class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors">
+                       class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors">
                         口コミを投稿する
                     </a>
                 </div>
@@ -193,11 +193,11 @@
         <!-- Action Buttons -->
         <div class="flex justify-center gap-4 mt-8">
             <a href="{{ route('companies.show', $company) }}" 
-               class="px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors">
+               class="px-6 py-3 bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition-colors">
                 {{ $company->name }}の詳細に戻る
             </a>
             <a href="{{ route('reviews.create', $company) }}" 
-               class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
+               class="px-6 py-3 bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors">
                 {{ $company->name }}の口コミを投稿する
             </a>
         </div>

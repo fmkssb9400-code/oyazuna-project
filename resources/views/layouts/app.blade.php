@@ -30,7 +30,7 @@
         .btn {
             display: inline-block;
             padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
+            border-radius: 0;
             text-decoration: none;
             font-weight: 600;
             text-align: center;
@@ -101,7 +101,7 @@
         }
         
         .rounded-lg {
-            border-radius: 0.5rem;
+            border-radius: 0;
         }
         
         .font-bold {
@@ -125,7 +125,7 @@
         
         .alert {
             padding: 1rem;
-            border-radius: 0.5rem;
+            border-radius: 0;
             margin: 1rem 0;
             border-left: 4px solid;
         }

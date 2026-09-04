@@ -9,7 +9,7 @@
 
 <p>高所ロープ作業とは、建物やその他の構造物の高所において、ロープを使用して作業員が安全に作業を行う技術です。従来の足場やゴンドラでは困難な場所での作業が可能になり、効率性と安全性を両立した作業方法として注目されています。</p>
 
-<div class="bg-blue-50 border border-blue-200 rounded-lg p-4 my-6">
+<div class="bg-blue-50 border border-blue-200 p-4 my-6">
     <h4 class="text-blue-800 font-semibold mb-2">ロープアクセス技術の特徴</h4>
     <ul class="text-blue-700 space-y-1">
         <li>• 狭い場所や複雑な構造物での作業が可能</li>
@@ -73,7 +73,7 @@
 <h2>安全対策と装備</h2>
 
 <h3>個人保護具（PPE）</h3>
-<div class="bg-amber-50 border border-amber-200 rounded-lg p-4 my-6">
+<div class="bg-amber-50 border border-amber-200 p-4 my-6">
     <h4 class="text-amber-800 font-semibold mb-2">必須の安全装備</h4>
     <ul class="text-amber-700 space-y-1">
         <li>• <strong>ハーネス</strong>：作業用フルボディハーネス</li>
@@ -147,7 +147,7 @@
 
 <p>高所ロープ作業技術は、都市の高層化やインフラの老朽化対応において、今後さらに重要性が高まると予想されます。新しい材料や器具の開発により、より安全で効率的な作業が可能になっており、技術者の需要も継続的に拡大しています。</p>
 
-<div class="bg-green-50 border border-green-200 rounded-lg p-4 my-6">
+<div class="bg-green-50 border border-green-200 p-4 my-6">
     <h4 class="text-green-800 font-semibold mb-2">技術習得のメリット</h4>
     <ul class="text-green-700 space-y-1">
         <li>• 専門性の高いスキルで安定した就業機会</li>

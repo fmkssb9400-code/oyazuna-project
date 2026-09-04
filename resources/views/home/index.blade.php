@@ -158,7 +158,7 @@
   max-width: 1280px;
   margin: 0 auto;
   background: #ffffff;
-  border-radius: 24px;
+  border-radius: 0;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
   padding: 36px 40px 40px;
 }
@@ -360,7 +360,7 @@
 
   .area-search-card {
     padding: 24px 18px 28px;
-    border-radius: 18px;
+    border-radius: 0;
   }
 
   .area-search-header {
@@ -467,7 +467,7 @@
         <div class="flex gap-4 mb-8">
             <!-- 東京都 -->
             <a href="{{ route('area.show', 'tokyo') }}" class="relative group flex-1">
-                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
+                <div class="bg-white shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
                     <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/tokyo.png') }}')"></div>
                     <div class="p-3 text-center" style="background-color: #ffffff !important;">
                         <div class="font-semibold text-gray-800">東京都</div>
@@ -477,7 +477,7 @@
 
             <!-- 大阪府 -->
             <a href="{{ route('area.show', 'osaka') }}" class="relative group flex-1">
-                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
+                <div class="bg-white shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
                     <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/osaka.png') }}')"></div>
                     <div class="p-3 text-center" style="background-color: #ffffff !important;">
                         <div class="font-semibold text-gray-800">大阪府</div>
@@ -487,7 +487,7 @@
 
             <!-- 北海道 -->
             <a href="{{ route('companies.index', ['prefecture' => 'hokkaido']) }}" class="relative group flex-1">
-                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
+                <div class="bg-white shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
                     <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/hokkaido.png') }}')"></div>
                     <div class="p-3 text-center" style="background-color: #ffffff !important;">
                         <div class="font-semibold text-gray-800">北海道</div>
@@ -497,7 +497,7 @@
 
             <!-- 福岡県 -->
             <a href="{{ route('area.show', 'fukuoka') }}" class="relative group flex-1">
-                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
+                <div class="bg-white shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
                     <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/fukuoka.png') }}')"></div>
                     <div class="p-3 text-center" style="background-color: #ffffff !important;">
                         <div class="font-semibold text-gray-800">福岡県</div>
@@ -507,7 +507,7 @@
 
             <!-- 京都府 -->
             <a href="{{ route('companies.index', ['prefecture' => 'kyoto']) }}" class="relative group flex-1">
-                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
+                <div class="bg-white shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
                     <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/kyoto.png') }}')"></div>
                     <div class="p-3 text-center" style="background-color: #ffffff !important;">
                         <div class="font-semibold text-gray-800">京都府</div>
@@ -517,7 +517,7 @@
 
             <!-- 愛知県 -->
             <a href="{{ route('area.show', 'aichi') }}" class="relative group flex-1">
-                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
+                <div class="bg-white shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
                     <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/aichi.png') }}')"></div>
                     <div class="p-3 text-center" style="background-color: #ffffff !important;">
                         <div class="font-semibold text-gray-800">愛知県</div>
@@ -656,9 +656,9 @@
         <!-- 4つのカード -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
             <!-- カード1: 窓ガラス清掃の相場・費用目安を解説 -->
-            <a href="/guide/window-cleaning-price" class="block bg-white border border-gray-300 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 group">
+            <a href="/guide/window-cleaning-price" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <!-- 画像エリア -->
-                <div class="h-40 overflow-hidden rounded-t-lg">
+                <div class="h-40 overflow-hidden">
                     <img src="{{ asset('images/useful_guide1.webp') }}" alt="窓ガラス清掃の相場・費用目安を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <!-- テキストエリア -->
@@ -673,9 +673,9 @@
             </a>
 
             <!-- カード2: 窓ガラス清掃業者の選び方を解説 -->
-            <a href="{{ route('guide.window-cleaning-contractor-selection') }}" class="block bg-white border border-gray-300 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 group">
+            <a href="{{ route('guide.window-cleaning-contractor-selection') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <!-- 画像エリア -->
-                <div class="h-40 overflow-hidden rounded-t-lg">
+                <div class="h-40 overflow-hidden">
                     <img src="{{ asset('images/useful_guide2.webp') }}" alt="窓ガラス清掃業者の選び方を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <!-- テキストエリア -->
@@ -690,9 +690,9 @@
             </a>
 
             <!-- カード3: 外壁塗装の料金相場・費用目安を解説 -->
-            <a href="{{ route('guide.exterior-wall-painting-pricing') }}" class="block bg-white border border-gray-300 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 group">
+            <a href="{{ route('guide.exterior-wall-painting-pricing') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <!-- 画像エリア -->
-                <div class="h-40 overflow-hidden rounded-t-lg">
+                <div class="h-40 overflow-hidden">
                     <img src="{{ asset('images/useful_guide3.webp') }}" alt="外壁塗装の料金相場・費用目安を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <!-- テキストエリア -->
@@ -707,9 +707,9 @@
             </a>
 
             <!-- カード4: 外壁塗装業者の選び方を解説 -->
-            <a href="{{ route('guide.exterior-wall-painting-contractor-selection') }}" class="block bg-white border border-gray-300 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 group">
+            <a href="{{ route('guide.exterior-wall-painting-contractor-selection') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <!-- 画像エリア -->
-                <div class="h-40 overflow-hidden rounded-t-lg">
+                <div class="h-40 overflow-hidden">
                     <img src="{{ asset('images/useful_guide4.webp') }}" alt="外壁塗装業者の選び方を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <!-- テキストエリア -->
@@ -739,9 +739,9 @@
         <!-- 3つのカード -->
         <div class="grid md:grid-cols-3 gap-6 md:gap-8">
             <!-- カード1: 高所ロープ作業会社を比較できる -->
-            <div class="bg-white rounded-2xl p-8 text-center shadow-lg">
+            <div class="bg-white p-8 text-center shadow-lg">
                 <div class="mb-8">
-                    <div class="w-20 h-20 mx-auto bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                    <div class="w-20 h-20 mx-auto bg-blue-100 flex items-center justify-center mb-6">
                         <img src="{{ asset('images/company_1.png') }}" alt="会社比較" class="w-10 h-10">
                     </div>
                 </div>
@@ -756,9 +756,9 @@
             </div>
 
             <!-- カード2: オンラインで相談・見積もり依頼 -->
-            <div class="bg-white rounded-2xl p-8 text-center shadow-lg">
+            <div class="bg-white p-8 text-center shadow-lg">
                 <div class="mb-8">
-                    <div class="w-20 h-20 mx-auto bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                    <div class="w-20 h-20 mx-auto bg-blue-100 flex items-center justify-center mb-6">
                         <img src="{{ asset('images/dentaku.png') }}" alt="見積もり依頼" class="w-10 h-10">
                     </div>
                 </div>
@@ -773,9 +773,9 @@
             </div>
 
             <!-- カード3: 相談・見積もり依頼は無料 -->
-            <div class="bg-white rounded-2xl p-8 text-center shadow-lg">
+            <div class="bg-white p-8 text-center shadow-lg">
                 <div class="mb-8">
-                    <div class="w-20 h-20 mx-auto bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                    <div class="w-20 h-20 mx-auto bg-blue-100 flex items-center justify-center mb-6">
                         <img src="{{ asset('images/chat.png') }}" alt="無料相談" class="w-10 h-10">
                     </div>
                 </div>
@@ -796,7 +796,7 @@
 <section class="bg-gray-50 py-12 md:py-16">
     <div class="max-w-6xl mx-auto px-4">
         <div class="w-full">
-            <div class="bg-gray-500 rounded-lg shadow-lg text-white">
+            <div class="bg-gray-500 shadow-lg text-white">
                 <div class="p-6">
                     <h4 class="text-xl font-bold mb-6 text-center">お問い合わせ</h4>
                     
@@ -825,7 +825,7 @@
                                        name="contact_name" 
                                        placeholder="例：田中太郎" 
                                        required
-                                       class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                             </div>
                             
                             <!-- メールアドレス -->
@@ -835,7 +835,7 @@
                                        name="email" 
                                        placeholder="example@email.com" 
                                        required
-                                       class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                             </div>
                             
                             <!-- 電話番号 -->
@@ -844,13 +844,13 @@
                                 <input type="tel" 
                                        name="phone" 
                                        placeholder="03-1234-5678" 
-                                       class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                             </div>
                             
                             <!-- 都道府県 -->
                             <div>
                                 <label class="block text-sm font-medium text-white mb-2">都道府県 <span class="text-red-300">*</span></label>
-                                <select name="prefecture" required class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                                <select name="prefecture" required class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                                     <option value="">選択してください</option>
                                     <option value="東京都">東京都</option>
                                     <option value="神奈川県">神奈川県</option>
@@ -866,7 +866,7 @@
                             <!-- サービス内容 -->
                             <div>
                                 <label class="block text-sm font-medium text-white mb-2">サービス内容 <span class="text-red-300">*</span></label>
-                                <select name="service_type" required class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                                <select name="service_type" required class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                                     <option value="">選択してください</option>
                                     <option value="window_cleaning">窓ガラス清掃</option>
                                     <option value="wall_painting">外壁塗装</option>
@@ -886,11 +886,11 @@
                             <textarea name="note" 
                                       placeholder="建物の階数、作業内容の詳細、希望時期などお気軽にお書きください" 
                                       rows="4"
-                                      class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none"></textarea>
+                                      class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none"></textarea>
                         </div>
                         
                         <button type="submit" 
-                                class="glowing-button w-full bg-orange-600 text-white px-6 py-4 rounded-md font-bold text-lg hover:bg-orange-700 transition-colors">
+                                class="glowing-button w-full bg-orange-600 text-white px-6 py-4 font-bold text-lg hover:bg-orange-700 transition-colors">
                             無料で見積もり依頼
                         </button>
                         
@@ -933,7 +933,7 @@
                 </div>
                 <a href="{{ route('quote.create') }}" 
                    id="consult-button"
-                   class="bg-orange-600 text-white px-4 py-3 sm:px-6 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base hover:bg-orange-700 transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 whitespace-nowrap"
+                   class="bg-orange-600 text-white px-4 py-3 sm:px-6 sm:py-4 font-bold text-sm sm:text-base hover:bg-orange-700 transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 whitespace-nowrap"
                    style="background: linear-gradient(to right, #ea580c, #dc2626) !important; color: white !important;">
                     <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.959 8.959 0 01-4.906-1.451c-.302-.163-.622-.35-.963-.589L4 20l1.729-3.131c-.27-.476-.547-.949-.826-1.448C3.639 13.644 3 11.904 3 12c0-4.418 3.582-8 8-8s8 3.582 8 8z"/>

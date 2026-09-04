@@ -18,9 +18,9 @@
             </div>
 
             <!-- Company Info Card -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
+            <div class="bg-white shadow-sm border border-gray-200 p-6 mb-8">
                 <div class="flex items-center space-x-4">
-                    <div class="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
+                    <div class="w-16 h-16 bg-gray-100 flex items-center justify-center">
                         <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h3M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                         </svg>
@@ -46,7 +46,7 @@
             </div>
 
             <!-- Review Form -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <div class="bg-white shadow-sm border border-gray-200 p-6">
                 <form action="{{ route('reviews.store', $company->slug) }}" method="POST">
                     @csrf
                     
@@ -131,7 +131,7 @@
                                    id="company_name" 
                                    name="company_name" 
                                    value="{{ old('company_name') }}"
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('company_name') border-red-300 @enderror"
+                                   class="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('company_name') border-red-300 @enderror"
                                    placeholder="会社名を入力してください">
                             @error('company_name')
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -147,7 +147,7 @@
                                    id="reviewer_name" 
                                    name="reviewer_name" 
                                    value="{{ old('reviewer_name') }}"
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('reviewer_name') border-red-300 @enderror"
+                                   class="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('reviewer_name') border-red-300 @enderror"
                                    placeholder="担当者名を入力してください">
                             @error('reviewer_name')
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -164,7 +164,7 @@
                             </label>
                             <select id="service_category" 
                                     name="service_category"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('service_category') border-red-300 @enderror">
+                                    class="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('service_category') border-red-300 @enderror">
                                 <option value="">選択してください</option>
                                 <option value="window_cleaning" {{ old('service_category') === 'window_cleaning' ? 'selected' : '' }}>窓ガラス清掃</option>
                                 <option value="exterior_cleaning" {{ old('service_category') === 'exterior_cleaning' ? 'selected' : '' }}>外壁清掃</option>
@@ -184,7 +184,7 @@
                             </label>
                             <select id="building_type" 
                                     name="building_type"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    class="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 <option value="">選択してください</option>
                                 <option value="office" {{ old('building_type') === 'office' ? 'selected' : '' }}>オフィスビル</option>
                                 <option value="apartment" {{ old('building_type') === 'apartment' ? 'selected' : '' }}>マンション</option>
@@ -206,7 +206,7 @@
                             </label>
                             <select id="project_scale" 
                                     name="project_scale"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    class="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 <option value="">選択してください</option>
                                 <option value="small" {{ old('project_scale') === 'small' ? 'selected' : '' }}>小規模（〜5階建て）</option>
                                 <option value="medium" {{ old('project_scale') === 'medium' ? 'selected' : '' }}>中規模（6〜15階建て）</option>
@@ -221,7 +221,7 @@
                             </label>
                             <select id="continue_request" 
                                     name="continue_request"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    class="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 <option value="">選択してください</option>
                                 <option value="definitely_yes" {{ old('continue_request') === 'definitely_yes' ? 'selected' : '' }}>ぜひ依頼したい</option>
                                 <option value="probably_yes" {{ old('continue_request') === 'probably_yes' ? 'selected' : '' }}>おそらく依頼すると思う</option>
@@ -239,7 +239,7 @@
                         </label>
                         <select id="usage_period" 
                                 name="usage_period"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent md:w-1/2">
+                                class="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent md:w-1/2">
                             <option value="">選択してください</option>
                             <option value="within_1month" {{ old('usage_period') === 'within_1month' ? 'selected' : '' }}>1ヶ月以内</option>
                             <option value="within_3months" {{ old('usage_period') === 'within_3months' ? 'selected' : '' }}>3ヶ月以内</option>
@@ -257,7 +257,7 @@
                         <textarea id="good_points" 
                                   name="good_points" 
                                   rows="4"
-                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('good_points') border-red-300 @enderror"
+                                  class="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('good_points') border-red-300 @enderror"
                                   placeholder="サービスの良かった点や評価できる点をお書きください。スタッフの対応、技術力、仕上がり、料金など具体的にお聞かせください。">{{ old('good_points') }}</textarea>
                         <div class="flex justify-between items-center mt-2">
                             @error('good_points')
@@ -277,7 +277,7 @@
                         <textarea id="improvement_points" 
                                   name="improvement_points" 
                                   rows="4"
-                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('improvement_points') border-red-300 @enderror"
+                                  class="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('improvement_points') border-red-300 @enderror"
                                   placeholder="改善してほしい点や気になった点があればお書きください。業者の方への建設的なアドバイスとして活用させていただきます。">{{ old('improvement_points') }}</textarea>
                         <div class="flex justify-between items-center mt-2">
                             @error('improvement_points')
@@ -292,7 +292,7 @@
                     <!-- Terms and Privacy -->
                     <div class="mb-6">
                         <label class="flex items-start">
-                            <input type="checkbox" class="mt-1 mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" required>
+                            <input type="checkbox" class="mt-1 mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" required>
                             <span class="text-sm text-gray-600">
                                 <a href="#" class="text-blue-600 hover:text-blue-800 underline">利用規約</a>
                                 および
@@ -305,7 +305,7 @@
                     <!-- Submit Button -->
                     <div class="flex justify-center">
                         <button type="submit" 
-                                class="px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200">
+                                class="px-8 py-3 bg-blue-600 text-white font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200">
                             口コミを投稿する
                         </button>
                     </div>

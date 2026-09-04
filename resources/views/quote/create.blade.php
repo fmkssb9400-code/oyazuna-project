@@ -7,7 +7,7 @@
     <h1 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8">高所ロープ専門業者に現調依頼する</h1>
     
     <!-- Wishlist Companies Display -->
-    <div id="wishlist-companies-section" class="bg-orange-50 border border-orange-200 rounded-lg p-3 md:p-4 mb-6 md:mb-8" style="display: none;">
+    <div id="wishlist-companies-section" class="bg-orange-50 border border-orange-200 p-3 md:p-4 mb-6 md:mb-8" style="display: none;">
         <h3 class="text-base md:text-lg font-semibold text-orange-800 mb-3">ご選択中の専門業者：<span id="company-count">0</span>社</h3>
         <div id="wishlist-companies-list" class="space-y-2">
             <!-- Companies will be populated by JavaScript -->
@@ -20,14 +20,14 @@
     </div>
     
     
-    <form action="{{ route('quote.store') }}" method="POST" class="bg-white rounded-lg shadow p-4 md:p-8 space-y-4 md:space-y-6" id="quote-form">
+    <form action="{{ route('quote.store') }}" method="POST" class="bg-white shadow p-4 md:p-8 space-y-4 md:space-y-6" id="quote-form">
         @csrf
         
         <!-- Hidden field for wishlist companies -->
         <input type="hidden" name="wishlist_companies" id="wishlist_companies_input" value="">
         
         @if($errors->any())
-            <div class="bg-red-50 border border-red-200 rounded p-4">
+            <div class="bg-red-50 border border-red-200 p-4">
                 <ul class="list-disc list-inside text-red-600">
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -55,27 +55,27 @@
         <div id="company_name_field" class="hidden">
             <label for="company_name" class="block text-sm font-medium text-gray-700 mb-2">会社名 <span class="text-red-500">*</span></label>
             <input type="text" name="company_name" id="company_name" value="{{ old('company_name') }}"
-                   class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                   class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
                 <label for="contact_name" class="block text-sm font-medium text-gray-700 mb-2">ご担当者名 <span class="text-red-500">*</span></label>
                 <input type="text" name="contact_name" id="contact_name" value="{{ old('contact_name') }}" required
-                       class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                       class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                        placeholder="例：田中太郎">
             </div>
             
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700 mb-2">メールアドレス <span class="text-red-500">*</span></label>
                 <input type="email" name="email" id="email" value="{{ old('email') }}" required
-                       class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                       class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
             
             <div>
                 <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">電話番号</label>
                 <input type="tel" name="phone" id="phone" value="{{ old('phone') }}"
-                       class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                       class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
         </div>
 
@@ -84,7 +84,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
                     <label for="prefecture" class="block text-sm font-medium text-gray-700 mb-2">都道府県 <span class="text-red-500">*</span></label>
-                    <select name="prefecture" id="prefecture" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="prefecture" id="prefecture" required class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">選択してください</option>
                         @foreach($prefectures as $prefecture)
                             <option value="{{ $prefecture->name }}" {{ old('prefecture') == $prefecture->name ? 'selected' : '' }}>
@@ -97,14 +97,14 @@
                 <div>
                     <label for="city" class="block text-sm font-medium text-gray-700 mb-2">市区町村</label>
                     <input type="text" name="city" id="city" value="{{ old('city') }}"
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                            placeholder="例：新宿区">
                 </div>
                 
                 <div>
                     <label for="building_name" class="block text-sm font-medium text-gray-700 mb-2">建物名 <span class="text-green-600">（入力推奨）</span></label>
                     <input type="text" name="building_name" id="building_name" value="{{ old('building_name') }}"
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                            placeholder="例：○○ビル、○○マンション、○○商業施設">
                     <p class="text-xs text-gray-500 mt-1">※業者が事前確認しやすくなるため入力をお勧めします</p>
                 </div>
@@ -112,20 +112,20 @@
                 <div>
                     <label for="floors" class="block text-sm font-medium text-gray-700 mb-2">階数 <span class="text-red-500">*</span></label>
                     <input type="number" name="floors" id="floors" min="1" value="{{ old('floors') }}" required
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                            placeholder="例：10">
                 </div>
                 
                 <div>
                     <label for="height_m" class="block text-sm font-medium text-gray-700 mb-2">建物高さ（概算）</label>
                     <input type="number" name="height_m" id="height_m" min="1" value="{{ old('height_m') }}"
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                            placeholder="例：30（メートル）">
                 </div>
                 
                 <div>
                     <label for="building_type" class="block text-sm font-medium text-gray-700 mb-2">建物種別</label>
-                    <select name="building_type" id="building_type" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="building_type" id="building_type" class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">選択してください</option>
                         @foreach($buildingTypes as $buildingType)
                             <option value="{{ $buildingType->label }}" {{ old('building_type') == $buildingType->label ? 'selected' : '' }}>
@@ -138,7 +138,7 @@
                 <div>
                     <label for="built_year" class="block text-sm font-medium text-gray-700 mb-2">建築年</label>
                     <input type="number" name="built_year" id="built_year" min="1900" max="{{ date('Y') }}" value="{{ old('built_year') }}"
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                            placeholder="例：2015">
                 </div>
             </div>
@@ -150,7 +150,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
                     <label for="rooftop_access" class="block text-sm font-medium text-gray-700 mb-2">屋上・屋根へのアクセス</label>
-                    <select name="rooftop_access" id="rooftop_access" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="rooftop_access" id="rooftop_access" class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">不明</option>
                         <option value="可" {{ old('rooftop_access') === '可' ? 'selected' : '' }}>可</option>
                         <option value="不可" {{ old('rooftop_access') === '不可' ? 'selected' : '' }}>不可</option>
@@ -160,7 +160,7 @@
                 
                 <div>
                     <label for="parapet" class="block text-sm font-medium text-gray-700 mb-2">パラペット（屋上の立ち上がり壁）</label>
-                    <select name="parapet" id="parapet" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="parapet" id="parapet" class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">不明</option>
                         <option value="あり" {{ old('parapet') === 'あり' ? 'selected' : '' }}>あり</option>
                         <option value="なし" {{ old('parapet') === 'なし' ? 'selected' : '' }}>なし</option>
@@ -169,7 +169,7 @@
                 
                 <div>
                     <label for="handrail" class="block text-sm font-medium text-gray-700 mb-2">手すり・柵</label>
-                    <select name="handrail" id="handrail" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="handrail" id="handrail" class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">不明</option>
                         <option value="あり" {{ old('handrail') === 'あり' ? 'selected' : '' }}>あり</option>
                         <option value="なし" {{ old('handrail') === 'なし' ? 'selected' : '' }}>なし</option>
@@ -178,7 +178,7 @@
                 
                 <div>
                     <label for="obstacles" class="block text-sm font-medium text-gray-700 mb-2">障害物（看板・配管等）</label>
-                    <select name="obstacles" id="obstacles" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="obstacles" id="obstacles" class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">不明</option>
                         <option value="あり" {{ old('obstacles') === 'あり' ? 'selected' : '' }}>あり</option>
                         <option value="なし" {{ old('obstacles') === 'なし' ? 'selected' : '' }}>なし</option>
@@ -188,7 +188,7 @@
                 <div class="md:col-span-2">
                     <label for="obstacles_detail" class="block text-sm font-medium text-gray-700 mb-2">障害物の詳細</label>
                     <textarea name="obstacles_detail" id="obstacles_detail" rows="2" 
-                              class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                               placeholder="例：看板、室外機、配管、突起物など">{{ old('obstacles_detail') }}</textarea>
                 </div>
             </div>
@@ -200,7 +200,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                 <div>
                     <label for="work_time" class="block text-sm font-medium text-gray-700 mb-2">希望作業時間帯</label>
-                    <select name="work_time" id="work_time" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="work_time" id="work_time" class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">指定しない</option>
                         <option value="昼" {{ old('work_time') === '昼' ? 'selected' : '' }}>昼間（9-17時）</option>
                         <option value="夜" {{ old('work_time') === '夜' ? 'selected' : '' }}>夜間（18時以降）</option>
@@ -210,7 +210,7 @@
                 
                 <div>
                     <label for="environment" class="block text-sm font-medium text-gray-700 mb-2">周辺環境</label>
-                    <select name="environment" id="environment" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="environment" id="environment" class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">不明</option>
                         <option value="人通り多い" {{ old('environment') === '人通り多い' ? 'selected' : '' }}>人通り多い</option>
                         <option value="人通り少ない" {{ old('environment') === '人通り少ない' ? 'selected' : '' }}>人通り少ない</option>
@@ -219,7 +219,7 @@
                 
                 <div>
                     <label for="urgency" class="block text-sm font-medium text-gray-700 mb-2">緊急度</label>
-                    <select name="urgency" id="urgency" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="urgency" id="urgency" class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">選択してください</option>
                         <option value="すぐ" {{ old('urgency') === 'すぐ' ? 'selected' : '' }}>すぐ</option>
                         <option value="1ヶ月以内" {{ old('urgency') === '1ヶ月以内' ? 'selected' : '' }}>1ヶ月以内</option>
@@ -234,7 +234,7 @@
             <h3 class="text-base md:text-lg font-semibold text-gray-900 mb-3 md:mb-4">作業内容</h3>
             <div>
                 <label for="service_type" class="block text-sm font-medium text-gray-700 mb-2">依頼内容 <span class="text-red-500">*</span></label>
-                <select name="service_type" id="service_type" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <select name="service_type" id="service_type" required class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">選択してください</option>
                     <option value="window_cleaning" {{ old('service_type') === 'window_cleaning' ? 'selected' : '' }}>窓ガラス清掃</option>
                     <option value="wall_painting" {{ old('service_type') === 'wall_painting' ? 'selected' : '' }}>外壁塗装</option>
@@ -273,20 +273,20 @@
                 <div>
                     <label for="glass_area" class="block text-sm font-medium text-gray-700 mb-2">ガラス面積（㎡） <span class="text-red-500">*</span></label>
                     <input type="number" name="glass_area" id="glass_area" min="1" step="0.1" value="{{ old('glass_area') }}" required
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                            placeholder="例：150">
                 </div>
                 
                 <div>
                     <label for="glass_count" class="block text-sm font-medium text-gray-700 mb-2">窓の枚数・面数 <span class="text-red-500">*</span></label>
                     <input type="number" name="glass_count" id="glass_count" min="1" value="{{ old('glass_count') }}" required
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                            placeholder="例：50">
                 </div>
                 
                 <div>
                     <label for="cleaning_frequency" class="block text-sm font-medium text-gray-700 mb-2">清掃頻度</label>
-                    <select name="cleaning_frequency" id="cleaning_frequency" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="cleaning_frequency" id="cleaning_frequency" class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="単発" {{ old('cleaning_frequency') === '単発' ? 'selected' : '' }}>単発</option>
                         <option value="定期" {{ old('cleaning_frequency') === '定期' ? 'selected' : '' }}>定期</option>
                     </select>
@@ -295,12 +295,12 @@
                 <div>
                     <label for="last_cleaning_date" class="block text-sm font-medium text-gray-700 mb-2">前回清掃日</label>
                     <input type="date" name="last_cleaning_date" id="last_cleaning_date" value="{{ old('last_cleaning_date') }}"
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                           class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 
                 <div>
                     <label for="gondola_available" class="block text-sm font-medium text-gray-700 mb-2">ゴンドラ設備</label>
-                    <select name="gondola_available" id="gondola_available" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="gondola_available" id="gondola_available" class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">不明</option>
                         <option value="あり" {{ old('gondola_available') === 'あり' ? 'selected' : '' }}>あり</option>
                         <option value="なし" {{ old('gondola_available') === 'なし' ? 'selected' : '' }}>なし</option>
@@ -309,7 +309,7 @@
                 
                 <div>
                     <label for="water_available" class="block text-sm font-medium text-gray-700 mb-2">給水設備</label>
-                    <select name="water_available" id="water_available" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="water_available" id="water_available" class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">不明</option>
                         <option value="あり" {{ old('water_available') === 'あり' ? 'selected' : '' }}>あり</option>
                         <option value="なし" {{ old('water_available') === 'なし' ? 'selected' : '' }}>なし</option>
@@ -347,13 +347,13 @@
                 <div>
                     <label for="wall_area" class="block text-sm font-medium text-gray-700 mb-2">塗装面積（㎡） <span class="text-red-500">*</span></label>
                     <input type="number" name="wall_area" id="wall_area" min="1" step="0.1" value="{{ old('wall_area') }}"
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                            placeholder="例：300">
                 </div>
                 
                 <div>
                     <label for="wall_material" class="block text-sm font-medium text-gray-700 mb-2">外壁材質</label>
-                    <select name="wall_material" id="wall_material" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="wall_material" id="wall_material" class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">不明</option>
                         <option value="コンクリート" {{ old('wall_material') === 'コンクリート' ? 'selected' : '' }}>コンクリート</option>
                         <option value="モルタル" {{ old('wall_material') === 'モルタル' ? 'selected' : '' }}>モルタル</option>
@@ -366,7 +366,7 @@
                 
                 <div>
                     <label for="paint_type" class="block text-sm font-medium text-gray-700 mb-2">希望塗料タイプ</label>
-                    <select name="paint_type" id="paint_type" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="paint_type" id="paint_type" class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">指定しない</option>
                         <option value="アクリル" {{ old('paint_type') === 'アクリル' ? 'selected' : '' }}>アクリル</option>
                         <option value="ウレタン" {{ old('paint_type') === 'ウレタン' ? 'selected' : '' }}>ウレタン</option>
@@ -378,7 +378,7 @@
                 
                 <div>
                     <label for="painting_reason" class="block text-sm font-medium text-gray-700 mb-2">塗装理由</label>
-                    <select name="painting_reason" id="painting_reason" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="painting_reason" id="painting_reason" class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">選択してください</option>
                         <option value="定期メンテナンス" {{ old('painting_reason') === '定期メンテナンス' ? 'selected' : '' }}>定期メンテナンス</option>
                         <option value="色あせ・汚れ" {{ old('painting_reason') === '色あせ・汚れ' ? 'selected' : '' }}>色あせ・汚れ</option>
@@ -391,12 +391,12 @@
                 <div>
                     <label for="last_painting_date" class="block text-sm font-medium text-gray-700 mb-2">前回塗装時期</label>
                     <input type="date" name="last_painting_date" id="last_painting_date" value="{{ old('last_painting_date') }}"
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                           class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 
                 <div>
                     <label for="scaffold_available" class="block text-sm font-medium text-gray-700 mb-2">足場設置可否</label>
-                    <select name="scaffold_available" id="scaffold_available" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select name="scaffold_available" id="scaffold_available" class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">不明</option>
                         <option value="可能" {{ old('scaffold_available') === '可能' ? 'selected' : '' }}>可能</option>
                         <option value="困難" {{ old('scaffold_available') === '困難' ? 'selected' : '' }}>困難</option>
@@ -435,21 +435,21 @@
                 <div>
                     <label for="work_area" class="block text-sm font-medium text-gray-700 mb-2">作業面積（㎡）</label>
                     <input type="number" name="work_area" id="work_area" min="1" step="0.1" value="{{ old('work_area') }}"
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                            placeholder="例：100">
                 </div>
                 
                 <div>
                     <label for="work_location" class="block text-sm font-medium text-gray-700 mb-2">作業箇所</label>
                     <input type="text" name="work_location" id="work_location" value="{{ old('work_location') }}"
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                            placeholder="例：建物南面、屋上、看板周辺">
                 </div>
                 
                 <div class="md:col-span-2">
                     <label for="work_detail" class="block text-sm font-medium text-gray-700 mb-2">作業詳細</label>
                     <textarea name="work_detail" id="work_detail" rows="3" 
-                              class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                               placeholder="具体的な作業内容をご記入ください">{{ old('work_detail') }}</textarea>
                 </div>
             </div>
@@ -461,7 +461,7 @@
             <div>
                 <label for="images" class="block text-sm font-medium text-gray-700 mb-2">建物・現場写真</label>
                 <input type="file" name="images[]" id="images" multiple accept="image/*"
-                       class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                       class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <p class="text-xs text-gray-500 mt-1">※複数枚選択可能。建物外観、作業対象箇所の写真があると見積もり精度が向上します。</p>
             </div>
         </div>
@@ -472,27 +472,27 @@
             <p class="text-xs text-gray-500 mb-3">※複数選択OK</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <label class="flex items-center">
-                    <input type="checkbox" name="priorities[]" value="低価格" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" {{ is_array(old('priorities')) && in_array('低価格', old('priorities')) ? 'checked' : '' }}>
+                    <input type="checkbox" name="priorities[]" value="低価格" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" {{ is_array(old('priorities')) && in_array('低価格', old('priorities')) ? 'checked' : '' }}>
                     <span class="text-sm">価格を抑えたい</span>
                 </label>
                 <label class="flex items-center">
-                    <input type="checkbox" name="priorities[]" value="安全対策" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" {{ is_array(old('priorities')) && in_array('安全対策', old('priorities')) ? 'checked' : '' }}>
+                    <input type="checkbox" name="priorities[]" value="安全対策" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" {{ is_array(old('priorities')) && in_array('安全対策', old('priorities')) ? 'checked' : '' }}>
                     <span class="text-sm">安全対策がしっかりしている会社</span>
                 </label>
                 <label class="flex items-center">
-                    <input type="checkbox" name="priorities[]" value="高所実績" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" {{ is_array(old('priorities')) && in_array('高所実績', old('priorities')) ? 'checked' : '' }}>
+                    <input type="checkbox" name="priorities[]" value="高所実績" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" {{ is_array(old('priorities')) && in_array('高所実績', old('priorities')) ? 'checked' : '' }}>
                     <span class="text-sm">高所実績が豊富</span>
                 </label>
                 <label class="flex items-center">
-                    <input type="checkbox" name="priorities[]" value="迅速対応" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" {{ is_array(old('priorities')) && in_array('迅速対応', old('priorities')) ? 'checked' : '' }}>
+                    <input type="checkbox" name="priorities[]" value="迅速対応" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" {{ is_array(old('priorities')) && in_array('迅速対応', old('priorities')) ? 'checked' : '' }}>
                     <span class="text-sm">すぐ対応してほしい</span>
                 </label>
                 <label class="flex items-center">
-                    <input type="checkbox" name="priorities[]" value="大型ビル対応" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" {{ is_array(old('priorities')) && in_array('大型ビル対応', old('priorities')) ? 'checked' : '' }}>
+                    <input type="checkbox" name="priorities[]" value="大型ビル対応" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" {{ is_array(old('priorities')) && in_array('大型ビル対応', old('priorities')) ? 'checked' : '' }}>
                     <span class="text-sm">大型ビル対応可能</span>
                 </label>
                 <label class="flex items-center">
-                    <input type="checkbox" name="priorities[]" value="相談重視" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" {{ is_array(old('priorities')) && in_array('相談重視', old('priorities')) ? 'checked' : '' }}>
+                    <input type="checkbox" name="priorities[]" value="相談重視" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" {{ is_array(old('priorities')) && in_array('相談重視', old('priorities')) ? 'checked' : '' }}>
                     <span class="text-sm">とにかく相談したい（お任せ）</span>
                 </label>
             </div>
@@ -501,12 +501,12 @@
         <div>
             <label for="note" class="block text-sm font-medium text-gray-700 mb-2">備考</label>
             <textarea name="note" id="note" rows="4" 
-                      class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="その他ご要望があればお書きください">{{ old('note') }}</textarea>
         </div>
         
         <div class="text-center">
-            <button type="submit" class="bg-orange-600 text-white px-12 py-4 rounded-lg font-bold text-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500">
+            <button type="submit" class="bg-orange-600 text-white px-12 py-4 font-bold text-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500">
                 無料見積もりを依頼
             </button>
         </div>

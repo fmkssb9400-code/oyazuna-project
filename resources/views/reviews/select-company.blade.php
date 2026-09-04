@@ -11,17 +11,17 @@
             </div>
 
             <!-- Search Form -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
+            <div class="bg-white shadow-sm border border-gray-200 p-6 mb-8">
                 <form action="{{ route('reviews.select-company') }}" method="GET" class="flex flex-col sm:flex-row gap-4">
                     <div class="flex-1">
                         <input type="text" 
                                name="search" 
                                value="{{ $search }}"
                                placeholder="会社名で検索..." 
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                               class="w-full px-4 py-2 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     </div>
                     <button type="submit" 
-                            class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                            class="px-6 py-2 bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200">
                         検索
                     </button>
                 </form>
@@ -32,15 +32,15 @@
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-8">
                 @foreach($companies as $company)
                 <a href="{{ route('reviews.create', $company->slug) }}" 
-                   class="bg-white rounded-lg border-2 border-blue-300 hover:border-blue-400 hover:shadow-md transition-all duration-200 block">
+                   class="bg-white border-2 border-blue-300 hover:border-blue-400 hover:shadow-md transition-all duration-200 block">
                     <div class="p-4 md:p-6">
                         <div class="flex items-start gap-4">
                             <!-- Company Logo/Initial Badge -->
-                            <div class="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div class="w-16 h-16 bg-gray-100 flex items-center justify-center flex-shrink-0">
                                 @if($company->logo_path)
                                     <img src="{{ $company->logo_url }}" 
                                          alt="{{ $company->name }}" 
-                                         class="w-full h-full object-cover rounded-lg">
+                                         class="w-full h-full object-cover">
                                 @else
                                     <span class="text-lg font-bold text-gray-700">
                                         {{ mb_substr($company->name, 0, 1) }}{{ mb_substr($company->name, 1, 1) }}
@@ -87,7 +87,7 @@
                 <h3 class="text-xl font-medium text-gray-900 mb-2">検索結果が見つかりません</h3>
                 <p class="text-gray-600 mb-6">別のキーワードで検索してみてください</p>
                 <a href="{{ route('reviews.select-company') }}" 
-                   class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                   class="inline-flex items-center px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200">
                     すべての会社を表示
                 </a>
             </div>

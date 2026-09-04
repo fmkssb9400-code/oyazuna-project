@@ -6,7 +6,7 @@
     @endphp
     
     @if(!empty($siteSettings['sidebar_ad_1']))
-    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+    <div class="bg-white shadow-sm border border-gray-200">
         <div class="p-4">
             <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
             <div class="ad-container">
@@ -17,7 +17,7 @@
     @endif
     
     <!-- お問い合わせフォーム -->
-    <div class="bg-gray-500 rounded-lg shadow-lg text-white">
+    <div class="bg-gray-500 shadow-lg text-white">
         <div class="p-6">
             <h4 class="text-xl font-bold mb-6 text-center">お急ぎの方へ</h4>
             
@@ -46,7 +46,7 @@
                                name="contact_name" 
                                placeholder="例：田中太郎" 
                                required
-                               class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                               class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                     </div>
                     
                     <!-- メールアドレス -->
@@ -56,7 +56,7 @@
                                name="email" 
                                placeholder="example@email.com" 
                                required
-                               class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                               class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                     </div>
                     
                     <!-- 電話番号 -->
@@ -65,13 +65,13 @@
                         <input type="tel" 
                                name="phone" 
                                placeholder="03-1234-5678" 
-                               class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                               class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                     </div>
                     
                     <!-- 都道府県 -->
                     <div>
                         <label class="block text-sm font-medium text-white mb-2">都道府県 <span class="text-red-300">*</span></label>
-                        <select name="prefecture" required class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                        <select name="prefecture" required class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                             <option value="">選択してください</option>
                             <option value="東京都">東京都</option>
                             <option value="神奈川県">神奈川県</option>
@@ -87,7 +87,7 @@
                     <!-- サービス内容 -->
                     <div>
                         <label class="block text-sm font-medium text-white mb-2">サービス内容 <span class="text-red-300">*</span></label>
-                        <select name="service_type" required class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                        <select name="service_type" required class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                             <option value="">選択してください</option>
                             <option value="window_cleaning">窓ガラス清掃</option>
                             <option value="wall_painting">外壁塗装</option>
@@ -107,11 +107,11 @@
                     <textarea name="note" 
                               placeholder="建物の階数、作業内容の詳細、希望時期などお気軽にお書きください" 
                               rows="3"
-                              class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none"></textarea>
+                              class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none"></textarea>
                 </div>
                 
                 <button type="submit" 
-                        class="w-full bg-orange-600 text-white px-6 py-4 rounded-md font-bold text-lg hover:bg-orange-700 transition-colors">
+                        class="w-full bg-orange-600 text-white px-6 py-4 font-bold text-lg hover:bg-orange-700 transition-colors">
                     無料で見積もり依頼
                 </button>
                 
@@ -125,7 +125,7 @@
     
     <!-- サイドバー広告2 -->
     @if(!empty($siteSettings['sidebar_ad_2']))
-    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+    <div class="bg-white shadow-sm border border-gray-200">
         <div class="p-4">
             <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
             <div class="ad-container">
@@ -144,12 +144,12 @@
     @endphp
     
     @if($recentQuoteSubmissions->count() > 0)
-    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+    <div class="bg-white shadow-sm border border-gray-200">
         <div class="p-4">
             <h4 class="text-lg font-bold text-gray-900 mb-4 border-b pb-2">最新見積もりデータ</h4>
             <div class="space-y-3">
                 @foreach($recentQuoteSubmissions as $submission)
-                <div class="border-l-4 border-blue-500 pl-3 py-2 bg-blue-50 rounded-r">
+                <div class="border-l-4 border-blue-500 pl-3 py-2 bg-blue-50">
                     <div class="flex justify-between items-start">
                         <div class="flex-1">
                             <p class="text-sm font-semibold text-gray-800">
@@ -184,7 +184,7 @@
             
             <div class="mt-4 text-center">
                 <a href="{{ route('quote-data.create') }}" 
-                   class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors">
+                   class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                     </svg>
@@ -202,7 +202,7 @@
     
     <!-- サイドバー広告3 -->
     @if(!empty($siteSettings['sidebar_ad_3']))
-    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+    <div class="bg-white shadow-sm border border-gray-200">
         <div class="p-4">
             <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
             <div class="ad-container">

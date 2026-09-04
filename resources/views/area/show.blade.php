@@ -108,7 +108,7 @@
                 <div class="lg:col-span-2">
                     <h2 class="text-xl font-bold text-gray-900 mb-4">{{ $config['label'] }}対応業者一覧</h2>
                     @if($companies->isEmpty())
-                        <div class="bg-white rounded-2xl border border-gray-200 p-8 text-center text-gray-600">
+                        <div class="bg-white border border-gray-200 p-8 text-center text-gray-600">
                             現在この条件に合う業者情報を準備中です。<a href="{{ route('companies.index') }}" class="text-blue-600 underline">業者一覧</a>から他の条件もご確認ください。
                         </div>
                     @else

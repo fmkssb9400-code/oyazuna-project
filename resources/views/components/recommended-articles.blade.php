@@ -6,7 +6,7 @@
 @endphp
 
 @if(!empty($siteSettings['sidebar_ad_code']))
-<div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+<div class="bg-white shadow-sm border border-gray-200 mb-6">
     <div class="p-4">
         <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
         <div class="ad-container">
@@ -16,16 +16,16 @@
 </div>
 @endif
 
-<div class="bg-white rounded-lg shadow-sm border border-gray-200">
+<div class="bg-white shadow-sm border border-gray-200">
     <div class="p-6">
         <h3 class="text-lg font-bold text-gray-900 mb-6">おすすめ記事</h3>
         
         <div class="space-y-4">
             @foreach($articles as $article)
-            <a href="{{ $article['url'] }}" class="block group hover:bg-gray-50 rounded-lg p-3 transition-colors">
+            <a href="{{ $article['url'] }}" class="block group hover:bg-gray-50 p-3 transition-colors">
                 <div class="flex gap-3">
                     <div class="flex-shrink-0">
-                        <div class="w-20 h-16 rounded bg-blue-100 flex items-center justify-center overflow-hidden">
+                        <div class="w-20 h-16 bg-blue-100 flex items-center justify-center overflow-hidden">
                             @if(!empty($article['featured_image_url']))
                                 <img src="{{ $article['featured_image_url'] }}" alt="{{ $article['title'] }}" class="w-full h-full object-cover">
                             @else

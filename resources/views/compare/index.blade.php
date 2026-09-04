@@ -9,12 +9,12 @@
     @if($companies->isEmpty())
         <div class="text-center py-12">
             <p class="text-gray-600 text-lg">比較する業者が選択されていません。</p>
-            <a href="{{ route('companies.index') }}" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+            <a href="{{ route('companies.index') }}" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 hover:bg-blue-700">
                 業者一覧に戻る
             </a>
         </div>
     @else
-        <div class="bg-white rounded-lg shadow overflow-x-auto">
+        <div class="bg-white shadow overflow-x-auto">
             <table class="w-full">
                 <thead class="bg-gray-50">
                     <tr>
@@ -92,11 +92,11 @@
                             <td class="px-6 py-4 text-sm text-gray-900">
                                 <div class="space-y-2">
                                     <a href="{{ route('companies.show', $company->slug) }}" 
-                                       class="block bg-blue-600 text-white px-4 py-2 rounded text-center hover:bg-blue-700">
+                                       class="block bg-blue-600 text-white px-4 py-2 text-center hover:bg-blue-700">
                                         詳細
                                     </a>
                                     <a href="{{ route('quote.create', ['company_id' => $company->id]) }}" 
-                                       class="block bg-green-600 text-white px-4 py-2 rounded text-center hover:bg-green-700">
+                                       class="block bg-green-600 text-white px-4 py-2 text-center hover:bg-green-700">
                                         見積依頼
                                     </a>
                                 </div>
@@ -108,7 +108,7 @@
         </div>
         
         <div class="bg-gray-50 px-8 py-6 text-center">
-            <a href="{{ route('quote.create') }}" class="bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-700">
+            <a href="{{ route('quote.create') }}" class="bg-orange-600 text-white px-8 py-3 font-semibold hover:bg-orange-700">
                 この条件で一括見積もり依頼
             </a>
         </div>

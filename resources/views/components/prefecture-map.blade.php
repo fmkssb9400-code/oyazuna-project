@@ -1,6 +1,6 @@
 <section class="mt-10">
     <div class="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10">
-        <div class="mt-6 rounded-2xl bg-slate-100 p-6">
+        <div class="mt-6 bg-slate-100 p-6">
             <h2 class="text-center text-lg font-bold text-orange-600 mb-4">都道府県を選択してください</h2>
             <!-- キャンバス（これが relative の親） -->
             <div class="relative mx-auto w-full max-w-[450px] aspect-[1535/1125]">
@@ -79,7 +79,7 @@
                              data-region="{{ $region['id'] }}">
                             <!-- 地方ボタン -->
                             <button onclick="toggleRegion('{{ $region['id'] }}')"
-                                    class="region-button bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 text-gray-800 rounded-lg px-5 py-2 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px] whitespace-nowrap">
+                                    class="region-button bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 text-gray-800 px-5 py-2 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px] whitespace-nowrap">
                                 {{ $region['name'] }}
                             </button>
                             
@@ -93,7 +93,7 @@
         <div id="modal-overlay" class="hidden fixed inset-0 bg-black/50 z-40" onclick="closeModal()"></div>
         
         <!-- モーダル本体 -->
-        <div id="modal-content" class="hidden fixed top-1/2 left-1/2 bg-white rounded-2xl shadow-2xl p-6 w-[85%] max-w-[380px] z-50 transition-all duration-300" style="transform: translate(-50%, -50%);">
+        <div id="modal-content" class="hidden fixed top-1/2 left-1/2 bg-white shadow-2xl p-6 w-[85%] max-w-[380px] z-50 transition-all duration-300" style="transform: translate(-50%, -50%);">
             <!-- 閉じるボタン -->
             <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold">
                 ×
@@ -128,7 +128,7 @@
                         const slug = @json($prefectureMapping)[prefecture] || prefecture;
                         return `
                         <a href="{{ route('companies.index') }}?prefecture=${slug}" 
-                           class="block w-full rounded-lg bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-300 px-4 py-3 text-left text-base font-medium text-gray-800 hover:text-blue-700 transition-all duration-200">
+                           class="block w-full bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-300 px-4 py-3 text-left text-base font-medium text-gray-800 hover:text-blue-700 transition-all duration-200">
                             ${prefecture}
                         </a>`;
                     }).join('')}
@@ -197,7 +197,7 @@
             <div class="flex flex-wrap justify-center gap-3">
                 @foreach(['東京都', '大阪府', '神奈川県', '愛知県', '福岡県', '北海道'] as $popular)
                     <a href="{{ route('companies.index', ['prefecture' => $prefectureMapping[$popular]]) }}" 
-                       class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition shadow-sm">
+                       class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium transition shadow-sm">
                         {{ $popular }}
                     </a>
                 @endforeach

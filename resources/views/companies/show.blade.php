@@ -8,7 +8,7 @@
         <a href="{{ route('companies.index') }}" class="text-blue-600 hover:underline text-sm md:text-base">&larr; 一覧に戻る</a>
     </div>
     
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div class="bg-white shadow-lg overflow-hidden">
         <div class="p-4 md:p-8">
             <!-- Header Section -->
             <div class="flex flex-col lg:flex-row gap-6 md:gap-8 mb-6 md:mb-8">
@@ -40,7 +40,7 @@
                     <!-- スコア表示 -->
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 mb-4 md:mb-6">
                         @if($company->recommend_score > 0)
-                            <div class="text-center p-2 md:p-3 bg-blue-100 rounded">
+                            <div class="text-center p-2 md:p-3 bg-blue-100">
                                 <div class="text-xs md:text-sm text-gray-600">おすすめ</div>
                                 <div class="text-sm md:text-lg font-bold text-blue-600">
                                     ★{{ number_format($company->recommend_score, 1) }}
@@ -48,7 +48,7 @@
                             </div>
                         @endif
                         @if($company->safety_score > 0)
-                            <div class="text-center p-2 md:p-3 bg-blue-100 rounded">
+                            <div class="text-center p-2 md:p-3 bg-blue-100">
                                 <div class="text-xs md:text-sm text-gray-600">安全性</div>
                                 <div class="text-sm md:text-lg font-bold text-blue-600">
                                     ★{{ number_format($company->safety_score, 1) }}
@@ -56,7 +56,7 @@
                             </div>
                         @endif
                         @if($company->performance_score > 0)
-                            <div class="text-center p-2 md:p-3 bg-blue-100 rounded">
+                            <div class="text-center p-2 md:p-3 bg-blue-100">
                                 <div class="text-xs md:text-sm text-gray-600">実績</div>
                                 <div class="text-sm md:text-lg font-bold text-blue-600">
                                     ★{{ number_format($company->performance_score, 1) }}
@@ -64,7 +64,7 @@
                             </div>
                         @endif
                         @if($company->reviews_count > 0)
-                            <a href="{{ route('companies.reviews', $company) }}" class="block text-center p-2 md:p-3 bg-orange-50 rounded hover:bg-orange-100 transition-colors duration-200">
+                            <a href="{{ route('companies.reviews', $company) }}" class="block text-center p-2 md:p-3 bg-orange-50 hover:bg-orange-100 transition-colors duration-200">
                                 <div class="text-xs md:text-sm text-gray-600">口コミ</div>
                                 <div class="text-xs md:text-lg font-bold text-orange-600">
                                     ★{{ number_format($company->average_rating, 1) }} (<span class="hover:underline">{{ $company->reviews_count }}件</span>)
@@ -93,7 +93,7 @@
                         <h3 class="text-lg font-semibold mb-4">実績写真</h3>
                         <div class="grid grid-cols-2 gap-2">
                             @foreach($galleryAssets as $asset)
-                                <div class="aspect-square bg-gray-200 rounded overflow-hidden">
+                                <div class="aspect-square bg-gray-200 overflow-hidden">
                                     <img src="{{ Storage::url($asset->path) }}" alt="{{ $asset->caption }}" 
                                          class="w-full h-full object-cover">
                                 </div>
@@ -266,7 +266,7 @@
                 @if($reviews && $reviews->count() > 0)
                     <div class="space-y-6">
                         @foreach($reviews as $review)
-                            <div class="bg-gray-50 rounded-lg p-6">
+                            <div class="bg-gray-50 p-6">
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="flex items-center gap-3">
                                         <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
@@ -314,7 +314,7 @@
                         @if($company->reviews_count > 3)
                             <div class="text-center mt-6">
                                 <a href="{{ route('companies.reviews', $company) }}" 
-                                   class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors">
+                                   class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors">
                                     すべての口コミを見る ({{ $company->reviews_count }}件)
                                 </a>
                             </div>
@@ -329,7 +329,7 @@
                         </div>
                         <h3 class="text-lg font-semibold mb-2">口コミはまだありません</h3>
                         <p class="text-gray-500 mb-6">この業者の口コミを最初に投稿してみませんか？</p>
-                        <a href="{{ route('reviews.create', $company) }}" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-block">
+                        <a href="{{ route('reviews.create', $company) }}" class="bg-blue-600 text-white px-6 py-3 hover:bg-blue-700 transition-colors inline-block">
                             口コミを投稿する
                         </a>
                     </div>
@@ -342,7 +342,7 @@
                     <h3 class="text-lg font-semibold mb-4">この業者の記事</h3>
                     <div class="space-y-6">
                         @foreach($articles as $article)
-                            <article class="bg-gray-50 rounded-lg p-6">
+                            <article class="bg-gray-50 p-6">
                                 <!-- カスタムCSS出力 -->
                                 @if($article->custom_css)
                                     <style>
@@ -365,7 +365,7 @@
 
             <!-- 記事コンテンツ -->
             @if($company->article_content)
-                <div class="mb-8 bg-gray-50 rounded-lg p-6">
+                <div class="mb-8 bg-gray-50 p-6">
                     <div class="prose prose-lg max-w-none">
                         {!! nl2br(e($company->article_content)) !!}
                     </div>
@@ -377,12 +377,12 @@
             <div class="border-t pt-6 md:pt-8">
                 <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
                     <button onclick="addToWishlist({{ $company->id }}, '{{ $company->name }}')" 
-                            class="bg-blue-600 text-white px-6 md:px-8 py-3 rounded-lg hover:bg-blue-700 text-sm md:text-base wishlist-toggle" 
+                            class="bg-blue-600 text-white px-6 md:px-8 py-3 hover:bg-blue-700 text-sm md:text-base wishlist-toggle" 
                             data-company-id="{{ $company->id }}" data-company-name="{{ $company->name }}">
                         この業者を気になるリストに追加
                     </button>
                     <a href="{{ route('quote.create') }}" 
-                       class="bg-orange-600 text-white px-6 md:px-8 py-3 rounded-lg hover:bg-orange-700 text-center text-sm md:text-base">
+                       class="bg-orange-600 text-white px-6 md:px-8 py-3 hover:bg-orange-700 text-center text-sm md:text-base">
                         現調依頼する
                     </a>
                 </div>
@@ -419,7 +419,7 @@
                 </div>
                 <a href="{{ route('quote.create') }}" 
                    id="consult-button"
-                   class="bg-orange-600 text-white px-4 py-3 sm:px-6 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base hover:bg-orange-700 transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 whitespace-nowrap"
+                   class="bg-orange-600 text-white px-4 py-3 sm:px-6 sm:py-4 font-bold text-sm sm:text-base hover:bg-orange-700 transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 whitespace-nowrap"
                    style="background: linear-gradient(to right, #ea580c, #dc2626) !important; color: white !important;">
                     <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.959 8.959 0 01-4.906-1.451c-.302-.163-.622-.35-.963-.589L4 20l1.729-3.131c-.27-.476-.547-.949-.826-1.448C3.639 13.644 3 11.904 3 12c0-4.418 3.582-8 8-8s8 3.582 8 8z"/>

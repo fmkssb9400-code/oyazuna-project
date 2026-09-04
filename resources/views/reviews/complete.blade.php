@@ -21,9 +21,9 @@
             </p>
 
             <!-- Company Info -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
+            <div class="bg-white shadow-sm border border-gray-200 p-6 mb-8">
                 <div class="flex items-center justify-center space-x-4">
-                    <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                    <div class="w-12 h-12 bg-gray-100 flex items-center justify-center">
                         <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h3M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                         </svg>
@@ -39,11 +39,11 @@
             <div class="space-y-4">
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="{{ route('companies.show', $company->slug) }}" 
-                       class="inline-flex justify-center items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                       class="inline-flex justify-center items-center px-6 py-3 bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors duration-200">
                         {{ $company->name }}の詳細を見る
                     </a>
                     <a href="{{ route('companies.index') }}" 
-                       class="inline-flex justify-center items-center px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-200">
+                       class="inline-flex justify-center items-center px-6 py-3 bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition-colors duration-200">
                         業者一覧に戻る
                     </a>
                 </div>
@@ -56,7 +56,7 @@
             </div>
 
             <!-- Notice -->
-            <div class="mt-12 bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div class="mt-12 bg-blue-50 border border-blue-200 p-4">
                 <div class="flex items-start">
                     <svg class="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>

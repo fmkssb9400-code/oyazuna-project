@@ -9,7 +9,7 @@
 
 <p>窓ガラス清掃は、建物の美観維持だけでなく、室内の明るさや快適性にも直結する重要な作業です。特に高所作業を伴う場合は、技術力と安全管理が業者選びの最重要ポイントとなります。適切な業者を選ぶことで、美しい仕上がりと安全な作業、適正な価格でのサービスを受けることができます。</p>
 
-<div class="bg-blue-50 border border-blue-200 rounded-lg p-4 my-6">
+<div class="bg-blue-50 border border-blue-200 p-4 my-6">
     <h4 class="text-blue-800 font-semibold mb-2">業者選びで確認すべき基本要素</h4>
     <ul class="text-blue-700 space-y-1">
         <li>• <strong>技術力・経験</strong>：高品質な仕上がりの確保</li>
@@ -68,7 +68,7 @@
 </ul>
 
 <h3>技術力の確認方法</h3>
-<div class="bg-amber-50 border border-amber-200 rounded-lg p-4 my-6">
+<div class="bg-amber-50 border border-amber-200 p-4 my-6">
     <h4 class="text-amber-800 font-semibold mb-2">技術力チェック項目</h4>
     <ul class="text-amber-700 space-y-1">
         <li>• <strong>現地調査の内容</strong>：詳細な下見と作業計画の提案</li>
@@ -126,7 +126,7 @@
 <h3>見積もりの透明性</h3>
 <p>信頼できる業者は、明確で詳細な見積もりを提供します。以下の要素が含まれているかを確認しましょう：</p>
 
-<div class="bg-green-50 border border-green-200 rounded-lg p-4 my-6">
+<div class="bg-green-50 border border-green-200 p-4 my-6">
     <h4 class="text-green-800 font-semibold mb-2">適正な見積書の要素</h4>
     <ul class="text-green-700 space-y-1">
         <li>• <strong>作業範囲の詳細</strong>：清掃対象の明確な記載</li>
@@ -198,7 +198,7 @@
 <h3>口コミと評判</h3>
 <p>実際の利用者の声は、業者選びの重要な参考材料となります：</p>
 
-<div class="bg-blue-50 border border-blue-200 rounded-lg p-4 my-6">
+<div class="bg-blue-50 border border-blue-200 p-4 my-6">
     <h4 class="text-blue-800 font-semibold mb-2">口コミ確認のポイント</h4>
     <ul class="text-blue-700 space-y-1">
         <li>• <strong>仕上がり品質</strong>：清掃後の満足度</li>
@@ -273,7 +273,7 @@
 <h3>アフターサービス</h3>
 <p>作業完了後のサポート体制も重要な選定要素です：</p>
 
-<div class="bg-amber-50 border border-amber-200 rounded-lg p-4 my-6">
+<div class="bg-amber-50 border border-amber-200 p-4 my-6">
     <h4 class="text-amber-800 font-semibold mb-2">アフターサービス内容</h4>
     <ul class="text-amber-700 space-y-1">
         <li>• <strong>仕上がり確認</strong>：作業完了時の立会い確認</li>

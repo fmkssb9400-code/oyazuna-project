@@ -23,7 +23,7 @@
                     <span class="px-1 text-gray-400 select-none">…</span>
                 @endif
                 <a href="{{ $paginator->url($page) }}"
-                   class="w-10 h-10 flex items-center justify-center rounded-md bg-white border border-gray-200 text-sm transition-colors {{ $page == $current ? 'text-blue-600 font-bold' : 'text-gray-700 font-medium hover:text-blue-600' }}">
+                   class="w-10 h-10 flex items-center justify-center bg-white border border-gray-200 text-sm transition-colors {{ $page == $current ? 'text-blue-600 font-bold' : 'text-gray-700 font-medium hover:text-blue-600' }}">
                     {{ $page }}
                 </a>
             @endforeach

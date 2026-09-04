@@ -9,7 +9,7 @@
 
 <p>窓ガラス清掃の料金は、建物の種類、窓の数・面積、作業の難易度、地域などによって大きく変わります。一般的に、家庭用とビル・マンション用では料金体系が異なり、作業内容や必要な技術レベルによって価格が設定されています。</p>
 
-<div class="bg-blue-50 border border-blue-200 rounded-lg p-4 my-6">
+<div class="bg-blue-50 border border-blue-200 p-4 my-6">
     <h4 class="text-blue-800 font-semibold mb-2">料金設定の基本要素</h4>
     <ul class="text-blue-700 space-y-1">
         <li>• <strong>作業面積</strong>：窓ガラスの総面積（㎡）</li>
@@ -137,7 +137,7 @@
 </ul>
 
 <h3>追加サービス</h3>
-<div class="bg-amber-50 border border-amber-200 rounded-lg p-4 my-6">
+<div class="bg-amber-50 border border-amber-200 p-4 my-6">
     <h4 class="text-amber-800 font-semibold mb-2">オプション清掃サービス</h4>
     <ul class="text-amber-700 space-y-1">
         <li>• <strong>窓枠・サッシ清掃</strong>：基本料金の20〜30%追加</li>
@@ -202,7 +202,7 @@
 <h3>複数社からの見積もり</h3>
 <p>料金を比較検討するために、必ず3社以上から見積もりを取ることをお勧めします。見積もり時には以下の点を確認しましょう。</p>
 
-<div class="bg-green-50 border border-green-200 rounded-lg p-4 my-6">
+<div class="bg-green-50 border border-green-200 p-4 my-6">
     <h4 class="text-green-800 font-semibold mb-2">見積もり確認項目</h4>
     <ul class="text-green-700 space-y-1">
         <li>• 作業範囲の詳細（内側・外側・枠・網戸等）</li>

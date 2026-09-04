@@ -16,7 +16,7 @@
                     </h1>
                     
                     <!-- タブナビゲーション -->
-                    <div class="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
+                    <div class="bg-white border border-gray-200 shadow-lg overflow-hidden">
                         <div class="border-b border-gray-200">
                             <nav class="flex overflow-x-auto scrollbar-hide">
                                 <button class="service-tab flex-shrink-0 py-3 px-4 md:py-4 md:px-6 text-xs md:text-sm font-medium text-center whitespace-nowrap border-b-2 border-blue-500 text-blue-600 bg-blue-50" data-service="window">
@@ -54,7 +54,7 @@
                                 
                                 <div class="space-y-6">
                                     <!-- 見積もりカード 1 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/15</div>
@@ -135,7 +135,7 @@
                                     </div>
 
                                     <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/20</div>
@@ -176,7 +176,7 @@
                                     </div>
 
                                     <!-- 見積もりカード 3 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/25</div>
@@ -232,7 +232,7 @@
                                 
                                 <div class="space-y-6">
                                     <!-- 見積もりカード 1 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/18</div>
@@ -297,7 +297,7 @@
                                     </div>
 
                                     <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/22</div>
@@ -345,7 +345,7 @@
                                 
                                 <div class="space-y-6">
                                     <!-- 見積もりカード 1 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/19</div>
@@ -386,7 +386,7 @@
                                     </div>
 
                                     <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/24</div>
@@ -434,7 +434,7 @@
                                 
                                 <div class="space-y-6">
                                     <!-- 見積もりカード 1 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/26</div>
@@ -475,7 +475,7 @@
                                     </div>
 
                                     <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/28</div>
@@ -531,7 +531,7 @@
                                 
                                 <div class="space-y-6">
                                     <!-- 見積もりカード 1 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/29</div>
@@ -572,7 +572,7 @@
                                     </div>
 
                                     <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/3/30</div>
@@ -620,7 +620,7 @@
                                 
                                 <div class="space-y-6">
                                     <!-- 見積もりカード 1 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/4/1</div>
@@ -669,7 +669,7 @@
                                     </div>
 
                                     <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/4/3</div>
@@ -717,7 +717,7 @@
                                 
                                 <div class="space-y-6">
                                     <!-- 見積もりカード 1 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/4/5</div>
@@ -758,7 +758,7 @@
                                     </div>
 
                                     <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/4/7</div>
@@ -806,7 +806,7 @@
                                 
                                 <div class="space-y-6">
                                     <!-- 見積もりカード 1 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/4/8</div>
@@ -855,7 +855,7 @@
                                     </div>
 
                                     <!-- 見積もりカード 2 -->
-                                    <div class="bg-white border border-gray-300 rounded-lg shadow-sm">
+                                    <div class="bg-white border border-gray-300 shadow-sm">
                                         <div class="bg-gray-100 px-4 md:px-6 py-3 border-b border-gray-200">
                                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                                                 <div><span class="font-semibold">日付:</span> 2026/4/10</div>
@@ -911,7 +911,7 @@
                 <!-- 右：サイドバー -->
                 <aside class="mt-10 lg:mt-0 space-y-4">
                     <!-- お問い合わせフォーム -->
-                    <div class="bg-gray-500 rounded-lg shadow text-white">
+                    <div class="bg-gray-500 shadow text-white">
                         <div class="p-6">
                             <h4 class="text-lg font-bold mb-2 text-center">お急ぎの方へ</h4>
                             <p class="text-sm mb-4 text-center">最短で業者をお探しします</p>
@@ -923,7 +923,7 @@
                                            name="name" 
                                            placeholder="お名前" 
                                            required
-                                           class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
+                                           class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
                                 </div>
                                 
                                 <div>
@@ -931,13 +931,13 @@
                                            name="phone" 
                                            placeholder="電話番号" 
                                            required
-                                           class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
+                                           class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
                                 </div>
                                 
                                 <div>
                                     <select name="service_type" 
                                             required
-                                            class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
+                                            class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
                                         <option value="">サービスを選択</option>
                                         <option value="window_cleaning">窓ガラス清掃</option>
                                         <option value="building_cleaning">ビル清掃</option>
@@ -952,11 +952,11 @@
                                     <textarea name="message" 
                                               placeholder="ご要望・詳細（任意）" 
                                               rows="3"
-                                              class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent resize-none"></textarea>
+                                              class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent resize-none"></textarea>
                                 </div>
                                 
                                 <button type="submit" 
-                                        class="glowing-button w-full bg-orange-600 text-white px-4 py-3 rounded-md font-bold hover:bg-orange-700 transition-colors">
+                                        class="glowing-button w-full bg-orange-600 text-white px-4 py-3 font-bold hover:bg-orange-700 transition-colors">
                                     無料で相談する
                                 </button>
                             </form>
@@ -964,7 +964,7 @@
                     </div>
                     
                     <!-- おすすめ記事 -->
-                    <div class="bg-white rounded-xl shadow p-6">
+                    <div class="bg-white shadow p-6">
                         <h2 class="text-xl font-bold mb-6 text-blue-600">
                             おすすめ記事
                         </h2>
@@ -974,7 +974,7 @@
                                 <a href="{{ $item['url'] ?? '#' }}"
                                    class="flex gap-4 hover:opacity-80 transition-opacity">
 
-                                    <div class="w-20 h-16 bg-blue-100 rounded flex items-center justify-center flex-shrink-0 overflow-hidden">
+                                    <div class="w-20 h-16 bg-blue-100 flex items-center justify-center flex-shrink-0 overflow-hidden">
                                         @if(!empty($item['featured_image_url']))
                                             <img src="{{ $item['featured_image_url'] }}" alt="{{ $item['title'] }}" class="w-full h-full object-cover">
                                         @else
@@ -1005,7 +1005,7 @@
                     @endphp
                     
                     @if(!empty($siteSettings['sidebar_ad_1']))
-                    <div class="bg-white rounded-lg shadow border border-gray-200">
+                    <div class="bg-white shadow border border-gray-200">
                         <div class="p-4">
                             <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
                             <div class="ad-container">
@@ -1017,7 +1017,7 @@
 
                     <!-- サイドバー広告2 -->
                     @if(!empty($siteSettings['sidebar_ad_2']))
-                    <div class="bg-white rounded-lg shadow border border-gray-200">
+                    <div class="bg-white shadow border border-gray-200">
                         <div class="p-4">
                             <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
                             <div class="ad-container">
@@ -1029,7 +1029,7 @@
 
                     <!-- サイドバー広告3 -->
                     @if(!empty($siteSettings['sidebar_ad_3']))
-                    <div class="bg-white rounded-lg shadow border border-gray-200">
+                    <div class="bg-white shadow border border-gray-200">
                         <div class="p-4">
                             <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
                             <div class="ad-container">

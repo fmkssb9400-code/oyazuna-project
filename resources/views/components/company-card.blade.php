@@ -1,6 +1,6 @@
 @props(['company', 'showDetailButton' => true])
 
-<div class="bg-white border border-gray-300 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+<div class="bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300">
     <!-- Header Section -->
     <div class="px-6 py-5 border-b border-gray-200">
         <div class="flex justify-between items-start">
@@ -119,7 +119,7 @@
 
             <!-- Right Column - Company Image -->
             <div class="space-y-4">
-                <div class="bg-gray-100 rounded-lg h-40 flex items-center justify-center">
+                <div class="bg-gray-100 h-40 flex items-center justify-center">
                     @if($company->logo_url)
                         <img src="{{ $company->logo_url }}" alt="{{ $company->name }}のロゴ" class="max-h-32 max-w-full object-contain">
                     @else
@@ -136,8 +136,8 @@
                 @if($company->project_images && count($company->project_images) > 0)
                 <div class="grid grid-cols-3 gap-2">
                     @foreach(array_slice($company->project_images, 0, 3) as $image)
-                    <div class="bg-gray-200 rounded aspect-square">
-                        <img src="{{ $image }}" alt="施工事例" class="w-full h-full object-cover rounded">
+                    <div class="bg-gray-200 aspect-square">
+                        <img src="{{ $image }}" alt="施工事例" class="w-full h-full object-cover">
                     </div>
                     @endforeach
                 </div>
@@ -193,7 +193,7 @@
 
         <!-- Action Buttons -->
         <div class="flex flex-col sm:flex-row gap-3">
-            <a href="{{ route('quote.create') }}" class="flex-1 inline-flex justify-center items-center px-6 py-3 bg-orange-500 text-white text-sm font-bold rounded hover:bg-orange-600 transition-all duration-200">
+            <a href="{{ route('quote.create') }}" class="flex-1 inline-flex justify-center items-center px-6 py-3 bg-orange-500 text-white text-sm font-bold hover:bg-orange-600 transition-all duration-200">
                 現調依頼する
                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -202,7 +202,7 @@
             
             @if($showDetailButton)
             <a href="{{ route('companies.show', $company->slug) }}" 
-               class="flex-1 inline-flex justify-center items-center px-6 py-3 bg-white text-orange-600 text-sm font-bold rounded border-2 border-orange-500 hover:bg-orange-50 transition-all duration-200">
+               class="flex-1 inline-flex justify-center items-center px-6 py-3 bg-white text-orange-600 text-sm font-bold border-2 border-orange-500 hover:bg-orange-50 transition-all duration-200">
                 詳細を見る
                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>

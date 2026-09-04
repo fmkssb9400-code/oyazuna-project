@@ -18,7 +18,7 @@
                 <!-- 左：検索フォーム + 業者一覧 -->
                 <div class="lg:col-span-2 space-y-6">
                     <!-- Search Form -->
-                    <div class="bg-white rounded-2xl border border-gray-200 shadow-lg p-8">
+                    <div class="bg-white border border-gray-200 shadow-lg p-8">
                         <div class="flex items-center gap-4 mb-8 pb-6 border-b border-gray-100">
                             <div class="w-12 h-12 flex items-center justify-center">
                                 <img src="{{ asset('images/life066.png') }}" alt="検索" class="w-8 h-8">
@@ -40,7 +40,7 @@
                                 </span>
                             </label>
                             <div class="relative">
-                                <select id="prefecture-select" class="w-full pl-6 pr-12 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-700 text-lg font-medium shadow-sm hover:border-gray-300 transition-all duration-200 appearance-none cursor-pointer">
+                                <select id="prefecture-select" class="w-full pl-6 pr-12 py-4 border-2 border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-700 text-lg font-medium shadow-sm hover:border-gray-300 transition-all duration-200 appearance-none cursor-pointer">
                                 <option value="">全ての都道府県</option>
                                 @php
                                 $prefectureMapping = [
@@ -86,28 +86,28 @@
                                 $requestedServices = request()->get('service', '');
                                 $selectedServices = $requestedServices ? explode(',', $requestedServices) : [];
                                 @endphp
-                                <button type="button" data-service="window" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('window', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                <button type="button" data-service="window" class="service-option px-4 py-3 text-sm font-medium border-2 transition-all duration-300 {{ in_array('window', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
                                     窓ガラス清掃
                                 </button>
-                                <button type="button" data-service="inspection" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('inspection', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                <button type="button" data-service="inspection" class="service-option px-4 py-3 text-sm font-medium border-2 transition-all duration-300 {{ in_array('inspection', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
                                     外壁調査
                                 </button>
-                                <button type="button" data-service="repair" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('repair', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                <button type="button" data-service="repair" class="service-option px-4 py-3 text-sm font-medium border-2 transition-all duration-300 {{ in_array('repair', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
                                     外壁補修
                                 </button>
-                                <button type="button" data-service="painting" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('painting', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                <button type="button" data-service="painting" class="service-option px-4 py-3 text-sm font-medium border-2 transition-all duration-300 {{ in_array('painting', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
                                     外壁塗装
                                 </button>
-                                <button type="button" data-service="bird_control" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('bird_control', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                <button type="button" data-service="bird_control" class="service-option px-4 py-3 text-sm font-medium border-2 transition-all duration-300 {{ in_array('bird_control', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
                                     鳥害対策
                                 </button>
-                                <button type="button" data-service="sign" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('sign', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                <button type="button" data-service="sign" class="service-option px-4 py-3 text-sm font-medium border-2 transition-all duration-300 {{ in_array('sign', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
                                     看板作業
                                 </button>
-                                <button type="button" data-service="leak_inspection" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('leak_inspection', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                <button type="button" data-service="leak_inspection" class="service-option px-4 py-3 text-sm font-medium border-2 transition-all duration-300 {{ in_array('leak_inspection', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
                                     雨漏り調査
                                 </button>
-                                <button type="button" data-service="other" class="service-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ in_array('other', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                <button type="button" data-service="other" class="service-option px-4 py-3 text-sm font-medium border-2 transition-all duration-300 {{ in_array('other', $selectedServices) ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
                                     その他
                                 </button>
                             </div>
@@ -124,16 +124,16 @@
                                 </span>
                             </label>
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="sort-options">
-                                <button type="button" data-sort="recommend" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'recommend' ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                <button type="button" data-sort="recommend" class="sort-option px-4 py-3 text-sm font-medium border-2 transition-all duration-300 {{ $activeSort === 'recommend' ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
                                     おすすめ
                                 </button>
-                                <button type="button" data-sort="safety" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'safety' ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                <button type="button" data-sort="safety" class="sort-option px-4 py-3 text-sm font-medium border-2 transition-all duration-300 {{ $activeSort === 'safety' ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
                                     安全性重視
                                 </button>
-                                <button type="button" data-sort="performance" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'performance' ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                <button type="button" data-sort="performance" class="sort-option px-4 py-3 text-sm font-medium border-2 transition-all duration-300 {{ $activeSort === 'performance' ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
                                     実績重視
                                 </button>
-                                <button type="button" data-sort="reviews" class="sort-option px-4 py-3 text-sm font-medium rounded-xl border-2 transition-all duration-300 {{ $activeSort === 'reviews' ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
+                                <button type="button" data-sort="reviews" class="sort-option px-4 py-3 text-sm font-medium border-2 transition-all duration-300 {{ $activeSort === 'reviews' ? 'bg-blue-50 border-blue-400 text-blue-700 shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 hover:shadow-md' }}">
                                     口コミ重視
                                 </button>
                             </div>
@@ -141,7 +141,7 @@
                         
                         <!-- Search Button -->
                         <div class="flex justify-center pt-4 border-t border-gray-100">
-                            <button id="search-button" class="w-full inline-flex items-center justify-center gap-3 px-16 py-4 text-white font-bold text-lg rounded-2xl focus:outline-none focus:ring-4 focus:ring-orange-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" style="background: linear-gradient(to right, #f97316, #ea580c) !important; color: white !important;">
+                            <button id="search-button" class="w-full inline-flex items-center justify-center gap-3 px-16 py-4 text-white font-bold text-lg focus:outline-none focus:ring-4 focus:ring-orange-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" style="background: linear-gradient(to right, #f97316, #ea580c) !important; color: white !important;">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                                 </svg>
@@ -164,7 +164,7 @@
                 <!-- 右：サイドバー -->
                 <aside class="mt-10 lg:mt-0 space-y-4">
                     <!-- 会社名・キーワード検索 -->
-                    <div class="bg-white rounded-2xl border border-gray-200 shadow-lg p-6">
+                    <div class="bg-white border border-gray-200 shadow-lg p-6">
                         <div class="mb-6 pb-4 border-b border-gray-100">
                             <h3 class="text-lg font-bold text-gray-900">会社名・キーワード検索</h3>
                             <p class="text-xs text-gray-600 mt-1">特定の会社名やキーワードで絞り込み</p>
@@ -176,7 +176,7 @@
                                    name="search"
                                    value="{{ $searchTerm ?? '' }}"
                                    placeholder="例：ロープアクセス、高所作業、会社名..." 
-                                   class="w-full pl-4 pr-10 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white text-gray-700 shadow-sm hover:border-gray-300 transition-all duration-200">
+                                   class="w-full pl-4 pr-10 py-3 border-2 border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white text-gray-700 shadow-sm hover:border-gray-300 transition-all duration-200">
                             <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                 <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
@@ -193,7 +193,7 @@
                     </div>
                     
                     <!-- お問い合わせフォーム -->
-                    <div class="bg-gray-500 rounded-lg shadow text-white">
+                    <div class="bg-gray-500 shadow text-white">
                         <div class="p-6">
                             <h4 class="text-lg font-bold mb-2 text-center">お急ぎの方へ</h4>
                             <p class="text-sm mb-4 text-center">最短で業者をお探しします</p>
@@ -205,7 +205,7 @@
                                            name="name" 
                                            placeholder="お名前" 
                                            required
-                                           class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
+                                           class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
                                 </div>
                                 
                                 <div>
@@ -213,13 +213,13 @@
                                            name="phone" 
                                            placeholder="電話番号" 
                                            required
-                                           class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
+                                           class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
                                 </div>
                                 
                                 <div>
                                     <select name="service_type" 
                                             required
-                                            class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
+                                            class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
                                         <option value="">サービスを選択</option>
                                         <option value="window_cleaning">窓ガラス清掃</option>
                                         <option value="building_cleaning">ビル清掃</option>
@@ -234,11 +234,11 @@
                                     <textarea name="message" 
                                               placeholder="ご要望・詳細（任意）" 
                                               rows="3"
-                                              class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent resize-none"></textarea>
+                                              class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent resize-none"></textarea>
                                 </div>
                                 
                                 <button type="submit" 
-                                        class="glowing-button w-full bg-orange-600 text-white px-4 py-3 rounded-md font-bold hover:bg-orange-700 transition-colors">
+                                        class="glowing-button w-full bg-orange-600 text-white px-4 py-3 font-bold hover:bg-orange-700 transition-colors">
                                     無料で相談する
                                 </button>
                             </form>
@@ -246,7 +246,7 @@
                     </div>
                     
                     <!-- おすすめ記事 -->
-                    <div class="bg-white rounded-xl shadow p-6">
+                    <div class="bg-white shadow p-6">
                         <h2 class="text-xl font-bold mb-6 text-blue-600">
                             おすすめ記事
                         </h2>
@@ -256,7 +256,7 @@
                                 <a href="{{ $item['url'] ?? '#' }}"
                                    class="flex gap-4 hover:opacity-80 transition">
 
-                                    <div class="w-24 h-16 bg-blue-100 rounded flex items-center justify-center flex-shrink-0 overflow-hidden">
+                                    <div class="w-24 h-16 bg-blue-100 flex items-center justify-center flex-shrink-0 overflow-hidden">
                                         @if(!empty($item['featured_image_url']))
                                             <img src="{{ $item['featured_image_url'] }}" alt="{{ $item['title'] }}" class="w-full h-full object-cover">
                                         @else
@@ -287,7 +287,7 @@
                     @endphp
                     
                     @if(!empty($siteSettings['sidebar_ad_1']))
-                    <div class="bg-white rounded-lg shadow border border-gray-200">
+                    <div class="bg-white shadow border border-gray-200">
                         <div class="p-4">
                             <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
                             <div class="ad-container">
@@ -300,7 +300,7 @@
 
                     <!-- サイドバー広告2 -->
                     @if(!empty($siteSettings['sidebar_ad_2']))
-                    <div class="bg-white rounded-lg shadow border border-gray-200">
+                    <div class="bg-white shadow border border-gray-200">
                         <div class="p-4">
                             <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
                             <div class="ad-container">
@@ -313,7 +313,7 @@
 
                     <!-- サイドバー広告3 -->
                     @if(!empty($siteSettings['sidebar_ad_3']))
-                    <div class="bg-white rounded-lg shadow border border-gray-200">
+                    <div class="bg-white shadow border border-gray-200">
                         <div class="p-4">
                             <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
                             <div class="ad-container">
@@ -365,7 +365,7 @@
                 </div>
                 <a href="{{ route('quote.create') }}" 
                    id="consult-button"
-                   class="bg-orange-600 text-white px-4 py-3 sm:px-6 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base hover:bg-orange-700 transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 whitespace-nowrap"
+                   class="bg-orange-600 text-white px-4 py-3 sm:px-6 sm:py-4 font-bold text-sm sm:text-base hover:bg-orange-700 transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 whitespace-nowrap"
                    style="background: linear-gradient(to right, #ea580c, #dc2626) !important; color: white !important;">
                     <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.959 8.959 0 01-4.906-1.451c-.302-.163-.622-.35-.963-.589L4 20l1.729-3.131c-.270-.476-.547-.949-.826-1.448C3.639 13.644 3 11.904 3 12c0-4.418 3.582-8 8-8s8 3.582 8 8z"/>

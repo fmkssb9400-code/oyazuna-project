@@ -12,9 +12,9 @@
     @if($paginatedItems->count() > 0)
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             @foreach($paginatedItems as $item)
-                <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                <article class="bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
                     @if($item->featured_image_url)
-                        <div class="aspect-video overflow-hidden rounded-t-lg">
+                        <div class="aspect-video overflow-hidden">
                             <img src="{{ $item->featured_image_url }}" alt="{{ $item->title }}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                         </div>
                     @endif

@@ -1,4 +1,4 @@
-<article class="w-full rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 p-6">
+<article class="w-full border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 p-6">
     <div class="grid gap-8 lg:grid-cols-2">
         <!-- Left Column -->
         <div class="space-y-4">
@@ -95,13 +95,13 @@
             <!-- Buttons -->
             <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 <a href="{{ route('companies.show', $company['slug']) }}" 
-                   class="bg-blue-600 text-white text-center px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+                   class="bg-blue-600 text-white text-center px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors">
                     詳細を見る
                 </a>
                 <a href="{{ $company['website_url'] }}" 
                    target="_blank" 
                    rel="noopener noreferrer"
-                   class="bg-gray-600 text-white text-center px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors">
+                   class="bg-gray-600 text-white text-center px-4 py-2 text-sm font-medium hover:bg-gray-700 transition-colors">
                     公式サイト
                 </a>
             </div>

@@ -24,7 +24,7 @@
 
     <!-- Main Content without Sidebar -->
     <div class="max-w-4xl mx-auto">
-        <article class="bg-white rounded-lg shadow-md overflow-hidden">
+        <article class="bg-white shadow-md overflow-hidden">
             <div class="p-4 md:p-8 pb-0">
                 <!-- Article Meta -->
                 <div class="mb-4">
@@ -52,7 +52,7 @@
             </div>
 
             @if($page && $page->featured_image)
-                <div class="aspect-video overflow-hidden mx-4 md:mx-8 mb-6 rounded-lg">
+                <div class="aspect-video overflow-hidden mx-4 md:mx-8 mb-6">
                     <img src="{{ Storage::url($page->featured_image) }}" alt="{{ $page->title }}" class="w-full h-full object-cover">
                 </div>
             @endif
@@ -60,7 +60,7 @@
             <div class="p-4 md:p-8 pt-0">
                 <!-- Supervisor Information -->
                 @if($page && $page->supervisor_name)
-                <div class="mb-8 bg-gray-50 border border-gray-200 rounded-lg p-6">
+                <div class="mb-8 bg-gray-50 border border-gray-200 p-6">
                     <div class="flex items-start gap-4">
                         @if($page->supervisor_avatar)
                             <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-gray-200 flex-shrink-0">
@@ -105,18 +105,18 @@
 
                 <!-- Table of Contents Toggle -->
                 <div id="toc-container" class="mb-8" style="display: none;">
-                    <button id="toc-toggle" class="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                    <button id="toc-toggle" class="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 font-medium transition-colors">
                         <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
                             <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 16a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/>
                             </svg>
                         </div>
                         <span>目次</span>
-                        <span id="toc-button-text" class="bg-gray-600 text-white px-2 py-1 rounded text-sm">表示</span>
+                        <span id="toc-button-text" class="bg-gray-600 text-white px-2 py-1 text-sm">表示</span>
                     </button>
                     
                     <!-- Table of Contents -->
-                    <div id="table-of-contents" class="bg-gray-50 border border-gray-200 rounded-lg p-4 mt-4" style="display: none;">
+                    <div id="table-of-contents" class="bg-gray-50 border border-gray-200 p-4 mt-4" style="display: none;">
                         <ul id="toc-list" class="space-y-2 text-sm"></ul>
                     </div>
                 </div>
@@ -224,7 +224,7 @@
 
         <!-- Navigation -->
         <div class="mt-8 flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
-            <a href="{{ route('home') }}" class="inline-flex items-center justify-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors">
+            <a href="{{ route('home') }}" class="inline-flex items-center justify-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
@@ -235,7 +235,7 @@
             <div class="flex justify-center space-x-2">
                 <a href="https://twitter.com/intent/tweet?text={{ urlencode($__env->yieldContent('title')) }}&url={{ urlencode(request()->url()) }}" 
                    target="_blank" 
-                   class="inline-flex items-center px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded text-sm transition-colors">
+                   class="inline-flex items-center px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white text-sm transition-colors">
                     <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"></path>
                     </svg>
@@ -244,7 +244,7 @@
                 
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->url()) }}" 
                    target="_blank" 
-                   class="inline-flex items-center px-3 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded text-sm transition-colors">
+                   class="inline-flex items-center px-3 py-2 bg-blue-700 hover:bg-blue-800 text-white text-sm transition-colors">
                     <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M20 10C20 4.477 15.523 0 10 0S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z" clip-rule="evenodd"></path>
                     </svg>
@@ -475,7 +475,7 @@
             line-height: 1.4 !important;
             background: #5b8bd0 !important;
             color: white !important;
-            border-radius: 15px !important;
+            border-radius: 0;
             box-shadow: 1px 1px 2px rgba(0,0,0,.3) !important;
             z-index: 10 !important;
             min-height: 30px !important;
@@ -674,7 +674,7 @@
             line-height: 1.4 !important;
             background: #5b8bd0 !important;
             color: white !important;
-            border-radius: 15px !important;
+            border-radius: 0;
             box-shadow: 1px 1px 2px rgba(0,0,0,.3) !important;
             z-index: 10 !important;
             min-height: 30px !important;
@@ -771,7 +771,7 @@
         background-color: #3b82f6 !important;
         color: white !important;
         text-decoration: none !important;
-        border-radius: 12px !important;
+        border-radius: 0;
         font-weight: 700 !important;
         font-size: 18px !important;
         padding: 20px 40px !important;
@@ -812,7 +812,7 @@
         background-color: #f59e0b !important;
         color: white !important;
         text-decoration: none !important;
-        border-radius: 12px !important;
+        border-radius: 0;
         font-weight: 700 !important;
         font-size: 18px !important;
         padding: 20px 40px !important;
@@ -876,7 +876,7 @@
         background-color: #fef08a;
         color: #1f2937;
         padding: 2px 0;
-        border-radius: 2px;
+        border-radius: 0;
     }
 
     /* 比較表スタイル（km-接頭辞） */
@@ -885,7 +885,7 @@
         border-collapse: collapse;
         margin: 20px 0;
         background: white;
-        border-radius: 8px;
+        border-radius: 0;
         overflow: hidden;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }

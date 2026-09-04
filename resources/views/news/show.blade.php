@@ -20,7 +20,7 @@
     <div class="lg:grid lg:grid-cols-3 lg:gap-8">
         <!-- 左：記事本文 -->
         <div class="lg:col-span-2">
-            <article class="bg-white rounded-lg shadow-md overflow-hidden">
+            <article class="bg-white shadow-md overflow-hidden">
                 <div class="p-4 md:p-8 pb-0">
                     <!-- Article Meta -->
                     <div class="mb-4">
@@ -32,7 +32,7 @@
                 </div>
 
                 @if($article->featured_image_url)
-                    <div class="aspect-video overflow-hidden mx-4 md:mx-8 mb-6 rounded-lg">
+                    <div class="aspect-video overflow-hidden mx-4 md:mx-8 mb-6">
                         <img src="{{ $article->featured_image_url }}" alt="{{ $article->title }}" class="w-full h-full object-cover">
                     </div>
                 @endif
@@ -40,7 +40,7 @@
                 <div class="p-4 md:p-8 pt-0">
                     <!-- Supervisor Information -->
                     @if($article->supervisor_name)
-                    <div class="mb-8 bg-gray-50 border border-gray-200 rounded-lg p-6">
+                    <div class="mb-8 bg-gray-50 border border-gray-200 p-6">
                         <div class="flex items-start gap-4">
                             @if($article->supervisor_avatar)
                                 <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-gray-200 flex-shrink-0">
@@ -85,18 +85,18 @@
 
                     <!-- Table of Contents Toggle -->
                     <div id="toc-container" class="mb-8" style="display: none;">
-                        <button id="toc-toggle" class="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                        <button id="toc-toggle" class="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 font-medium transition-colors">
                             <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
                                 <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 16a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/>
                                 </svg>
                             </div>
                             <span>目次</span>
-                            <span id="toc-button-text" class="bg-gray-600 text-white px-2 py-1 rounded text-sm">表示</span>
+                            <span id="toc-button-text" class="bg-gray-600 text-white px-2 py-1 text-sm">表示</span>
                         </button>
                         
                         <!-- Table of Contents -->
-                        <div id="table-of-contents" class="bg-gray-50 border border-gray-200 rounded-lg p-4 mt-4" style="display: none;">
+                        <div id="table-of-contents" class="bg-gray-50 border border-gray-200 p-4 mt-4" style="display: none;">
                             <ul id="toc-list" class="space-y-2 text-sm"></ul>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                         .article-content .check-point-box {
                             background: linear-gradient(135deg, #e8f5e8 0%, #f0fff0 100%) !important;
                             border: 2px solid #4caf50 !important;
-                            border-radius: 12px !important;
+                            border-radius: 0;
                             padding: 20px !important;
                             margin: 30px 0 !important;
                             box-shadow: 0 4px 12px rgba(76, 175, 80, 0.15) !important;
@@ -203,7 +203,7 @@
                             left: 15px !important;
                             background: #5b8bd0 !important;
                             padding: 12px 30px !important;
-                            border-radius: 20px !important;
+                            border-radius: 0;
                             font-weight: bold !important;
                             font-size: 18px !important;
                             box-shadow: 1px 1px 2px rgba(0,0,0,.3) !important;
@@ -221,7 +221,7 @@
                             left: 15px !important;
                             background: #5b8bd0 !important;
                             padding: 12px 30px !important;
-                            border-radius: 20px !important;
+                            border-radius: 0;
                             font-weight: bold !important;
                             font-size: 18px !important;
                             box-shadow: 1px 1px 2px rgba(0,0,0,.3) !important;
@@ -285,7 +285,7 @@
 
             <!-- Navigation -->
             <div class="mt-8 flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
-                <a href="{{ route('news.index') }}" class="inline-flex items-center justify-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors">
+                <a href="{{ route('news.index') }}" class="inline-flex items-center justify-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                     </svg>
@@ -296,7 +296,7 @@
                 <div class="flex justify-center space-x-2">
                     <a href="https://twitter.com/intent/tweet?text={{ urlencode($article->title) }}&url={{ urlencode(request()->url()) }}" 
                        target="_blank" 
-                       class="inline-flex items-center px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded text-sm transition-colors">
+                       class="inline-flex items-center px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white text-sm transition-colors">
                         <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"></path>
                         </svg>
@@ -305,7 +305,7 @@
                     
                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->url()) }}" 
                        target="_blank" 
-                       class="inline-flex items-center px-3 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded text-sm transition-colors">
+                       class="inline-flex items-center px-3 py-2 bg-blue-700 hover:bg-blue-800 text-white text-sm transition-colors">
                         <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M20 10C20 4.477 15.523 0 10 0S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z" clip-rule="evenodd"></path>
                         </svg>
@@ -323,7 +323,7 @@
             @endphp
             
             @if(!empty($siteSettings['sidebar_ad_1']))
-            <div class="bg-white rounded-lg shadow border border-gray-200">
+            <div class="bg-white shadow border border-gray-200">
                 <div class="p-4">
                     <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
                     <div class="ad-container">
@@ -334,7 +334,7 @@
             @endif
 
             <!-- お問い合わせフォーム -->
-            <div class="bg-gray-500 rounded-lg shadow-lg text-white">
+            <div class="bg-gray-500 shadow-lg text-white">
                 <div class="p-6">
                     <h4 class="text-xl font-bold mb-6 text-center">お急ぎの方へ</h4>
                     
@@ -363,7 +363,7 @@
                                        name="contact_name" 
                                        placeholder="例：田中太郎" 
                                        required
-                                       class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                             </div>
                             
                             <!-- メールアドレス -->
@@ -373,7 +373,7 @@
                                        name="email" 
                                        placeholder="example@email.com" 
                                        required
-                                       class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                             </div>
                             
                             <!-- 電話番号 -->
@@ -382,13 +382,13 @@
                                 <input type="tel" 
                                        name="phone" 
                                        placeholder="03-1234-5678" 
-                                       class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                             </div>
                             
                             <!-- 都道府県 -->
                             <div>
                                 <label class="block text-sm font-medium text-white mb-2">都道府県 <span class="text-red-300">*</span></label>
-                                <select name="prefecture" required class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                                <select name="prefecture" required class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                                     <option value="">選択してください</option>
                                     <option value="東京都">東京都</option>
                                     <option value="神奈川県">神奈川県</option>
@@ -404,7 +404,7 @@
                             <!-- サービス内容 -->
                             <div>
                                 <label class="block text-sm font-medium text-white mb-2">サービス内容 <span class="text-red-300">*</span></label>
-                                <select name="service_type" required class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                                <select name="service_type" required class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                                     <option value="">選択してください</option>
                                     <option value="window_cleaning">窓ガラス清掃</option>
                                     <option value="wall_painting">外壁塗装</option>
@@ -424,11 +424,11 @@
                             <textarea name="note" 
                                       placeholder="建物の階数、作業内容の詳細、希望時期などお気軽にお書きください" 
                                       rows="3"
-                                      class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none"></textarea>
+                                      class="w-full px-3 py-2 text-gray-700 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none"></textarea>
                         </div>
                         
                         <button type="submit" 
-                                class="w-full bg-orange-600 text-white px-6 py-4 rounded-md font-bold text-lg hover:bg-orange-700 transition-colors">
+                                class="w-full bg-orange-600 text-white px-6 py-4 font-bold text-lg hover:bg-orange-700 transition-colors">
                             無料で見積もり依頼
                         </button>
                         
@@ -442,7 +442,7 @@
 
             <!-- サイドバー広告2 -->
             @if(!empty($siteSettings['sidebar_ad_2']))
-            <div class="bg-white rounded-lg shadow border border-gray-200">
+            <div class="bg-white shadow border border-gray-200">
                 <div class="p-4">
                     <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
                     <div class="ad-container">
@@ -455,7 +455,7 @@
             <!-- おすすめ記事 -->
 
             @if($featuredArticles->count() > 0)
-            <div class="bg-white rounded-xl shadow p-6">
+            <div class="bg-white shadow p-6">
                 <h2 class="text-xl font-bold mb-6 text-blue-600">
                     おすすめ記事
                 </h2>
@@ -465,7 +465,7 @@
                         <a href="{{ $item['url'] }}"
                            class="flex gap-4 hover:opacity-80 transition">
 
-                            <div class="w-24 h-16 bg-blue-100 rounded flex items-center justify-center flex-shrink-0 overflow-hidden">
+                            <div class="w-24 h-16 bg-blue-100 flex items-center justify-center flex-shrink-0 overflow-hidden">
                                 @if(!empty($item['featured_image_url']))
                                     <img src="{{ $item['featured_image_url'] }}" alt="{{ $item['title'] }}" class="w-full h-full object-cover">
                                 @else
@@ -489,7 +489,7 @@
 
             <!-- サイドバー広告3 -->
             @if(!empty($siteSettings['sidebar_ad_3']))
-            <div class="bg-white rounded-lg shadow border border-gray-200">
+            <div class="bg-white shadow border border-gray-200">
                 <div class="p-4">
                     <div class="text-xs text-gray-400 mb-2 text-center">広告</div>
                     <div class="ad-container">
@@ -711,7 +711,7 @@
             background-color: #3b82f6 !important;
             color: white !important;
             text-decoration: none !important;
-            border-radius: 12px !important;
+            border-radius: 0;
             font-weight: 700 !important;
             font-size: 18px !important;
             padding: 20px 40px !important;
@@ -752,7 +752,7 @@
             background-color: #f59e0b !important;
             color: white !important;
             text-decoration: none !important;
-            border-radius: 12px !important;
+            border-radius: 0;
             font-weight: 700 !important;
             font-size: 18px !important;
             padding: 20px 40px !important;
@@ -816,7 +816,7 @@
             background-color: #fef08a;
             color: #1f2937;
             padding: 2px 0;
-            border-radius: 2px;
+            border-radius: 0;
         }
 
 
@@ -826,7 +826,7 @@
             border-collapse: collapse;
             margin: 20px 0;
             background: white;
-            border-radius: 8px;
+            border-radius: 0;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
