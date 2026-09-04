@@ -140,9 +140,15 @@
                         <div class="bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-600">工法で探す</div>
                         <div class="bg-white divide-y divide-dashed divide-gray-300">
                             @foreach($hubCategoryPages as $hubSlug => $hubConfig)
-                                <a href="{{ route('hub.category', $hubSlug) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
-                                    {{ $hubConfig['nav_label'] ?? ($hubConfig['label'] . '業者一覧') }}
-                                </a>
+                                @if($comboLinks->has($hubSlug))
+                                    <a href="{{ route('area.hub.show', [$slug, $hubSlug]) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
+                                        {{ $config['label'] }}の{{ $hubConfig['label'] }}業者一覧
+                                    </a>
+                                @else
+                                    <a href="{{ route('hub.category', $hubSlug) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
+                                        {{ $hubConfig['nav_label'] ?? ($hubConfig['label'] . '業者一覧') }}
+                                    </a>
+                                @endif
                             @endforeach
                         </div>
                         <div class="bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-600">条件で絞り込む</div>

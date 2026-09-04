@@ -1158,11 +1158,12 @@ class HubController extends Controller
         return $this->pages;
     }
 
-    public function category(Request $request, string $slug)
+    public function category(Request $request, string $slug, AreaController $area, AreaHubController $areaHub)
     {
         abort_unless(isset($this->pages[$slug]), 404);
 
         $config = $this->pages[$slug];
+        $comboLinks = collect($areaHub->qualifyingCombinations($area, $this))->where('hubSlug', $slug)->values();
 
         $baseQuery = function () use ($config): Builder {
             $query = Company::published()
@@ -1192,6 +1193,7 @@ class HubController extends Controller
             'topCompanies' => $topCompanies,
             'companies' => $companies,
             'otherHubs' => collect($this->pages)->except($slug),
+            'comboLinks' => $comboLinks,
         ]);
     }
 }

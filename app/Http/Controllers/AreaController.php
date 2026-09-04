@@ -762,12 +762,21 @@ class AreaController extends Controller
         return array_keys($this->pages);
     }
 
-    public function show(Request $request, string $slug, HubController $hub)
+    /**
+     * 他コントローラ（掛け合わせページ等）からの参照用に、エリアページ設定の全件を返す。
+     */
+    public function pages(): array
+    {
+        return $this->pages;
+    }
+
+    public function show(Request $request, string $slug, HubController $hub, AreaHubController $areaHub)
     {
         abort_unless(isset($this->pages[$slug]), 404);
 
         $config = $this->pages[$slug];
         $allHubs = collect($hub->pages());
+        $comboLinks = collect($areaHub->qualifyingCombinations($this, $hub))->where('areaSlug', $slug)->keyBy('hubSlug');
 
         $baseQuery = function () use ($config): Builder {
             return Company::published()
@@ -797,6 +806,7 @@ class AreaController extends Controller
             'otherAreas' => collect($this->pages)->except($slug),
             'hubCategoryPages' => $allHubs->where('type', 'category'),
             'hubConditionPages' => $allHubs->where('type', 'condition'),
+            'comboLinks' => $comboLinks,
         ]);
     }
 }

@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\EditorUploadController;
 use App\Http\Controllers\QuoteDataController;
 use App\Http\Controllers\HubController;
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\AreaHubController;
 use App\Http\Controllers\SitemapController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -31,6 +32,9 @@ Route::get('/hub/{slug}', [HubController::class, 'category'])->name('hub.categor
 
 // Area pages (SEO landing pages, prefecture axis)
 Route::get('/area/{slug}', [AreaController::class, 'show'])->name('area.show');
+
+// Area x Hub combination pages (SEO landing pages, prefecture x method axis)
+Route::get('/area/{areaSlug}/{hubSlug}', [AreaHubController::class, 'show'])->name('area.hub.show');
 Route::post('/compare/add/{company}', [CompareController::class, 'add'])->name('compare.add');
 Route::delete('/compare/remove/{company}', [CompareController::class, 'remove'])->name('compare.remove');
 Route::get('/compare', [CompareController::class, 'index'])->name('compare.index');

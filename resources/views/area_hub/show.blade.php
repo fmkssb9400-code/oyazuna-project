@@ -1,24 +1,34 @@
 @extends('layouts.app')
 
-@section('title', $config['h1'] . ' | オヤズナ')
-@section('description', $config['meta_description'])
+@php
+    $pageTitle = $areaConfig['prefecture'] . 'の' . ($hubConfig['nav_label'] ?? $hubConfig['label']) . '｜高所ロープ作業・見積り無料';
+    $pageDescription = $areaConfig['prefecture'] . 'で' . $hubConfig['label'] . 'に対応する高所ロープ作業の専門業者を' . $count . '社掲載。無料で見積もり依頼できます。';
+    $introStats = $averageRating
+        ? '現在、' . $areaConfig['prefecture'] . 'で' . $hubConfig['label'] . 'に対応する業者を' . $count . '社掲載しており、口コミ平均評価は' . $averageRating . 'です。'
+        : '現在、' . $areaConfig['prefecture'] . 'で' . $hubConfig['label'] . 'に対応する業者を' . $count . '社掲載しています。';
+@endphp
+
+@section('title', $pageTitle . ' | オヤズナ')
+@section('description', $pageDescription)
 
 @section('head')
     <link rel="canonical" href="{{ url()->full() }}">
-    <script type="application/ld+json">
-        {!! json_encode([
-            '@@context' => 'https://schema.org',
-            '@type' => 'FAQPage',
-            'mainEntity' => collect($config['faq'])->map(fn ($item) => [
-                '@type' => 'Question',
-                'name' => $item['q'],
-                'acceptedAnswer' => [
-                    '@type' => 'Answer',
-                    'text' => $item['a'],
-                ],
-            ])->values()->all(),
-        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
-    </script>
+    @if(!empty($hubConfig['faq']))
+        <script type="application/ld+json">
+            {!! json_encode([
+                '@@context' => 'https://schema.org',
+                '@type' => 'FAQPage',
+                'mainEntity' => collect($hubConfig['faq'])->map(fn ($item) => [
+                    '@type' => 'Question',
+                    'name' => $item['q'],
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => $item['a'],
+                    ],
+                ])->values()->all(),
+            ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+        </script>
+    @endif
 @endsection
 
 @section('content')
@@ -30,25 +40,25 @@
             <ol class="flex flex-wrap items-center gap-x-2 text-sm text-gray-600">
                 <li><a href="{{ route('home') }}" class="hover:text-blue-600">ホーム</a></li>
                 <li><span class="mx-1">/</span></li>
-                <li><a href="{{ route('companies.index') }}" class="hover:text-blue-600">専門業者一覧</a></li>
+                <li><a href="{{ route('area.show', $areaSlug) }}" class="hover:text-blue-600">{{ $areaConfig['label'] }}</a></li>
                 <li><span class="mx-1">/</span></li>
-                <li class="text-gray-900">{{ $config['label'] }}</li>
+                <li class="text-gray-900">{{ $hubConfig['nav_label'] ?? $hubConfig['label'] }}</li>
             </ol>
         </nav>
 
         <!-- Hero -->
-        <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 leading-tight">{{ $config['h1'] }}</h1>
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 leading-tight">{{ $areaConfig['prefecture'] }}の{{ $hubConfig['nav_label'] ?? $hubConfig['label'] }}を比較｜見積り無料</h1>
 
     </div>
 
-    <!-- 比較表（他セクションより横幅1.25倍: max-w-5xl(64rem) → max-w-7xl(80rem)） -->
+    <!-- 比較表 -->
     @if($topCompanies->isNotEmpty())
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white border border-gray-200 shadow-lg p-6 md:p-8">
                 <div class="space-y-4 mb-6">
-                    @foreach((array) $config['lead'] as $paragraph)
-                        <p class="text-gray-700 leading-relaxed">{{ $paragraph }}</p>
-                    @endforeach
+                    <p class="text-gray-700 leading-relaxed">{{ $areaConfig['lead'][0] ?? '' }}</p>
+                    <p class="text-gray-700 leading-relaxed">{{ $hubConfig['lead'][0] ?? '' }}</p>
+                    <p class="text-gray-700 leading-relaxed">{{ $introStats }}</p>
                 </div>
                 <p class="text-xs text-gray-500 mb-2 sm:hidden">→ 横にスクロールできます</p>
                 <div class="overflow-x-auto -mx-6 md:-mx-8 px-6 md:px-8">
@@ -76,15 +86,14 @@
                                         $company->branco_supported ? 'ブランコ' : null,
                                         $company->aerial_platform_supported ? '高所作業車' : null,
                                     ]);
+
+                                    $highlightTags = $company->matchingConditionTags();
                                 @endphp
                                 <tr class="{{ $index % 2 === 1 ? 'bg-gray-50' : '' }}">
                                     <td class="px-4 py-3 font-medium whitespace-nowrap border border-gray-300">
                                         <a href="{{ $company->official_url }}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">{{ $company->name }}</a>
                                     </td>
                                     <td class="px-4 py-3 text-gray-600 whitespace-nowrap border border-gray-300">{{ $areasText }}</td>
-                                    @php
-                                        $highlightTags = $company->matchingConditionTags($config['highlight_tags'] ?? []);
-                                    @endphp
                                     <td class="px-4 py-3 text-gray-600 whitespace-nowrap border border-gray-300">
                                         {{ $highlightTags ? implode('・', $highlightTags) : '-' }}
                                     </td>
@@ -101,31 +110,25 @@
         </div>
     @endif
 
-    <!-- 業者一覧（比較表と同じ横幅: max-w-7xl） -->
+    <!-- 業者一覧 -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mt-10 mb-10">
             <div class="lg:grid lg:grid-cols-3 lg:gap-8 lg:items-start">
                 <div class="lg:col-span-2">
-                    <h2 class="text-xl font-bold text-gray-900 mb-4">{{ $config['label'] }}対応業者一覧</h2>
-                    @if($companies->isEmpty())
-                        <div class="bg-white rounded-2xl border border-gray-200 p-8 text-center text-gray-600">
-                            現在この条件に合う業者情報を準備中です。<a href="{{ route('companies.index') }}" class="text-blue-600 underline">業者一覧</a>から他の条件もご確認ください。
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">{{ $areaConfig['prefecture'] }}の{{ $hubConfig['label'] }}業者一覧</h2>
+                    <div class="space-y-6">
+                        @foreach($companies as $company)
+                            <x-company-card :company="$company" />
+                        @endforeach
+                    </div>
+                    @if($companies->hasPages())
+                        <div class="mt-10 flex justify-center">
+                            {{ $companies->links('hub.pagination') }}
                         </div>
-                    @else
-                        <div class="space-y-6">
-                            @foreach($companies as $company)
-                                <x-company-card :company="$company" />
-                            @endforeach
-                        </div>
-                        @if($companies->hasPages())
-                            <div class="mt-10 flex justify-center">
-                                {{ $companies->links('hub.pagination') }}
-                            </div>
-                        @endif
                     @endif
                 </div>
 
-                <!-- 関連ページ（サイドバー、カード一覧と高さを揃える） -->
+                <!-- 関連ページ -->
                 <aside class="mt-10 lg:mt-0">
                     <h2 class="text-xl font-bold mb-4 invisible hidden lg:block" aria-hidden="true">&nbsp;</h2>
                     <div class="border border-gray-200">
@@ -133,21 +136,29 @@
                             <h3 class="text-white font-bold">関連ページ</h3>
                         </div>
                         <div class="bg-white divide-y divide-dashed divide-gray-300">
-                            <a href="{{ route('companies.index') }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
-                                専門業者一覧（全カテゴリ）
+                            <a href="{{ route('area.show', $areaSlug) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
+                                {{ $areaConfig['label'] }}の業者一覧（全カテゴリ）
                             </a>
-                            @foreach($otherHubs as $otherSlug => $otherConfig)
-                                <a href="{{ route('hub.category', $otherSlug) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
-                                    {{ $otherConfig['nav_label'] ?? ($otherConfig['label'] . '対応業者一覧') }}
-                                </a>
-                            @endforeach
+                            <a href="{{ route('hub.category', $hubSlug) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
+                                {{ $hubConfig['nav_label'] ?? $hubConfig['label'] }}（全国）
+                            </a>
                         </div>
-                        @if($comboLinks->isNotEmpty())
-                            <div class="bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-600">都道府県から探す</div>
+                        @if($siblingsByArea->isNotEmpty())
+                            <div class="bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-600">{{ $areaConfig['label'] }}の他の工法</div>
                             <div class="bg-white divide-y divide-dashed divide-gray-300">
-                                @foreach($comboLinks as $combo)
-                                    <a href="{{ route('area.hub.show', [$combo['areaSlug'], $combo['hubSlug']]) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
-                                        {{ $combo['areaConfig']['label'] }}の{{ $combo['hubConfig']['label'] }}業者一覧
+                                @foreach($siblingsByArea as $sibling)
+                                    <a href="{{ route('area.hub.show', [$sibling['areaSlug'], $sibling['hubSlug']]) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
+                                        {{ $sibling['hubConfig']['nav_label'] ?? $sibling['hubConfig']['label'] }}
+                                    </a>
+                                @endforeach
+                            </div>
+                        @endif
+                        @if($siblingsByHub->isNotEmpty())
+                            <div class="bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-600">他の都道府県の{{ $hubConfig['label'] }}</div>
+                            <div class="bg-white divide-y divide-dashed divide-gray-300">
+                                @foreach($siblingsByHub as $sibling)
+                                    <a href="{{ route('area.hub.show', [$sibling['areaSlug'], $sibling['hubSlug']]) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
+                                        {{ $sibling['areaConfig']['label'] }}
                                     </a>
                                 @endforeach
                             </div>
@@ -158,59 +169,29 @@
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="lg:grid lg:grid-cols-3 lg:gap-8">
-            <div class="lg:col-span-2">
-                <!-- 解説セクション -->
-                @if(!empty($config['sections']))
+    @if(!empty($hubConfig['faq']))
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+                <div class="lg:col-span-2">
                     <div class="bg-white p-6 md:p-8 mb-10">
-                        @foreach($config['sections'] as $section)
-                            <div class="{{ $loop->first ? '' : 'mt-12' }}">
-                                <h2 class="text-3xl font-bold text-gray-900 mb-2">{{ $section['heading'] }}</h2>
-                                <div class="h-1 bg-green-500 mb-6"></div>
-                                @foreach($section['body'] ?? [] as $p)
-                                    <p class="text-base text-gray-700 leading-relaxed mb-4">{{ $p }}</p>
-                                @endforeach
-                                @foreach($section['subsections'] ?? [] as $sub)
-                                    <h3 class="text-lg font-bold text-gray-900 border-l-4 border-green-500 pl-3 mb-3 mt-6">{{ $sub['heading'] }}</h3>
-                                    <p class="text-base text-gray-700 leading-relaxed mb-4">{{ $sub['body'] }}</p>
-                                @endforeach
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
-
-                <!-- FAQ -->
-                <div class="bg-white p-6 md:p-8 mb-10">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-2">よくある質問</h2>
-                    <div class="h-1 bg-green-500 mb-8"></div>
-                    <div class="space-y-10">
-                        @foreach($config['faq'] as $item)
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-900 border-l-4 border-green-500 pl-3 mb-3">{{ $item['q'] }}</h3>
-                                <p class="text-base text-gray-700 leading-relaxed">{{ $item['a'] }}</p>
-                            </div>
-                        @endforeach
+                        <h2 class="text-3xl font-bold text-gray-900 mb-2">よくある質問</h2>
+                        <div class="h-1 bg-green-500 mb-8"></div>
+                        <div class="space-y-10">
+                            @foreach($hubConfig['faq'] as $item)
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 border-l-4 border-green-500 pl-3 mb-3">{{ $item['q'] }}</h3>
+                                    <p class="text-base text-gray-700 leading-relaxed">{{ $item['a'] }}</p>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-
-                <!-- まとめ -->
-                @if(!empty($config['summary']))
-                    <div class="bg-white p-6 md:p-8 mb-10">
-                        <h2 class="text-3xl font-bold text-gray-900 mb-2">まとめ</h2>
-                        <div class="h-1 bg-green-500 mb-6"></div>
-                        @foreach((array) $config['summary'] as $p)
-                            <p class="text-base text-gray-700 leading-relaxed mb-4">{{ $p }}</p>
-                        @endforeach
-                    </div>
-                @endif
             </div>
         </div>
-
-    </div>
+    @endif
 </div>
 
-<!-- PC版：画面下部固定の現調依頼CTA（黒帯の中に青ボタン。スマホは共通レイアウト側のCTAを表示） -->
+<!-- PC版：画面下部固定の現調依頼CTA -->
 <div class="hidden md:flex fixed bottom-0 inset-x-0 z-50 justify-center bg-black/50 px-3 py-4">
     <a href="{{ route('quote.create') }}"
        class="inline-flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 transition-colors text-white font-bold text-xl px-12 py-4 shadow-lg">

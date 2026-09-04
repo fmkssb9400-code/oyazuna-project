@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 
 class SitemapController extends Controller
 {
-    public function index(HubController $hub, AreaController $area): Response
+    public function index(HubController $hub, AreaController $area, AreaHubController $areaHub): Response
     {
         $urls = [];
 
@@ -29,6 +29,15 @@ class SitemapController extends Controller
         // エリアページ（都道府県軸）
         foreach ($area->slugs() as $slug) {
             $urls[] = ['loc' => route('area.show', $slug), 'changefreq' => 'weekly', 'priority' => '0.8'];
+        }
+
+        // 都道府県×工法の掛け合わせページ（企業数の閾値を満たすものだけ自動的に含まれる）
+        foreach ($areaHub->qualifyingCombinations($area, $hub) as $combination) {
+            $urls[] = [
+                'loc' => route('area.hub.show', [$combination['areaSlug'], $combination['hubSlug']]),
+                'changefreq' => 'weekly',
+                'priority' => '0.75',
+            ];
         }
 
         // 掲載企業ページ
