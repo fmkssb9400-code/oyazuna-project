@@ -168,6 +168,26 @@
         </div>
     </div>
 
+    @if(!empty($sections))
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+                <div class="lg:col-span-2">
+                    <div class="bg-white p-6 md:p-8 mb-10">
+                        @foreach($sections as $section)
+                            <div class="{{ $loop->first ? '' : 'mt-12' }}">
+                                <h2 class="text-3xl font-bold text-gray-900 mb-2">{{ $section['heading'] }}</h2>
+                                <div class="h-1 bg-green-500 mb-6"></div>
+                                @foreach($section['body'] ?? [] as $p)
+                                    <p class="text-base text-gray-700 leading-relaxed mb-4">{{ $p }}</p>
+                                @endforeach
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
     @if(!empty($hubConfig['faq']))
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-3 lg:gap-8">

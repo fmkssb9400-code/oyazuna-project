@@ -50,7 +50,9 @@ class AreaHubController extends Controller
         $ratings = $matchedCompanies->pluck('average_rating')->filter(fn ($v) => $v !== null);
         $averageRating = $ratings->isNotEmpty() ? round($ratings->avg(), 1) : null;
 
-        $insightParagraph = $this->buildInsightParagraph($matchedCompanies, $count);
+        $stats = $this->computeStats($matchedCompanies, $count);
+        $insightParagraph = $this->buildInsightParagraph($stats);
+        $sections = $this->buildComboSections($stats, $areaConfig, $hubConfig);
 
         $combinations = collect($this->qualifyingCombinations($area, $hub));
         $siblingsByArea = $combinations->where('areaSlug', $areaSlug)->where('hubSlug', '!=', $hubSlug)->values();
@@ -64,6 +66,7 @@ class AreaHubController extends Controller
             'count' => $count,
             'averageRating' => $averageRating,
             'insightParagraph' => $insightParagraph,
+            'sections' => $sections,
             'topCompanies' => $topCompanies,
             'companies' => $companies,
             'siblingsByArea' => $siblingsByArea,
@@ -72,18 +75,11 @@ class AreaHubController extends Controller
     }
 
     /**
-     * 該当エリア×工法に実際に一致する企業データから、その組み合わせ固有の分析文を組み立てる。
-     * 都道府県の説明文・工法の説明文をそのまま使い回すだけだとページ間で文章が重複するため、
-     * 実データ（対応工法の内訳・強みタグの傾向）から数値の異なる文章を自動生成して独自性を持たせる。
+     * 該当エリア×工法に実際に一致する企業データから、分析文・FAQの元になる集計値を計算する。
+     * 分析文とFAQの両方で同じ集計を使い回すため、ここで一箇所にまとめる。
      */
-    private function buildInsightParagraph($companies, int $count): string
+    private function computeStats($companies, int $count): array
     {
-        $ropeCount = $companies->where('rope_support', true)->count();
-        $gondolaCount = $companies->where('gondola_supported', true)->count();
-        $emergencyCount = $companies->where('emergency_supported', true)->count();
-        $weekendCount = $companies->where('weekend_support', true)->count();
-        $insuranceCount = $companies->where('liability_insurance', true)->count();
-
         $topTag = $companies->pluck('strength_tags')
             ->flatten()
             ->filter()
@@ -92,28 +88,72 @@ class AreaHubController extends Controller
             ->keys()
             ->first();
 
-        $sentences = [];
-        $sentences[] = "掲載{$count}社のうち、ロープアクセス対応は{$ropeCount}社、ゴンドラ対応は{$gondolaCount}社です。";
+        return [
+            'count' => $count,
+            'ropeCount' => $companies->where('rope_support', true)->count(),
+            'gondolaCount' => $companies->where('gondola_supported', true)->count(),
+            'emergencyCount' => $companies->where('emergency_supported', true)->count(),
+            'weekendCount' => $companies->where('weekend_support', true)->count(),
+            'nightCount' => $companies->where('night_support', true)->count(),
+            'insuranceCount' => $companies->where('liability_insurance', true)->count(),
+            'topTag' => $topTag,
+        ];
+    }
+
+    /**
+     * 集計値から、比較表の上に置く短い要約文を組み立てる。詳細な内訳はbuildComboSections()側の
+     * 解説セクションに任せ、ここでは冒頭で数値がひと目でわかる1文に留める（ページ内での言い回しの
+     * 重複を避けるため、緊急対応・保険加入・強みタグなどの詳細はここでは書かない）。
+     */
+    private function buildInsightParagraph(array $stats): string
+    {
+        return "掲載{$stats['count']}社のうち、ロープアクセス対応は{$stats['ropeCount']}社、ゴンドラ対応は{$stats['gondolaCount']}社です。";
+    }
+
+    /**
+     * 集計値から、その組み合わせ固有の「見出し＋本文」解説セクションを組み立てる。
+     * area/hubページの$config['sections']と同じ構造（heading/body）で返し、同じビュー表示ロジックを使い回す。
+     * 都道府県の説明文・工法の説明文の使い回しではなく、実データの集計値だけから組み立てるため、
+     * 組み合わせが変われば数値・順位が変わり、ページ間の文章重複が発生しない。
+     */
+    private function buildComboSections(array $stats, array $areaConfig, array $hubConfig): array
+    {
+        $methodBody = "{$areaConfig['prefecture']}で{$hubConfig['label']}に対応する業者を{$stats['count']}社掲載しています。"
+            . "このうちロープアクセス対応が{$stats['ropeCount']}社、ゴンドラ対応が{$stats['gondolaCount']}社で、"
+            . ($stats['ropeCount'] >= $stats['gondolaCount']
+                ? 'ロープアクセス対応の業者が中心です。'
+                : 'ゴンドラ対応の業者が中心です。')
+            . '建物の高さ・形状・設置スペースによって適した工法は異なるため、現地調査のうえで最適な工法を提案してもらうことをおすすめします。';
 
         $supportParts = [];
-        if ($emergencyCount > 0) {
-            $supportParts[] = "緊急対応可能な業者が{$emergencyCount}社";
+        if ($stats['emergencyCount'] > 0) {
+            $supportParts[] = "緊急対応可能な業者が{$stats['emergencyCount']}社";
         }
-        if ($weekendCount > 0) {
-            $supportParts[] = "土日対応可能な業者が{$weekendCount}社";
+        if ($stats['weekendCount'] > 0) {
+            $supportParts[] = "土日対応可能な業者が{$stats['weekendCount']}社";
         }
-        if ($insuranceCount > 0) {
-            $supportParts[] = "賠償責任保険に加入している業者が{$insuranceCount}社";
+        if ($stats['nightCount'] > 0) {
+            $supportParts[] = "夜間対応可能な業者が{$stats['nightCount']}社";
         }
-        if (!empty($supportParts)) {
-            $sentences[] = implode('、', $supportParts) . '掲載されています。';
+        if ($stats['insuranceCount'] > 0) {
+            $supportParts[] = "賠償責任保険に加入している業者が{$stats['insuranceCount']}社";
+        }
+        $supportBody = $supportParts
+            ? implode('、', $supportParts) . '掲載しています。具体的な対応可否は業者によって異なるため、見積もり依頼時に希望の日時・条件を伝えて確認してください。'
+            : '対応日時や保険加入状況は業者によって異なるため、見積もり依頼時に確認してください。';
+
+        $body = [$methodBody, $supportBody];
+
+        if ($stats['topTag']) {
+            $body[] = "掲載業者に最も多い強みは「{$stats['topTag']}」です。業者を選ぶ際は、価格だけでなく実績・保険加入・対応可能な条件を比較したうえで判断することが重要です。";
         }
 
-        if ($topTag) {
-            $sentences[] = "掲載業者に最も多い強みは「{$topTag}」です。";
-        }
-
-        return implode('', $sentences);
+        return [
+            [
+                'heading' => "{$areaConfig['prefecture']}の{$hubConfig['label']}対応業者データ",
+                'body' => $body,
+            ],
+        ];
     }
 
     /**
