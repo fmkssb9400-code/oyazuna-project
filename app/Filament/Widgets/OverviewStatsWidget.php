@@ -44,17 +44,17 @@ class OverviewStatsWidget extends BaseWidget
         $asOf = '（' . $latestDataDate->format('n/j') . '時点）';
 
         return [
-            Stat::make('今月のPV数', number_format($thisMonth) . ' ' . $asOf)
+            Stat::make('今月のPV数 ' . $asOf, number_format($thisMonth))
                 ->description($monthlyGrowth >= 0 ? '+' . number_format($monthlyGrowth, 1) . '% 先月比' : number_format($monthlyGrowth, 1) . '% 先月比')
                 ->descriptionIcon($monthlyGrowth >= 0 ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down')
                 ->color($monthlyGrowth >= 0 ? 'success' : 'danger'),
 
-            Stat::make('今日のPV数', number_format($today) . ' ' . $asOf)
+            Stat::make('今日のPV数 ' . $asOf, number_format($today))
                 ->description($dailyGrowth >= 0 ? '+' . number_format($dailyGrowth, 1) . '% 昨日比' : number_format($dailyGrowth, 1) . '% 昨日比')
                 ->descriptionIcon($dailyGrowth >= 0 ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down')
                 ->color($dailyGrowth >= 0 ? 'success' : 'danger'),
 
-            Stat::make('記事の今月PV数', number_format($totalArticleViews) . ' ' . $asOf)
+            Stat::make('記事の今月PV数 ' . $asOf, number_format($totalArticleViews))
                 ->description('記事数: ' . number_format($articleCount) . '件')
                 ->descriptionIcon('heroicon-m-document-text')
                 ->color('primary'),
