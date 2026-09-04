@@ -1150,6 +1150,14 @@ class HubController extends Controller
         return array_keys($this->pages);
     }
 
+    /**
+     * 他ページ（エリアページ等）からの関連リンク表示用に、ハブページ設定の全件を返す。
+     */
+    public function pages(): array
+    {
+        return $this->pages;
+    }
+
     public function category(Request $request, string $slug)
     {
         abort_unless(isset($this->pages[$slug]), 404);

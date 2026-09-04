@@ -762,11 +762,12 @@ class AreaController extends Controller
         return array_keys($this->pages);
     }
 
-    public function show(Request $request, string $slug)
+    public function show(Request $request, string $slug, HubController $hub)
     {
         abort_unless(isset($this->pages[$slug]), 404);
 
         $config = $this->pages[$slug];
+        $allHubs = collect($hub->pages());
 
         $baseQuery = function () use ($config): Builder {
             return Company::published()
@@ -794,6 +795,8 @@ class AreaController extends Controller
             'topCompanies' => $topCompanies,
             'companies' => $companies,
             'otherAreas' => collect($this->pages)->except($slug),
+            'hubCategoryPages' => $allHubs->where('type', 'category'),
+            'hubConditionPages' => $allHubs->where('type', 'condition'),
         ]);
     }
 }

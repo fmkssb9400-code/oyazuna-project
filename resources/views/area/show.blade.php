@@ -136,15 +136,25 @@
                             <a href="{{ route('companies.index') }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
                                 専門業者一覧（全カテゴリ）
                             </a>
-                            <a href="{{ route('hub.category', 'window-cleaning') }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
-                                高所窓ガラス清掃業者一覧
-                            </a>
-                            <a href="{{ route('hub.category', 'exterior-cleaning') }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
-                                外壁清掃業者一覧
-                            </a>
-                            <a href="{{ route('hub.category', 'wall-repair') }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
-                                外壁補修業者一覧
-                            </a>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-600">工法で探す</div>
+                        <div class="bg-white divide-y divide-dashed divide-gray-300">
+                            @foreach($hubCategoryPages as $hubSlug => $hubConfig)
+                                <a href="{{ route('hub.category', $hubSlug) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
+                                    {{ $hubConfig['nav_label'] ?? ($hubConfig['label'] . '業者一覧') }}
+                                </a>
+                            @endforeach
+                        </div>
+                        <div class="bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-600">条件で絞り込む</div>
+                        <div class="bg-white divide-y divide-dashed divide-gray-300">
+                            @foreach($hubConditionPages as $hubSlug => $hubConfig)
+                                <a href="{{ route('hub.category', $hubSlug) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
+                                    {{ $hubConfig['nav_label'] ?? ($hubConfig['label'] . '対応業者一覧') }}
+                                </a>
+                            @endforeach
+                        </div>
+                        <div class="bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-600">他の都道府県</div>
+                        <div class="bg-white divide-y divide-dashed divide-gray-300">
                             @foreach($otherAreas as $otherSlug => $otherConfig)
                                 <a href="{{ route('area.show', $otherSlug) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
                                     {{ $otherConfig['nav_label'] ?? ($otherConfig['label'] . 'の業者一覧') }}
