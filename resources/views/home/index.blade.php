@@ -948,5 +948,33 @@
     </div>
 </div>
 
+<!-- PC版：画面下部固定の現調依頼CTA（ハブページと同デザイン。「ランキングから探す」セクションから表示開始） -->
+<div id="home-fixed-cta" class="hidden md:flex fixed bottom-0 inset-x-0 z-40 justify-center bg-black/50 px-3 py-4 transform translate-y-full transition-transform duration-300">
+    <a href="{{ route('quote.create') }}"
+       class="inline-flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 transition-colors text-white font-bold text-xl px-12 py-4 shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125" />
+            <path d="M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+        </svg>
+        かんたん入力で現調依頼
+    </a>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const ctaBar = document.getElementById('home-fixed-cta');
+    const rankingSection = document.getElementById('ranking-section');
+    if (!ctaBar || !rankingSection) return;
+
+    const toggleCta = () => {
+        const reached = rankingSection.getBoundingClientRect().top <= 0;
+        ctaBar.classList.toggle('translate-y-full', !reached);
+    };
+
+    toggleCta();
+    window.addEventListener('scroll', toggleCta, { passive: true });
+});
+</script>
+
 @endsection
 

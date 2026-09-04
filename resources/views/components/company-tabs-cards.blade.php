@@ -2,7 +2,7 @@
   <div class="max-w-7xl mx-auto px-4 py-6 md:py-10">
 
     <!-- 人気ランキングから探すセクション -->
-    <section style="margin-bottom: 100px;">
+    <section id="ranking-section" style="margin-bottom: 100px;">
       <div class="ranking-header-container flex items-center justify-center mb-8">
         <h1 class="heading-6 text-xl md:text-2xl font-bold">
           ランキングから探す
