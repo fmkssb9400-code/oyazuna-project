@@ -5,7 +5,7 @@
     <section id="ranking-section" style="margin-bottom: 100px;">
       <div class="ranking-header-container flex items-center justify-center mb-8">
         <h1 class="heading-6 text-xl md:text-2xl font-bold">
-          ランキングから探す
+          条件から探す
         </h1>
       </div>
       
