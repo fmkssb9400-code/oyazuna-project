@@ -16,8 +16,10 @@ use App\Http\Controllers\Admin\EditorUploadController;
 use App\Http\Controllers\QuoteDataController;
 use App\Http\Controllers\HubController;
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\SitemapController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 Route::get('/api/homepage/companies/{sort}', [HomeController::class, 'getCompaniesBySort'])->name('api.homepage.companies');
 Route::get('/api/companies/{sort}', [CompaniesController::class, 'getCompaniesBySort'])->name('api.companies');
 Route::get('/companies', [CompaniesController::class, 'index'])->name('companies.index');

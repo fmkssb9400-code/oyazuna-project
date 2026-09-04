@@ -754,6 +754,14 @@ class AreaController extends Controller
         ],
     ];
 
+    /**
+     * サイトマップ生成用に、公開中のエリアページのスラッグ一覧を返す。
+     */
+    public function slugs(): array
+    {
+        return array_keys($this->pages);
+    }
+
     public function show(Request $request, string $slug)
     {
         abort_unless(isset($this->pages[$slug]), 404);

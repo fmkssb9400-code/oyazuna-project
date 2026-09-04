@@ -1142,6 +1142,14 @@ class HubController extends Controller
         ],
     ];
 
+    /**
+     * サイトマップ生成用に、公開中のハブページのスラッグ一覧を返す。
+     */
+    public function slugs(): array
+    {
+        return array_keys($this->pages);
+    }
+
     public function category(Request $request, string $slug)
     {
         abort_unless(isset($this->pages[$slug]), 404);

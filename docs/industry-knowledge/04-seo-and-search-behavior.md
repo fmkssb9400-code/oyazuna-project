@@ -170,6 +170,41 @@
 
 ---
 
+## 5. データベース型サイトのSEOアーキテクチャ実装論（インデックス制御・内部リンク・スケール手法）
+
+> 2026年9月4日追記（同日2回目の調査）。§4がキーワード選定・コンテンツ内容の話だったのに対し、こちらは「掛け合わせページをどう作り、どうインデックスさせ、どう内部リンクで繋ぐか」という**サイト構造・実装寄り**の論点。海外SEOメディア（プログラマティックSEO専門）中心の調査で、日本語の一次情報は少なく業界分析としての精度で扱うこと。
+
+### 5-1. 大手データベース型サイトの共通パターン
+
+Zillow（住所ごとの自動生成ページ、約520万インデックスページ、月間3,300万オーガニック流入）、G2・Capterra（製品DB由来の比較ページ「A vs B」）、Zapier（連携組み合わせページ2.5万件超）など、いずれも「構造化データ→テンプレート→大量の掛け合わせページ」という設計は共通。ただし成功例はテンプレートを流し込むだけでなく、**価格推移・スコア分布などの分析レイヤーを加えた「データを情報に変換する」編集層**を持つ点が共通している（Zillowの相場推移グラフ・学区情報など）。oyazunaの「工法×建物種別×都道府県」ページ構想は、この王道パターンの延長線上にある。
+
+### 5-2. インデックス判断は「一律ルール」ではなく「ファセット単位の三点ゲート」
+
+掛け合わせページ（ファセット）ごとに、以下3条件を**すべて満たす場合のみ**インデックス対象にすべきというのが海外の実務論調：
+
+1. **検索需要の実証**（そのキーワードで検索されている実績・見込みがあるか）
+2. **ユニークコンテンツ**（テンプレート差し替えでなく固有の見出し・本文があるか）
+3. **健全な結果セット**（掲載企業0件・極少数の空スカスカページでないか）
+
+3つのうち1つでも欠ける組み合わせは、①検索意図もコンテンツもないなら`noindex`または上位ページへの`canonical`統合、②そもそもクロールさせる必要がない技術的パラメータ（並び替え等）なら`robots.txt`でブロック、という切り分けが定石。**`noindex`と`robots.txt disallow`を同時に使うと矛盾する**（ブロックされたページはnoindexタグ自体を読みに行けない）ため混同注意。
+
+**oyazunaの現状評価**: `AreaController.php`のコメント「掲載企業数が一定以上ある都道府県のみ追加すること（薄いページ防止、目安10社以上）」は、まさにこのゲート運用そのもの。かつ都道府県ごとの導入文（東京都なら高層ビル密集・狭小地の事情など）を**コントローラ内に個別記述**しており、テンプレートの機械的差し替えではなく事実上の「手動キュレーション型プログラマティックSEO」になっている。これは§4-5で指摘した「thin content」リスクに対しては安全側だが、裏を返すと**新しい掛け合わせページを増やすたびにコード変更が要る**＝スケールしない設計でもある。都道府県×工法×建物種別を本格的に掛け合わせて増やすフェーズに入るなら、「固有データ列（そのページだけの一次情報）が必ず埋まっていないと公開できない」データスキーマ・入稿フローに寄せていく方が、量と質を両立させやすい（5-4で後述）。
+
+### 5-3. 内部リンクは「発見経路」であると同時に「評価の受け渡し経路」
+
+- ホームや主要ハブから**3クリック以内**に到達できないページはクロール優先度・評価ともに下がりやすいというのが共通見解。oyazunaの現状は `/hub/{slug}`・`/area/{slug}` がそれぞれ独立した1階層構造で、都道府県ページから同一都道府県内の工法別・建物種別ページへ、あるいはその逆へ回遊するリンクがどこまで貼られているかが論点になる（要確認・未検証）。
+- 定石は「ピラー（工法または建物種別の総合解説ページ）→クラスター（地名×工法×建物種別の個別ページ）→クラスター同士の相互リンク→ピラーへの回遊」という三層構造。クラスター化されたコンテンツ群は単独記事よりオーガニック流入が多く、順位の持続期間も長いという業界分析がある（数値は出典依存で参考程度）。
+- 実務上は「ドナー（評価を渡す力のある強いページ＝トップページ・人気記事）→アクセプター（評価をもらう必要がある弱いページ＝新設ハブページ）」という向きを意識してリンクを設計する考え方が有効。oyazunaで言えば、GSCで既に評価が乗っている記事・都道府県ページから、新設or低順位のハブページへ意図的にリンクを足す運用が該当する。
+
+### 5-4. oyazunaのハブページ拡充フェーズへの実践提言
+
+1. **拡充前に「固有データ列」を定義する**: 都道府県×工法×建物種別ページを増やす際、テンプレート化するとしても「そのページにしかない一次情報（掲載企業の口コミ抜粋、地域特性、施工事例）」を入れるフィールドをデータ設計上必須にする。空なら非公開・非索引にする運用ルールをコード側で強制できると、量産しても質の下限を割らない（5-2のZillow等の「編集層」に相当）。
+2. **索引判断はページ単位でなくファセット単位のルールとして先に決める**: 「都道府県ページは10社以上のみ索引」という既存基準（[[oyazuna_hub_pages_pending]]）を、工法×建物種別の掛け合わせ軸にも同じ考え方で明文化しておく（例：企業数の目安に加え、口コミ・施工事例など固有情報が1件以上あるか）。
+3. **内部リンクの向きを意識する**: 新設・低順位のハブページには、既に流入・評価があるページ（トップ、上位記事、GSCで実績のある都道府県ページ）から意図的にリンクを追加する。ハブページ同士も「同一都道府県内の他ハブ」「同一工法の他都道府県」といった横串リンクを持たせ、孤立ページを作らない。
+4. **索引対象外にするページはnoindexで統一する**: 企業数が閾値未満で非公開扱いにしているページ群がある場合、`robots.txt`でのブロックではなく`noindex`（クロールはさせて評価が漏れないようにする）で統一し、将来企業数が増えて基準を満たした時点で索引化に切り替えられる状態を保つ。
+
+---
+
 ## 出典一覧
 
 - [外壁塗装業HP300社の実績】SEO対策で1位を獲得する方法](https://www.branding-t.co.jp/case/painting/13718/)
@@ -233,3 +268,11 @@
 - [How to Find Long-Tail Keywords for Local SEO in 2026（SEO Ninja）](https://www.seoninja.com/blog/seo/how-to-identify-long-tail-keywords-for-local-seo/)
 - [Programmatic SEO After March 2026: Scaled Content Survival（Digital Applied）](https://www.digitalapplied.com/blog/programmatic-seo-after-march-2026-surviving-scaled-content-ban)
 - [What is Programmatic SEO? The Complete Guide 2026（SEO Takeoff）](https://www.seotakeoff.com/programmatic-seo)
+- [Programmatic SEO: Scale Content with Templates 2026（Digital Applied）](https://www.digitalapplied.com/blog/programmatic-seo-scale-content-templates-2026)
+- [Internal Linking Strategy 2026: Large-Site SEO Guide（Digital Applied）](https://www.digitalapplied.com/blog/internal-linking-strategy-2026-large-site-architecture-guide)
+- [Faceted Navigation Indexation: SEO Decision Matrix（Digital Applied）](https://www.digitalapplied.com/blog/faceted-navigation-indexation-2026-seo-decision-matrix)
+- [Faceted navigation in SEO: Best practices to avoid issues（Search Engine Land）](https://searchengineland.com/guide/faceted-navigation)
+- [Zillow Case Study: Millions of Automated Real Estate Pages（GrackerAI）](https://gracker.ai/case-studies/zillow)
+- [6 Best Programmatic SEO Examples To Steal Ideas From（Omnius）](https://www.omnius.so/blog/best-programmatic-seo-examples)
+- [Topic Cluster and Pillar Page SEO/AEO Guide（Conductor）](https://www.conductor.com/academy/topic-clusters/)
+- [Hub and Spoke SEO: The 2026 Marketer's Guide（Web Tonic）](https://www.webtonic.io/blog/hub-and-spoke-seo)
