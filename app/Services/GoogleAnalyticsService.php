@@ -253,4 +253,60 @@ class GoogleAnalyticsService
     {
         return (bool) $this->client();
     }
+
+    /**
+     * GA4に実際にデータが入っている最新の日付。
+     * 反映ラグにより「今日」のデータがまだ無いことがあるため、直近7日を遡って
+     * PVが1件以上ある最新の日を返す。データが1件も無ければ null。
+     */
+    public function getLatestDataDate(): ?Carbon
+    {
+        $cacheKey = 'ga4:latest_data_date:' . Carbon::today()->toDateString();
+
+        return Cache::remember($cacheKey, self::CACHE_TTL_SECONDS, function () {
+            try {
+                $client = $this->client();
+                if (! $client) {
+                    return null;
+                }
+
+                $start = Carbon::today()->subDays(6);
+                $end = Carbon::today();
+
+                $response = $client->runReport(new RunReportRequest([
+                    'property' => $this->propertyName(),
+                    'date_ranges' => [
+                        new DateRange([
+                            'start_date' => $start->toDateString(),
+                            'end_date' => $end->toDateString(),
+                        ]),
+                    ],
+                    'dimensions' => [
+                        new Dimension(['name' => 'date']),
+                    ],
+                    'metrics' => [
+                        new Metric(['name' => 'screenPageViews']),
+                    ],
+                ]));
+
+                $latest = null;
+                foreach ($response->getRows() as $row) {
+                    if ((int) $row->getMetricValues()[0]->getValue() <= 0) {
+                        continue;
+                    }
+
+                    $date = Carbon::createFromFormat('Ymd', $row->getDimensionValues()[0]->getValue());
+                    if (! $latest || $date->gt($latest)) {
+                        $latest = $date;
+                    }
+                }
+
+                return $latest;
+            } catch (\Throwable $e) {
+                Log::warning('GA4 getLatestDataDate failed: ' . $e->getMessage());
+
+                return null;
+            }
+        });
+    }
 }
