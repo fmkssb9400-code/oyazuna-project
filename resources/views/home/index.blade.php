@@ -8,14 +8,24 @@
 <style>
 /* ヒーローセクション専用スタイル */
 .hero-section {
-  background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.9) 45%, rgba(255,255,255,0.2) 68%, rgba(255,255,255,0) 85%), url('{{ asset('images/hero-window-cleaning.webp') }}');
-  background-size: cover;
-  background-position: center;
-  min-height: 500px;
-  display: flex;
-  align-items: center;
+  display: block;
+  line-height: 0;
   position: relative;
   z-index: 1;
+}
+
+.hero-main-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-logo-overlay {
+  position: absolute;
+  left: 27%;
+  bottom: 5%;
+  width: 22.75%;
+  transform: translateX(-50%);
 }
 
 .hero-content {
@@ -219,12 +229,6 @@
 }
 
 @media (max-width: 768px) {
-  .hero-section {
-    background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('{{ asset('images/hero-window-cleaning.webp') }}');
-    min-height: 400px;
-    padding: 40px 0 80px;
-  }
-
   .hero-content {
     display: flex;
     flex-direction: column;
@@ -293,11 +297,6 @@
 }
 
 @media (max-width: 480px) {
-  .hero-section {
-    min-height: 350px;
-    padding: 28px 0 64px;
-  }
-
   .hero-content {
     gap: 16px;
     padding: 0 16px;
@@ -445,12 +444,9 @@
 
 <!-- ヒーローセクション -->
 <div class="hero-section">
-  <div class="hero-content">
-    <div class="hero-text">
-      <h1><span class="highlight">高所ロープ作業</span>に<br>特化した専門業者への<br>一括見積もりサイト</h1>
-      <img src="{{ asset('オヤズナ (1).png') }}" alt="オヤズナ" class="hero-logo">
-    </div>
-  </div>
+  <h1 class="sr-only">高所ロープ作業に特化した清掃業者へ無料で一括見積もり</h1>
+  <img src="{{ asset('herosection (3).png') }}" alt="高所ロープ作業に特化した清掃業者へ無料で一括見積もり" class="hero-main-image">
+  <img src="{{ asset('オヤズナ (1).png') }}" alt="オヤズナ" class="hero-logo-overlay">
 </div>
 
 <!-- 高所ロープ会社をエリアから探すセクション -->
