@@ -4,10 +4,10 @@ namespace App\Filament\Widgets;
 
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use App\Models\PageView;
 use App\Models\Article;
 use App\Models\ConsultationSubmission;
 use App\Models\Company;
+use App\Services\GoogleAnalyticsService;
 use Carbon\Carbon;
 
 class OverviewStatsWidget extends BaseWidget
@@ -16,21 +16,20 @@ class OverviewStatsWidget extends BaseWidget
 
     protected function getStats(): array
     {
-        $thisMonth = PageView::thisMonth()->count();
-        $lastMonth = PageView::lastMonth()->count();
+        $ga = app(GoogleAnalyticsService::class);
+
+        $thisMonth = $ga->getPageViews(now()->startOfMonth(), now());
+        $lastMonth = $ga->getPageViews(now()->subMonthNoOverflow()->startOfMonth(), now()->subMonthNoOverflow()->endOfMonth());
         $monthlyGrowth = $lastMonth > 0 ? (($thisMonth - $lastMonth) / $lastMonth) * 100 : 0;
 
-        $today = PageView::today()->count();
-        $yesterday = PageView::yesterday()->count();
+        $today = $ga->getPageViews(Carbon::today(), Carbon::today());
+        $yesterday = $ga->getPageViews(Carbon::yesterday(), Carbon::yesterday());
         $dailyGrowth = $yesterday > 0 ? (($today - $yesterday) / $yesterday) * 100 : 0;
 
-        $totalArticleViews = PageView::articles()
-            ->whereHas('article', function ($query) {
-                $query->published();
-            })->count();
+        $totalArticleViews = $ga->getPageViewsForPathPrefix('/news/', now()->startOfMonth(), now());
         $articleCount = Article::published()->count();
 
-        $consultationPageViews = PageView::where('url', 'LIKE', '%quote%')->thisMonth()->count();
+        $consultationPageViews = $ga->getPageViewsForPathPrefix('/quote', now()->startOfMonth(), now());
         $consultationSubmissions = ConsultationSubmission::thisMonth()->count();
         $consultationConversionRate = $consultationPageViews > 0 ? ($consultationSubmissions / $consultationPageViews) * 100 : 0;
 
@@ -51,7 +50,7 @@ class OverviewStatsWidget extends BaseWidget
                 ->descriptionIcon($dailyGrowth >= 0 ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down')
                 ->color($dailyGrowth >= 0 ? 'success' : 'danger'),
 
-            Stat::make('記事の総PV数', number_format($totalArticleViews))
+            Stat::make('記事の今月PV数', number_format($totalArticleViews))
                 ->description('記事数: ' . number_format($articleCount) . '件')
                 ->descriptionIcon('heroicon-m-document-text')
                 ->color('primary'),

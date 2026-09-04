@@ -2,74 +2,52 @@
 
 namespace App\Filament\Widgets;
 
-use Filament\Tables;
-use Filament\Tables\Table;
-use Filament\Widgets\TableWidget as BaseWidget;
-use App\Models\PageView;
+use Filament\Widgets\Widget;
 use App\Models\Article;
-use Illuminate\Database\Eloquent\Builder;
+use App\Services\GoogleAnalyticsService;
 
-class TopArticlesWidget extends BaseWidget
+class TopArticlesWidget extends Widget
 {
     protected static ?int $sort = 2;
     protected int | string | array $columnSpan = 'full';
+    protected static string $view = 'filament.widgets.top-articles-widget';
 
-    protected function getTableHeading(): string
+    public function getRows(): array
     {
-        return '人気記事ランキング（今月）';
+        $ga = app(GoogleAnalyticsService::class);
+
+        $topPages = $ga->getTopPagesForPathPrefix('/news/', now()->startOfMonth(), now(), 10);
+
+        $slugs = array_map(
+            fn (array $page) => trim(str_replace('/news/', '', $page['path']), '/'),
+            $topPages
+        );
+
+        $articles = Article::whereIn('slug', $slugs)
+            ->published()
+            ->get()
+            ->keyBy('slug');
+
+        $rows = [];
+        foreach ($topPages as $page) {
+            $slug = trim(str_replace('/news/', '', $page['path']), '/');
+            $article = $articles->get($slug);
+
+            if (! $article) {
+                continue;
+            }
+
+            $rows[] = [
+                'article' => $article,
+                'views' => $page['views'],
+            ];
+        }
+
+        return $rows;
     }
 
-    protected function getTableQuery(): Builder
+    public function isReady(): bool
     {
-        return PageView::query()
-            ->selectRaw('article_id, COUNT(*) as total_views, MAX(id) as id')
-            ->thisMonth()
-            ->articles()
-            ->groupBy('article_id')
-            ->orderByDesc('total_views')
-            ->with(['article' => function ($query) {
-                $query->published(); // Only show published articles
-            }])
-            ->whereHas('article', function ($query) {
-                $query->published(); // Only include page views for published articles
-            })
-            ->limit(10);
-    }
-
-    public function getTableRecordKey($record): string
-    {
-        return (string) $record->id;
-    }
-
-    public function table(Table $table): Table
-    {
-        return $table
-            ->query($this->getTableQuery())
-            ->columns([
-                Tables\Columns\TextColumn::make('rank')
-                    ->label('#')
-                    ->state(fn ($rowLoop) => $rowLoop->index + 1)
-                    ->alignCenter(),
-
-                Tables\Columns\TextColumn::make('article.title')
-                    ->label('記事タイトル')
-                    ->limit(50)
-                    ->tooltip(fn ($record) => $record->article?->title)
-                    ->url(fn ($record) => route('news.show', $record->article?->slug))
-                    ->openUrlInNewTab(),
-
-                Tables\Columns\TextColumn::make('total_views')
-                    ->label('PV数')
-                    ->formatStateUsing(fn ($state) => number_format($state))
-                    ->alignCenter()
-                    ->sortable(),
-
-                Tables\Columns\TextColumn::make('article.published_at')
-                    ->label('公開日')
-                    ->date('Y/m/d')
-                    ->alignCenter(),
-            ])
-            ->defaultSort('total_views', 'desc')
-            ->paginated(false);
+        return app(GoogleAnalyticsService::class)->isConfigured();
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Filament\Widgets;
 
 use Filament\Widgets\ChartWidget;
-use App\Models\PageView;
+use App\Services\GoogleAnalyticsService;
 use Carbon\Carbon;
 
 class MonthlyPageViewsChart extends ChartWidget
@@ -14,21 +14,13 @@ class MonthlyPageViewsChart extends ChartWidget
 
     protected function getData(): array
     {
-        $startDate = Carbon::now()->subMonths(11)->startOfMonth();
-        $endDate = Carbon::now()->endOfMonth();
-        
-        $data = [];
-        $labels = [];
-        
-        for ($date = $startDate->copy(); $date->lte($endDate); $date->addMonth()) {
-            $monthStart = $date->copy()->startOfMonth();
-            $monthEnd = $date->copy()->endOfMonth();
-            
-            $views = PageView::whereBetween('viewed_at', [$monthStart, $monthEnd])->count();
-            
-            $data[] = $views;
-            $labels[] = $date->format('Y年n月');
-        }
+        $monthly = app(GoogleAnalyticsService::class)->getMonthlyPageViews(12);
+
+        $data = array_values($monthly);
+        $labels = array_map(
+            fn (string $yearMonth) => Carbon::createFromFormat('Y-m', $yearMonth)->format('Y年n月'),
+            array_keys($monthly)
+        );
 
         return [
             'datasets' => [
