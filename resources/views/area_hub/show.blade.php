@@ -3,9 +3,6 @@
 @php
     $pageTitle = $areaConfig['prefecture'] . 'の' . ($hubConfig['nav_label'] ?? $hubConfig['label']) . '｜高所ロープ作業・見積り無料';
     $pageDescription = $areaConfig['prefecture'] . 'で' . $hubConfig['label'] . 'に対応する高所ロープ作業の専門業者を' . $count . '社掲載。無料で見積もり依頼できます。';
-    $introStats = $averageRating
-        ? '現在、' . $areaConfig['prefecture'] . 'で' . $hubConfig['label'] . 'に対応する業者を' . $count . '社掲載しており、口コミ平均評価は' . $averageRating . 'です。'
-        : '現在、' . $areaConfig['prefecture'] . 'で' . $hubConfig['label'] . 'に対応する業者を' . $count . '社掲載しています。';
 @endphp
 
 @section('title', $pageTitle . ' | オヤズナ')
@@ -57,8 +54,10 @@
             <div class="bg-white border border-gray-200 shadow-lg p-6 md:p-8">
                 <div class="space-y-4 mb-6">
                     <p class="text-gray-700 leading-relaxed">{{ $areaConfig['lead'][0] ?? '' }}</p>
-                    <p class="text-gray-700 leading-relaxed">{{ $hubConfig['lead'][0] ?? '' }}</p>
-                    <p class="text-gray-700 leading-relaxed">{{ $introStats }}</p>
+                    <p class="text-gray-700 leading-relaxed">{{ $insightParagraph }}</p>
+                    @if($averageRating)
+                        <p class="text-gray-700 leading-relaxed">口コミ平均評価は{{ $averageRating }}です。</p>
+                    @endif
                 </div>
                 <p class="text-xs text-gray-500 mb-2 sm:hidden">→ 横にスクロールできます</p>
                 <div class="overflow-x-auto -mx-6 md:-mx-8 px-6 md:px-8">
