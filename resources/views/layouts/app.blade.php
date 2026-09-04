@@ -167,6 +167,17 @@
             }
         }
     </style>
+
+    @if(config('services.google_analytics.measurement_id') && app()->environment('production'))
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.google_analytics.measurement_id') }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ config('services.google_analytics.measurement_id') }}');
+    </script>
+    @endif
 </head>
 <body class="bg-blue-50">
     <nav class="sticky top-0 z-50 shadow-sm border-b overflow-visible bg-white">
