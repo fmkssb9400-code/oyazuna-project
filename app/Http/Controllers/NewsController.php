@@ -76,7 +76,7 @@ class NewsController extends Controller
         return view('news.index', compact('paginatedItems'));
     }
 
-    public function show(Article $article)
+    public function show(Article $article, HubController $hub)
     {
         // Ensure article is published and not a company-specific article
         if (!$article->is_published || $article->company_id !== null) {
@@ -86,12 +86,17 @@ class NewsController extends Controller
         // Get featured articles and static pages (excluding current article)
         $recommendedItemsService = new RecommendedItemsService();
         $allFeaturedItems = $recommendedItemsService->getRecommendedItems(10);
-        
+
         // Filter out current article if it's in the list
         $featuredArticles = $allFeaturedItems->reject(function ($item) use ($article) {
             return $item['type'] === 'article' && $item['id'] === $article->id;
         })->take(5);
 
-        return view('news.show', compact('article', 'featuredArticles'));
+        // 「条件から絞り込む」ハブページへの内部リンク用
+        $allHubs = collect($hub->pages());
+        $hubCategoryPages = $allHubs->where('type', 'category');
+        $hubConditionPages = $allHubs->where('type', 'condition');
+
+        return view('news.show', compact('article', 'featuredArticles', 'hubCategoryPages', 'hubConditionPages'));
     }
 }

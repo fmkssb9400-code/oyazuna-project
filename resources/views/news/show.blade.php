@@ -493,6 +493,40 @@
             </div>
             @endif
 
+            <!-- 関連ページ -->
+            @if(!empty($hubCategoryPages) || !empty($hubConditionPages))
+            <div class="border border-gray-200">
+                <div class="bg-blue-500 px-4 py-3">
+                    <h2 class="text-white font-bold">関連ページ</h2>
+                </div>
+                <div class="bg-white divide-y divide-dashed divide-gray-300">
+                    <a href="{{ route('companies.index') }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
+                        専門業者一覧（全カテゴリ）
+                    </a>
+                </div>
+                @if($hubCategoryPages->isNotEmpty())
+                <div class="bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-600">工法で探す</div>
+                <div class="bg-white divide-y divide-dashed divide-gray-300">
+                    @foreach($hubCategoryPages as $hubSlug => $hubConfig)
+                        <a href="{{ route('hub.category', $hubSlug) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
+                            {{ $hubConfig['nav_label'] ?? ($hubConfig['label'] . '業者一覧') }}
+                        </a>
+                    @endforeach
+                </div>
+                @endif
+                @if($hubConditionPages->isNotEmpty())
+                <div class="bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-600">条件から絞り込む</div>
+                <div class="bg-white divide-y divide-dashed divide-gray-300">
+                    @foreach($hubConditionPages as $hubSlug => $hubConfig)
+                        <a href="{{ route('hub.category', $hubSlug) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
+                            {{ $hubConfig['nav_label'] ?? ($hubConfig['label'] . '対応業者一覧') }}
+                        </a>
+                    @endforeach
+                </div>
+                @endif
+            </div>
+            @endif
+
             <!-- サイドバー広告3 -->
             @if(!empty($siteSettings['sidebar_ad_3']))
             <div class="bg-white shadow border border-gray-200">

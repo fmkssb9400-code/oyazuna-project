@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\HubController;
 use App\Models\Article;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Collection;
 
 class ArticlePreviewController extends Controller
 {
-    public function show(string $token)
+    public function show(string $token, HubController $hub)
     {
         $data = Cache::get("article_preview:{$token}");
 
@@ -40,6 +41,10 @@ class ArticlePreviewController extends Controller
         $featuredArticles = new Collection();
         $isPreview = true;
 
-        return view('news.show', compact('article', 'featuredArticles', 'isPreview'));
+        $allHubs = collect($hub->pages());
+        $hubCategoryPages = $allHubs->where('type', 'category');
+        $hubConditionPages = $allHubs->where('type', 'condition');
+
+        return view('news.show', compact('article', 'featuredArticles', 'isPreview', 'hubCategoryPages', 'hubConditionPages'));
     }
 }
