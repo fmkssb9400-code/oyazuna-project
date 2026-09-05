@@ -43,7 +43,7 @@ class GoogleAnalyticsService
     {
         return new FilterExpression([
             'filter' => new Filter([
-                'field_name' => 'pagePathBeforeQueryString',
+                'field_name' => 'pagePath',
                 'string_filter' => new StringFilter([
                     'match_type' => MatchType::BEGINS_WITH,
                     'value' => $pathPrefix,
@@ -115,7 +115,7 @@ class GoogleAnalyticsService
                         ]),
                     ],
                     'dimensions' => [
-                        new Dimension(['name' => 'pagePathBeforeQueryString']),
+                        new Dimension(['name' => 'pagePath']),
                     ],
                     'metrics' => [
                         new Metric(['name' => 'screenPageViews']),
@@ -161,7 +161,7 @@ class GoogleAnalyticsService
                         ]),
                     ],
                     'dimensions' => [
-                        new Dimension(['name' => 'pagePathBeforeQueryString']),
+                        new Dimension(['name' => 'pagePath']),
                     ],
                     'metrics' => [
                         new Metric(['name' => 'screenPageViews']),
