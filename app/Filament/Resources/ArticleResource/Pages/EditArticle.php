@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\ArticleResource\Pages;
 
 use App\Filament\Resources\ArticleResource;
+use App\Filament\Resources\ArticleResource\Concerns\HasArticlePreviewAction;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 use App\Services\ContentRenderer;
@@ -10,11 +11,14 @@ use Illuminate\Contracts\View\View;
 
 class EditArticle extends EditRecord
 {
+    use HasArticlePreviewAction;
+
     protected static string $resource = ArticleResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
+            $this->getPreviewAction(),
             Actions\DeleteAction::make(),
         ];
     }

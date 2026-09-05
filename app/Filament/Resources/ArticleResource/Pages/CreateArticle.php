@@ -3,13 +3,23 @@
 namespace App\Filament\Resources\ArticleResource\Pages;
 
 use App\Filament\Resources\ArticleResource;
+use App\Filament\Resources\ArticleResource\Concerns\HasArticlePreviewAction;
 use Filament\Resources\Pages\CreateRecord;
 use App\Services\ContentRenderer;
 use Illuminate\Contracts\View\View;
 
 class CreateArticle extends CreateRecord
 {
+    use HasArticlePreviewAction;
+
     protected static string $resource = ArticleResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            $this->getPreviewAction(),
+        ];
+    }
 
     protected function getRedirectUrl(): string
     {

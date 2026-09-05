@@ -5,6 +5,12 @@
 
 @section('content')
 <div class="max-w-7xl mx-auto px-2 md:px-4 py-4 md:py-8 overflow-x-hidden">
+    @if(!empty($isPreview))
+        <div class="mb-4 bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-3 text-sm font-bold text-center">
+            プレビュー中（この内容はまだ公開されていません）
+        </div>
+    @endif
+
     <!-- Breadcrumb -->
     <nav class="mb-6">
         <ol class="flex items-center space-x-2 text-sm text-gray-600">
@@ -44,8 +50,8 @@
                         <div class="flex items-start gap-4">
                             @if($article->supervisor_avatar)
                                 <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-gray-200 flex-shrink-0">
-                                    <img src="{{ asset('storage/' . $article->supervisor_avatar) }}" 
-                                         alt="{{ $article->supervisor_name }}" 
+                                    <img src="{{ $article->previewSupervisorAvatarUrl ?? asset('storage/' . $article->supervisor_avatar) }}"
+                                         alt="{{ $article->supervisor_name }}"
                                          class="w-full h-full object-cover">
                                 </div>
                             @else

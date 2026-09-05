@@ -80,6 +80,7 @@ Route::get('/guide/exterior-wall-painting-contractor-selection', [GuideControlle
 
 // Admin Editor Image Upload Routes (Filament管理者のみ)
 Route::middleware(['web', 'auth'])->prefix('admin')->group(function () {
+    Route::get('/articles/preview/{token}', [\App\Http\Controllers\Admin\ArticlePreviewController::class, 'show'])->name('admin.articles.preview');
     Route::post('/upload-image', [\App\Http\Controllers\Admin\EditorImageController::class, 'upload'])->name('admin.upload-image');
     Route::post('/editor/upload-image', [\App\Http\Controllers\Admin\EditorUploadController::class, 'uploadImage'])->name('admin.editor.upload-image');
     Route::delete('/editor/delete-image', [\App\Http\Controllers\Admin\EditorImageUploadController::class, 'delete'])->name('admin.editor.delete-image');
