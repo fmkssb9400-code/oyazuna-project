@@ -232,12 +232,46 @@ class ArticleResource extends Resource
 
     public static function table(Table $table): Table
     {
+        $ga = app(\App\Services\GoogleAnalyticsService::class);
+        $gaConfigured = $ga->isConfigured();
+        $totalViewsBySlug = [];
+        $latestDate = null;
+        $todayViewsBySlug = [];
+
+        if ($gaConfigured) {
+            foreach ($ga->getTopPagesForPathPrefix('/news/', \Carbon\Carbon::parse('2015-08-14'), now(), 5000) as $page) {
+                $slug = trim(str_replace('/news/', '', $page['path']), '/');
+                $totalViewsBySlug[$slug] = ($totalViewsBySlug[$slug] ?? 0) + $page['views'];
+            }
+
+            $latestDate = $ga->getLatestDataDate();
+
+            if ($latestDate) {
+                foreach ($ga->getTopPagesForPathPrefix('/news/', $latestDate, $latestDate, 5000) as $page) {
+                    $slug = trim(str_replace('/news/', '', $page['path']), '/');
+                    $todayViewsBySlug[$slug] = ($todayViewsBySlug[$slug] ?? 0) + $page['views'];
+                }
+            }
+        }
+
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
                     ->label('タイトル')
                     ->searchable()
                     ->sortable(),
+
+                Tables\Columns\TextColumn::make('ga4_total_views')
+                    ->label('累計PV数')
+                    ->state(fn (Article $record): string => $gaConfigured ? number_format($totalViewsBySlug[$record->slug] ?? 0) : '—')
+                    ->alignEnd()
+                    ->toggleable(),
+
+                Tables\Columns\TextColumn::make('ga4_today_views')
+                    ->label($latestDate ? 'PV数（' . $latestDate->format('n/j') . '時点）' : '直近のPV数')
+                    ->state(fn (Article $record): string => ($gaConfigured && $latestDate) ? number_format($todayViewsBySlug[$record->slug] ?? 0) : '—')
+                    ->alignEnd()
+                    ->toggleable(),
 
                 Tables\Columns\TextColumn::make('slug')
                     ->label('スラッグ')
