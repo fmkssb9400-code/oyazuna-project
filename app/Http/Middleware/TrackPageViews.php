@@ -60,6 +60,8 @@ class TrackPageViews
             $pageType = 'companies';
         } elseif (str_starts_with($routeName ?? '', 'news')) {
             $pageType = 'news';
+        } elseif ($routeName === 'partner.create') {
+            $pageType = 'partner';
         }
 
         // 同じセッション、同じページの重複アクセスは1時間以内は記録しない

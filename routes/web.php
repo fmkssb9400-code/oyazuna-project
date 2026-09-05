@@ -54,6 +54,11 @@ Route::get('/contact', [ContactController::class, 'create'])->name('contact.crea
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/contact/complete', [ContactController::class, 'complete'])->name('contact.complete');
 
+// Partner (提携相談) routes
+Route::get('/partner', [\App\Http\Controllers\PartnerController::class, 'create'])->name('partner.create');
+Route::post('/partner', [\App\Http\Controllers\PartnerController::class, 'store'])->middleware('throttle:5,1')->name('partner.store');
+Route::get('/partner/complete', [\App\Http\Controllers\PartnerController::class, 'complete'])->name('partner.complete');
+
 // News routes
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 // 旧スラッグ"10"（自動生成バグで数字のみになっていた）からのリダイレクト

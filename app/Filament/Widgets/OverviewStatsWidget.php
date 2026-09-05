@@ -7,6 +7,8 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 use App\Models\Article;
 use App\Models\ConsultationSubmission;
 use App\Models\Company;
+use App\Models\PageView;
+use App\Models\PartnerInquiry;
 use App\Services\GoogleAnalyticsService;
 use Carbon\Carbon;
 
@@ -35,6 +37,10 @@ class OverviewStatsWidget extends BaseWidget
         $consultationSubmissions = ConsultationSubmission::thisMonth()->count();
         $consultationConversionRate = $consultationPageViews > 0 ? ($consultationSubmissions / $consultationPageViews) * 100 : 0;
 
+        $partnerPageViews = PageView::where('page_type', 'partner')->count();
+        $partnerInquiries = PartnerInquiry::count();
+        $partnerConversionRate = $partnerPageViews > 0 ? ($partnerInquiries / $partnerPageViews) * 100 : 0;
+
         // Work method statistics
         $ropeCompanies = Company::where('rope_support', true)->published()->count();
         $brancoCompanies = Company::where('branco_supported', true)->published()->count();
@@ -62,6 +68,11 @@ class OverviewStatsWidget extends BaseWidget
             Stat::make('相談フォーム送信数', number_format($consultationSubmissions))
                 ->description('今月のCV率: ' . number_format($consultationConversionRate, 1) . '%')
                 ->descriptionIcon('heroicon-m-chat-bubble-left-ellipsis')
+                ->color('warning'),
+
+            Stat::make('提携相談ページ PV数（累計）', number_format($partnerPageViews))
+                ->description('提携相談送信数: ' . number_format($partnerInquiries) . '件（CV率 ' . number_format($partnerConversionRate, 1) . '%）')
+                ->descriptionIcon('heroicon-m-building-office-2')
                 ->color('warning'),
 
             Stat::make('ロープアクセス対応', number_format($ropeCompanies) . '社')

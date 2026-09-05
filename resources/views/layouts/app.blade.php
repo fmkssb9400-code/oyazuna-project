@@ -334,6 +334,7 @@
                         <li><a href="{{ route('quote-data.create') }}" class="text-white hover:text-blue-200 transition-colors">見積もりデータを登録</a></li>
                         <li><a href="#" class="text-white hover:text-blue-200 transition-colors">よくある質問</a></li>
                         <li><a href="{{ route('contact.create') }}" class="text-white hover:text-blue-200 transition-colors">お問い合わせ</a></li>
+                        <li><a href="{{ route('partner.create') }}" class="text-white hover:text-blue-200 transition-colors">提携に関するご相談</a></li>
                         <li><a href="#" class="text-white hover:text-blue-200 transition-colors">ヘルプ</a></li>
                     </ul>
                 </div>
