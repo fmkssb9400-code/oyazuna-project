@@ -35,6 +35,9 @@ class Article extends Model
         'is_published' => 'boolean',
         'is_featured' => 'boolean',
         'published_at' => 'datetime',
+        'ga_total_views' => 'integer',
+        'ga_daily_views' => 'integer',
+        'ga_stats_date' => 'date',
     ];
 
     public function company()

@@ -249,6 +249,55 @@ class GoogleAnalyticsService
         });
     }
 
+    /**
+     * 指定パス配下（例: /news/）のページごとのページビュー数を、パスをキーにしたマップで返す
+     * 戻り値: ['/news/xxx' => 123, ...]（バッチ処理でのDB反映用。上限件数を絞らない）
+     */
+    public function getPageViewsByPathPrefix(string $pathPrefix, string $startDate, string $endDate): array
+    {
+        $cacheKey = 'ga4:page_views_by_path:' . md5($pathPrefix) . ':' . $startDate . ':' . $endDate;
+
+        return Cache::remember($cacheKey, self::CACHE_TTL_SECONDS, function () use ($pathPrefix, $startDate, $endDate) {
+            try {
+                $client = $this->client();
+                if (! $client) {
+                    return [];
+                }
+
+                $response = $client->runReport(new RunReportRequest([
+                    'property' => $this->propertyName(),
+                    'date_ranges' => [
+                        new DateRange([
+                            'start_date' => $startDate,
+                            'end_date' => $endDate,
+                        ]),
+                    ],
+                    'dimensions' => [
+                        new Dimension(['name' => 'pagePath']),
+                    ],
+                    'metrics' => [
+                        new Metric(['name' => 'screenPageViews']),
+                    ],
+                    'dimension_filter' => $this->pathPrefixFilter($pathPrefix),
+                    'limit' => 100000,
+                ]));
+
+                $result = [];
+                foreach ($response->getRows() as $row) {
+                    $path = $row->getDimensionValues()[0]->getValue();
+                    $views = (int) $row->getMetricValues()[0]->getValue();
+                    $result[$path] = ($result[$path] ?? 0) + $views;
+                }
+
+                return $result;
+            } catch (\Throwable $e) {
+                Log::warning('GA4 getPageViewsByPathPrefix failed: ' . $e->getMessage());
+
+                return [];
+            }
+        });
+    }
+
     public function isConfigured(): bool
     {
         return (bool) $this->client();
