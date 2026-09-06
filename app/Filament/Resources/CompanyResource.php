@@ -326,6 +326,7 @@ class CompanyResource extends Resource
                                 
                                 Forms\Components\DateTimePicker::make('published_at')
                                     ->label('公開日時')
+                                    ->timezone('Asia/Tokyo')
                                     ->default(now()),
                                 
                                 Forms\Components\Section::make('監修者情報')

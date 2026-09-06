@@ -88,6 +88,7 @@ class StaticPageResource extends Resource
                         
                         Forms\Components\DateTimePicker::make('published_at')
                             ->label('公開日時')
+                            ->timezone('Asia/Tokyo')
                             ->default(now()),
                     ])
                     ->columns(2),

@@ -227,6 +227,7 @@ class ArticleResource extends Resource
 
                         Forms\Components\DateTimePicker::make('published_at')
                             ->label('公開日時')
+                            ->timezone('Asia/Tokyo')
                             ->default(now()),
 
                         Forms\Components\Toggle::make('is_featured')
