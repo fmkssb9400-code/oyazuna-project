@@ -45,13 +45,16 @@
 
                 <div class="p-4 md:p-8 pt-0">
                     <!-- Supervisor Information -->
-                    @if($article->supervisor_name)
+                    @if($article->show_supervisor && $article->supervisor)
+                    @php
+                        $supervisor = $article->supervisor;
+                    @endphp
                     <div class="mb-8 bg-gray-50 border border-gray-200 p-6">
                         <div class="flex items-start gap-4">
-                            @if($article->supervisor_avatar)
+                            @if($supervisor->avatar_url ?? null)
                                 <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-gray-200 flex-shrink-0">
-                                    <img src="{{ $article->previewSupervisorAvatarUrl ?? asset('storage/' . $article->supervisor_avatar) }}"
-                                         alt="{{ $article->supervisor_name }}"
+                                    <img src="{{ $supervisor->avatar_url }}"
+                                         alt="{{ $supervisor->name }}"
                                          class="w-full h-full object-cover">
                                 </div>
                             @else
@@ -61,20 +64,20 @@
                                     </svg>
                                 </div>
                             @endif
-                            
+
                             <div class="flex-1">
                                 <div class="text-xs text-gray-500 mb-1">監修者</div>
-                                <h3 class="text-base font-medium text-gray-900 mb-1">{{ $article->supervisor_name }}</h3>
-                                @if($article->supervisor_title)
-                                    <p class="text-blue-600 font-normal text-xs mb-2">{{ $article->supervisor_title }}</p>
+                                <h3 class="text-base font-medium text-gray-900 mb-1">{{ $supervisor->name }}</h3>
+                                @if($supervisor->title)
+                                    <p class="text-blue-600 font-normal text-xs mb-2">{{ $supervisor->title }}</p>
                                 @endif
-                                @if($article->supervisor_description)
+                                @if($supervisor->description)
                                     <div class="supervisor-description">
                                         <p class="text-gray-700 text-xs leading-relaxed supervisor-text-preview" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                                            {!! nl2br(e($article->supervisor_description)) !!}
+                                            {!! nl2br(e($supervisor->description)) !!}
                                         </p>
                                         <p class="text-gray-700 text-xs leading-relaxed supervisor-text-full" style="display: none;">
-                                            {!! nl2br(e($article->supervisor_description)) !!}
+                                            {!! nl2br(e($supervisor->description)) !!}
                                         </p>
                                         <button onclick="toggleSupervisorDescription(this)" class="text-blue-600 hover:text-blue-800 text-xs mt-2 flex items-center gap-1 supervisor-toggle">
                                             <span class="toggle-text">続きを見る</span>

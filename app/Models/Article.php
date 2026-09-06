@@ -23,10 +23,8 @@ class Article extends Model
         'published_at',
         'is_featured',
         'featured_image',
-        'supervisor_name',
-        'supervisor_title',
-        'supervisor_description',
-        'supervisor_avatar',
+        'supervisor_id',
+        'show_supervisor',
     ];
 
     protected $casts = [
@@ -35,10 +33,16 @@ class Article extends Model
         'is_published' => 'boolean',
         'is_featured' => 'boolean',
         'published_at' => 'datetime',
+        'show_supervisor' => 'boolean',
         'ga_total_views' => 'integer',
         'ga_daily_views' => 'integer',
         'ga_stats_date' => 'date',
     ];
+
+    public function supervisor()
+    {
+        return $this->belongsTo(Supervisor::class);
+    }
 
     public function company()
     {

@@ -19,12 +19,9 @@ class ArticlePreviewController extends Controller
         }
 
         $featuredImageUrl = $data['featured_image_url'] ?? null;
-        $supervisorAvatarUrl = $data['supervisor_avatar_url'] ?? null;
 
         $article = new class extends Article {
             public ?string $previewFeaturedImageUrl = null;
-
-            public ?string $previewSupervisorAvatarUrl = null;
 
             public function getFeaturedImageUrlAttribute()
             {
@@ -32,10 +29,9 @@ class ArticlePreviewController extends Controller
             }
         };
 
-        $article->forceFill(collect($data)->except(['featured_image_url', 'supervisor_avatar_url', 'id'])->toArray());
+        $article->forceFill(collect($data)->except(['featured_image_url', 'id'])->toArray());
         $article->id = $data['id'] ?? 0;
         $article->previewFeaturedImageUrl = $featuredImageUrl;
-        $article->previewSupervisorAvatarUrl = $supervisorAvatarUrl;
         $article->published_at = $article->published_at ?? now();
 
         $featuredArticles = new Collection();

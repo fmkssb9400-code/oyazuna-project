@@ -182,33 +182,41 @@ class ArticleResource extends Resource
 
                 Forms\Components\Section::make('監修者情報')
                     ->schema([
-                        Forms\Components\TextInput::make('supervisor_name')
-                            ->label('監修者名')
-                            ->helperText('記事を監修した専門家の名前'),
+                        Forms\Components\Toggle::make('show_supervisor')
+                            ->label('監修者情報を表示する')
+                            ->live()
+                            ->columnSpanFull(),
 
-                        Forms\Components\TextInput::make('supervisor_title')
-                            ->label('監修者肩書き')
-                            ->helperText('専門家の肩書きや役職'),
+                        Forms\Components\Select::make('supervisor_id')
+                            ->label('監修者')
+                            ->relationship('supervisor', 'name')
+                            ->searchable()
+                            ->preload()
+                            ->visible(fn (Forms\Get $get) => $get('show_supervisor'))
+                            ->required(fn (Forms\Get $get) => $get('show_supervisor'))
+                            ->helperText('保存済みの監修者から選択してください。新しい監修者は右の「＋」から登録できます')
+                            ->createOptionForm([
+                                Forms\Components\TextInput::make('name')
+                                    ->label('監修者名')
+                                    ->required(),
 
-                        Forms\Components\Textarea::make('supervisor_description')
-                            ->label('監修者紹介')
-                            ->rows(3)
-                            ->columnSpanFull()
-                            ->helperText('監修者の経歴や専門分野について'),
+                                Forms\Components\TextInput::make('title')
+                                    ->label('肩書き'),
 
-                        Forms\Components\FileUpload::make('supervisor_avatar')
-                            ->label('監修者アイコン')
-                            ->image()
-                            ->directory('supervisors')
-                            ->disk('public')
-                            ->maxSize(5120)
-                            ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/jpg', 'image/gif', 'image/webp'])
-                            ->uploadingMessage('アバターをアップロード中...')
-                            ->reorderable(false)
-                            ->deletable(true)
-                            ->previewable(true),
+                                Forms\Components\Textarea::make('description')
+                                    ->label('紹介文')
+                                    ->rows(3),
+
+                                Forms\Components\FileUpload::make('avatar')
+                                    ->label('アイコン画像')
+                                    ->image()
+                                    ->directory('supervisors')
+                                    ->disk('public')
+                                    ->maxSize(5120)
+                                    ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/jpg', 'image/gif', 'image/webp']),
+                            ])
+                            ->columnSpanFull(),
                     ])
-                    ->columns(2)
                     ->collapsed(),
 
                 Forms\Components\Section::make('公開設定')

@@ -26,11 +26,10 @@ trait HasArticlePreviewAction
 
     protected function buildArticlePreviewUrl(): string
     {
-        $data = Arr::except($this->form->getRawState(), ['featured_image', 'supervisor_avatar']);
-
         $rawState = $this->form->getRawState();
+        $data = Arr::except($rawState, ['featured_image']);
+
         $data['featured_image_url'] = $this->resolvePreviewImageUrl($rawState['featured_image'] ?? null);
-        $data['supervisor_avatar_url'] = $this->resolvePreviewImageUrl($rawState['supervisor_avatar'] ?? null);
         $data['id'] = $this->record?->id;
 
         $token = (string) Str::uuid();
