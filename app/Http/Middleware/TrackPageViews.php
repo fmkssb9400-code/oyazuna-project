@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\PageView;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 class TrackPageViews
@@ -31,15 +32,20 @@ class TrackPageViews
     {
         $url = $request->fullUrl();
         $routeName = Route::currentRouteName();
-        
-        // ボットやクローラーを除外
-        $userAgent = $request->userAgent();
+
+        // ボット・クローラー・curl等のツールを除外
+        $userAgent = $request->userAgent() ?? '';
         if ($this->isBot($userAgent)) {
             return;
         }
 
         // 管理画面は除外
         if (str_starts_with($request->path(), 'admin')) {
+            return;
+        }
+
+        // 管理者としてログイン中のアクセス（自分自身での確認作業等）は除外
+        if (Auth::check()) {
             return;
         }
 
@@ -103,6 +109,18 @@ class TrackPageViews
             'outbrain',
             'pinterest',
             'developers.google.com/+/web/snippet',
+            // CLIツール・APIクライアント（動作確認・監視等の非人間アクセス）
+            'curl/',
+            'wget/',
+            'python-requests',
+            'python-urllib',
+            'postmanruntime',
+            'httpie',
+            'go-http-client',
+            'okhttp',
+            'node-fetch',
+            'axios/',
+            'insomnia',
         ];
 
         $userAgent = strtolower($userAgent);
