@@ -23,20 +23,20 @@ class SyncArticleGaViews extends Command
      *
      * @var string
      */
-    protected $description = 'GA4から記事ごとの累計PVと前日PVを取得してarticlesテーブルに反映する';
+    protected $description = 'GA4から記事ごとの累計PVと直近日PVを取得してarticlesテーブルに反映する';
 
     /**
      * Execute the console command.
      */
     public function handle(GoogleAnalyticsService $ga): int
     {
-        $targetDate = Carbon::now('Asia/Tokyo')->subDay();
+        $targetDate = $ga->getLatestDataDate() ?? Carbon::now('Asia/Tokyo')->subDay();
         $targetDateStr = $targetDate->format('Y-m-d');
 
         $this->info('累計PVを取得中...');
         $cumulative = $ga->getPageViewsByPathPrefix('/news/', '2015-08-14', $targetDateStr);
 
-        $this->info("前日PV（{$targetDateStr}）を取得中...");
+        $this->info("直近PV（{$targetDateStr}）を取得中...");
         $daily = $ga->getPageViewsByPathPrefix('/news/', $targetDateStr, $targetDateStr);
 
         if (empty($cumulative) && empty($daily)) {

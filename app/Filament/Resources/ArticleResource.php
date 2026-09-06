@@ -257,7 +257,7 @@ class ArticleResource extends Resource
                     ->description(fn (Article $record) => $record->ga_stats_date ? $record->ga_stats_date->format('n/j') . '時点' : null),
 
                 Tables\Columns\TextColumn::make('ga_daily_views')
-                    ->label('前日PV数')
+                    ->label('直近PV数')
                     ->numeric()
                     ->sortable()
                     ->toggleable()
