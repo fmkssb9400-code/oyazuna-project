@@ -281,7 +281,7 @@ class ArticleResource extends Resource
 
                 Tables\Columns\TextColumn::make('published_at')
                     ->label('公開日時')
-                    ->dateTime('Y-m-d H:i')
+                    ->dateTime('Y-m-d H:i', timezone: 'Asia/Tokyo')
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('created_at')

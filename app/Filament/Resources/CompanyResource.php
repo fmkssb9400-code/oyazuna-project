@@ -536,7 +536,7 @@ class CompanyResource extends Resource
                     ->boolean(),
                 Tables\Columns\TextColumn::make('published_at')
                     ->label('公開日時')
-                    ->dateTime()
+                    ->dateTime('Y-m-d H:i', timezone: 'Asia/Tokyo')
                     ->sortable(),
             ])
             ->filters([
