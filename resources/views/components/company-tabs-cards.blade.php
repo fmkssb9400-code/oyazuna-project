@@ -17,7 +17,6 @@
             ['label' => 'ゴンドラ対応', 'image' => 'ゴンドラ対応.png', 'slug' => 'gondola'],
             ['label' => '土日対応', 'image' => '土日対応.png', 'slug' => 'weekend'],
             ['label' => '夜間対応', 'image' => '夜間対応.png', 'slug' => 'night-work'],
-            ['label' => '足場対応', 'image' => '足場対応.png', 'slug' => 'scaffold-work'],
             ['label' => '高層ビル対応', 'image' => '高層ビル対応.png', 'slug' => 'high-rise'],
           ];
         @endphp

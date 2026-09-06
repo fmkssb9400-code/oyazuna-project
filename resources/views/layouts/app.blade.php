@@ -294,7 +294,6 @@
                         <li><a href="{{ route('hub.category', 'gondola') }}" class="text-white hover:text-blue-200 transition-colors">ゴンドラ対応</a></li>
                         <li><a href="{{ route('hub.category', 'night-work') }}" class="text-white hover:text-blue-200 transition-colors">夜間対応</a></li>
                         <li><a href="{{ route('hub.category', 'hotel') }}" class="text-white hover:text-blue-200 transition-colors">ホテル対応</a></li>
-                        <li><a href="{{ route('hub.category', 'scaffold-work') }}" class="text-white hover:text-blue-200 transition-colors">足場対応</a></li>
                         <li><a href="{{ route('hub.category', 'weekend') }}" class="text-white hover:text-blue-200 transition-colors">土日対応</a></li>
                         <li><a href="{{ route('hub.category', 'emergency') }}" class="text-white hover:text-blue-200 transition-colors">緊急・即日対応</a></li>
                         <li><a href="{{ route('hub.category', 'after-service') }}" class="text-white hover:text-blue-200 transition-colors">アフターサービス充実</a></li>
