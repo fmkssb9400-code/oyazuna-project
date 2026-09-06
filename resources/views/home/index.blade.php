@@ -444,8 +444,8 @@
 
 <!-- ヒーローセクション -->
 <div class="hero-section">
-  <h1 class="sr-only">高所ロープ作業に特化した清掃業者へ無料で一括見積もり</h1>
-  <img src="{{ asset('herosection (3).png') }}" alt="高所ロープ作業に特化した清掃業者へ無料で一括見積もり" class="hero-main-image">
+  <h1 class="sr-only">高所ロープ作業に特化した専門業者へ無料で一括見積もり</h1>
+  <img src="{{ asset('herosection5.png') }}" alt="高所ロープ作業に特化した専門業者へ無料で一括見積もり" class="hero-main-image">
   <img src="{{ asset('オヤズナ (1).png') }}" alt="オヤズナ" class="hero-logo-overlay">
 </div>
 
