@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Article;
 use App\Services\GoogleAnalyticsService;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -29,7 +30,7 @@ class SyncArticleGaViews extends Command
      */
     public function handle(GoogleAnalyticsService $ga): int
     {
-        $targetDate = now()->subDay();
+        $targetDate = Carbon::now('Asia/Tokyo')->subDay();
         $targetDateStr = $targetDate->format('Y-m-d');
 
         $this->info('累計PVを取得中...');

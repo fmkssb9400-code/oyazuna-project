@@ -310,7 +310,7 @@ class GoogleAnalyticsService
      */
     public function getLatestDataDate(): ?Carbon
     {
-        $cacheKey = 'ga4:latest_data_date:' . Carbon::today()->toDateString();
+        $cacheKey = 'ga4:latest_data_date:' . Carbon::today('Asia/Tokyo')->toDateString();
 
         return Cache::remember($cacheKey, self::CACHE_TTL_SECONDS, function () {
             try {
@@ -319,8 +319,8 @@ class GoogleAnalyticsService
                     return null;
                 }
 
-                $start = Carbon::today()->subDays(6);
-                $end = Carbon::today();
+                $start = Carbon::today('Asia/Tokyo')->subDays(6);
+                $end = Carbon::today('Asia/Tokyo');
 
                 $response = $client->runReport(new RunReportRequest([
                     'property' => $this->propertyName(),
@@ -344,7 +344,7 @@ class GoogleAnalyticsService
                         continue;
                     }
 
-                    $date = Carbon::createFromFormat('Ymd', $row->getDimensionValues()[0]->getValue());
+                    $date = Carbon::createFromFormat('Ymd', $row->getDimensionValues()[0]->getValue(), 'Asia/Tokyo');
                     if (! $latest || $date->gt($latest)) {
                         $latest = $date;
                     }

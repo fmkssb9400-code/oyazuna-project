@@ -5,6 +5,7 @@ namespace App\Filament\Widgets;
 use Filament\Widgets\Widget;
 use App\Models\Article;
 use App\Services\GoogleAnalyticsService;
+use Carbon\Carbon;
 
 class TopArticlesWidget extends Widget
 {
@@ -16,7 +17,8 @@ class TopArticlesWidget extends Widget
     {
         $ga = app(GoogleAnalyticsService::class);
 
-        $topPages = $ga->getTopPagesForPathPrefix('/news/', now()->startOfMonth(), now(), 10);
+        $now = Carbon::now('Asia/Tokyo');
+        $topPages = $ga->getTopPagesForPathPrefix('/news/', $now->copy()->startOfMonth(), $now, 10);
 
         $slugs = array_map(
             fn (array $page) => trim(str_replace('/news/', '', $page['path']), '/'),

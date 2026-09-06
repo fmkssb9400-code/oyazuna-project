@@ -20,7 +20,7 @@ class OverviewStatsWidget extends BaseWidget
     {
         $ga = app(GoogleAnalyticsService::class);
 
-        $latestDataDate = $ga->getLatestDataDate() ?? Carbon::today();
+        $latestDataDate = $ga->getLatestDataDate() ?? Carbon::today('Asia/Tokyo');
 
         $thisMonth = $ga->getPageViews($latestDataDate->copy()->startOfMonth(), $latestDataDate);
         $lastMonth = $ga->getPageViews($latestDataDate->copy()->subMonthNoOverflow()->startOfMonth(), $latestDataDate->copy()->subMonthNoOverflow()->endOfMonth());
