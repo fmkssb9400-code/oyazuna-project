@@ -168,7 +168,7 @@
         }
     </style>
 
-    @if(config('services.google_analytics.measurement_id') && app()->environment('production'))
+    @if(config('services.google_analytics.measurement_id') && app()->environment('production') && !auth()->check())
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.google_analytics.measurement_id') }}"></script>
     <script>
