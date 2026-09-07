@@ -2,6 +2,41 @@
 
 @section('title', $company->name . ' - 業者詳細 - オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
 
+@section('head')
+    <script type="application/ld+json">
+        {!! json_encode(array_filter([
+            '@@context' => 'https://schema.org',
+            '@type' => 'LocalBusiness',
+            'name' => $company->name,
+            'url' => url()->current(),
+            'sameAs' => $company->website_url ?: $company->official_url ?: null,
+            'description' => $company->description ? \Illuminate\Support\Str::limit(strip_tags($company->description), 300) : null,
+            'image' => $company->logo_url ?: null,
+            'telephone' => $company->phone ?: null,
+            'address' => $company->address_text ?: null,
+            'aggregateRating' => $company->reviews_count > 0 ? [
+                '@type' => 'AggregateRating',
+                'ratingValue' => round((float) $company->average_rating, 1),
+                'reviewCount' => $company->reviews_count,
+                'bestRating' => 5,
+                'worstRating' => 1,
+            ] : null,
+            'review' => $reviews->isNotEmpty() ? $reviews->map(fn ($r) => [
+                '@type' => 'Review',
+                'author' => ['@type' => 'Person', 'name' => $r->reviewer_name ?: '匿名'],
+                'reviewRating' => [
+                    '@type' => 'Rating',
+                    'ratingValue' => $r->total_score,
+                    'bestRating' => 5,
+                    'worstRating' => 1,
+                ],
+                'reviewBody' => \Illuminate\Support\Str::limit(strip_tags($r->body ?? ''), 500),
+                'datePublished' => optional($r->created_at)->toDateString(),
+            ])->values()->all() : null,
+        ], fn ($value) => $value !== null), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+    </script>
+@endsection
+
 @section('content')
 <div class="max-w-6xl mx-auto px-4 py-6 md:py-8">
     <div class="mb-4">
