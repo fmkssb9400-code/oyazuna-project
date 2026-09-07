@@ -11,7 +11,7 @@
       </div>
 
       <!-- 条件カード -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6">
         @php
           $conditionCards = [
             ['label' => 'ゴンドラ対応', 'image' => 'ゴンドラ対応.png', 'slug' => 'gondola'],
