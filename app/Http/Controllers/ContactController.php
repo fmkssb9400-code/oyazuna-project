@@ -25,7 +25,7 @@ class ContactController extends Controller
 
         try {
             // Send email notification
-            $adminEmail = EmailSettings::getValue('admin_email', 'admin@oyazuna.com');
+            $adminEmail = EmailSettings::getValue('admin_email', 'oyazuna.info@gmail.com');
             
             Mail::raw($this->formatContactEmail($validated), function ($message) use ($validated, $adminEmail) {
                 $message->from($validated['email'], $validated['name'])
