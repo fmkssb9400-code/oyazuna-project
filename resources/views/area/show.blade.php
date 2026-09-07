@@ -4,7 +4,6 @@
 @section('description', $config['meta_description'])
 
 @section('head')
-    <link rel="canonical" href="{{ url()->full() }}">
     <script type="application/ld+json">
         {!! json_encode([
             '@@context' => 'https://schema.org',

@@ -4,6 +4,31 @@
 
 @section('description', '高所ロープ作業特化の一括見積もりサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安全基準・実績を確認して、安心して依頼できる会社が見つかります。')
 
+@section('head')
+    <script type="application/ld+json">
+        {!! json_encode([
+            '@@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'Organization',
+                    '@id' => 'https://oyazuna.com/#organization',
+                    'name' => 'オヤズナ',
+                    'url' => 'https://oyazuna.com',
+                    'logo' => asset('オヤズナ (1).png'),
+                    'description' => '高所ロープ作業（無足場工法）特化の一括見積もりサイト。窓ガラス清掃・外壁塗装・外壁補修・外壁調査・鳥害対策・看板作業・雨漏り調査に対応する専門業者を比較できます。',
+                ],
+                [
+                    '@type' => 'WebSite',
+                    '@id' => 'https://oyazuna.com/#website',
+                    'url' => 'https://oyazuna.com',
+                    'name' => 'オヤズナ',
+                    'publisher' => ['@id' => 'https://oyazuna.com/#organization'],
+                ],
+            ],
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+    </script>
+@endsection
+
 @section('content')
 <style>
 /* ヒーローセクション専用スタイル */

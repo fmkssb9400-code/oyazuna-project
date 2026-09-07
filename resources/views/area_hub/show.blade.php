@@ -9,7 +9,6 @@
 @section('description', $pageDescription)
 
 @section('head')
-    <link rel="canonical" href="{{ url()->full() }}">
     @if(!empty($hubConfig['faq']))
         <script type="application/ld+json">
             {!! json_encode([

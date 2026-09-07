@@ -84,6 +84,32 @@ class Article extends Model
         return null;
     }
 
+    // 本文中の「<h3>Q. ...</h3><p>A. ...</p>」形式のFAQをFAQPage構造化データ用に抽出
+    public function getFaqPairsAttribute(): array
+    {
+        if (empty($this->content)) {
+            return [];
+        }
+
+        preg_match_all(
+            '/<h[3-4][^>]*>\s*Q[\.\s、:：]?\s*(.*?)<\/h[3-4]>\s*<p[^>]*>\s*A[\.\s、:：]?\s*(.*?)<\/p>/is',
+            $this->content,
+            $matches,
+            PREG_SET_ORDER
+        );
+
+        $pairs = [];
+        foreach ($matches as $match) {
+            $question = trim(strip_tags($match[1]));
+            $answer = trim(strip_tags($match[2]));
+            if ($question !== '' && $answer !== '') {
+                $pairs[] = ['q' => $question, 'a' => $answer];
+            }
+        }
+
+        return $pairs;
+    }
+
     // Get rendered content for display with custom HTML blocks - simplified for TinyMCE
     public function getRenderedContentAttribute()
     {
