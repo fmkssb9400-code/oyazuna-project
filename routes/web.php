@@ -25,6 +25,14 @@ Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap')
 Route::get('/api/homepage/companies/{sort}', [HomeController::class, 'getCompaniesBySort'])->name('api.homepage.companies');
 Route::get('/api/companies/{sort}', [CompaniesController::class, 'getCompaniesBySort'])->name('api.companies');
 Route::get('/companies', [CompaniesController::class, 'index'])->name('companies.index');
+
+// 旧: 数字だけのslugだった会社ページへの301リダイレクト（legacy_slugで引き当てる）
+Route::get('/companies/{legacyId}', function (string $legacyId) {
+    $company = \App\Models\Company::where('legacy_slug', $legacyId)->first();
+    abort_unless($company, 404);
+    return redirect('/companies/' . $company->slug, 301);
+})->where('legacyId', '[0-9]+')->name('companies.legacy-redirect');
+
 Route::get('/companies/{company:slug}', [CompanyController::class, 'show'])->name('companies.show');
 Route::get('/companies/{company:slug}/reviews', [CompanyController::class, 'reviews'])->name('companies.reviews');
 
