@@ -27,6 +27,12 @@ Route::get('/api/companies/{sort}', [CompaniesController::class, 'getCompaniesBy
 Route::get('/companies', [CompaniesController::class, 'index'])->name('companies.index');
 
 // 旧: 数字だけのslugだった会社ページへの301リダイレクト（legacy_slugで引き当てる）
+Route::get('/companies/{legacyId}/reviews', function (string $legacyId) {
+    $company = \App\Models\Company::where('legacy_slug', $legacyId)->first();
+    abort_unless($company, 404);
+    return redirect('/companies/' . $company->slug . '/reviews', 301);
+})->where('legacyId', '[0-9]+')->name('companies.legacy-reviews-redirect');
+
 Route::get('/companies/{legacyId}', function (string $legacyId) {
     $company = \App\Models\Company::where('legacy_slug', $legacyId)->first();
     abort_unless($company, 404);
