@@ -9,7 +9,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <meta name="description" content="@yield('description', '高所ロープ作業特化の一括見積もりサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安全基準・実績を確認して、安心して依頼できる会社が見つかります。')">
-    <link rel="canonical" href="@yield('canonical', 'https://oyazuna.com' . preg_replace('#^https?://[^/]+#', '', url()->current()))">
+    @php
+        // ページネーション2ページ目以降はクエリ込みで自己参照canonicalにする(1ページ目のURLを指すと
+        // 「宣言canonicalを信用できない重複」としてGoogleに扱われるため)。1ページ目のフィルタ/ソート
+        // クエリはベースURLに正規化して無駄なバリエーション重複を防ぐ。
+        $__page = (int) request()->query('page', 1);
+        $__path = 'https://oyazuna.com' . request()->getPathInfo();
+        $__defaultCanonical = $__page > 1
+            ? $__path . '?' . http_build_query(request()->query())
+            : $__path;
+    @endphp
+    <link rel="canonical" href="@yield('canonical', $__defaultCanonical)">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('head')
     
