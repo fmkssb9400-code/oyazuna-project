@@ -1,7 +1,7 @@
 <x-filament-widgets::widget>
     <x-filament::section>
         <x-slot name="heading">
-            ハブページ PVランキング（今月・Google Analytics）
+            ハブページ PVランキング（本日・今月累計 / Google Analytics）
         </x-slot>
 
         @if (! $this->isReady())
@@ -25,7 +25,8 @@
                                     <tr class="border-b border-gray-200 dark:border-gray-700">
                                         <th class="py-2 text-center w-10">#</th>
                                         <th class="py-2 text-left">ページ</th>
-                                        <th class="py-2 text-center w-20">PV数</th>
+                                        <th class="py-2 text-center w-20">本日</th>
+                                        <th class="py-2 text-center w-20">今月累計</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,7 +42,8 @@
                                                     {{ $row['label'] }}
                                                 </a>
                                             </td>
-                                            <td class="py-2 text-center">{{ number_format($row['views']) }}</td>
+                                            <td class="py-2 text-center">{{ number_format($row['today_views']) }}</td>
+                                            <td class="py-2 text-center">{{ number_format($row['month_views']) }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -62,7 +64,8 @@
                                     <tr class="border-b border-gray-200 dark:border-gray-700">
                                         <th class="py-2 text-center w-10">#</th>
                                         <th class="py-2 text-left">ページ</th>
-                                        <th class="py-2 text-center w-20">PV数</th>
+                                        <th class="py-2 text-center w-20">本日</th>
+                                        <th class="py-2 text-center w-20">今月累計</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -78,7 +81,8 @@
                                                     {{ $row['label'] }}
                                                 </a>
                                             </td>
-                                            <td class="py-2 text-center">{{ number_format($row['views']) }}</td>
+                                            <td class="py-2 text-center">{{ number_format($row['today_views']) }}</td>
+                                            <td class="py-2 text-center">{{ number_format($row['month_views']) }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

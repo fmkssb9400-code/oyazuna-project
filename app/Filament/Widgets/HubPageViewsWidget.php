@@ -15,37 +15,65 @@ class HubPageViewsWidget extends Widget
     protected static string $view = 'filament.widgets.hub-page-views-widget';
 
     /**
-     * カテゴリハブ（/hub/*）の今月のPVランキング。
-     * GA4はページネーション付きパス（?page=2等）を別行で返すため、スラッグ単位で合算する。
+     * GA4のページビュー一覧をスラッグ（またはキー）単位で合算する。
+     * GA4はページネーション付きパス（?page=2等）を別行で返すため、ここで合算する。
+     *
+     * @param array<int, array{path: string, views: int}> $topPages
+     * @param callable(string): (string|null) $keyResolver パスからキーを作る。対象外ならnullを返す
+     * @return array<string, int>
+     */
+    private function aggregateByKey(array $topPages, callable $keyResolver): array
+    {
+        $aggregated = [];
+        foreach ($topPages as $page) {
+            $path = parse_url($page['path'], PHP_URL_PATH) ?? $page['path'];
+            $key = $keyResolver($path);
+
+            if ($key === null) {
+                continue;
+            }
+
+            $aggregated[$key] = ($aggregated[$key] ?? 0) + $page['views'];
+        }
+
+        return $aggregated;
+    }
+
+    /**
+     * カテゴリハブ（/hub/*）の本日・今月累計のPVランキング。
+     * ランキング順は今月累計を基準にし、本日分は参考値として併記する。
      */
     public function getCategoryRows(): array
     {
         $ga = app(GoogleAnalyticsService::class);
         $labels = app(HubController::class)->pages();
 
-        $now = Carbon::now('Asia/Tokyo');
-        $topPages = $ga->getTopPagesForPathPrefix('/hub/', $now->copy()->startOfMonth(), $now, 200);
+        $latestDataDate = $ga->getLatestDataDate() ?? Carbon::today('Asia/Tokyo');
 
-        $aggregated = [];
-        foreach ($topPages as $page) {
-            $path = parse_url($page['path'], PHP_URL_PATH) ?? $page['path'];
+        $keyResolver = function (string $path) use ($labels): ?string {
             $slug = trim(str_replace('/hub/', '', $path), '/');
 
-            if ($slug === '' || ! isset($labels[$slug])) {
-                continue;
-            }
+            return ($slug === '' || ! isset($labels[$slug])) ? null : $slug;
+        };
 
-            $aggregated[$slug] = ($aggregated[$slug] ?? 0) + $page['views'];
-        }
+        $monthTotals = $this->aggregateByKey(
+            $ga->getTopPagesForPathPrefix('/hub/', $latestDataDate->copy()->startOfMonth(), $latestDataDate, 200),
+            $keyResolver
+        );
+        $todayTotals = $this->aggregateByKey(
+            $ga->getTopPagesForPathPrefix('/hub/', $latestDataDate, $latestDataDate, 200),
+            $keyResolver
+        );
 
-        arsort($aggregated);
+        arsort($monthTotals);
 
         $rows = [];
-        foreach (array_slice($aggregated, 0, 10, true) as $slug => $views) {
+        foreach (array_slice($monthTotals, 0, 10, true) as $slug => $monthViews) {
             $rows[] = [
                 'label' => $labels[$slug]['label'] ?? $slug,
                 'slug' => $slug,
-                'views' => $views,
+                'today_views' => $todayTotals[$slug] ?? 0,
+                'month_views' => $monthViews,
             ];
         }
 
@@ -53,7 +81,7 @@ class HubPageViewsWidget extends Widget
     }
 
     /**
-     * エリア×ハブ（/area/{県}/{サービス}）の今月のPVランキング。
+     * エリア×ハブ（/area/{県}/{サービス}）の本日・今月累計のPVランキング。
      * 都道府県トップページ単体（/area/{県}）はここでは除外する。
      */
     public function getAreaHubRows(): array
@@ -62,39 +90,45 @@ class HubPageViewsWidget extends Widget
         $areaLabels = app(AreaController::class)->pages();
         $hubLabels = app(HubController::class)->pages();
 
-        $now = Carbon::now('Asia/Tokyo');
-        $topPages = $ga->getTopPagesForPathPrefix('/area/', $now->copy()->startOfMonth(), $now, 500);
+        $latestDataDate = $ga->getLatestDataDate() ?? Carbon::today('Asia/Tokyo');
 
-        $aggregated = [];
-        foreach ($topPages as $page) {
-            $path = parse_url($page['path'], PHP_URL_PATH) ?? $page['path'];
+        $keyResolver = function (string $path) use ($areaLabels, $hubLabels): ?string {
             $segments = explode('/', trim($path, '/'));
 
             if (count($segments) !== 3) {
-                continue;
+                return null;
             }
 
             [, $areaSlug, $hubSlug] = $segments;
 
             if (! isset($areaLabels[$areaSlug]) || ! isset($hubLabels[$hubSlug])) {
-                continue;
+                return null;
             }
 
-            $key = $areaSlug . '/' . $hubSlug;
-            $aggregated[$key] = ($aggregated[$key] ?? 0) + $page['views'];
-        }
+            return $areaSlug . '/' . $hubSlug;
+        };
 
-        arsort($aggregated);
+        $monthTotals = $this->aggregateByKey(
+            $ga->getTopPagesForPathPrefix('/area/', $latestDataDate->copy()->startOfMonth(), $latestDataDate, 500),
+            $keyResolver
+        );
+        $todayTotals = $this->aggregateByKey(
+            $ga->getTopPagesForPathPrefix('/area/', $latestDataDate, $latestDataDate, 500),
+            $keyResolver
+        );
+
+        arsort($monthTotals);
 
         $rows = [];
-        foreach (array_slice($aggregated, 0, 10, true) as $key => $views) {
+        foreach (array_slice($monthTotals, 0, 10, true) as $key => $monthViews) {
             [$areaSlug, $hubSlug] = explode('/', $key);
 
             $rows[] = [
                 'label' => ($areaLabels[$areaSlug]['label'] ?? $areaSlug) . '×' . ($hubLabels[$hubSlug]['label'] ?? $hubSlug),
                 'area_slug' => $areaSlug,
                 'hub_slug' => $hubSlug,
-                'views' => $views,
+                'today_views' => $todayTotals[$key] ?? 0,
+                'month_views' => $monthViews,
             ];
         }
 
