@@ -40,6 +40,7 @@ class AdminPanelProvider extends PanelProvider
                 \App\Filament\Widgets\OverviewStatsWidget::class,
                 \App\Filament\Widgets\MonthlyPageViewsChart::class,
                 \App\Filament\Widgets\TopArticlesWidget::class,
+                \App\Filament\Widgets\HubPageViewsWidget::class,
                 \App\Filament\Widgets\ConsultationStatsWidget::class,
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
