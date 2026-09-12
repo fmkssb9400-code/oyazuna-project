@@ -25,6 +25,22 @@
             ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
         </script>
     @endif
+    <style>
+        .hub-custom-content h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin: 2rem 0 0.75rem; }
+        .hub-custom-content h2:first-child { margin-top: 0; }
+        .hub-custom-content h3 { font-size: 1.125rem; font-weight: 700; color: #111827; margin: 1.5rem 0 0.5rem; border-left: 4px solid #22c55e; padding-left: 0.75rem; }
+        .hub-custom-content p { color: #374151; line-height: 1.75; margin-bottom: 1rem; }
+        .hub-custom-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; color: #374151; }
+        .hub-custom-content li { margin-bottom: 0.5rem; }
+        .hub-custom-content strong { font-weight: 700; }
+        .hub-custom-content p a:not([class*="bg-"]) { color: #2563eb; text-decoration: underline; }
+        .hub-custom-content table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; font-size: 0.9rem; }
+        .hub-custom-content table th, .hub-custom-content table td { border: 1px solid #d1d5db; padding: 0.5rem 0.75rem; text-align: left; }
+        .hub-custom-content table th { background: #eff6ff; }
+        @media (max-width: 640px) {
+            .hub-custom-content table { display: block; overflow-x: auto; white-space: nowrap; }
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -181,6 +197,21 @@
                                 @endforeach
                             </div>
                         @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    @php
+        $customContentView = 'area_hub.custom.' . $areaSlug . '_' . str_replace('-', '_', $hubSlug);
+    @endphp
+    @if(View::exists($customContentView))
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+                <div class="lg:col-span-2">
+                    <div class="bg-white p-6 md:p-8 mb-10 hub-custom-content">
+                        @include($customContentView)
                     </div>
                 </div>
             </div>
