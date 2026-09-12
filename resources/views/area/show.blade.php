@@ -129,16 +129,7 @@
                     <h2 class="text-xl font-bold mb-4 invisible hidden lg:block" aria-hidden="true">&nbsp;</h2>
                     <div class="border border-gray-200">
                         <div class="bg-blue-500 px-4 py-3">
-                            <h3 class="text-white font-bold">関連ページ</h3>
-                        </div>
-                        <div class="bg-white divide-y divide-dashed divide-gray-300">
-                            <a href="{{ route('companies.index') }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
-                                専門業者一覧（全カテゴリ）
-                            </a>
-                        </div>
-                        <div class="bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-600">
-                            工法で探す
-                            <span class="block text-xs font-normal text-gray-500 mt-1">業者選びのポイント・依頼の流れも各ページで確認できます</span>
+                            <h3 class="text-white font-bold">{{ $config['label'] }}をジャンルで探す</h3>
                         </div>
                         <div class="bg-white divide-y divide-dashed divide-gray-300">
                             @foreach($hubCategoryPages as $hubSlug => $hubConfig)
@@ -152,6 +143,12 @@
                                     </a>
                                 @endif
                             @endforeach
+                        </div>
+                        <div class="bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-600">関連ページ</div>
+                        <div class="bg-white divide-y divide-dashed divide-gray-300">
+                            <a href="{{ route('companies.index') }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
+                                専門業者一覧（全カテゴリ）
+                            </a>
                         </div>
                         <div class="bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-600">条件で絞り込む</div>
                         <div class="bg-white divide-y divide-dashed divide-gray-300">
