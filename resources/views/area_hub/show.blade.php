@@ -1,8 +1,58 @@
 @extends('layouts.app')
 
 @php
-    $pageTitle = $areaConfig['prefecture'] . 'の' . ($hubConfig['nav_label'] ?? $hubConfig['label']) . '｜高所ロープ作業・見積り無料';
-    $pageDescription = $areaConfig['prefecture'] . 'で' . $hubConfig['label'] . 'に対応する高所ロープ作業の専門業者を' . $count . '社掲載。無料で見積もり依頼できます。';
+    $customContentView = 'area_hub.custom.' . $areaSlug . '_' . str_replace('-', '_', $hubSlug);
+    $comboKey = $areaSlug . '_' . $hubSlug;
+
+    // area_hub/custom配下に独自コンテンツを追加したページは、その軸を反映したtitle/descriptionを個別指定する。
+    // 指定がない組み合わせは従来通りの自動生成文言にフォールバックする。
+    $customMeta = [
+        'tokyo_exterior-cleaning' => [
+            'title' => '東京都の外壁清掃、足場なしで依頼できる業者一覧｜見積り無料',
+            'description' => '東京都で足場を組まずに外壁清掃できるロープアクセス・ゴンドラ対応の専門業者を69社掲載。費用相場・業者選びのポイントも解説。無料で見積もり依頼できます。',
+        ],
+        'tokyo_wall-repair' => [
+            'title' => '東京都の外壁補修業者一覧｜補助金の実態・費用相場も解説',
+            'description' => '東京都で外壁のひび割れ・タイル浮きを補修する専門業者を28社掲載。区市町村ごとに異なる補助金の実態や工法別の費用相場も解説。無料で見積もり依頼できます。',
+        ],
+        'tokyo_exterior-inspection' => [
+            'title' => '東京都の外壁調査業者一覧｜ドローン・赤外線調査の費用も解説',
+            'description' => '東京都で外壁調査(打診・赤外線・ドローン)に対応する専門業者を27社掲載。国に認められた調査手法や費用相場も解説。無料で見積もり依頼できます。',
+        ],
+        'tokyo_exterior-painting' => [
+            'title' => '東京都の外壁塗装業者一覧｜補助金の実態・悪質業者の見分け方',
+            'description' => '東京都で外壁塗装に対応する専門業者を17社掲載。区市町村ごとに異なる補助金制度の実態や、悪質な訪問販売業者の見分け方も解説。無料で見積もり依頼できます。',
+        ],
+        'tokyo_signboard' => [
+            'title' => '東京都の看板業者一覧｜屋外広告物条例の許可基準も解説',
+            'description' => '東京都で看板の設置・作業に対応する専門業者を14社掲載。屋外広告物条例に基づく許可基準・禁止区域・手数料も解説。無料で見積もり依頼できます。',
+        ],
+        'tokyo_bird-control' => [
+            'title' => '東京都の鳥害対策業者一覧｜区ごとの餌やり禁止条例も解説',
+            'description' => '東京都で鳩・カラス対策に対応する専門業者を14社掲載。区市によって異なる餌やり禁止条例の実態も解説。無料で見積もり依頼できます。',
+        ],
+        'kanagawa_exterior-cleaning' => [
+            'title' => '神奈川県の外壁清掃、足場なしで依頼できる業者一覧｜見積り無料',
+            'description' => '神奈川県で足場を組まずに外壁清掃できる専門業者を39社掲載。みなとみらい・湘南エリアの事情も解説。無料で見積もり依頼できます。',
+        ],
+        'saitama_exterior-cleaning' => [
+            'title' => '埼玉県の外壁清掃、足場なしで依頼できる業者一覧｜見積り無料',
+            'description' => '埼玉県で足場を組まずに外壁清掃できる専門業者を33社掲載。夏の猛暑を踏まえた業者選びのポイントも解説。無料で見積もり依頼できます。',
+        ],
+        'chiba_exterior-cleaning' => [
+            'title' => '千葉県の外壁清掃、足場なしで依頼できる業者一覧｜見積り無料',
+            'description' => '千葉県で足場を組まずに外壁清掃できる専門業者を32社掲載。沿岸部の塩害・京葉工業地域の事情も解説。無料で見積もり依頼できます。',
+        ],
+        'ibaraki_exterior-cleaning' => [
+            'title' => '茨城県の外壁清掃、足場なしで依頼できる業者一覧｜見積り無料',
+            'description' => '茨城県で足場を組まずに外壁清掃できる専門業者を10社掲載。太平洋沿岸・鹿島臨海工業地帯の事情も解説。無料で見積もり依頼できます。',
+        ],
+    ];
+
+    $pageTitle = $customMeta[$comboKey]['title']
+        ?? ($areaConfig['prefecture'] . 'の' . ($hubConfig['nav_label'] ?? $hubConfig['label']) . '｜高所ロープ作業・見積り無料');
+    $pageDescription = $customMeta[$comboKey]['description']
+        ?? ($areaConfig['prefecture'] . 'で' . $hubConfig['label'] . 'に対応する高所ロープ作業の専門業者を' . $count . '社掲載。無料で見積もり依頼できます。');
 @endphp
 
 @section('title', $pageTitle . ' | オヤズナ')
@@ -203,9 +253,6 @@
         </div>
     @endif
 
-    @php
-        $customContentView = 'area_hub.custom.' . $areaSlug . '_' . str_replace('-', '_', $hubSlug);
-    @endphp
     @if(View::exists($customContentView))
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-3 lg:gap-8">
