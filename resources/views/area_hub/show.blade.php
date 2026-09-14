@@ -81,10 +81,17 @@
         ],
     ];
 
-    $pageTitle = $customMeta[$comboKey]['title']
-        ?? ($areaConfig['prefecture'] . 'の' . ($hubConfig['nav_label'] ?? $hubConfig['label']) . '｜高所ロープ作業・見積り無料');
-    $pageDescription = $customMeta[$comboKey]['description']
-        ?? ($areaConfig['prefecture'] . 'で' . $hubConfig['label'] . 'に対応する高所ロープ作業の専門業者を' . $count . '社掲載。無料で見積もり依頼できます。');
+    // 管理画面(Filament)から編集可能なDBコンテンツ。存在すればコードの$customMetaより優先する。
+    $areaHubContent = \App\Models\AreaHubContent::where('area_slug', $areaSlug)
+        ->where('hub_slug', $hubSlug)
+        ->first();
+
+    $pageTitle = $areaHubContent?->title
+        ?: ($customMeta[$comboKey]['title']
+            ?? ($areaConfig['prefecture'] . 'の' . ($hubConfig['nav_label'] ?? $hubConfig['label']) . '｜高所ロープ作業・見積り無料'));
+    $pageDescription = $areaHubContent?->meta_description
+        ?: ($customMeta[$comboKey]['description']
+            ?? ($areaConfig['prefecture'] . 'で' . $hubConfig['label'] . 'に対応する高所ロープ作業の専門業者を' . $count . '社掲載。無料で見積もり依頼できます。'));
 @endphp
 
 @section('title', $pageTitle . ' | オヤズナ')
@@ -285,12 +292,17 @@
         </div>
     @endif
 
-    @if(View::exists($customContentView))
+    @if(($areaHubContent && $areaHubContent->content) || View::exists($customContentView))
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-3 lg:gap-8">
                 <div class="lg:col-span-2">
                     <div class="bg-white p-6 md:p-8 mb-10 hub-custom-content">
-                        @include($customContentView)
+                        {{-- 管理画面(Filament)のAreaHubContentが優先。未登録の場合のみ従来のBladeファイルにフォールバックする --}}
+                        @if($areaHubContent && $areaHubContent->content)
+                            {!! $areaHubContent->content !!}
+                        @else
+                            @include($customContentView)
+                        @endif
                     </div>
                 </div>
             </div>
