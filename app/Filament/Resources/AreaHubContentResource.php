@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AreaHubContentResource\Pages;
+use App\Filament\Forms\Components\ContentEditor;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\HubController;
 use App\Models\AreaHubContent;
@@ -83,15 +84,9 @@ class AreaHubContentResource extends Resource
                     ]),
 
                 Forms\Components\Section::make('本文コンテンツ')
-                    ->description('業者一覧テーブルの下に表示されるHTML本文です。見出し(h2/h3)・段落(p)・箇条書き(ul/li)・色付きボックス(div style=...)などをそのまま記述してください。')
+                    ->description('業者一覧テーブルの下に表示される本文です。見出し・太字・表・色付きボックスなどは、見たままの状態で直接クリックして編集できます。')
                     ->schema([
-                        Forms\Components\Textarea::make('content')
-                            ->label('本文（HTML）')
-                            ->rows(30)
-                            ->columnSpanFull()
-                            ->extraAttributes([
-                                'style' => 'font-family: "Monaco", "Consolas", "Courier New", monospace; font-size: 13px;',
-                            ]),
+                        ContentEditor::make('content'),
                     ]),
             ]);
     }
