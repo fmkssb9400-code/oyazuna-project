@@ -8,6 +8,8 @@
 <p>なお、汚れの度合いによっては、ロープアクセスの可動範囲(支点を中心とした限られた範囲)では本格的な高圧洗浄が難しいという指摘も専門業者の情報にはあります。「無足場工法なら万能」と決めつけず、現地調査を踏まえて業者に工法を判断してもらうのが確実です。</p>
 
 <h2>費用の目安</h2>
+<p style="margin: 0 0 4px 0; font-size: 0.8em; color: #888;">→ 横にスクロールできます</p>
+<div style="overflow-x: auto;">
 <table style="border-collapse: collapse; width: 100%;" border="1">
 <tbody>
 <tr><td style="padding: 6px 10px;"><strong>工法</strong></td><td style="padding: 6px 10px;"><strong>設置費用の目安</strong></td><td style="padding: 6px 10px;"><strong>㎡単価の目安</strong></td></tr>
@@ -17,6 +19,7 @@
 <tr><td style="padding: 6px 10px;">仮設足場</td><td style="padding: 6px 10px;">別途組立・解体費</td><td style="padding: 6px 10px;">600〜1,200円</td></tr>
 </tbody>
 </table>
+</div>
 <p>足場と比べて30〜50%程度のコスト削減が見込め、足場の組立・解体(合わせて4〜10日程度)が不要な分、工期も短縮できます。加えて、足場が空き巣の侵入経路として悪用されるリスクを避けられる点、テナントや住民の生活への影響を抑えられる点も、無足場工法ならではのメリットです。ただし建物の形状・汚れ具合によって費用は変わるため、現地調査に基づく見積もりで確認してください。</p>
 
 <h2>建物の使い方によって確認したいことは変わります</h2>

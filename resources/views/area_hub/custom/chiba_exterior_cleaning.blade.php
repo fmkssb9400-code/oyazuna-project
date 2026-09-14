@@ -6,6 +6,8 @@
 <div style="margin: 2em 0; padding: 16px 20px; background-color: #f0f7ff; border: 2px solid #5b8bd0;"><div style="display: inline-block; margin-bottom: 10px; padding: 4px 14px; background-color: #5b8bd0; color: #ffffff; font-weight: bold;">沿岸部・工業地帯にお住まいの方へ</div><div>幕張・浦安・市川など東京湾岸エリアや、九十九里浜・館山など太平洋岸エリアの建物は、潮風による塩害で外壁の汚れが進みやすい傾向があります。また、市原市周辺の京葉工業地域に近い建物では、油煙・粉じんによる局所的な汚れが気になることもあります。相談の際は、建物の立地条件(海からの距離・幹線道路や工場との近接度)を伝えると、清掃頻度や工法についてより的確な提案を受けられます。</div></div>
 
 <h2>費用の目安</h2>
+<p style="margin: 0 0 4px 0; font-size: 0.8em; color: #888;">→ 横にスクロールできます</p>
+<div style="overflow-x: auto;">
 <table style="border-collapse: collapse; width: 100%;" border="1">
 <tbody>
 <tr><td style="padding: 6px 10px;"><strong>工法</strong></td><td style="padding: 6px 10px;"><strong>設置費用の目安</strong></td><td style="padding: 6px 10px;"><strong>㎡単価の目安</strong></td></tr>
@@ -15,6 +17,7 @@
 <tr><td style="padding: 6px 10px;">仮設足場</td><td style="padding: 6px 10px;">別途組立・解体費</td><td style="padding: 6px 10px;">600〜1,200円</td></tr>
 </tbody>
 </table>
+</div>
 <p>足場を使わない分、費用は30〜50%ほど抑えられるとされ、組立・解体にかかる日数(合計で4〜10日程度)も不要になるため工期短縮にもつながります。足場が空き巣の侵入口として狙われるリスクを避けられる点、営業中の店舗であれば看板やエントランスを隠さずに済む点も、無足場工法ならではの利点です。ただし建物の規模や汚れ具合で金額は変わるため、正確な費用は現地調査後の見積もりで確認してください。</p>
 
 <h2>建物のタイプ別に気をつけたいこと</h2>

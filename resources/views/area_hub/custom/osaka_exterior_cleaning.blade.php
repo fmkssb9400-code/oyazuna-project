@@ -7,6 +7,8 @@
 <div style="margin: 2em 0; padding: 16px 20px; background-color: #f0f7ff; border: 2px solid #5b8bd0;"><div style="display: inline-block; margin-bottom: 10px; padding: 4px 14px; background-color: #5b8bd0; color: #ffffff; font-weight: bold;">都心部・工業地帯周辺にお住まいの方へ</div><div>梅田・中之島・淀屋橋・北浜周辺の超高層ビルは、建物の設備によってロープアクセス単独では対応できず、ゴンドラとの併用が必要になる場合があります。また、堺市・高石市・泉大津市にまたがる堺泉北臨海工業地帯に近い建物は、油煙・粉じんによる汚れの付着が進みやすい傾向があります。業者に相談する際は、建物の高さ・設備・立地条件(工業地帯からの距離など)を伝えると、より的確な提案を受けられます。</div></div>
 
 <h2>費用の目安</h2>
+<p style="margin: 0 0 4px 0; font-size: 0.8em; color: #888;">→ 横にスクロールできます</p>
+<div style="overflow-x: auto;">
 <table style="border-collapse: collapse; width: 100%;" border="1">
 <tbody>
 <tr><td style="padding: 6px 10px;"><strong>工法</strong></td><td style="padding: 6px 10px;"><strong>設置費用の目安</strong></td><td style="padding: 6px 10px;"><strong>㎡単価の目安</strong></td></tr>
@@ -16,6 +18,7 @@
 <tr><td style="padding: 6px 10px;">仮設足場</td><td style="padding: 6px 10px;">別途組立・解体費</td><td style="padding: 6px 10px;">600〜1,200円</td></tr>
 </tbody>
 </table>
+</div>
 <p>足場と比べて30〜50%程度のコスト削減が見込め、足場の組立・解体(合わせて4〜10日程度)が不要な分、工期も短縮できます。加えて、足場が空き巣の侵入経路として悪用されるリスクを避けられる点、テナントや住民の生活への影響を抑えられる点も、無足場工法ならではのメリットです。ただし建物の形状・汚れ具合によって費用は変わるため、現地調査に基づく見積もりで確認してください。</p>
 
 <h2>建物の使い方によって確認したいことは変わります</h2>

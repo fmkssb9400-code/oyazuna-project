@@ -4,6 +4,8 @@
 
 <h2>東京都内の「餌やり禁止条例」、区によってかなり違います</h2>
 <p>東京都全体を一律に規制する「餌やり禁止条例」があるわけではありません。各区市がそれぞれ独自に条例を制定しており、罰則の有無・金額も区市ごとに異なります。</p>
+<p style="margin: 0 0 4px 0; font-size: 0.8em; color: #888;">→ 横にスクロールできます</p>
+<div style="overflow-x: auto;">
 <table style="border-collapse: collapse; width: 100%;" border="1">
 <tbody>
 <tr><td style="padding: 6px 10px;"><strong>区市</strong></td><td style="padding: 6px 10px;"><strong>制度の概要</strong></td></tr>
@@ -13,6 +15,7 @@
 <tr><td style="padding: 6px 10px;">世田谷区</td><td style="padding: 6px 10px;">2018年制定。「お金を払えばやってもよい」という誤解を避けるため、罰金制度はあえて設けていない</td></tr>
 </tbody>
 </table>
+</div>
 <p>このように、罰則がある区・ない区、金額もまちまちです。ビルの所在地によって適用される条例が異なるため、悪質な餌やり被害に困っている場合は、まず所在地の区市の環境担当窓口に相談することをおすすめします。</p>
 
 <h2>なぜこうした条例が増えているのか</h2>

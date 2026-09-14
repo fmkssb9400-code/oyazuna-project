@@ -9,6 +9,8 @@
 
 <h2>工法別の費用相場</h2>
 <p>足場を使わない工法にはロープアクセスとゴンドラがあり、それぞれ費用感が異なります。仮設足場も含めて比較すると、次のような目安になります。</p>
+<p style="margin: 0 0 4px 0; font-size: 0.8em; color: #888;">→ 横にスクロールできます</p>
+<div style="overflow-x: auto;">
 <table style="border-collapse: collapse; width: 100%;" border="1">
 <tbody>
 <tr><td style="padding: 6px 10px;"><strong>工法</strong></td><td style="padding: 6px 10px;"><strong>設置費用の目安</strong></td><td style="padding: 6px 10px;"><strong>㎡単価の目安</strong></td><td style="padding: 6px 10px;"><strong>適用条件</strong></td></tr>
@@ -18,6 +20,7 @@
 <tr><td style="padding: 6px 10px;">仮設足場</td><td style="padding: 6px 10px;">別途組立・解体費</td><td style="padding: 6px 10px;">600〜1,200円</td><td style="padding: 6px 10px;">建物の条件を問わず対応可</td></tr>
 </tbody>
 </table>
+</div>
 <p>ロープアクセスは仮設足場と比べて30〜50%程度のコスト削減が期待できるとされています。たとえば足場費用が60万円かかる規模のビルであれば、ロープアクセスなら20万〜30万円程度に抑えられる計算です。あわせて、足場の組立・解体(それぞれ2〜5日程度)が不要になる分、工期を1〜2週間ほど短縮できるケースも珍しくありません。ただしこれらはあくまで目安で、建物の形状や汚れの程度によって変わるため、正確な費用は現地調査に基づく見積もりで確認してください。</p>
 
 <h2>コスト以外にもあるメリット</h2>

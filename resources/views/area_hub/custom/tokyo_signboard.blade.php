@@ -23,6 +23,8 @@
 
 <h2>手数料の目安</h2>
 <p>許可申請の手数料・許可期間は広告物の種類によって定められています(東京都の例)。</p>
+<p style="margin: 0 0 4px 0; font-size: 0.8em; color: #888;">→ 横にスクロールできます</p>
+<div style="overflow-x: auto;">
 <table style="border-collapse: collapse; width: 100%;" border="1">
 <tbody>
 <tr><td style="padding: 6px 10px;"><strong>種類</strong></td><td style="padding: 6px 10px;"><strong>手数料</strong></td><td style="padding: 6px 10px;"><strong>許可期間</strong></td></tr>
@@ -32,6 +34,7 @@
 <tr><td style="padding: 6px 10px;">広告幕</td><td style="padding: 6px 10px;">1張につき990円</td><td style="padding: 6px 10px;">1月以内</td></tr>
 </tbody>
 </table>
+</div>
 <p>区長・市長・町長が許可する広告物は、区市町によって手数料が異なる場合があります。正確な金額は設置場所の屋外広告物取扱窓口で確認してください。なお、高さ4mを超える、または表示面積10㎡を超える広告塔・広告板を設置する場合は、屋外広告物管理者の資格証明の提出が必要です。</p>
 
 <h2>違反した場合のリスク</h2>

@@ -13,6 +13,8 @@
 <p>実務では、赤外線調査で建物全体を面的に把握したうえで、気になる箇所だけ打診で近接確認する、という併用が現実的な進め方とされています。建物の規模や形状によって適した組み合わせは変わるため、業者に相談して調査計画を立てることをおすすめします。</p>
 
 <h2>費用相場</h2>
+<p style="margin: 0 0 4px 0; font-size: 0.8em; color: #888;">→ 横にスクロールできます</p>
+<div style="overflow-x: auto;">
 <table style="border-collapse: collapse; width: 100%;" border="1">
 <tbody>
 <tr><td style="padding: 6px 10px;"><strong>調査方法</strong></td><td style="padding: 6px 10px;"><strong>㎡単価の目安</strong></td></tr>
@@ -21,6 +23,7 @@
 <tr><td style="padding: 6px 10px;">ドローンによる赤外線調査</td><td style="padding: 6px 10px;">250〜400円</td></tr>
 </tbody>
 </table>
+</div>
 <p>建物の規模・形状・調査方法・現場条件によって費用は変わるため、個別の見積もりで確認することをおすすめします。なお、外壁の全面打診等調査は建築基準法12条により、竣工または前回の外壁改修からおおむね10年ごとに義務付けられています。対象建物や罰則など制度の詳細については、当サイトの別記事「<a href="/news/article-12-building-inspection">建築基準法12条点検とは？外壁調査の対象・周期・罰則をわかりやすく解説</a>」もあわせてご確認ください。</p>
 
 <h2>発注の流れ</h2>
