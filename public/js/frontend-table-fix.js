@@ -34,16 +34,39 @@ function fixFrontendTables() {
             // 記事内のテーブルかチェック
             const isInArticle = table.closest('.article-content') || table.closest('.prose');
             if (!isInArticle && selector === 'table') return;
-            
+
             tablesFound++;
             console.log('Fixing frontend table:', table);
-            
-            // テーブル自体のスタイル強制
+
+            // 横スクロール用のラッパーで囲む（未対応の場合のみ、再実行時の二重ラップを防止）
+            let wrapper = table.parentElement;
+            if (!wrapper.classList || !wrapper.classList.contains('table-scroll-wrapper')) {
+                wrapper = document.createElement('div');
+                wrapper.className = 'table-scroll-wrapper';
+                wrapper.style.cssText = 'overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 2rem 0;';
+
+                const hint = document.createElement('p');
+                hint.textContent = '→ 横にスクロールできます';
+                hint.className = 'table-scroll-hint';
+                hint.style.cssText = 'display: none; margin: 0 0 6px 0; font-size: 0.8em; color: #888;';
+
+                table.parentNode.insertBefore(hint, table);
+                hint.insertAdjacentElement('afterend', wrapper);
+                wrapper.appendChild(table);
+            }
+
+            // 列数に応じた最小幅を確保し、セル内の文字が縦に詰まって折り返されるのを防ぐ
+            const firstRow = table.querySelector('tr');
+            const colCount = firstRow ? firstRow.children.length : 0;
+            const minWidthPx = Math.max(colCount * 140, 320);
+
+            // テーブル自体のスタイル強制（marginはラッパー側で管理するため0に、overflowはラッパーに任せる）
             table.style.cssText = `
                 display: table !important;
                 width: 100% !important;
+                min-width: ${minWidthPx}px !important;
                 border-collapse: collapse !important;
-                margin: 2rem 0 !important;
+                margin: 0 !important;
                 background: white !important;
                 border-radius: 8px !important;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
@@ -51,7 +74,6 @@ function fixFrontendTables() {
                 font-size: 0.875rem !important;
                 line-height: 1.25rem !important;
                 table-layout: auto !important;
-                overflow: hidden !important;
             `;
             
             // thead の表示強制
@@ -104,6 +126,12 @@ function fixFrontendTables() {
                     cell.style.backgroundColor = 'white';
                 }
             });
+
+            // 実際に横スクロールが必要な幅かどうかで、ヒント表示を切り替える
+            const hintEl = wrapper.previousElementSibling;
+            if (hintEl && hintEl.classList && hintEl.classList.contains('table-scroll-hint')) {
+                hintEl.style.display = (table.scrollWidth > wrapper.clientWidth) ? 'block' : 'none';
+            }
         });
     });
     
