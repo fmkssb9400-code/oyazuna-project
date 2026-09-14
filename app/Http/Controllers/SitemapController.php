@@ -72,4 +72,25 @@ class SitemapController extends Controller
 
         return response($xml, 200)->header('Content-Type', 'text/xml; charset=UTF-8');
     }
+
+    /**
+     * 人間向けのHTMLサイトマップ。特に都道府県×工法の掛け合わせページ（/area/{area}/{hub}）は
+     * グローバルナビ・footerから直接たどり着けないため、このページで一覧化して発見できるようにする。
+     */
+    public function page(HubController $hub, AreaController $area, AreaHubController $areaHub)
+    {
+        $categoryHubs = collect($hub->pages())->where('type', 'category');
+        $conditionHubs = collect($hub->pages())->where('type', 'condition');
+
+        $combinationsByArea = collect($areaHub->qualifyingCombinations($area, $hub))
+            ->groupBy('areaSlug')
+            ->sortBy(fn ($combos, $areaSlug) => array_search($areaSlug, array_keys($area->pages())));
+
+        return view('sitemap.page', [
+            'categoryHubs' => $categoryHubs,
+            'conditionHubs' => $conditionHubs,
+            'areaPages' => $area->pages(),
+            'combinationsByArea' => $combinationsByArea,
+        ]);
+    }
 }

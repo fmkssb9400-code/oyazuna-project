@@ -332,6 +332,16 @@
                         <li><a href="{{ route('area.show', 'hyogo') }}" class="text-white hover:text-blue-200 transition-colors">兵庫県</a></li>
                         <li><a href="{{ route('companies.index') }}" class="text-white hover:text-blue-200 transition-colors">すべての都道府県</a></li>
                     </ul>
+
+                    <h3 class="text-lg font-semibold mt-6 mb-4">人気の地域×サービス</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{{ route('area.hub.show', ['tokyo', 'exterior-cleaning']) }}" class="text-white hover:text-blue-200 transition-colors">東京都の外壁清掃</a></li>
+                        <li><a href="{{ route('area.hub.show', ['tokyo', 'wall-repair']) }}" class="text-white hover:text-blue-200 transition-colors">東京都の外壁補修</a></li>
+                        <li><a href="{{ route('area.hub.show', ['kanagawa', 'window-cleaning']) }}" class="text-white hover:text-blue-200 transition-colors">神奈川県の窓ガラス清掃</a></li>
+                        <li><a href="{{ route('area.hub.show', ['chiba', 'window-cleaning']) }}" class="text-white hover:text-blue-200 transition-colors">千葉県の窓ガラス清掃</a></li>
+                        <li><a href="{{ route('area.hub.show', ['saitama', 'window-cleaning']) }}" class="text-white hover:text-blue-200 transition-colors">埼玉県の窓ガラス清掃</a></li>
+                        <li><a href="{{ route('sitemap.page') }}" class="text-white hover:text-blue-200 transition-colors underline">すべての組み合わせを見る</a></li>
+                    </ul>
                 </div>
 
                 <!-- サポート -->
@@ -356,7 +366,7 @@
                         <li><a href="{{ route('legal.privacy') }}" class="text-white hover:text-blue-200 transition-colors">プライバシーポリシー</a></li>
                         <li><a href="{{ route('legal.terms') }}" class="text-white hover:text-blue-200 transition-colors">利用規約</a></li>
                         <li><a href="{{ route('legal.disclaimer') }}" class="text-white hover:text-blue-200 transition-colors">免責事項</a></li>
-                        <li><a href="#" class="text-white hover:text-blue-200 transition-colors">サイトマップ</a></li>
+                        <li><a href="{{ route('sitemap.page') }}" class="text-white hover:text-blue-200 transition-colors">サイトマップ</a></li>
                     </ul>
                 </div>
             </div>

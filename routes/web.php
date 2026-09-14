@@ -22,6 +22,7 @@ use App\Http\Controllers\LegalController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+Route::get('/sitemap', [SitemapController::class, 'page'])->name('sitemap.page');
 Route::get('/api/homepage/companies/{sort}', [HomeController::class, 'getCompaniesBySort'])->name('api.homepage.companies');
 Route::get('/api/companies/{sort}', [CompaniesController::class, 'getCompaniesBySort'])->name('api.companies');
 Route::get('/companies', [CompaniesController::class, 'index'])->name('companies.index');
