@@ -52,4 +52,18 @@ class TopArticlesWidget extends Widget
     {
         return app(GoogleAnalyticsService::class)->isConfigured();
     }
+
+    /**
+     * このウィジェットが表示しているGA4データを実際に取得した時刻。
+     * まだ一度もキャッシュされていない（今回が初回取得）場合は現在時刻で代替する。
+     */
+    public function getAsOfLabel(): string
+    {
+        $ga = app(GoogleAnalyticsService::class);
+        $now = Carbon::now('Asia/Tokyo');
+
+        $fetchedAt = $ga->getTopPagesFetchedAt('/news/', $now->copy()->startOfMonth(), $now, 10);
+
+        return ($fetchedAt ?? $now)->format('n月j日 H:i時点');
+    }
 }

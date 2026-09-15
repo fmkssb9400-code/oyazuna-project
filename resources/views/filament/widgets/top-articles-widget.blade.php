@@ -4,6 +4,10 @@
             人気記事ランキング（今月・Google Analytics）
         </x-slot>
 
+        @if ($this->isReady())
+            <p class="text-xs text-gray-400 -mt-2 mb-2">{{ $this->getAsOfLabel() }}</p>
+        @endif
+
         @if (! $this->isReady())
             <p class="text-sm text-gray-500">
                 Google Analyticsが設定されていないため、ランキングを表示できません。

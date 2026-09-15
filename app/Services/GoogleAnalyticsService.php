@@ -39,6 +39,29 @@ class GoogleAnalyticsService
         return 'properties/' . config('services.google_analytics.property_id');
     }
 
+    /**
+     * Cache::rememberと同じだが、実際にGA4へ問い合わせた（キャッシュミスした）時刻を
+     * 併せて記録する。表示側で「このデータはいつ取得したものか」を出すために使う。
+     */
+    private function rememberWithFetchedAt(string $key, callable $callback): mixed
+    {
+        if (! Cache::has($key)) {
+            Cache::put($key . ':fetched_at', Carbon::now('Asia/Tokyo'), self::CACHE_TTL_SECONDS);
+        }
+
+        return Cache::remember($key, self::CACHE_TTL_SECONDS, $callback);
+    }
+
+    /**
+     * getTopPagesForPathPrefixで実際にGA4から取得した時刻。まだ一度も取得していなければnull。
+     */
+    public function getTopPagesFetchedAt(string $pathPrefix, Carbon $start, Carbon $end, int $limit = 10): ?Carbon
+    {
+        $cacheKey = 'ga4:top_pages:' . md5($pathPrefix) . ':' . $start->toDateString() . ':' . $end->toDateString() . ':' . $limit;
+
+        return Cache::get($cacheKey . ':fetched_at');
+    }
+
     private function pathPrefixFilter(string $pathPrefix): FilterExpression
     {
         return new FilterExpression([
@@ -145,7 +168,7 @@ class GoogleAnalyticsService
     {
         $cacheKey = 'ga4:top_pages:' . md5($pathPrefix) . ':' . $start->toDateString() . ':' . $end->toDateString() . ':' . $limit;
 
-        return Cache::remember($cacheKey, self::CACHE_TTL_SECONDS, function () use ($pathPrefix, $start, $end, $limit) {
+        return $this->rememberWithFetchedAt($cacheKey, function () use ($pathPrefix, $start, $end, $limit) {
             try {
                 $client = $this->client();
                 if (! $client) {

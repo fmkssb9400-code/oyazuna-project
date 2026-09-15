@@ -139,4 +139,32 @@ class HubPageViewsWidget extends Widget
     {
         return app(GoogleAnalyticsService::class)->isConfigured();
     }
+
+    /**
+     * このウィジェット（カテゴリハブ・エリア×ハブ両テーブル）が表示しているGA4データを
+     * 実際に取得した時刻。複数のクエリを束ねて表示するため、その中で最も古い（＝最も
+     * 保守的な）取得時刻を採用する。いずれも未取得なら現在時刻で代替する。
+     */
+    public function getAsOfLabel(): string
+    {
+        $ga = app(GoogleAnalyticsService::class);
+        $now = Carbon::now('Asia/Tokyo');
+        $latestDataDate = $ga->getLatestDataDate() ?? $now;
+
+        $fetchedAtCandidates = [
+            $ga->getTopPagesFetchedAt('/hub/', $latestDataDate->copy()->startOfMonth(), $latestDataDate, 200),
+            $ga->getTopPagesFetchedAt('/hub/', $latestDataDate, $latestDataDate, 200),
+            $ga->getTopPagesFetchedAt('/area/', $latestDataDate->copy()->startOfMonth(), $latestDataDate, 500),
+            $ga->getTopPagesFetchedAt('/area/', $latestDataDate, $latestDataDate, 500),
+        ];
+
+        $asOf = $now;
+        foreach ($fetchedAtCandidates as $candidate) {
+            if ($candidate !== null && $candidate->lt($asOf)) {
+                $asOf = $candidate;
+            }
+        }
+
+        return $asOf->format('n月j日 H:i時点');
+    }
 }
