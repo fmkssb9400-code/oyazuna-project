@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('title', $article->title . ' | オヤズナ')
-@section('description', $article->excerpt ? \Illuminate\Support\Str::limit(strip_tags($article->excerpt), 155) : '高所ロープ作業の専門業者を口コミと実績で比較できるサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安心・信頼できる業者選びをサポートします。')
+@php
+    $__articleDesc = $article->excerpt ? strip_tags($article->excerpt) : '';
+    $__articleDesc = mb_strlen($__articleDesc) > 155 ? mb_substr($__articleDesc, 0, 155) . '...' : $__articleDesc;
+@endphp
+@section('description', $__articleDesc ?: '高所ロープ作業の専門業者を口コミと実績で比較できるサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安心・信頼できる業者選びをサポートします。')
 
 @if(!empty($article->faq_pairs))
 @section('head')

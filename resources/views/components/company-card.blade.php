@@ -151,7 +151,7 @@
             @if($company->achievements_summary)
             <p class="text-sm text-gray-700 mb-4">{{ $company->achievements_summary }}</p>
             @elseif($company->description)
-            <p class="text-sm text-gray-700 mb-4">{{ Str::limit($company->description, 150) }}</p>
+            <p class="text-sm text-gray-700 mb-4">{{ mb_strlen($company->description) > 150 ? mb_substr($company->description, 0, 150) . '...' : $company->description }}</p>
             @endif
             
             <!-- Fixed Company Tags List -->
