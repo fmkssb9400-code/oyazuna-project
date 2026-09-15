@@ -41,4 +41,13 @@ return [
         'credentials_path' => env('GOOGLE_ANALYTICS_CREDENTIALS_PATH', storage_path('app/ga4-service-account.json')),
     ],
 
+    'google_search_console' => [
+        'site_url' => env('GOOGLE_SEARCH_CONSOLE_SITE_URL', 'sc-domain:oyazuna.com'),
+        'credentials_path' => env('GOOGLE_SEARCH_CONSOLE_CREDENTIALS_PATH', storage_path('app/gsc-service-account.json')),
+    ],
+
+    'report' => [
+        'email_to' => env('REPORT_EMAIL_TO'),
+    ],
+
 ];

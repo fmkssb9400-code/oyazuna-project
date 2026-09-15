@@ -13,3 +13,10 @@ Schedule::command('articles:sync-ga-views')
     ->hourly()
     ->withoutOverlapping()
     ->appendOutputTo(storage_path('logs/sync-article-ga-views.log'));
+
+// GSC・GA4の週次パフォーマンスレポート（毎週月曜9時、4回に1回は月次サマリーも添える）
+Schedule::command('report:weekly-performance')
+    ->weeklyOn(1, '9:00')
+    ->timezone('Asia/Tokyo')
+    ->withoutOverlapping()
+    ->appendOutputTo(storage_path('logs/weekly-performance-report.log'));
