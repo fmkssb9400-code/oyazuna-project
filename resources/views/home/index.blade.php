@@ -182,9 +182,6 @@
 .area-search-card {
   max-width: 1280px;
   margin: 0 auto;
-  background: #ffffff;
-  border-radius: 0;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
   padding: 36px 40px 40px;
 }
 
@@ -474,12 +471,12 @@
   <img src="{{ asset('オヤズナ (1).png') }}" alt="オヤズナ" class="hero-logo-overlay">
 </div>
 
-<!-- 高所ロープ会社をサービスから探すセクション（エリア検索は一旦非表示、footer/サイトマップに集約） -->
+<!-- サービスから探すセクション（エリア検索は一旦非表示、footer/サイトマップに集約。「条件から探す」とデザインを揃える） -->
 <section class="area-search-overlap">
     <div class="area-search-card">
         <div class="area-search-header">
             <h2 class="heading-16 text-base md:text-lg font-bold">
-                高所ロープ業者をサービスから探す
+                サービスから探す
             </h2>
             <div class="area-search-badge">
                 掲載社数{{ $companyCount ?? 0 }}社 {{ now()->format('n月j日') }}更新
@@ -487,95 +484,45 @@
         </div>
 
         <div class="area-search-body">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <!-- 窓ガラス清掃 -->
-            <a href="{{ route('hub.category', 'window-cleaning') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
-                <div class="flex items-center mb-3">
-                    <div class="w-12 h-12 flex items-center justify-center mr-3">
-                        <img src="{{ asset('images/window.png') }}" alt="窓ガラス清掃" class="w-8 h-8">
-                    </div>
-                    <h3 class="text-base md:text-lg font-bold text-blue-600">窓ガラス清掃</h3>
+        @php
+          $serviceCards = [
+            ['label' => '窓ガラス清掃', 'image' => 'window.png', 'slug' => 'window-cleaning'],
+            ['label' => '外壁清掃', 'image' => 'waiper.png', 'slug' => 'exterior-cleaning'],
+            ['label' => '外壁塗装', 'image' => 'penki.png', 'slug' => 'exterior-painting'],
+            ['label' => '外壁調査', 'image' => 'hekiga.png', 'slug' => 'exterior-inspection'],
+            ['label' => '外壁補修', 'image' => 'hekiga.png', 'slug' => 'wall-repair'],
+            ['label' => '看板作業', 'image' => 'koukoku_building.png', 'slug' => 'signboard'],
+            ['label' => '鳥害対策', 'image' => 'bird_toriyoke.png', 'slug' => 'bird-control'],
+          ];
+        @endphp
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6">
+            @foreach($serviceCards as $card)
+            <a href="{{ route('hub.category', $card['slug']) }}" class="block bg-white border border-gray-200 hover:shadow-lg transition-shadow duration-200">
+                <div class="aspect-square overflow-hidden border-b border-gray-200 bg-gray-50 flex items-center justify-center">
+                    <img src="{{ asset('images/' . $card['image']) }}" alt="{{ $card['label'] }}" class="w-16 h-16 object-contain" loading="lazy">
                 </div>
-                <p class="text-sm text-gray-600">高所窓ガラス清掃 定期清掃<br>スポット清掃 メンテナンス</p>
-            </a>
-
-            <!-- 外壁清掃 -->
-            <a href="{{ route('hub.category', 'exterior-cleaning') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
-                <div class="flex items-center mb-3">
-                    <div class="w-12 h-12 flex items-center justify-center mr-3">
-                        <img src="{{ asset('images/waiper.png') }}" alt="外壁清掃" class="w-8 h-8">
-                    </div>
-                    <h3 class="text-base md:text-lg font-bold text-blue-600">外壁清掃</h3>
+                <div class="p-4">
+                    <h3 class="text-center font-bold text-sm md:text-base text-gray-800 mb-3">{{ $card['label'] }}</h3>
+                    <span class="block text-center text-white font-bold text-sm bg-blue-600 hover:bg-blue-700 py-3 transition-colors">
+                        もっと詳しくみる
+                    </span>
                 </div>
-                <p class="text-sm text-gray-600">足場不要の外壁洗浄<br>ロープアクセス・ゴンドラ対応</p>
             </a>
-
-            <!-- 外壁塗装 -->
-            <a href="{{ route('hub.category', 'exterior-painting') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
-                <div class="flex items-center mb-3">
-                    <div class="w-12 h-12 flex items-center justify-center mr-3">
-                        <img src="{{ asset('images/penki.png') }}" alt="外壁塗装" class="w-8 h-8">
-                    </div>
-                    <h3 class="text-base md:text-lg font-bold text-blue-600">外壁塗装</h3>
-                </div>
-                <p class="text-sm text-gray-600">部分塗装 タッチアップ<br>色合わせ 局所塗替え</p>
-            </a>
-
-            <!-- 外壁調査 -->
-            <a href="{{ route('hub.category', 'exterior-inspection') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
-                <div class="flex items-center mb-3">
-                    <div class="w-12 h-12 flex items-center justify-center mr-3">
-                        <img src="{{ asset('images/hekiga.png') }}" alt="外壁調査" class="w-8 h-8">
-                    </div>
-                    <h3 class="text-base md:text-lg font-bold text-blue-600">外壁調査</h3>
-                </div>
-                <p class="text-sm text-gray-600">外壁点検 劣化調査<br>診断レポート 安全確認</p>
-            </a>
-
-            <!-- 外壁補修 -->
-            <a href="{{ route('hub.category', 'wall-repair') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
-                <div class="flex items-center mb-3">
-                    <div class="w-12 h-12 flex items-center justify-center mr-3">
-                        <img src="{{ asset('images/hekiga.png') }}" alt="外壁補修" class="w-8 h-8">
-                    </div>
-                    <h3 class="text-base md:text-lg font-bold text-blue-600">外壁補修</h3>
-                </div>
-                <p class="text-sm text-gray-600">ひび割れ補修 剥離補修<br>シーリング 部分工事</p>
-            </a>
-
-            <!-- 看板作業 -->
-            <a href="{{ route('hub.category', 'signboard') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
-                <div class="flex items-center mb-3">
-                    <div class="w-12 h-12 flex items-center justify-center mr-3">
-                        <img src="{{ asset('images/koukoku_building.png') }}" alt="看板作業" class="w-8 h-8">
-                    </div>
-                    <h3 class="text-base md:text-lg font-bold text-blue-600">看板作業</h3>
-                </div>
-                <p class="text-sm text-gray-600">看板設置 看板撤去<br>メンテナンス 修理工事</p>
-            </a>
-
-            <!-- 鳥害対策 -->
-            <a href="{{ route('hub.category', 'bird-control') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
-                <div class="flex items-center mb-3">
-                    <div class="w-12 h-12 flex items-center justify-center mr-3">
-                        <img src="{{ asset('images/bird_toriyoke.png') }}" alt="鳥害対策" class="w-8 h-8">
-                    </div>
-                    <h3 class="text-base md:text-lg font-bold text-blue-600">鳥害対策</h3>
-                </div>
-                <p class="text-sm text-gray-600">防鳥ネット設置 忌避剤散布<br>巣の除去 対策工事</p>
-            </a>
+            @endforeach
 
             <!-- すべてのサービス -->
-            <a href="{{ route('companies.index') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
-                <div class="flex items-center mb-3">
-                    <div class="w-12 h-12 bg-gray-100 flex items-center justify-center mr-3">
-                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-base md:text-lg font-bold text-blue-600">すべてのサービス</h3>
+            <a href="{{ route('companies.index') }}" class="block bg-white border border-gray-200 hover:shadow-lg transition-shadow duration-200">
+                <div class="aspect-square overflow-hidden border-b border-gray-200 bg-gray-50 flex items-center justify-center">
+                    <svg class="w-14 h-14 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path>
+                    </svg>
                 </div>
-                <p class="text-sm text-gray-600">全カテゴリ・全業者から<br>まとめて比較する</p>
+                <div class="p-4">
+                    <h3 class="text-center font-bold text-sm md:text-base text-gray-800 mb-3">すべてのサービス</h3>
+                    <span class="block text-center text-white font-bold text-sm bg-blue-600 hover:bg-blue-700 py-3 transition-colors">
+                        もっと詳しくみる
+                    </span>
+                </div>
             </a>
         </div>
 
