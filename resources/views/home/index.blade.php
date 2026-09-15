@@ -474,13 +474,10 @@
 <!-- サービスから探すセクション（エリア検索は一旦非表示、footer/サイトマップに集約。「条件から探す」とデザインを揃える） -->
 <section class="area-search-overlap">
     <div class="area-search-card">
-        <div class="area-search-header">
-            <h2 class="heading-16 text-base md:text-lg font-bold">
+        <div class="ranking-header-container flex items-center justify-center mb-8">
+            <h2 class="heading-6 text-xl md:text-2xl font-bold">
                 サービスから探す
             </h2>
-            <div class="area-search-badge">
-                掲載社数{{ $companyCount ?? 0 }}社 {{ now()->format('n月j日') }}更新
-            </div>
         </div>
 
         <div class="area-search-body">
