@@ -11,9 +11,10 @@ class AreaHubController extends Controller
 {
     /**
      * 都道府県×工法の掛け合わせページを公開する最低掲載企業数の目安。
-     * 単軸のarea/hubページと同じ基準（薄いページ防止のインデックスゲート）。
+     * 比較ページとして機能する最低限の掲載数を確保するためのUX上のゲート
+     * （コンテンツの薄さとは別軸。中身の充実は解説文・FAQの作り込みで担保する）。
      */
-    private const MIN_COMPANIES = 10;
+    private const MIN_COMPANIES = 5;
 
     public function show(Request $request, string $areaSlug, string $hubSlug, AreaController $area, HubController $hub)
     {
