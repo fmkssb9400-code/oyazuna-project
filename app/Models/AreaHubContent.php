@@ -41,8 +41,9 @@ class AreaHubContent extends Model
         return $pairs;
     }
 
-    // faq_pairsと同じ「Q. .../A. ...」パターンを本文から取り除いたHTML。
-    // FAQは「よくある質問」セクション側で表示するため、本文側で二重表示しないようにする。
+    // 本文中の「よくある質問」見出し〜次の見出し直前までを丸ごと取り除いたHTML。
+    // FAQは「よくある質問」セクション側(全国共通FAQと合成)で表示するため、
+    // 本文中に書いた見出し+Q/Aがそのまま残って二重表示にならないようにする。
     public function getContentWithoutFaqAttribute(): string
     {
         if (empty($this->content)) {
@@ -50,7 +51,7 @@ class AreaHubContent extends Model
         }
 
         return preg_replace(
-            '/<h[3-4][^>]*>\s*Q[\.\s、:：]?\s*.*?<\/h[3-4]>\s*<p[^>]*>\s*A[\.\s、:：]?\s*.*?<\/p>/is',
+            '/<h2[^>]*>\s*よくある質問\s*<\/h2>.*?(?=<h2|$)/is',
             '',
             $this->content
         );
