@@ -474,188 +474,115 @@
   <img src="{{ asset('オヤズナ (1).png') }}" alt="オヤズナ" class="hero-logo-overlay">
 </div>
 
-<!-- 高所ロープ会社をエリアから探すセクション -->
+<!-- 高所ロープ会社をサービスから探すセクション（エリア検索は一旦非表示、footer/サイトマップに集約） -->
 <section class="area-search-overlap">
     <div class="area-search-card">
         <div class="area-search-header">
             <h2 class="heading-16 text-base md:text-lg font-bold">
-                高所ロープ業者をエリアから探す
+                高所ロープ業者をサービスから探す
             </h2>
             <div class="area-search-badge">
                 掲載社数{{ $companyCount ?? 0 }}社 {{ now()->format('n月j日') }}更新
             </div>
         </div>
-        
+
         <div class="area-search-body">
-
-        <!-- 都道府県グリッド -->
-        <div class="flex gap-4 mb-8">
-            <!-- 東京都 -->
-            <a href="{{ route('area.show', 'tokyo') }}" class="relative group flex-1">
-                <div class="bg-white shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
-                    <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/tokyo.png') }}')"></div>
-                    <div class="p-3 text-center" style="background-color: #ffffff !important;">
-                        <div class="font-semibold text-gray-800">東京都</div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- 窓ガラス清掃 -->
+            <a href="{{ route('hub.category', 'window-cleaning') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 flex items-center justify-center mr-3">
+                        <img src="{{ asset('images/window.png') }}" alt="窓ガラス清掃" class="w-8 h-8">
                     </div>
+                    <h3 class="text-base md:text-lg font-bold text-blue-600">窓ガラス清掃</h3>
                 </div>
+                <p class="text-sm text-gray-600">高所窓ガラス清掃 定期清掃<br>スポット清掃 メンテナンス</p>
             </a>
 
-            <!-- 大阪府 -->
-            <a href="{{ route('area.show', 'osaka') }}" class="relative group flex-1">
-                <div class="bg-white shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
-                    <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/osaka.png') }}')"></div>
-                    <div class="p-3 text-center" style="background-color: #ffffff !important;">
-                        <div class="font-semibold text-gray-800">大阪府</div>
+            <!-- 外壁清掃 -->
+            <a href="{{ route('hub.category', 'exterior-cleaning') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 flex items-center justify-center mr-3">
+                        <img src="{{ asset('images/waiper.png') }}" alt="外壁清掃" class="w-8 h-8">
                     </div>
+                    <h3 class="text-base md:text-lg font-bold text-blue-600">外壁清掃</h3>
                 </div>
+                <p class="text-sm text-gray-600">足場不要の外壁洗浄<br>ロープアクセス・ゴンドラ対応</p>
             </a>
 
-            <!-- 北海道 -->
-            <a href="{{ route('companies.index', ['prefecture' => 'hokkaido']) }}" class="relative group flex-1">
-                <div class="bg-white shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
-                    <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/hokkaido.png') }}')"></div>
-                    <div class="p-3 text-center" style="background-color: #ffffff !important;">
-                        <div class="font-semibold text-gray-800">北海道</div>
+            <!-- 外壁塗装 -->
+            <a href="{{ route('hub.category', 'exterior-painting') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 flex items-center justify-center mr-3">
+                        <img src="{{ asset('images/penki.png') }}" alt="外壁塗装" class="w-8 h-8">
                     </div>
+                    <h3 class="text-base md:text-lg font-bold text-blue-600">外壁塗装</h3>
                 </div>
+                <p class="text-sm text-gray-600">部分塗装 タッチアップ<br>色合わせ 局所塗替え</p>
             </a>
 
-            <!-- 福岡県 -->
-            <a href="{{ route('area.show', 'fukuoka') }}" class="relative group flex-1">
-                <div class="bg-white shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
-                    <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/fukuoka.png') }}')"></div>
-                    <div class="p-3 text-center" style="background-color: #ffffff !important;">
-                        <div class="font-semibold text-gray-800">福岡県</div>
+            <!-- 外壁調査 -->
+            <a href="{{ route('hub.category', 'exterior-inspection') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 flex items-center justify-center mr-3">
+                        <img src="{{ asset('images/hekiga.png') }}" alt="外壁調査" class="w-8 h-8">
                     </div>
+                    <h3 class="text-base md:text-lg font-bold text-blue-600">外壁調査</h3>
                 </div>
+                <p class="text-sm text-gray-600">外壁点検 劣化調査<br>診断レポート 安全確認</p>
             </a>
 
-            <!-- 京都府 -->
-            <a href="{{ route('companies.index', ['prefecture' => 'kyoto']) }}" class="relative group flex-1">
-                <div class="bg-white shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
-                    <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/kyoto.png') }}')"></div>
-                    <div class="p-3 text-center" style="background-color: #ffffff !important;">
-                        <div class="font-semibold text-gray-800">京都府</div>
+            <!-- 外壁補修 -->
+            <a href="{{ route('hub.category', 'wall-repair') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 flex items-center justify-center mr-3">
+                        <img src="{{ asset('images/hekiga.png') }}" alt="外壁補修" class="w-8 h-8">
                     </div>
+                    <h3 class="text-base md:text-lg font-bold text-blue-600">外壁補修</h3>
                 </div>
+                <p class="text-sm text-gray-600">ひび割れ補修 剥離補修<br>シーリング 部分工事</p>
             </a>
 
-            <!-- 愛知県 -->
-            <a href="{{ route('area.show', 'aichi') }}" class="relative group flex-1">
-                <div class="bg-white shadow-md hover:shadow-lg transition-all duration-200 overflow-hidden" style="background-color: #ffffff !important;">
-                    <div class="h-24 bg-cover bg-center" style="background-image: url('{{ asset('images/aichi.png') }}')"></div>
-                    <div class="p-3 text-center" style="background-color: #ffffff !important;">
-                        <div class="font-semibold text-gray-800">愛知県</div>
+            <!-- 看板作業 -->
+            <a href="{{ route('hub.category', 'signboard') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 flex items-center justify-center mr-3">
+                        <img src="{{ asset('images/koukoku_building.png') }}" alt="看板作業" class="w-8 h-8">
                     </div>
+                    <h3 class="text-base md:text-lg font-bold text-blue-600">看板作業</h3>
                 </div>
+                <p class="text-sm text-gray-600">看板設置 看板撤去<br>メンテナンス 修理工事</p>
+            </a>
+
+            <!-- 鳥害対策 -->
+            <a href="{{ route('hub.category', 'bird-control') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 flex items-center justify-center mr-3">
+                        <img src="{{ asset('images/bird_toriyoke.png') }}" alt="鳥害対策" class="w-8 h-8">
+                    </div>
+                    <h3 class="text-base md:text-lg font-bold text-blue-600">鳥害対策</h3>
+                </div>
+                <p class="text-sm text-gray-600">防鳥ネット設置 忌避剤散布<br>巣の除去 対策工事</p>
+            </a>
+
+            <!-- すべてのサービス -->
+            <a href="{{ route('companies.index') }}" class="block bg-white border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-200 hover:border-blue-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 bg-gray-100 flex items-center justify-center mr-3">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-base md:text-lg font-bold text-blue-600">すべてのサービス</h3>
+                </div>
+                <p class="text-sm text-gray-600">全カテゴリ・全業者から<br>まとめて比較する</p>
             </a>
         </div>
 
-
-        <!-- 地方別エリアリンク -->
-        <div class="mt-8 space-y-4 text-sm">
-            <!-- 北海道・東北 -->
-            <div class="flex flex-wrap items-center gap-2">
-                <div class="font-bold text-gray-800 min-w-24">北海道・東北</div>
-                <div class="flex flex-wrap gap-2">
-                    <a href="{{ route('companies.index', ['prefecture' => 'hokkaido']) }}" class="text-blue-600 hover:text-blue-800">北海道</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'aomori']) }}" class="text-blue-600 hover:text-blue-800">青森</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'iwate']) }}" class="text-blue-600 hover:text-blue-800">岩手</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'miyagi']) }}" class="text-blue-600 hover:text-blue-800">宮城</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'akita']) }}" class="text-blue-600 hover:text-blue-800">秋田</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'yamagata']) }}" class="text-blue-600 hover:text-blue-800">山形</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'fukushima']) }}" class="text-blue-600 hover:text-blue-800">福島</a>
-                </div>
-            </div>
-
-            <!-- 北陸・甲信越 -->
-            <div class="flex flex-wrap items-center gap-2">
-                <div class="font-bold text-gray-800 min-w-24">北陸・甲信越</div>
-                <div class="flex flex-wrap gap-2">
-                    <a href="{{ route('companies.index', ['prefecture' => 'yamanashi']) }}" class="text-blue-600 hover:text-blue-800">山梨</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'nagano']) }}" class="text-blue-600 hover:text-blue-800">長野</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'niigata']) }}" class="text-blue-600 hover:text-blue-800">新潟</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'toyama']) }}" class="text-blue-600 hover:text-blue-800">富山</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'ishikawa']) }}" class="text-blue-600 hover:text-blue-800">石川</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'fukui']) }}" class="text-blue-600 hover:text-blue-800">福井</a>
-                </div>
-            </div>
-
-            <!-- 関東 -->
-            <div class="flex flex-wrap items-center gap-2">
-                <div class="font-bold text-gray-800 min-w-24">関東</div>
-                <div class="flex flex-wrap gap-2">
-                    <a href="{{ route('area.show', 'tokyo') }}" class="text-blue-600 hover:text-blue-800">東京</a>
-                    <a href="{{ route('area.show', 'kanagawa') }}" class="text-blue-600 hover:text-blue-800">神奈川</a>
-                    <a href="{{ route('area.show', 'chiba') }}" class="text-blue-600 hover:text-blue-800">千葉</a>
-                    <a href="{{ route('area.show', 'saitama') }}" class="text-blue-600 hover:text-blue-800">埼玉</a>
-                    <a href="{{ route('area.show', 'ibaraki') }}" class="text-blue-600 hover:text-blue-800">茨城</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'tochigi']) }}" class="text-blue-600 hover:text-blue-800">栃木</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'gunma']) }}" class="text-blue-600 hover:text-blue-800">群馬</a>
-                </div>
-            </div>
-
-            <!-- 東海 -->
-            <div class="flex flex-wrap items-center gap-2">
-                <div class="font-bold text-gray-800 min-w-24">東海</div>
-                <div class="flex flex-wrap gap-2">
-                    <a href="{{ route('area.show', 'aichi') }}" class="text-blue-600 hover:text-blue-800">愛知</a>
-                    <a href="{{ route('area.show', 'shizuoka') }}" class="text-blue-600 hover:text-blue-800">静岡</a>
-                    <a href="{{ route('area.show', 'gifu') }}" class="text-blue-600 hover:text-blue-800">岐阜</a>
-                    <a href="{{ route('area.show', 'mie') }}" class="text-blue-600 hover:text-blue-800">三重</a>
-                </div>
-            </div>
-
-            <!-- 中国 -->
-            <div class="flex flex-wrap items-center gap-2">
-                <div class="font-bold text-gray-800 min-w-24">中国</div>
-                <div class="flex flex-wrap gap-2">
-                    <a href="{{ route('companies.index', ['prefecture' => 'okayama']) }}" class="text-blue-600 hover:text-blue-800">岡山</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'hiroshima']) }}" class="text-blue-600 hover:text-blue-800">広島</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'tottori']) }}" class="text-blue-600 hover:text-blue-800">鳥取</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'shimane']) }}" class="text-blue-600 hover:text-blue-800">島根</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'yamaguchi']) }}" class="text-blue-600 hover:text-blue-800">山口</a>
-                </div>
-            </div>
-
-            <!-- 関西 -->
-            <div class="flex flex-wrap items-center gap-2">
-                <div class="font-bold text-gray-800 min-w-24">関西</div>
-                <div class="flex flex-wrap gap-2">
-                    <a href="{{ route('area.show', 'osaka') }}" class="text-blue-600 hover:text-blue-800">大阪</a>
-                    <a href="{{ route('area.show', 'hyogo') }}" class="text-blue-600 hover:text-blue-800">兵庫</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'kyoto']) }}" class="text-blue-600 hover:text-blue-800">京都</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'shiga']) }}" class="text-blue-600 hover:text-blue-800">滋賀</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'nara']) }}" class="text-blue-600 hover:text-blue-800">奈良</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'wakayama']) }}" class="text-blue-600 hover:text-blue-800">和歌山</a>
-                </div>
-            </div>
-
-            <!-- 四国 -->
-            <div class="flex flex-wrap items-center gap-2">
-                <div class="font-bold text-gray-800 min-w-24">四国</div>
-                <div class="flex flex-wrap gap-2">
-                    <a href="{{ route('companies.index', ['prefecture' => 'tokushima']) }}" class="text-blue-600 hover:text-blue-800">徳島</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'kagawa']) }}" class="text-blue-600 hover:text-blue-800">香川</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'ehime']) }}" class="text-blue-600 hover:text-blue-800">愛媛</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'kochi']) }}" class="text-blue-600 hover:text-blue-800">高知</a>
-                </div>
-            </div>
-
-            <!-- 九州・沖縄 -->
-            <div class="flex flex-wrap items-center gap-2">
-                <div class="font-bold text-gray-800 min-w-24">九州・沖縄</div>
-                <div class="flex flex-wrap gap-2">
-                    <a href="{{ route('area.show', 'fukuoka') }}" class="text-blue-600 hover:text-blue-800">福岡</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'saga']) }}" class="text-blue-600 hover:text-blue-800">佐賀</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'nagasaki']) }}" class="text-blue-600 hover:text-blue-800">長崎</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'kumamoto']) }}" class="text-blue-600 hover:text-blue-800">熊本</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'oita']) }}" class="text-blue-600 hover:text-blue-800">大分</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'miyazaki']) }}" class="text-blue-600 hover:text-blue-800">宮崎</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'kagoshima']) }}" class="text-blue-600 hover:text-blue-800">鹿児島</a>
-                    <a href="{{ route('companies.index', ['prefecture' => 'okinawa']) }}" class="text-blue-600 hover:text-blue-800">沖縄</a>
-                </div>
-            </div>
+        <div class="mt-6 text-center">
+            <a href="{{ route('sitemap.page') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
+                都道府県から業者を探す方はこちら &rsaquo;
+            </a>
         </div>
         </div>
     </div>
