@@ -92,18 +92,22 @@
     $pageDescription = $areaHubContent?->meta_description
         ?: ($customMeta[$comboKey]['description']
             ?? ($areaConfig['prefecture'] . 'で' . $hubConfig['label'] . 'に対応する高所ロープ作業の専門業者を' . $count . '社掲載。無料で見積もり依頼できます。'));
+
+    // 都道府県固有のFAQ（管理画面の本文に「Q. ...」見出し+「A. ...」段落を書くと自動抽出される）を、
+    // 全国共通のFAQより前に並べる。固有FAQがなければ従来通り全国共通FAQのみになる。
+    $mergedFaq = array_merge($areaHubContent?->faq_pairs ?? [], $hubConfig['faq'] ?? []);
 @endphp
 
 @section('title', $pageTitle . ' | オヤズナ')
 @section('description', $pageDescription)
 
 @section('head')
-    @if(!empty($hubConfig['faq']))
+    @if(!empty($mergedFaq))
         <script type="application/ld+json">
             {!! json_encode([
                 '@@context' => 'https://schema.org',
                 '@type' => 'FAQPage',
-                'mainEntity' => collect($hubConfig['faq'])->map(fn ($item) => [
+                'mainEntity' => collect($mergedFaq)->map(fn ($item) => [
                     '@type' => 'Question',
                     'name' => $item['q'],
                     'acceptedAnswer' => [
@@ -309,7 +313,7 @@
         </div>
     @endif
 
-    @if(!empty($hubConfig['faq']))
+    @if(!empty($mergedFaq))
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-3 lg:gap-8">
                 <div class="lg:col-span-2">
@@ -317,7 +321,7 @@
                         <h2 class="text-3xl font-bold text-gray-900 mb-2">よくある質問</h2>
                         <div class="h-1 bg-green-500 mb-8"></div>
                         <div class="space-y-10">
-                            @foreach($hubConfig['faq'] as $item)
+                            @foreach($mergedFaq as $item)
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-900 border-l-4 border-green-500 pl-3 mb-3">{{ $item['q'] }}</h3>
                                     <p class="text-base text-gray-700 leading-relaxed">{{ $item['a'] }}</p>
