@@ -303,7 +303,7 @@
                     <div class="bg-white p-6 md:p-8 mb-10 hub-custom-content">
                         {{-- 管理画面(Filament)のAreaHubContentが優先。未登録の場合のみ従来のBladeファイルにフォールバックする --}}
                         @if($areaHubContent && $areaHubContent->content)
-                            {!! $areaHubContent->content !!}
+                            {!! $areaHubContent->content_without_faq !!}
                         @else
                             @include($customContentView)
                         @endif
