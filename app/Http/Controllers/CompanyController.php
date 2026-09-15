@@ -104,27 +104,38 @@ class CompanyController extends Controller
     }
 
 
-    public function show(Company $company)
+    public function show(Company $company, AreaController $area, HubController $hub, AreaHubController $areaHub)
     {
         $company->load(['prefectures', 'serviceMethods', 'buildingTypes', 'serviceCategories', 'assets'])
             ->loadCount('reviews')
             ->loadAvg('reviews as average_rating', 'total_score');
-        
+
         // 公開済み記事を取得
         $articles = $company->articles()
             ->where('is_published', true)
             ->whereNotNull('published_at')
             ->orderBy('published_at', 'desc')
             ->get();
-        
+
         // 口コミを取得（最新3件）
         $reviews = $company->reviews()
             ->published()
             ->orderByDesc('created_at')
             ->limit(3)
             ->get();
-        
-        return view('companies.show', compact('company', 'articles', 'reviews'));
+
+        // この会社の対応エリア×サービスに一致する都道府県×工法の比較ページ（掲載企業10社以上で公開中のものだけ）
+        $companyAreas = collect(is_array($company->areas) ? $company->areas : []);
+        $companyCategories = collect(is_array($company->service_categories) ? $company->service_categories : []);
+        $relatedHubPages = collect($areaHub->qualifyingCombinations($area, $hub))
+            ->filter(function ($combo) use ($companyAreas, $companyCategories) {
+                $prefectureNames = array_merge([$combo['areaConfig']['prefecture']], $combo['areaConfig']['aliases'] ?? []);
+                return $companyAreas->intersect($prefectureNames)->isNotEmpty()
+                    && $companyCategories->contains($combo['hubConfig']['key']);
+            })
+            ->values();
+
+        return view('companies.show', compact('company', 'articles', 'reviews', 'relatedHubPages'));
     }
 
     public function reviews(Request $request, Company $company)

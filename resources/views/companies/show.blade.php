@@ -424,7 +424,22 @@
                 </div>
             @endif
 
-            
+            <!-- 対応エリアの比較ページ -->
+            @if(isset($relatedHubPages) && $relatedHubPages->isNotEmpty())
+                <div class="mb-8 border border-gray-200">
+                    <div class="bg-blue-500 px-4 py-3">
+                        <h3 class="text-white font-bold">{{ $company->name }}が載っている比較ページ</h3>
+                    </div>
+                    <div class="bg-white divide-y divide-dashed divide-gray-300">
+                        @foreach($relatedHubPages as $combo)
+                            <a href="{{ route('area.hub.show', [$combo['areaSlug'], $combo['hubSlug']]) }}" class="block px-4 py-4 text-blue-600 underline hover:text-blue-800">
+                                {{ $combo['areaConfig']['label'] }}の{{ $combo['hubConfig']['label'] }}業者一覧で他社と比較する
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
             <!-- CTA Buttons -->
             <div class="border-t pt-6 md:pt-8">
                 <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
