@@ -2,6 +2,23 @@
 
 @section('title', $company->name . ' - 業者詳細 - オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
 
+@php
+    $__areas = $company->areas_display;
+    $__services = $company->service_categories_display;
+    $__descParts = [$company->name . 'は'];
+    $__descParts[] = ($__areas ? "{$__areas}の" : '') . '高所ロープ作業の専門業者。';
+    if ($__services) {
+        $__descParts[] = "{$__services}などに対応。";
+    }
+    if ($company->reviews_count > 0) {
+        $__descParts[] = "口コミ{$company->reviews_count}件・評価" . round((float) $company->average_rating, 1) . '。';
+    }
+    $__descParts[] = '料金・実績を比較して無料で一括見積もり依頼ができます。';
+    $__companyDesc = implode('', $__descParts);
+    $__companyDesc = mb_strlen($__companyDesc) > 155 ? mb_substr($__companyDesc, 0, 155) . '...' : $__companyDesc;
+@endphp
+@section('description', $__companyDesc)
+
 @section('head')
     <script type="application/ld+json">
         {!! json_encode(array_filter([
@@ -10,7 +27,7 @@
             'name' => $company->name,
             'url' => url()->current(),
             'sameAs' => $company->website_url ?: $company->official_url ?: null,
-            'description' => $company->description ? \Illuminate\Support\Str::limit(strip_tags($company->description), 300) : null,
+            'description' => $company->description ? (mb_strlen(strip_tags($company->description)) > 300 ? mb_substr(strip_tags($company->description), 0, 300) . '...' : strip_tags($company->description)) : null,
             'image' => $company->logo_url ?: null,
             'telephone' => $company->phone ?: null,
             'address' => $company->address_text ?: null,
@@ -30,7 +47,7 @@
                     'bestRating' => 5,
                     'worstRating' => 1,
                 ],
-                'reviewBody' => \Illuminate\Support\Str::limit(strip_tags($r->body ?? ''), 500),
+                'reviewBody' => mb_strlen(strip_tags($r->body ?? '')) > 500 ? mb_substr(strip_tags($r->body ?? ''), 0, 500) . '...' : strip_tags($r->body ?? ''),
                 'datePublished' => optional($r->created_at)->toDateString(),
             ])->values()->all() : null,
         ], fn ($value) => $value !== null), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
