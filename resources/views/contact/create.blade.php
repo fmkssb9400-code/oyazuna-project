@@ -44,8 +44,8 @@
         </div>
         
         <div>
-            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">電話番号</label>
-            <input type="tel" name="phone" id="phone" value="{{ old('phone') }}"
+            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">電話番号 <span class="text-red-500">*</span></label>
+            <input type="tel" name="phone" id="phone" value="{{ old('phone') }}" required
                    class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                    placeholder="例：03-1234-5678">
         </div>

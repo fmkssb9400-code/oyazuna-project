@@ -18,7 +18,7 @@ class ContactController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'phone' => 'nullable|string|max:255',
+            'phone' => 'required|string|max:255',
             'subject' => 'required|string|max:255',
             'message' => 'required|string|max:2000',
         ]);
@@ -56,7 +56,7 @@ class ContactController extends Controller
 {$data['email']}
 
 【電話番号】
-" . ($data['phone'] ?? '未記入') . "
+" . $data['phone'] . "
 
 【件名】
 {$data['subject']}
