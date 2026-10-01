@@ -1,11 +1,19 @@
 @extends('layouts.app')
 
-@section('title', $article->title . ' | オヤズナ')
 @php
+    // <title>タグは検索結果での表示上限(日本語でおおむね32字前後)を考慮して短縮する。
+    // H1(本文見出し)は$article->titleを直接使っているため、ここでの短縮の影響を受けない。
+    $__titleLimit = 30;
+    $__articleTitleForTag = mb_strlen($article->title) > $__titleLimit
+        ? mb_substr($article->title, 0, $__titleLimit) . '…'
+        : $article->title;
+
     $__articleDesc = $article->excerpt ? strip_tags($article->excerpt) : '';
     $__articleDesc = mb_strlen($__articleDesc) > 155 ? mb_substr($__articleDesc, 0, 155) . '...' : $__articleDesc;
 @endphp
+@section('title', $__articleTitleForTag . ' | オヤズナ')
 @section('description', $__articleDesc ?: '高所ロープ作業の専門業者を口コミと実績で比較できるサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安心・信頼できる業者選びをサポートします。')
+@section('og_image', $article->featured_image_url ?: asset('images/logo.png'))
 
 @if(!empty($article->faq_pairs))
 @section('head')
@@ -44,6 +52,17 @@
             <li class="text-gray-900">{{ Str::limit($article->title, 30) }}</li>
         </ol>
     </nav>
+    <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                ['@type' => 'ListItem', 'position' => 1, 'name' => 'ホーム', 'item' => route('home')],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => 'ニュース・記事', 'item' => route('news.index')],
+                ['@type' => 'ListItem', 'position' => 3, 'name' => $article->title, 'item' => route('news.show', $article->slug)],
+            ],
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+    </script>
 
     <!-- Main Content with Sidebar -->
     <div class="lg:grid lg:grid-cols-3 lg:gap-8">

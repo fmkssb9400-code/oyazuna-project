@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'オヤズナ | 高所ロープ作業特化の一括見積もりサイト【窓ガラス清掃・外壁塗装・外壁補修など】')</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <meta name="description" content="@yield('description', '高所ロープ作業特化の一括見積もりサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安全基準・実績を確認して、安心して依頼できる会社が見つかります。')">
     @php
+        // title/descriptionは<title>・meta description・OGP・Twitterカードで使い回すため
+        // ここで一度だけ確定させる(yieldContentはセクション内容を消費せず読めるので複数箇所で使い回せる)。
+        $__pageTitleRaw = trim(strip_tags($__env->yieldContent('title', 'オヤズナ | 高所ロープ作業特化の一括見積もりサイト【窓ガラス清掃・外壁塗装・外壁補修など】')));
+        $__pageDesc = trim(strip_tags($__env->yieldContent('description', '高所ロープ作業特化の一括見積もりサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安全基準・実績を確認して、安心して依頼できる会社が見つかります。')));
+        $__ogImage = trim(strip_tags($__env->yieldContent('og_image', asset('images/logo.png'))));
+
         // ページネーション2ページ目以降はクエリ込みで自己参照canonicalにする(1ページ目のURLを指すと
         // 「宣言canonicalを信用できない重複」としてGoogleに扱われるため)。1ページ目のフィルタ/ソート
         // クエリはベースURLに正規化して無駄なバリエーション重複を防ぐ。
@@ -18,8 +18,29 @@
         $__defaultCanonical = $__page > 1
             ? $__path . '?' . http_build_query(request()->query())
             : $__path;
+        $__canonicalUrl = trim(strip_tags($__env->yieldContent('canonical', $__defaultCanonical)));
     @endphp
-    <link rel="canonical" href="@yield('canonical', $__defaultCanonical)">
+    <title>{{ $__pageTitleRaw }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta name="description" content="{{ $__pageDesc }}">
+    <link rel="canonical" href="{{ $__canonicalUrl }}">
+
+    <!-- OGP / Twitterカード(LINE・X・Facebookでのシェア時プレビュー用) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="オヤズナ">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:url" content="{{ $__canonicalUrl }}">
+    <meta property="og:title" content="{{ $__pageTitleRaw }}">
+    <meta property="og:description" content="{{ $__pageDesc }}">
+    <meta property="og:image" content="{{ $__ogImage }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $__pageTitleRaw }}">
+    <meta name="twitter:description" content="{{ $__pageDesc }}">
+    <meta name="twitter:image" content="{{ $__ogImage }}">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('head')
     

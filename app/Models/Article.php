@@ -84,26 +84,30 @@ class Article extends Model
         return null;
     }
 
-    // 本文中の「<h3>Q. ...</h3><p>A. ...</p>」形式のFAQをFAQPage構造化データ用に抽出
+    // 本文中のFAQ記法をFAQPage構造化データ用に抽出。
+    // 記法が2パターン混在しているため両方を拾う(2026-10時点で確認済み):
+    //   旧: <h3>Q. ...</h3><p>A. ...</p>
+    //   新: <p><strong>Q. ...</strong><br>A. ...</p> (記事id35以降で使われている形式)
     public function getFaqPairsAttribute(): array
     {
         if (empty($this->content)) {
             return [];
         }
 
-        preg_match_all(
+        $patterns = [
             '/<h[3-4][^>]*>\s*Q[\.\s、:：]?\s*(.*?)<\/h[3-4]>\s*<p[^>]*>\s*A[\.\s、:：]?\s*(.*?)<\/p>/is',
-            $this->content,
-            $matches,
-            PREG_SET_ORDER
-        );
+            '/<p[^>]*>\s*<strong[^>]*>\s*Q[\.\s、:：]?\s*(.*?)<\/strong>\s*<br\s*\/?>\s*A[\.\s、:：]?\s*(.*?)<\/p>/is',
+        ];
 
         $pairs = [];
-        foreach ($matches as $match) {
-            $question = trim(strip_tags($match[1]));
-            $answer = trim(strip_tags($match[2]));
-            if ($question !== '' && $answer !== '') {
-                $pairs[] = ['q' => $question, 'a' => $answer];
+        foreach ($patterns as $pattern) {
+            preg_match_all($pattern, $this->content, $matches, PREG_SET_ORDER);
+            foreach ($matches as $match) {
+                $question = trim(strip_tags($match[1]));
+                $answer = trim(strip_tags($match[2]));
+                if ($question !== '' && $answer !== '') {
+                    $pairs[] = ['q' => $question, 'a' => $answer];
+                }
             }
         }
 

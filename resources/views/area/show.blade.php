@@ -34,6 +34,17 @@
                 <li class="text-gray-900">{{ $config['label'] }}</li>
             </ol>
         </nav>
+        <script type="application/ld+json">
+            {!! json_encode([
+                '@context' => 'https://schema.org',
+                '@type' => 'BreadcrumbList',
+                'itemListElement' => [
+                    ['@type' => 'ListItem', 'position' => 1, 'name' => 'ホーム', 'item' => route('home')],
+                    ['@type' => 'ListItem', 'position' => 2, 'name' => '専門業者一覧', 'item' => route('companies.index')],
+                    ['@type' => 'ListItem', 'position' => 3, 'name' => $config['label'], 'item' => request()->url()],
+                ],
+            ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+        </script>
 
         <!-- Hero -->
         <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 leading-tight">{{ $config['h1'] }}</h1>
