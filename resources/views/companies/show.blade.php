@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
-@section('title', $company->name . ' - 業者詳細 - オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
+{{-- 旧タイトルは70〜80字超(会社名+「- 業者詳細 - オヤズナ | 高所ロープ作業の見積もり・相場データベース【...】」)で
+     検索結果の表示上限を大幅に超えていたため短縮。会社名は検索されやすい語なので先頭を維持する。 --}}
+@section('title', $company->name . 'の口コミ・評判・料金 | オヤズナ')
+@section('og_image', $company->logo_url ?: asset('images/logo.png'))
 
 @php
     $__areas = $company->areas_display;
@@ -56,6 +59,11 @@
 
 @section('content')
 <div class="max-w-6xl mx-auto px-4 py-6 md:py-8">
+    <x-breadcrumb :items="[
+        ['label' => '専門業者一覧', 'url' => route('companies.index')],
+        ['label' => $company->name, 'url' => null],
+    ]" />
+
     <div class="mb-4">
         <a href="{{ route('companies.index') }}" class="text-blue-600 hover:underline text-sm md:text-base">&larr; 一覧に戻る</a>
     </div>
