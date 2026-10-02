@@ -45,35 +45,27 @@ class QuoteController extends Controller
 
     public function store(Request $request)
     {
+        // 2026-10: 入力負担を減らすため9項目(依頼者区分・会社名・担当者名・メール・電話・
+        // 都道府県・建物名・階数・作業内容)に絞った。建物種別・作業規模・希望時期は
+        // フォームで聞かず、送信後の個別の打ち合わせで確認する運用に変更(DB側も
+        // nullable化済み: 2026_10_02_084822_make_quote_requests_detail_fields_nullable)。
         $validated = $request->validate([
             'client_kind' => 'required|in:corp,personal',
-            'company_name' => 'required_if:client_kind,corp|string|max:255',
+            'company_name' => 'required_if:client_kind,corp|nullable|string|max:255',
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'nullable|string|max:255',
             'prefecture_id' => 'required|exists:prefectures,id',
-            'city_text' => 'nullable|string|max:255',
-            'building_type_id' => 'required|exists:building_types,id',
-            'floors' => 'required|integer|min:1',
-            'glass_area_type' => 'required|in:small,medium,large',
-            'service_category_id' => 'required|exists:service_categories,id',
-            'preferred_service_method_id' => 'nullable|exists:service_methods,id',
-            'preferred_timing' => 'required|in:urgent,this_week,this_month,undecided',
             'building_name' => 'nullable|string|max:255',
-            'priorities' => 'nullable|array',
-            'priorities.*' => 'string|in:低価格,安全対策,高所実績,迅速対応,大型ビル対応,相談重視',
-            'note' => 'nullable|string',
-            'utm_source' => 'nullable|string|max:255',
-            'utm_medium' => 'nullable|string|max:255',
-            'utm_campaign' => 'nullable|string|max:255',
+            'floors' => 'required|integer|min:1',
+            'service_category_id' => 'required|exists:service_categories,id',
             'wishlist_companies' => 'nullable|string', // JSON string of selected companies
         ]);
 
         // Rate limiting check
-        $rateLimitKey = 'quote_request:' . $validated['email'] . ':' . 
-                       $validated['prefecture_id'] . ':' . 
-                       $validated['floors'] . ':' . 
-                       $validated['building_type_id'] . ':' . 
+        $rateLimitKey = 'quote_request:' . $validated['email'] . ':' .
+                       $validated['prefecture_id'] . ':' .
+                       $validated['floors'] . ':' .
                        $validated['service_category_id'];
 
         if (Cache::has($rateLimitKey)) {
@@ -109,11 +101,8 @@ class QuoteController extends Controller
             // Use filter-based matching
             $filters = [
                 'prefecture_id' => $validated['prefecture_id'],
-                'building_type_id' => $validated['building_type_id'],
                 'floors' => $validated['floors'],
                 'service_category_id' => $validated['service_category_id'],
-                'preferred_service_method_id' => $validated['preferred_service_method_id'] ?? null,
-                'emergency' => $validated['preferred_timing'] === 'urgent',
             ];
 
             $targetCompanies = Company::forQuote($filters)
@@ -150,8 +139,6 @@ class QuoteController extends Controller
                 'email' => $validated['email'],
                 'prefecture_id' => $validated['prefecture_id'],
                 'service_category_id' => $validated['service_category_id'],
-                'glass_area_type' => $validated['glass_area_type'],
-                'preferred_timing' => $validated['preferred_timing'],
                 'target_companies_count' => $targetCompanies->count(),
             ]),
             'submitted_at' => now(),
@@ -188,13 +175,13 @@ class QuoteController extends Controller
                 'client_phone' => $quoteRequest->phone ?? '未記入',
                 'prefecture' => $quoteRequest->prefecture->name ?? '',
                 'city' => $quoteRequest->city_text ?? '',
-                'building_type' => $quoteRequest->buildingType->name ?? '',
+                'building_type' => $quoteRequest->buildingType?->name ?? '未確認(個別に確認予定)',
                 'floors' => $quoteRequest->floors,
                 'glass_area' => match($quoteRequest->glass_area_type) {
                     'small' => '小規模（～100㎡）',
                     'medium' => '中規模（100～500㎡）',
                     'large' => '大規模（500㎡～）',
-                    default => $quoteRequest->glass_area_type
+                    default => '未確認(個別に確認予定)',
                 },
                 'service_category' => $quoteRequest->serviceCategory->name ?? '',
                 'preferred_timing' => match($quoteRequest->preferred_timing) {
@@ -202,7 +189,7 @@ class QuoteController extends Controller
                     'this_week' => '今週中',
                     'this_month' => '今月中',
                     'undecided' => '未定',
-                    default => $quoteRequest->preferred_timing
+                    default => '未確認(個別に確認予定)',
                 },
                 'building_name' => $quoteRequest->building_name ?? '未記入',
                 'priorities' => is_array($quoteRequest->priorities) ? implode('、', $quoteRequest->priorities) : '未選択',
