@@ -18,7 +18,9 @@ class EmailSettingsResource extends Resource
     protected static ?string $model = EmailSettings::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
-    protected static ?string $navigationLabel = 'メール設定';
+    protected static ?string $navigationGroup = 'メール';
+    protected static ?int $navigationSort = 2;
+    protected static ?string $navigationLabel = '設定';
     protected static ?string $modelLabel = 'メール設定';
     protected static ?string $pluralModelLabel = 'メール設定';
 
