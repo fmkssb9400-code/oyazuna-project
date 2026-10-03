@@ -19,8 +19,10 @@
             ? $__path . '?' . http_build_query(request()->query())
             : $__path;
         $__canonicalUrl = trim(strip_tags($__env->yieldContent('canonical', $__defaultCanonical)));
+        $__robots = trim(strip_tags($__env->yieldContent('robots', 'index, follow')));
     @endphp
     <title>{{ $__pageTitleRaw }}</title>
+    <meta name="robots" content="{{ $__robots }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">

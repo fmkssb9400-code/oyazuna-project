@@ -2,6 +2,9 @@
 
 @section('title', $config['h1'] . ' | オヤズナ')
 @section('description', $config['meta_description'])
+@if(!empty($config['noindex']))
+@section('robots', 'noindex, follow')
+@endif
 
 @section('head')
     <script type="application/ld+json">

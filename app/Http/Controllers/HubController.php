@@ -687,6 +687,7 @@ class HubController extends Controller
         ],
         'night-work' => [
             'type' => 'condition',
+            'noindex' => true, // 2026-10-03: GSCで実需要なし確認済み(無関係クエリの誤表示のみ)。[[oyazuna_hub_pages_keyword_audit_20260905]]参照
             'tag' => '夜間対応可',
             'highlight_tags' => ['夜間対応可'],
             'label' => '夜間対応',
@@ -835,6 +836,7 @@ class HubController extends Controller
         ],
         'weekend' => [
             'type' => 'condition',
+            'noindex' => true, // 2026-10-03: GSCで実需要なし確認済み(無関係クエリの誤表示のみ)。[[oyazuna_hub_pages_keyword_audit_20260905]]参照
             'tag' => '土日対応可',
             'highlight_tags' => ['土日対応可'],
             'label' => '土日対応',
@@ -919,6 +921,7 @@ class HubController extends Controller
         ],
         'emergency' => [
             'type' => 'condition',
+            'noindex' => true, // 2026-10-03: GSCで実需要なし確認済み(無関係クエリの誤表示のみ)。[[oyazuna_hub_pages_keyword_audit_20260905]]参照
             'tag' => '緊急対応可',
             'highlight_tags' => ['緊急対応可'],
             'label' => '緊急・即日対応',
@@ -1000,6 +1003,7 @@ class HubController extends Controller
         ],
         'after-service' => [
             'type' => 'condition',
+            'noindex' => true, // 2026-10-03: GSCで順位89.5と致命的に低く実質無風。[[oyazuna_hub_pages_keyword_audit_20260905]]参照
             'tag' => 'アフターサービス充実',
             'highlight_tags' => ['アフターサービス充実'],
             'label' => '保証・アフターサービス充実',
@@ -1220,6 +1224,7 @@ class HubController extends Controller
         ],
         'iso-certified' => [
             'type' => 'condition',
+            'noindex' => true, // 2026-10-03: GSCで実需要ほぼゼロ確認済み。[[oyazuna_hub_pages_keyword_audit_20260905]]参照
             'tag' => 'ISO取得',
             'highlight_tags' => ['ISO取得'],
             'label' => 'ISO認証取得',
@@ -1285,6 +1290,7 @@ class HubController extends Controller
         ],
         'eco-friendly' => [
             'type' => 'condition',
+            'noindex' => true, // 2026-10-03: GSCで表示回数0件、実需要なし確認済み。[[oyazuna_hub_pages_keyword_audit_20260905]]参照
             'tag' => '環境配慮',
             'highlight_tags' => ['環境配慮'],
             'label' => '環境配慮',
@@ -1351,11 +1357,13 @@ class HubController extends Controller
     ];
 
     /**
-     * サイトマップ生成用に、公開中のハブページのスラッグ一覧を返す。
+     * サイトマップ生成用に、公開中(noindexでない)ハブページのスラッグ一覧を返す。
+     * noindex指定のページ(night-work/weekend/emergency/after-service/iso-certified/eco-friendly、
+     * 2026-10-03のGSC調査で実需要なしと確認済み)はサイトマップに含めない。
      */
     public function slugs(): array
     {
-        return array_keys($this->pages);
+        return array_keys(array_filter($this->pages, fn ($config) => empty($config['noindex'])));
     }
 
     /**
