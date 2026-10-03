@@ -43,6 +43,11 @@
                     <li><a href="{{ route('guide.window-cleaning-contractor-selection') }}" class="text-blue-600 hover:underline">窓ガラス清掃業者の選び方ガイド</a></li>
                     <li><a href="{{ route('guide.exterior-wall-painting-pricing') }}" class="text-blue-600 hover:underline">外壁塗装の費用相場ガイド</a></li>
                     <li><a href="{{ route('guide.exterior-wall-painting-contractor-selection') }}" class="text-blue-600 hover:underline">外壁塗装業者の選び方ガイド</a></li>
+                    <li><a href="{{ route('guide.wall-repair-price') }}" class="text-blue-600 hover:underline">外壁補修の費用相場ガイド</a></li>
+                    <li><a href="{{ route('guide.exterior-cleaning-price') }}" class="text-blue-600 hover:underline">外壁清掃の費用相場ガイド</a></li>
+                    <li><a href="{{ route('guide.exterior-inspection-price') }}" class="text-blue-600 hover:underline">外壁調査の費用相場ガイド</a></li>
+                    <li><a href="{{ route('guide.signboard-price') }}" class="text-blue-600 hover:underline">看板点検・修理の費用相場ガイド</a></li>
+                    <li><a href="{{ route('guide.bird-control-price') }}" class="text-blue-600 hover:underline">鳥害対策の費用相場ガイド</a></li>
                 </ul>
             </section>
 

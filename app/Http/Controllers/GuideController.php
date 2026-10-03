@@ -39,7 +39,52 @@ class GuideController extends Controller
         $page = StaticPage::where('page_type', 'exterior-wall-painting-contractor-guide')
                           ->published()
                           ->first();
-                          
+
+        return view('guide.layout', compact('page'));
+    }
+
+    public function wallRepairPrice()
+    {
+        $page = StaticPage::where('page_type', 'wall-repair-price-guide')
+                          ->published()
+                          ->first();
+
+        return view('guide.layout', compact('page'));
+    }
+
+    public function exteriorCleaningPrice()
+    {
+        $page = StaticPage::where('page_type', 'exterior-cleaning-price-guide')
+                          ->published()
+                          ->first();
+
+        return view('guide.layout', compact('page'));
+    }
+
+    public function exteriorInspectionPrice()
+    {
+        $page = StaticPage::where('page_type', 'exterior-inspection-price-guide')
+                          ->published()
+                          ->first();
+
+        return view('guide.layout', compact('page'));
+    }
+
+    public function signboardPrice()
+    {
+        $page = StaticPage::where('page_type', 'signboard-price-guide')
+                          ->published()
+                          ->first();
+
+        return view('guide.layout', compact('page'));
+    }
+
+    public function birdControlPrice()
+    {
+        $page = StaticPage::where('page_type', 'bird-control-price-guide')
+                          ->published()
+                          ->first();
+
         return view('guide.layout', compact('page'));
     }
 }

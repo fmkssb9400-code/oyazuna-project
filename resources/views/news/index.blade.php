@@ -38,6 +38,11 @@
                                             'window-cleaning-contractor-guide' => 'guide.window-cleaning-contractor-selection',
                                             'exterior-wall-painting-price-guide' => 'guide.exterior-wall-painting-pricing',
                                             'exterior-wall-painting-contractor-guide' => 'guide.exterior-wall-painting-contractor-selection',
+                                            'wall-repair-price-guide' => 'guide.wall-repair-price',
+                                            'exterior-cleaning-price-guide' => 'guide.exterior-cleaning-price',
+                                            'exterior-inspection-price-guide' => 'guide.exterior-inspection-price',
+                                            'signboard-price-guide' => 'guide.signboard-price',
+                                            'bird-control-price-guide' => 'guide.bird-control-price',
                                             default => null
                                         };
                                     @endphp
@@ -67,6 +72,11 @@
                                         'window-cleaning-contractor-guide' => 'guide.window-cleaning-contractor-selection',
                                         'exterior-wall-painting-price-guide' => 'guide.exterior-wall-painting-pricing',
                                         'exterior-wall-painting-contractor-guide' => 'guide.exterior-wall-painting-contractor-selection',
+                                        'wall-repair-price-guide' => 'guide.wall-repair-price',
+                                        'exterior-cleaning-price-guide' => 'guide.exterior-cleaning-price',
+                                        'exterior-inspection-price-guide' => 'guide.exterior-inspection-price',
+                                        'signboard-price-guide' => 'guide.signboard-price',
+                                        'bird-control-price-guide' => 'guide.bird-control-price',
                                         default => null
                                     };
                                 @endphp

@@ -81,6 +81,11 @@ class StaticPage extends Model
             'window-cleaning-contractor-guide' => '窓ガラス清掃業者の選び方を解説',
             'exterior-wall-painting-price-guide' => '外壁塗装の料金相場・費用目安を解説',
             'exterior-wall-painting-contractor-guide' => '外壁塗装業者の選び方を解説',
+            'wall-repair-price-guide' => '外壁補修の料金相場・費用目安を解説',
+            'exterior-cleaning-price-guide' => '外壁清掃の料金相場・費用目安を解説',
+            'exterior-inspection-price-guide' => '外壁調査の料金相場・費用目安を解説',
+            'signboard-price-guide' => '看板点検・修理の料金相場・費用目安を解説',
+            'bird-control-price-guide' => '鳥害対策の料金相場・費用目安を解説',
         ];
     }
 

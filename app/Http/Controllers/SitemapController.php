@@ -20,6 +20,11 @@ class SitemapController extends Controller
         $urls[] = ['loc' => route('guide.window-cleaning-contractor-selection'), 'changefreq' => 'monthly', 'priority' => '0.6'];
         $urls[] = ['loc' => route('guide.exterior-wall-painting-pricing'), 'changefreq' => 'monthly', 'priority' => '0.6'];
         $urls[] = ['loc' => route('guide.exterior-wall-painting-contractor-selection'), 'changefreq' => 'monthly', 'priority' => '0.6'];
+        $urls[] = ['loc' => route('guide.wall-repair-price'), 'changefreq' => 'monthly', 'priority' => '0.6'];
+        $urls[] = ['loc' => route('guide.exterior-cleaning-price'), 'changefreq' => 'monthly', 'priority' => '0.6'];
+        $urls[] = ['loc' => route('guide.exterior-inspection-price'), 'changefreq' => 'monthly', 'priority' => '0.6'];
+        $urls[] = ['loc' => route('guide.signboard-price'), 'changefreq' => 'monthly', 'priority' => '0.6'];
+        $urls[] = ['loc' => route('guide.bird-control-price'), 'changefreq' => 'monthly', 'priority' => '0.6'];
 
         // ハブページ（工法・条件軸）
         foreach ($hub->slugs() as $slug) {

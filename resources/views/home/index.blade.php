@@ -600,7 +600,7 @@
         </div>
 
         <!-- 4つのカード -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
             <!-- カード1: 窓ガラス清掃の相場・費用目安を解説 -->
             <a href="/guide/window-cleaning-price" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <!-- 画像エリア -->
@@ -665,6 +665,101 @@
                     </h3>
                     <p class="text-xs text-gray-700 leading-relaxed">
                         技術力、安全性、料金、サービス内容など、信頼できる業者を見極めるための具体的なチェック項目をご紹介。
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 追加5サービスのガイドカード（写真素材が無いためアイコン表示） -->
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-16">
+            <!-- カード5: 外壁補修の料金相場・費用目安を解説 -->
+            <a href="{{ route('guide.wall-repair-price') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div class="h-40 overflow-hidden bg-gray-50 flex items-center justify-center group-hover:bg-gray-100 transition-colors duration-300">
+                    <svg class="w-14 h-14 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3" y="3" width="18" height="18"></rect>
+                        <path d="M3 9h18M3 15h18M9 3v6M9 15v6M15 3v6M15 15v6" stroke-opacity="0.3"></path>
+                        <path d="M7 13l3-4 2 3 3-4" stroke-width="2"></path>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
+                        外壁補修の料金相場・費用目安を解説
+                    </h3>
+                    <p class="text-xs text-gray-700 leading-relaxed">
+                        タイルの浮き・ひび割れなど外壁補修の費用相場を解説。足場を組まない無足場工法での補修についてもご紹介。
+                    </p>
+                </div>
+            </a>
+
+            <!-- カード6: 外壁清掃の料金相場・費用目安を解説 -->
+            <a href="{{ route('guide.exterior-cleaning-price') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div class="h-40 overflow-hidden bg-gray-50 flex items-center justify-center group-hover:bg-gray-100 transition-colors duration-300">
+                    <svg class="w-14 h-14 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 3C12 3 6 10 6 14a6 6 0 0012 0c0-4-6-11-6-11z"></path>
+                        <path d="M9.5 14a2.5 2.5 0 002.5 2.5" stroke-opacity="0.5"></path>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
+                        外壁清掃の料金相場・費用目安を解説
+                    </h3>
+                    <p class="text-xs text-gray-700 leading-relaxed">
+                        外壁の高圧洗浄・ドローン洗浄の費用相場を解説。チョーキング現象の見分け方など判断基準もご紹介。
+                    </p>
+                </div>
+            </a>
+
+            <!-- カード7: 外壁調査の料金相場・費用目安を解説 -->
+            <a href="{{ route('guide.exterior-inspection-price') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div class="h-40 overflow-hidden bg-gray-50 flex items-center justify-center group-hover:bg-gray-100 transition-colors duration-300">
+                    <svg class="w-14 h-14 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="10" cy="10" r="6"></circle>
+                        <line x1="14.5" y1="14.5" x2="20" y2="20"></line>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
+                        外壁調査の料金相場・費用目安を解説
+                    </h3>
+                    <p class="text-xs text-gray-700 leading-relaxed">
+                        建築基準法12条点検の打診・赤外線調査の費用相場を解説。法定義務の周期や調査員資格もご紹介。
+                    </p>
+                </div>
+            </a>
+
+            <!-- カード8: 看板点検・修理の料金相場・費用目安を解説 -->
+            <a href="{{ route('guide.signboard-price') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div class="h-40 overflow-hidden bg-gray-50 flex items-center justify-center group-hover:bg-gray-100 transition-colors duration-300">
+                    <svg class="w-14 h-14 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="4" y="4" width="16" height="10"></rect>
+                        <line x1="12" y1="14" x2="12" y2="21"></line>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
+                        看板点検・修理の料金相場・費用目安を解説
+                    </h3>
+                    <p class="text-xs text-gray-700 leading-relaxed">
+                        法定点検の周期・費用相場を解説。落下事故を防ぐための点検義務と業者選びのポイントもご紹介。
+                    </p>
+                </div>
+            </a>
+
+            <!-- カード9: 鳥害対策の料金相場・費用目安を解説 -->
+            <a href="{{ route('guide.bird-control-price') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div class="h-40 overflow-hidden bg-gray-50 flex items-center justify-center group-hover:bg-gray-100 transition-colors duration-300">
+                    <svg class="w-14 h-14 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z"></path>
+                        <path d="M9 12l2 2 4-4" stroke-width="1.8"></path>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
+                        鳥害対策の料金相場・費用目安を解説
+                    </h3>
+                    <p class="text-xs text-gray-700 leading-relaxed">
+                        防鳥ネット設置・糞害清掃の費用相場を解説。鳥獣保護管理法を踏まえた正しい対策の進め方もご紹介。
                     </p>
                 </div>
             </a>

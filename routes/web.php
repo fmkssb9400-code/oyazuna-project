@@ -102,6 +102,11 @@ Route::get('/guide/window-cleaning-price', [GuideController::class, 'windowClean
 Route::get('/guide/window-cleaning-contractor-selection', [GuideController::class, 'windowCleaningContractorSelection'])->name('guide.window-cleaning-contractor-selection');
 Route::get('/guide/exterior-wall-painting-pricing', [GuideController::class, 'exteriorWallPaintingPricing'])->name('guide.exterior-wall-painting-pricing');
 Route::get('/guide/exterior-wall-painting-contractor-selection', [GuideController::class, 'exteriorWallPaintingContractorSelection'])->name('guide.exterior-wall-painting-contractor-selection');
+Route::get('/guide/wall-repair-price', [GuideController::class, 'wallRepairPrice'])->name('guide.wall-repair-price');
+Route::get('/guide/exterior-cleaning-price', [GuideController::class, 'exteriorCleaningPrice'])->name('guide.exterior-cleaning-price');
+Route::get('/guide/exterior-inspection-price', [GuideController::class, 'exteriorInspectionPrice'])->name('guide.exterior-inspection-price');
+Route::get('/guide/signboard-price', [GuideController::class, 'signboardPrice'])->name('guide.signboard-price');
+Route::get('/guide/bird-control-price', [GuideController::class, 'birdControlPrice'])->name('guide.bird-control-price');
 
 // Admin Editor Image Upload Routes (Filament管理者のみ)
 Route::middleware(['web', 'auth'])->prefix('admin')->group(function () {
