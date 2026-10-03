@@ -3,6 +3,20 @@
 @section('title', ($page && $page->title) ? $page->title . ' - オヤズナ' : 'ガイド - オヤズナ')
 @section('description', ($page && $page->meta_description) ? $page->meta_description : '高所ロープ作業の専門業者を口コミと実績で比較できるサイトです。窓ガラス清掃、外壁補修・塗装、鳥害対策などの高所作業に対応。安心・信頼できる業者選びをサポートします。')
 
+@section('head')
+    <script type="application/ld+json">
+        {!! json_encode([
+            '@@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                ['@type' => 'ListItem', 'position' => 1, 'name' => 'ホーム', 'item' => route('home')],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => 'ガイド', 'item' => route('home')],
+                ['@type' => 'ListItem', 'position' => 3, 'name' => ($page && $page->title) ? $page->title : (string) $__env->yieldContent('title'), 'item' => url()->current()],
+            ],
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+    </script>
+@endsection
+
 @section('content')
 <div class="max-w-7xl mx-auto px-2 md:px-4 py-4 md:py-8 overflow-x-hidden">
     <!-- Breadcrumb -->

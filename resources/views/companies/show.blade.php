@@ -41,18 +41,22 @@
                 'bestRating' => 5,
                 'worstRating' => 1,
             ] : null,
-            'review' => $reviews->isNotEmpty() ? $reviews->map(fn ($r) => [
-                '@type' => 'Review',
-                'author' => ['@type' => 'Person', 'name' => $r->reviewer_name ?: '匿名'],
-                'reviewRating' => [
-                    '@type' => 'Rating',
-                    'ratingValue' => $r->total_score,
-                    'bestRating' => 5,
-                    'worstRating' => 1,
-                ],
-                'reviewBody' => mb_strlen(strip_tags($r->body ?? '')) > 500 ? mb_substr(strip_tags($r->body ?? ''), 0, 500) . '...' : strip_tags($r->body ?? ''),
-                'datePublished' => optional($r->created_at)->toDateString(),
-            ])->values()->all() : null,
+            'review' => $reviews->isNotEmpty() ? $reviews->map(function ($r) {
+                // Reviewモデルに単一の本文フィールドは無く、良い点/改善点の2フィールドに分かれている
+                $__body = trim(implode("\n", array_filter([$r->good_points, $r->improvement_points])));
+                return [
+                    '@type' => 'Review',
+                    'author' => ['@type' => 'Person', 'name' => $r->reviewer_name ?: '匿名'],
+                    'reviewRating' => [
+                        '@type' => 'Rating',
+                        'ratingValue' => $r->total_score,
+                        'bestRating' => 5,
+                        'worstRating' => 1,
+                    ],
+                    'reviewBody' => mb_strlen(strip_tags($__body)) > 500 ? mb_substr(strip_tags($__body), 0, 500) . '...' : strip_tags($__body),
+                    'datePublished' => optional($r->created_at)->toDateString(),
+                ];
+            })->values()->all() : null,
         ], fn ($value) => $value !== null), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
     </script>
 @endsection
