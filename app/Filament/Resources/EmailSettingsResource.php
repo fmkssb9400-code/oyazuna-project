@@ -7,6 +7,7 @@ use App\Filament\Resources\EmailSettingsResource\RelationManagers;
 use App\Models\EmailSettings;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Navigation\NavigationItem;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -18,11 +19,24 @@ class EmailSettingsResource extends Resource
     protected static ?string $model = EmailSettings::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
-    protected static ?string $navigationGroup = 'メール';
-    protected static ?int $navigationSort = 2;
-    protected static ?string $navigationLabel = '設定';
+    protected static ?string $navigationLabel = 'メール';
     protected static ?string $modelLabel = 'メール設定';
     protected static ?string $pluralModelLabel = 'メール設定';
+
+    /**
+     * サイドバーでは「メール設定」の元の位置に「メール」として表示し、メール履歴へ遷移させる。
+     * 設定画面自体は残してあり、URL直打ち(/admin/email-settings)で開ける。
+     */
+    public static function getNavigationItems(): array
+    {
+        return [
+            NavigationItem::make(static::getNavigationLabel())
+                ->icon(static::getNavigationIcon())
+                ->url(SentEmailResource::getUrl('index'))
+                ->isActiveWhen(fn (): bool => request()->routeIs(SentEmailResource::getRouteBaseName() . '.*'))
+                ->sort(static::getNavigationSort()),
+        ];
+    }
 
     public static function form(Form $form): Form
     {

@@ -15,8 +15,8 @@ class SentEmailResource extends Resource
     protected static ?string $model = SentEmail::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-inbox-arrow-down';
-    protected static ?string $navigationGroup = 'メール';
-    protected static ?int $navigationSort = 1;
+    // サイドバーの「メール」項目はEmailSettingsResource側で出している
+    protected static bool $shouldRegisterNavigation = false;
     protected static ?string $navigationLabel = 'メール履歴';
     protected static ?string $modelLabel = 'メール';
     protected static ?string $pluralModelLabel = 'メール履歴';
