@@ -9,6 +9,7 @@
 > - `04-seo-and-search-behavior.md` — 検索キーワード傾向・競合比較サイトのUXパターン
 > - `05-google-seo-policy-2026.md` — Google検索エンジン側の2026年SEO方針（AI Overviews公式ガイド・スパムポリシー・コアアップデート履歴。記事執筆前に必読）
 > - `06-writing-techniques.md` — コピーライティング・Web文章術（NN/g読まれ方調査・構成の型の使い分け・執筆後チェックリスト。記事執筆前後に確認）
+> - `07-llmo-geo-optimization.md` — LLMO/GEO（生成AI検索最適化）2026年版。Google以外のAIエンジン(ChatGPT/Perplexity)動向とGEO学術研究。llms.txt不要の再確認・Bing Webmaster Tools未登録の指摘あり
 
 **表記ルール**: 数値・事実には可能な限り出典の性質（一次情報／二次情報／業者ブログ）を意識すること。「推測」「未確認」と明記された内容は事実と混同しない（[[feedback_no_speculation_in_content]]の方針に準拠）。
 
@@ -92,8 +93,9 @@ oyazunaの4分類「ロープアクセス／ゴンドラ／高所作業車／足
 - **BtoB特有の検索・意思決定行動**: 個人向けの「安さ・口コミ」訴求だけでなく、「相見積もり比較の進め方（3〜5社目安）」「稟議・理事会向け資料の作り方」「保険加入・資格保有の確認ポイント」など、意思決定者を説得する実務ガイドが刺さりやすい（推測含む）。管理組合向けには発注方式（管理会社主導／設計監理／施工会社一括）の解説と、oyazuna掲載企業がどの方式に対応できるかの整理が差別化になり得る。
 - **Google側の2026年SEO方針（要点）**: Google公式（2026年5月）は「AEO/GEOは実質SEOと同じ」とし、llms.txt作成・コンテンツの細切れ分割・AI向け特殊文体を明確に不要と否定。評価されるのは「Why We Waived the Inspection & Saved Money」型の一次体験コンテンツで、「7 Tips for...」型の一般論（コモディティコンテンツ）は評価されにくい。生成AIの回答を操作する行為・大量生成コンテンツ（scaled content abuse）は2026年5月にスパムポリシーで明文化。記事執筆前に必ず`05-google-seo-policy-2026.md`を確認すること。
 - **ロングテールキーワード戦略（2026年知見）**: 2026年は「語数」より「検索意図の具体性」がロングテールの本質という論調にシフト。ロングテールはビッグキーワードよりCVRが高い傾向（業界分析、目安2.5倍程度）で、ゼロクリック検索・AI Overviews時代でも実クリックが残りやすいカテゴリとされる。oyazunaの「地名×工法×建物種別」ハブページ拡充は、**テンプレートの機械的な地名差し替えだけで量産すると2026年のscaled content abuse規制に抵触するリスクがある**ため、各ページに一次情報（地域特性・施工事例・掲載企業の口コミ）を必ず入れること。詳細は`04-seo-and-search-behavior.md`§4。
+- **LLMO/GEO（Google以外のAIエンジン対策、2026年知見）**: ChatGPT Search・Perplexity等、Google以外のAI検索エンジンにも個別の動向がある。学術研究（Princeton等、KDD2024）では統計データ・引用の追加が生成AI回答内での可視性を最大40%向上させたという報告。「バックリンクよりブランド言及（mentions）の方がAI可視性との相関が強い」という分析もあり、従来SEOと異なる力学が指摘されている。oyazunaはBing Webmaster Tools未登録（2026-10-06確認、ChatGPT SearchがBingインデックスに依存するため対策価値あり）。llms.txtは引き続き不要（Google同様、他社も消費者向け検索での使用を公式確認していない）。詳細は`07-llmo-geo-optimization.md`。
 
-詳細: `04-seo-and-search-behavior.md`（検索行動・ロングテール戦略）、`05-google-seo-policy-2026.md`（Google側の方針・2026年最新）。
+詳細: `04-seo-and-search-behavior.md`（検索行動・ロングテール戦略）、`05-google-seo-policy-2026.md`（Google側の方針・2026年最新）、`07-llmo-geo-optimization.md`（Google以外のAIエンジン・GEO学術研究）。
 
 ---
 
