@@ -88,6 +88,15 @@ Route::get('/news/{article:slug}', [NewsController::class, 'show'])->name('news.
 // Review routes
 Route::get('/reviews', [ReviewController::class, 'selectCompany'])->name('reviews.index');
 Route::get('/reviews/select-company', [ReviewController::class, 'selectCompany'])->name('reviews.select-company');
+
+// 旧: 数字だけのlegacy_slugを使っていた口コミ投稿URLへの301リダイレクト(companies側と同じパターン)。
+// GSCの「見つかりませんでした(404)」で60件検出されたため対応(2026-10-08)
+Route::get('/reviews/create/{legacyId}', function (string $legacyId) {
+    $company = \App\Models\Company::where('legacy_slug', $legacyId)->first();
+    abort_unless($company, 404);
+    return redirect('/reviews/create/' . $company->slug, 301);
+})->where('legacyId', '[0-9]+')->name('reviews.create.legacy-redirect');
+
 Route::get('/reviews/create/{company:slug}', [ReviewController::class, 'create'])->name('reviews.create');
 Route::post('/reviews/{company:slug}', [ReviewController::class, 'store'])->name('reviews.store');
 Route::get('/reviews/complete/{company:slug}', [ReviewController::class, 'complete'])->name('reviews.complete');
