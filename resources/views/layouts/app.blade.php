@@ -23,6 +23,8 @@
     @endphp
     <title>{{ $__pageTitleRaw }}</title>
     <meta name="robots" content="{{ $__robots }}">
+    {{-- Bing Webmaster Tools 所有確認(2026-10-10)。確認後も削除しないこと --}}
+    <meta name="msvalidate.01" content="E8989040C3B7C6870C9E1E04D8D029AD">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
