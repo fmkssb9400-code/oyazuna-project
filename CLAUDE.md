@@ -47,3 +47,8 @@ php artisan cache:clear
 - agent-browserで `agent-browser set device "iPhone 14"` のようにモバイル端末をエミュレートしてスクリーンショットを撮り、崩れ・はみ出し・見切れがないか確認する
 - 特に表（table）は横幅が画面を超えて横スクロールが必要になりやすい。`overflow-x-auto`だけでは気づかれないことがあるため、必要なら「→ 横にスクロールできます」のようなヒントテキストをスマホ表示時（`sm:hidden`）に出す
 - 確認だけでなく、崩れていた場合はその場で修正してから完了とすること
+
+## 自動化（hook・サブエージェント）
+
+- `.claude/hooks/pre-deploy-check.sh`: 本番サーバー(210.131.213.247)へのSSHで`git pull`/`artisan migrate`/`scp`等を実行する直前に、`php artisan view:cache`＋コンパイル済みBladeの`php -l`を自動実行し、失敗時はブロックする（`.claude/settings.json`のPreToolUse hook）。未pushコミットがある状態の`git pull`もブロック。`view:cache`単体はPHP構文エラーを検出しないため`php -l`を併用している。
+- `.claude/agents/content-auditor.md`: Haiku系モデルで動く読み取り専用の監査エージェント。title/meta文字数、記事間の文言重複、企業データのダミー住所など機械的・大量の確認用。記事執筆・ファクトチェックには使わない。
