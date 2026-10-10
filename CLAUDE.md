@@ -51,4 +51,5 @@ php artisan cache:clear
 ## 自動化（hook・サブエージェント）
 
 - `.claude/hooks/pre-deploy-check.sh`: 本番サーバー(210.131.213.247)へのSSHで`git pull`/`artisan migrate`/`scp`等を実行する直前に、`php artisan view:cache`＋コンパイル済みBladeの`php -l`を自動実行し、失敗時はブロックする（`.claude/settings.json`のPreToolUse hook）。未pushコミットがある状態の`git pull`もブロック。`view:cache`単体はPHP構文エラーを検出しないため`php -l`を併用している。
+- `.claude/hooks/article-rules-check.py`: Write/Edit時に書き込み内容を検査する。黄色背景ハイライトspan(`#f1c40f`)は書き込み前にブロック、ヘッジ表現（「あります。」等）の多用とviews/css内の`rounded-*`は書き込み後に警告。検査対象は今回の書き込み内容のみ（既存箇所の遡及修正はしない）。title/metaの文字数は未対応。
 - `.claude/agents/content-auditor.md`: Haiku系モデルで動く読み取り専用の監査エージェント。title/meta文字数、記事間の文言重複、企業データのダミー住所など機械的・大量の確認用。記事執筆・ファクトチェックには使わない。
