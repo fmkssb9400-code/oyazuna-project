@@ -5,13 +5,14 @@
 """
 import json
 import re
+import shutil
 import subprocess
 import sys
 import urllib.request
 from urllib.parse import urlparse
 
 ALLOWED_SUFFIXES = (".go.jp", ".lg.jp")
-MAX_BYTES = 8_000_000
+MAX_BYTES = 40_000_000
 
 
 def flatten_law(node, out):
@@ -58,7 +59,10 @@ def main():
             sys.exit(f"法令JSONの解析に失敗: {e}")
 
     if "pdf" in ctype or url.lower().endswith(".pdf"):
-        p = subprocess.run(["pdftotext", "-layout", "-", "-"], input=data, capture_output=True)
+        exe = shutil.which("pdftotext") or next((c for c in ("/opt/homebrew/bin/pdftotext", "/usr/local/bin/pdftotext") if shutil.which(c)), None)
+        if not exe:
+            sys.exit("pdftotextが見つかりません。Chromeで開いて確認してください")
+        p = subprocess.run([exe, "-layout", "-", "-"], input=data, capture_output=True)
         if p.returncode != 0:
             sys.exit("PDFの抽出に失敗(pdftotext未導入の可能性)。Chromeで開いて確認してください")
         text = p.stdout.decode("utf-8", "ignore")
