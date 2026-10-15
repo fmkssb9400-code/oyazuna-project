@@ -53,8 +53,11 @@ class IngestArticle extends Command
             $errors[] = 'published_atは「30分後〜7日以内」の未来日時のみ許可';
         }
 
-        if (Article::where('created_at', '>=', now()->subDay())->count() >= self::MAX_PER_24H) {
-            $errors[] = '24時間あたりの作成上限(' . self::MAX_PER_24H . '本)に達している';
+        if ($this->recentIngestCount() >= self::MAX_PER_24H) {
+            $errors[] = 'パイプライン経由の24時間あたり作成上限(' . self::MAX_PER_24H . '本)に達している';
+        }
+        if (!$this->option('dry-run') && !$this->auditLogWritable()) {
+            $errors[] = '監査ログに書き込めないため作成を拒否(上限管理が効かなくなるため)';
         }
 
         if ($errors) {
@@ -78,6 +81,12 @@ class IngestArticle extends Command
             'show_supervisor' => true,
         ]);
 
+        file_put_contents(
+            $this->auditLogPath(),
+            json_encode(['at' => now()->toIso8601String(), 'id' => $article->id, 'slug' => $article->slug]) . "\n",
+            FILE_APPEND | LOCK_EX
+        );
+
         $this->line(json_encode([
             'ok' => true,
             'id' => $article->id,
@@ -86,6 +95,38 @@ class IngestArticle extends Command
         ], JSON_UNESCAPED_UNICODE));
 
         return 0;
+    }
+
+    private function auditLogPath(): string
+    {
+        return storage_path('logs/pipeline-ingest.log');
+    }
+
+    private function auditLogWritable(): bool
+    {
+        $path = $this->auditLogPath();
+
+        return file_exists($path) ? is_writable($path) : is_writable(dirname($path));
+    }
+
+    // パイプライン経由で作成した本数のみ数える(人が作った記事は上限に含めない)
+    private function recentIngestCount(): int
+    {
+        $path = $this->auditLogPath();
+        if (!is_file($path)) {
+            return 0;
+        }
+
+        $since = now()->subDay();
+        $count = 0;
+        foreach (file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+            $row = json_decode($line, true);
+            if (isset($row['at']) && Carbon::parse($row['at'])->gte($since)) {
+                $count++;
+            }
+        }
+
+        return $count;
     }
 
     private function contentErrors(string $html): array
