@@ -23,3 +23,6 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# 記事自動パイプラインの作業ファイル
+/.claude/pipeline-work/

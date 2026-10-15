@@ -18,7 +18,7 @@ class IngestArticle extends Command
     protected $description = 'Create one scheduled article from JSON on stdin (restricted pipeline entrypoint)';
 
     private const MAX_BYTES = 300000;
-    private const MAX_PER_24H = 4;
+    private const MAX_PENDING = 14; // 未公開(予約中)のパイプライン記事の上限(7日×2枠)
     private const MIN_TEXT_LENGTH = 4000;
 
     public function handle(): int
@@ -53,8 +53,15 @@ class IngestArticle extends Command
             $errors[] = 'published_atは「30分後〜7日以内」の未来日時のみ許可';
         }
 
-        if ($this->recentIngestCount() >= self::MAX_PER_24H) {
-            $errors[] = 'パイプライン経由の24時間あたり作成上限(' . self::MAX_PER_24H . '本)に達している';
+        $jst = $publishAt->copy()->setTimezone('Asia/Tokyo');
+        if (!in_array($jst->hour, [6, 12], true) || $jst->minute !== 0 || $jst->second !== 0) {
+            $errors[] = 'published_atはJSTの6:00または12:00ちょうどのみ許可';
+        }
+        if (Article::where('published_at', $publishAt)->exists()) {
+            $errors[] = '同じ公開枠に既に記事がある';
+        }
+        if ($this->pendingIngestCount() >= self::MAX_PENDING) {
+            $errors[] = '予約中のパイプライン記事が上限(' . self::MAX_PENDING . '本)に達している';
         }
         if (!$this->option('dry-run') && !$this->auditLogWritable()) {
             $errors[] = '監査ログに書き込めないため作成を拒否(上限管理が効かなくなるため)';
@@ -109,24 +116,26 @@ class IngestArticle extends Command
         return file_exists($path) ? is_writable($path) : is_writable(dirname($path));
     }
 
-    // パイプライン経由で作成した本数のみ数える(人が作った記事は上限に含めない)
-    private function recentIngestCount(): int
+    // 監査ログ上のパイプライン記事のうち、まだ公開日時が来ていない(予約中)本数
+    private function pendingIngestCount(): int
     {
         $path = $this->auditLogPath();
         if (!is_file($path)) {
             return 0;
         }
 
-        $since = now()->subDay();
-        $count = 0;
+        $ids = [];
         foreach (file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
             $row = json_decode($line, true);
-            if (isset($row['at']) && Carbon::parse($row['at'])->gte($since)) {
-                $count++;
+            if (isset($row['id'])) {
+                $ids[] = (int) $row['id'];
             }
         }
+        if (!$ids) {
+            return 0;
+        }
 
-        return $count;
+        return Article::whereIn('id', $ids)->where('published_at', '>', now())->count();
     }
 
     private function contentErrors(string $html): array
