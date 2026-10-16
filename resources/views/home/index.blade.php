@@ -675,7 +675,7 @@
             <!-- カード5: 外壁補修の料金相場・費用目安を解説 -->
             <a href="{{ route('guide.wall-repair-price') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <div class="h-40 overflow-hidden">
-                    <img src="{{ asset('images/useful_guide5.svg') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide5.webp') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="p-6">
                     <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
@@ -690,7 +690,7 @@
             <!-- カード6: 外壁清掃の料金相場・費用目安を解説 -->
             <a href="{{ route('guide.exterior-cleaning-price') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <div class="h-40 overflow-hidden">
-                    <img src="{{ asset('images/useful_guide6.svg') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide6.webp') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="p-6">
                     <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
@@ -705,7 +705,7 @@
             <!-- カード7: 外壁調査の料金相場・費用目安を解説 -->
             <a href="{{ route('guide.exterior-inspection-price') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <div class="h-40 overflow-hidden">
-                    <img src="{{ asset('images/useful_guide7.svg') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide7.webp') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="p-6">
                     <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
@@ -720,7 +720,7 @@
             <!-- カード8: 看板点検・修理の料金相場・費用目安を解説 -->
             <a href="{{ route('guide.signboard-price') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <div class="h-40 overflow-hidden">
-                    <img src="{{ asset('images/useful_guide8.svg') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide8.webp') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="p-6">
                     <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
@@ -735,7 +735,7 @@
             <!-- カード9: 鳥害対策の料金相場・費用目安を解説 -->
             <a href="{{ route('guide.bird-control-price') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <div class="h-40 overflow-hidden">
-                    <img src="{{ asset('images/useful_guide9.svg') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide9.webp') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="p-6">
                     <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
