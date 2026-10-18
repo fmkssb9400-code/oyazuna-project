@@ -605,7 +605,7 @@
             <a href="/guide/window-cleaning-price" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <!-- 画像エリア -->
                 <div class="h-40 overflow-hidden">
-                    <img src="{{ asset('images/useful_guide1.webp') }}" alt="窓ガラス清掃の相場・費用目安を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide1.webp') . '?v=20261018' }}" alt="窓ガラス清掃の相場・費用目安を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <!-- テキストエリア -->
                 <div class="p-6">
@@ -622,7 +622,7 @@
             <a href="{{ route('guide.window-cleaning-contractor-selection') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <!-- 画像エリア -->
                 <div class="h-40 overflow-hidden">
-                    <img src="{{ asset('images/useful_guide2.webp') }}" alt="窓ガラス清掃業者の選び方を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide2.webp') . '?v=20261018' }}" alt="窓ガラス清掃業者の選び方を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <!-- テキストエリア -->
                 <div class="p-6">
@@ -639,7 +639,7 @@
             <a href="{{ route('guide.exterior-wall-painting-pricing') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <!-- 画像エリア -->
                 <div class="h-40 overflow-hidden">
-                    <img src="{{ asset('images/useful_guide3.webp') }}" alt="外壁塗装の料金相場・費用目安を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide3.webp') . '?v=20261018' }}" alt="外壁塗装の料金相場・費用目安を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <!-- テキストエリア -->
                 <div class="p-6">
@@ -656,7 +656,7 @@
             <a href="{{ route('guide.exterior-wall-painting-contractor-selection') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <!-- 画像エリア -->
                 <div class="h-40 overflow-hidden">
-                    <img src="{{ asset('images/useful_guide4.webp') }}" alt="外壁塗装業者の選び方を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide4.webp') . '?v=20261018' }}" alt="外壁塗装業者の選び方を解説" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <!-- テキストエリア -->
                 <div class="p-6">
@@ -675,7 +675,7 @@
             <!-- カード5: 外壁補修の料金相場・費用目安を解説 -->
             <a href="{{ route('guide.wall-repair-price') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <div class="h-40 overflow-hidden">
-                    <img src="{{ asset('images/useful_guide5.webp') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide5.webp') . '?v=20261018' }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="p-6">
                     <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
@@ -690,7 +690,7 @@
             <!-- カード6: 外壁清掃の料金相場・費用目安を解説 -->
             <a href="{{ route('guide.exterior-cleaning-price') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <div class="h-40 overflow-hidden">
-                    <img src="{{ asset('images/useful_guide6.webp') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide6.webp') . '?v=20261018' }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="p-6">
                     <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
@@ -705,7 +705,7 @@
             <!-- カード7: 外壁調査の料金相場・費用目安を解説 -->
             <a href="{{ route('guide.exterior-inspection-price') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <div class="h-40 overflow-hidden">
-                    <img src="{{ asset('images/useful_guide7.webp') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide7.webp') . '?v=20261018' }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="p-6">
                     <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
@@ -720,7 +720,7 @@
             <!-- カード8: 看板点検・修理の料金相場・費用目安を解説 -->
             <a href="{{ route('guide.signboard-price') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <div class="h-40 overflow-hidden">
-                    <img src="{{ asset('images/useful_guide8.webp') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide8.webp') . '?v=20261018' }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="p-6">
                     <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
@@ -735,7 +735,7 @@
             <!-- カード9: 鳥害対策の料金相場・費用目安を解説 -->
             <a href="{{ route('guide.bird-control-price') }}" class="block bg-white border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group">
                 <div class="h-40 overflow-hidden">
-                    <img src="{{ asset('images/useful_guide9.webp') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/useful_guide9.webp') . '?v=20261018' }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="p-6">
                     <h3 class="text-base font-bold text-blue-600 leading-tight border-b-2 border-blue-600 pb-1 mb-3 inline-block">
