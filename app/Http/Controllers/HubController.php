@@ -1158,6 +1158,7 @@ class HubController extends Controller
         ],
         '24-hour' => [
             'type' => 'condition',
+            'noindex' => true, // 2026-10-18: 無関係クエリ(46表示/1クリック)のみで実需要なし。night-work等と同様に検索結果から外す。[[oyazuna_hub_pages_keyword_audit_20260905]]参照
             'tag' => '24時間対応',
             'highlight_tags' => ['24時間対応'],
             'label' => '24時間対応',

@@ -19,7 +19,9 @@
             ? $__path . '?' . http_build_query(request()->query())
             : $__path;
         $__canonicalUrl = trim(strip_tags($__env->yieldContent('canonical', $__defaultCanonical)));
-        $__robots = trim(strip_tags($__env->yieldContent('robots', 'index, follow')));
+        // ハブ/エリア/エリア×ハブの2ページ目以降は1ページ目と本文が約9割共通のため、検索結果には出さない（リンクは辿らせる）。
+        $__paginatedListing = $__page > 1 && request()->routeIs('hub.category', 'area.show', 'area.hub.show');
+        $__robots = trim(strip_tags($__env->yieldContent('robots', $__paginatedListing ? 'noindex, follow' : 'index, follow')));
     @endphp
     <title>{{ $__pageTitleRaw }}</title>
     <meta name="robots" content="{{ $__robots }}">
