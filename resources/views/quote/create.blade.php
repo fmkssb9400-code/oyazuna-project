@@ -3,7 +3,7 @@
 @section('title', '高所ロープ専門業者に現調依頼する - オヤズナ | 高所ロープ作業の見積もり・相場データベース【高所の窓ガラス清掃・外壁塗装・外壁補修など】')
 
 @section('content')
-<div class="max-w-2xl mx-auto px-4 py-6 md:py-8">
+<div class="max-w-3xl mx-auto px-4 py-6 md:py-8">
     <h1 class="text-2xl md:text-3xl font-bold mb-2">高所ロープ専門業者に現調依頼する</h1>
     <p class="text-sm text-gray-600 mb-6 md:mb-8">まずは基本情報だけご入力ください。作業の詳細は、業者からのご連絡時に個別に確認させていただきます。</p>
 
@@ -36,85 +36,73 @@
             </div>
         @endif
 
-        <!-- Client Type -->
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">依頼者区分 <span class="text-red-500">*</span></label>
-            <div class="flex space-x-4">
-                <label class="flex items-center">
-                    <input type="radio" name="client_kind" value="corp" class="mr-2" required {{ old('client_kind') === 'corp' ? 'checked' : '' }}>
-                    法人
-                </label>
-                <label class="flex items-center">
-                    <input type="radio" name="client_kind" value="personal" class="mr-2" required {{ old('client_kind') === 'personal' ? 'checked' : '' }}>
-                    個人
-                </label>
+        <!-- 法人のみ受付 -->
+        <input type="hidden" name="client_kind" value="corp">
+
+        <div class="md:flex md:items-center md:gap-6">
+            <label for="company_name" class="block md:w-1/3 text-sm md:text-base font-bold text-gray-900 mb-2 md:mb-0">会社名・屋号<span class="text-red-500">※</span></label>
+            <div class="md:w-2/3">
+                <input type="text" name="company_name" id="company_name" value="{{ old('company_name') }}" required class="w-full border border-gray-800 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="例：株式会社オヤズナ">
             </div>
         </div>
 
-        <!-- Company Name (if corp) -->
-        <div id="company_name_field" class="hidden">
-            <label for="company_name" class="block text-sm font-medium text-gray-700 mb-2">会社名 <span class="text-red-500">*</span></label>
-            <input type="text" name="company_name" id="company_name" value="{{ old('company_name') }}"
-                   class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <div class="md:flex md:items-center md:gap-6">
+            <label for="name" class="block md:w-1/3 text-sm md:text-base font-bold text-gray-900 mb-2 md:mb-0">ご担当者名<span class="text-red-500">※</span></label>
+            <div class="md:w-2/3">
+                <input type="text" name="name" id="name" value="{{ old('name') }}" required class="w-full border border-gray-800 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="例：田中太郎">
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">ご担当者名 <span class="text-red-500">*</span></label>
-                <input type="text" name="name" id="name" value="{{ old('name') }}" required
-                       class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                       placeholder="例：田中太郎">
+        <div class="md:flex md:items-center md:gap-6">
+            <label for="email" class="block md:w-1/3 text-sm md:text-base font-bold text-gray-900 mb-2 md:mb-0">メールアドレス<span class="text-red-500">※</span></label>
+            <div class="md:w-2/3">
+                <input type="email" name="email" id="email" value="{{ old('email') }}" required class="w-full border border-gray-800 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500">
             </div>
+        </div>
 
-            <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">メールアドレス <span class="text-red-500">*</span></label>
-                <input type="email" name="email" id="email" value="{{ old('email') }}" required
-                       class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <div class="md:flex md:items-center md:gap-6">
+            <label for="phone" class="block md:w-1/3 text-sm md:text-base font-bold text-gray-900 mb-2 md:mb-0">電話番号</label>
+            <div class="md:w-2/3">
+                <input type="tel" name="phone" id="phone" value="{{ old('phone') }}" class="w-full border border-gray-800 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500">
             </div>
+        </div>
 
-            <div>
-                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">電話番号</label>
-                <input type="tel" name="phone" id="phone" value="{{ old('phone') }}"
-                       class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            </div>
-
-            <div>
-                <label for="prefecture_id" class="block text-sm font-medium text-gray-700 mb-2">都道府県 <span class="text-red-500">*</span></label>
-                <select name="prefecture_id" id="prefecture_id" required class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="">選択してください</option>
+        <div class="md:flex md:items-center md:gap-6">
+            <label for="prefecture_id" class="block md:w-1/3 text-sm md:text-base font-bold text-gray-900 mb-2 md:mb-0">都道府県<span class="text-red-500">※</span></label>
+            <div class="md:w-2/3">
+                <select name="prefecture_id" id="prefecture_id" required class="w-full border border-gray-800 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white">
+                    <option value="">選択する</option>
                     @foreach($prefectures as $prefecture)
-                        <option value="{{ $prefecture->id }}" {{ old('prefecture_id') == $prefecture->id ? 'selected' : '' }}>
-                            {{ $prefecture->name }}
-                        </option>
+                        <option value="{{ $prefecture->id }}" {{ old('prefecture_id') == $prefecture->id ? 'selected' : '' }}>{{ $prefecture->name }}</option>
                     @endforeach
                 </select>
             </div>
+        </div>
 
-            <div>
-                <label for="building_name" class="block text-sm font-medium text-gray-700 mb-2">建物名 <span class="text-green-600">（入力推奨）</span></label>
-                <input type="text" name="building_name" id="building_name" value="{{ old('building_name') }}"
-                       class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                       placeholder="例：○○ビル、○○マンション、○○商業施設">
-            </div>
-
-            <div>
-                <label for="floors" class="block text-sm font-medium text-gray-700 mb-2">階数 <span class="text-red-500">*</span></label>
-                <input type="number" name="floors" id="floors" min="1" value="{{ old('floors') }}" required
-                       class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                       placeholder="例：10">
+        <div class="md:flex md:items-center md:gap-6">
+            <label for="building_name" class="block md:w-1/3 text-sm md:text-base font-bold text-gray-900 mb-2 md:mb-0">建物名 <span class="text-green-600 text-xs font-normal">（入力推奨）</span></label>
+            <div class="md:w-2/3">
+                <input type="text" name="building_name" id="building_name" value="{{ old('building_name') }}" class="w-full border border-gray-800 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="例：○○ビル、○○マンション、○○商業施設">
             </div>
         </div>
 
-        <div>
-            <label for="service_category_id" class="block text-sm font-medium text-gray-700 mb-2">作業内容 <span class="text-red-500">*</span></label>
-            <select name="service_category_id" id="service_category_id" required class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option value="">選択してください</option>
-                @foreach($serviceCategories as $serviceCategory)
-                    <option value="{{ $serviceCategory->id }}" {{ old('service_category_id') == $serviceCategory->id ? 'selected' : '' }}>
-                        {{ $serviceCategory->label }}
-                    </option>
-                @endforeach
-            </select>
+        <div class="md:flex md:items-center md:gap-6">
+            <label for="floors" class="block md:w-1/3 text-sm md:text-base font-bold text-gray-900 mb-2 md:mb-0">階数<span class="text-red-500">※</span></label>
+            <div class="md:w-2/3">
+                <input type="number" name="floors" id="floors" min="1" value="{{ old('floors') }}" required class="w-full border border-gray-800 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="例：10">
+            </div>
+        </div>
+
+        <div class="md:flex md:items-center md:gap-6">
+            <label for="service_category_id" class="block md:w-1/3 text-sm md:text-base font-bold text-gray-900 mb-2 md:mb-0">作業内容<span class="text-red-500">※</span></label>
+            <div class="md:w-2/3">
+                <select name="service_category_id" id="service_category_id" required class="w-full border border-gray-800 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white">
+                    <option value="">選択する</option>
+                    @foreach($serviceCategories as $serviceCategory)
+                        <option value="{{ $serviceCategory->id }}" {{ old('service_category_id') == $serviceCategory->id ? 'selected' : '' }}>{{ $serviceCategory->label }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
 
         <p class="text-xs text-gray-500">
@@ -191,27 +179,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('quote-form').addEventListener('submit', function(e) {
         document.getElementById('wishlist_companies_input').value = JSON.stringify(wishlist);
     });
-
-    // Toggle company name field based on client_kind
-    const companyNameField = document.getElementById('company_name_field');
-    const companyNameInput = document.getElementById('company_name');
-    document.querySelectorAll('input[name="client_kind"]').forEach(function(radio) {
-        radio.addEventListener('change', function() {
-            if (this.value === 'corp') {
-                companyNameField.classList.remove('hidden');
-                companyNameInput.setAttribute('required', 'required');
-            } else {
-                companyNameField.classList.add('hidden');
-                companyNameInput.removeAttribute('required');
-            }
-        });
-    });
-    // Restore state on validation error reload
-    const checkedClientKind = document.querySelector('input[name="client_kind"]:checked');
-    if (checkedClientKind && checkedClientKind.value === 'corp') {
-        companyNameField.classList.remove('hidden');
-        companyNameInput.setAttribute('required', 'required');
-    }
 });
 
 function removeFromCompare(companyId) {

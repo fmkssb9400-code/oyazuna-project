@@ -49,9 +49,11 @@ class QuoteController extends Controller
         // 都道府県・建物名・階数・作業内容)に絞った。建物種別・作業規模・希望時期は
         // フォームで聞かず、送信後の個別の打ち合わせで確認する運用に変更(DB側も
         // nullable化済み: 2026_10_02_084822_make_quote_requests_detail_fields_nullable)。
+        // 法人のみ受付(個人は対象外)。client_kindはcorp固定。
+        $request->merge(['client_kind' => 'corp']);
         $validated = $request->validate([
-            'client_kind' => 'required|in:corp,personal',
-            'company_name' => 'required_if:client_kind,corp|nullable|string|max:255',
+            'client_kind' => 'required|in:corp',
+            'company_name' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'nullable|string|max:255',
