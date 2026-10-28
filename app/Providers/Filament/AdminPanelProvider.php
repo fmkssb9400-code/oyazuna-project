@@ -27,6 +27,11 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->plugin(
+                \Jeffgreco13\FilamentBreezy\BreezyCore::make()
+                    ->myProfile(shouldRegisterNavigation: true)
+                    ->enableTwoFactorAuthentication()
+            )
             ->colors([
                 'primary' => Color::Amber,
             ])
