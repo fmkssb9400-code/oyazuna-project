@@ -16,6 +16,11 @@
     
     <form action="{{ route('contact.store') }}" method="POST" class="bg-white shadow p-4 md:p-8 space-y-6">
         @csrf
+        {{-- ハニーポット：人間には見えない位置に配置し、ボットが埋めた場合は送信を無視する --}}
+        <div style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+        </div>
         
         @if($errors->any())
             <div class="bg-red-50 border border-red-200 p-4">

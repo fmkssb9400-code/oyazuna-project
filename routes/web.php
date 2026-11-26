@@ -54,8 +54,8 @@ Route::get('/area/{areaSlug}/{hubSlug}', [AreaHubController::class, 'show'])->na
 Route::post('/compare/add/{company}', [CompareController::class, 'add'])->name('compare.add');
 Route::delete('/compare/remove/{company}', [CompareController::class, 'remove'])->name('compare.remove');
 Route::get('/compare', [CompareController::class, 'index'])->name('compare.index');
-Route::get('/quote', [QuoteController::class, 'create'])->name('quote.create');
-Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
+Route::get('/quote', [QuoteController::class, 'create'])->middleware('form.guard:quote')->name('quote.create');
+Route::post('/quote', [QuoteController::class, 'store'])->middleware(['form.guard:quote', 'throttle:5,10'])->name('quote.store');
 Route::get('/quote/complete', [QuoteController::class, 'complete'])->name('quote.complete');
 
 // Quote Data routes
@@ -65,8 +65,8 @@ Route::post('/quote-data', [QuoteDataController::class, 'store'])->name('quote-d
 Route::get('/quote-data/complete', [QuoteDataController::class, 'complete'])->name('quote-data.complete');
 
 // Contact routes
-Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/contact', [ContactController::class, 'create'])->middleware('form.guard:contact')->name('contact.create');
+Route::post('/contact', [ContactController::class, 'store'])->middleware(['form.guard:contact', 'throttle:5,10'])->name('contact.store');
 Route::get('/contact/complete', [ContactController::class, 'complete'])->name('contact.complete');
 
 // Partner (提携相談) routes

@@ -20,7 +20,9 @@ class ContactController extends Controller
             'email' => 'required|email|max:255',
             'phone' => 'required|string|max:255',
             'subject' => 'required|string|max:255',
-            'message' => 'required|string|max:2000',
+            'message' => ['required', 'string', 'max:2000', 'regex:/[\x{3040}-\x{30FF}]/u'], // ひらがな/カタカナを含まない(英語・中国語等の営業ボット)は拒否
+        ], [
+            'message.regex' => 'お問い合わせ内容は日本語でご記入ください。',
         ]);
 
         try {
