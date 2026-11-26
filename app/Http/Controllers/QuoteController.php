@@ -56,7 +56,7 @@ class QuoteController extends Controller
             'company_name' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'phone' => 'nullable|string|max:255',
+            'phone' => ['nullable', 'string', 'max:255', new \App\Rules\JapanesePhone],
             'prefecture_id' => 'required|exists:prefectures,id',
             'building_name' => 'nullable|string|max:255',
             'floors' => 'required|integer|min:1',
