@@ -236,6 +236,15 @@
             </div>
         </article>
 
+        <!-- 相場を見たあとの見積もり導線 -->
+        <div class="mt-8 bg-blue-50 border border-blue-200 p-5 md:p-8 text-center">
+            <p class="text-lg md:text-xl font-bold text-gray-900 mb-2">この相場で、自社の物件の見積もりを取りませんか？</p>
+            <p class="text-sm md:text-base text-gray-600 mb-5">建物名・階数・作業内容など9項目の入力だけ。専門業者へ共有し、業者から直接ご連絡します（無料・法人のみ）。</p>
+            <a href="{{ route('quote.create') }}" class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 transition-colors text-white font-bold text-base md:text-lg px-8 md:px-12 py-3 md:py-4 shadow">
+                無料で見積もりを依頼する
+            </a>
+        </div>
+
         <!-- Navigation -->
         <div class="mt-8 flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
             <a href="{{ route('home') }}" class="inline-flex items-center justify-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors">
@@ -1109,5 +1118,22 @@ function generateTableOfContents() {
     setTimeout(forceImageSizes, 100);
     setTimeout(forceImageSizes, 500);
 }
+</script>
+
+<!-- PC版：画面下部固定の見積もりCTA（少しスクロールしたら表示。スマホはapp.blade.phpの共通バーがある） -->
+<div id="guide-fixed-cta" class="hidden md:flex fixed bottom-0 inset-x-0 z-40 justify-center bg-black/50 px-3 py-4 transform translate-y-full transition-transform duration-300">
+    <a href="{{ route('quote.create') }}"
+       class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 transition-colors text-white font-bold text-xl px-12 py-4 shadow-lg">
+        無料で見積もりを依頼する
+    </a>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const bar = document.getElementById('guide-fixed-cta');
+    if (!bar) return;
+    const toggle = () => bar.classList.toggle('translate-y-full', window.scrollY < 400);
+    toggle();
+    window.addEventListener('scroll', toggle, { passive: true });
+});
 </script>
 @endsection

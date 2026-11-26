@@ -16,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias(['form.guard' => \App\Http\Middleware\FormSpamGuard::class]);
         $middleware->web(append: [
             \App\Http\Middleware\TrackPageViews::class,
+            \App\Http\Middleware\MarkQuoteFormRendered::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
